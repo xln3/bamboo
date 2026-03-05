@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BAMBOO Paper Entry",
+  "description": "Metadata for a single paper in the BAMBOO benchmark",
+  "type": "object",
+  "required": ["paper_id", "title", "venue", "year", "code_url", "code_commit"],
+  "properties": {
+    "paper_id": {
+      "type": "string",
+      "pattern": "^bamboo-\\d{5}$",
+      "description": "Unique identifier (bamboo-00001 onwards, no upper limit)"
+    },
+    "arxiv_id": {
+      "type": "string",
+      "description": "arXiv identifier (e.g., 2501.12345)"
+    },
+    "title": {
+      "type": "string"
+    },
+    "authors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "venue": {
+      "type": "string",
+      "enum": ["NeurIPS", "ICML", "ICLR", "CVPR", "ICCV", "ACL", "EMNLP", "AAAI", "ICRA"]
+    },
+    "year": {
+      "type": "integer",
+      "const": 2025
+    },
+    "venue_track": {
+      "type": "string",
+      "enum": ["main", "workshop", "findings", "demo", "datasets-benchmarks"],
+      "default": "main"
+    },
+    "paper_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to paper PDF"
+    },
+    "code_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to code repository"
+    },
+    "code_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{7,40}$",
+      "description": "Pinned git commit hash"
+    },
+    "code_platform": {
+      "type": "string",
+      "enum": ["github", "gitlab", "huggingface", "other"],
+      "default": "github"
+    },
+    "domain": {
+      "type": "string",
+      "enum": ["vision", "nlp", "multimodal", "reinforcement-learning", "generative", "robotics", "graph", "audio", "tabular", "theory", "systems", "other"],
+      "description": "Primary research domain"
+    },
+    "ground_truth_claims": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Claim" },
+      "description": "Auto-extracted claims for evaluation scoring. NOT provided to agent."
+    },
+    "difficulty": {
+      "$ref": "#/$defs/Difficulty"
+    },
+    "repo_analysis": {
+      "$ref": "#/$defs/RepoAnalysis",
+      "description": "Auto-generated repository analysis (from PANDA's analyzeRepo)"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-form tags for filtering"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Annotator notes (special requirements, known issues)"
+    }
+  },
+  "$defs": {
+    "Claim": {
+      "type": "object",
+      "required": ["claim_id", "description", "metric_name", "metric_value", "source_location"],
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "pattern": "^c\\d+$",
+          "description": "Claim identifier within this paper (c1, c2, ...)"
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description (e.g., 'Table 1: CIFAR-10 test accuracy')"
+        },
+        "metric_name": {
+          "type": "string",
+          "description": "Metric name (accuracy, F1, BLEU, FID, mAP, etc.)"
+        },
+        "metric_value": {
+          "type": "number",
+          "description": "Paper-reported value"
+        },
+        "metric_unit": {
+          "type": "string",
+          "description": "Unit or scale (%, ratio_0_1, raw, dB, etc.)",
+          "default": "%"
+        },
+        "source_location": {
+          "type": "string",
+          "description": "Where in the paper (Table 1, Figure 3, Section 4.2)"
+        },
+        "higher_is_better": {
+          "type": "boolean",
+          "description": "Whether higher values are better for this metric",
+          "default": true
+        },
+        "tolerance": {
+          "type": "number",
+          "description": "Relative tolerance (0.05 = ±5%)",
+          "default": 0.05,
+          "minimum": 0.001,
+          "maximum": 0.5
+        },
+        "claim_difficulty": {
+          "type": "string",
+          "enum": ["quick", "medium", "long", "prohibitive"],
+          "description": "Estimated compute time to reproduce this claim"
+        },
+        "experiment_hint": {
+          "type": "string",
+          "description": "Optional hint about which script/command to run"
+        },
+        "dataset": {
+          "type": "string",
+          "description": "Dataset name used for this claim"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["main", "ablation", "analysis", "baseline"],
+          "description": "Claim category. 'baseline' claims are excluded from primary scoring.",
+          "default": "main"
+        }
+      }
+    },
+    "Difficulty": {
+      "type": "object",
+      "required": ["tier", "composite_score"],
+      "properties": {
+        "tier": {
+          "type": "integer",
+          "enum": [1, 2, 3, 4],
+          "description": "Difficulty tier"
+        },
+        "composite_score": {
+          "type": "number",
+          "minimum": 1.0,
+          "maximum": 5.0,
+          "description": "Weighted composite difficulty score"
+        },
+        "framework_complexity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "dependency_count_score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "dataset_requirements": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "hardware_requirements": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "code_quality": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "reproduction_time": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        }
+      }
+    },
+    "RepoAnalysis": {
+      "type": "object",
+      "properties": {
+        "framework": {
+          "type": "string",
+          "enum": ["pytorch", "tensorflow", "jax", "keras", "mxnet", "unknown"]
+        },
+        "build_systems": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "entry_points": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "dependency_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "python_version": {
+          "type": "string"
+        },
+        "gpu_required": {
+          "type": "boolean"
+        },
+        "python_loc": {
+          "type": "integer",
+          "description": "Lines of Python code"
+        }
+      }
+    }
+  }
+}

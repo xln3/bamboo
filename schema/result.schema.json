@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BAMBOO Evaluation Result",
+  "description": "Result of evaluating an agent on a single BAMBOO paper",
+  "type": "object",
+  "required": ["paper_id", "agent_id", "timestamp", "pass4", "resource_usage"],
+  "properties": {
+    "paper_id": {
+      "type": "string",
+      "pattern": "^bamboo-\\d{5}$"
+    },
+    "agent_id": {
+      "type": "string",
+      "description": "Identifier for the agent being evaluated"
+    },
+    "agent_version": {
+      "type": "string",
+      "description": "Version of the agent"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "hardware_profile": {
+      "type": "string",
+      "enum": ["small", "medium", "large", "xlarge"],
+      "description": "Hardware profile used"
+    },
+    "pass4": {
+      "$ref": "#/$defs/Pass4Result"
+    },
+    "barriers": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Barrier" },
+      "description": "Detected barriers (if any failure)"
+    },
+    "failure_attribution": {
+      "$ref": "#/$defs/FailureAttribution"
+    },
+    "resource_usage": {
+      "$ref": "#/$defs/ResourceUsage"
+    },
+    "logs": {
+      "$ref": "#/$defs/Logs"
+    }
+  },
+  "$defs": {
+    "Pass4Result": {
+      "type": "object",
+      "required": ["l1_build", "l2_run", "l3_reproduce", "l4_cross", "overall_level"],
+      "properties": {
+        "l1_build": { "$ref": "#/$defs/LevelResult" },
+        "l2_run": { "$ref": "#/$defs/LevelResult" },
+        "l3_reproduce": {
+          "allOf": [
+            { "$ref": "#/$defs/LevelResult" },
+            {
+              "type": "object",
+              "properties": {
+                "claim_results": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/ClaimResult" }
+                },
+                "reproduction_score": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "description": "Fraction of claims within tolerance"
+                }
+              }
+            }
+          ]
+        },
+        "l4_cross": { "$ref": "#/$defs/LevelResult" },
+        "overall_level": {
+          "type": "integer",
+          "enum": [0, 1, 2, 3, 4],
+          "description": "Highest level passed"
+        }
+      }
+    },
+    "LevelResult": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["pass", "partial", "fail", "skip", "timeout"]
+        },
+        "duration_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "detail": {
+          "type": "string",
+          "description": "Human-readable explanation"
+        }
+      }
+    },
+    "ClaimResult": {
+      "type": "object",
+      "required": ["claim_id", "pass"],
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "pattern": "^c\\d+$"
+        },
+        "expected_value": {
+          "type": "number"
+        },
+        "actual_value": {
+          "type": ["number", "null"],
+          "description": "Extracted metric value, null if extraction failed"
+        },
+        "relative_deviation": {
+          "type": ["number", "null"],
+          "description": "|actual - expected| / |expected|"
+        },
+        "pass": {
+          "type": "boolean"
+        },
+        "extraction_method": {
+          "type": "string",
+          "enum": ["structured", "regex", "log_parse", "llm", "manual"],
+          "description": "How the metric was extracted"
+        }
+      }
+    },
+    "Barrier": {
+      "type": "object",
+      "required": ["level", "description", "evidence"],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["L1_environment", "L2_build", "L3_framework", "L4_hardware_code", "L5_microarch"]
+        },
+        "description": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "string",
+          "description": "Error message or evidence"
+        },
+        "auto_fixable": {
+          "type": "boolean"
+        },
+        "suggested_fix": {
+          "type": "string"
+        }
+      }
+    },
+    "FailureAttribution": {
+      "type": "object",
+      "properties": {
+        "primary_barrier": {
+          "$ref": "#/$defs/Barrier"
+        },
+        "likely_paper_issue": {
+          "type": "boolean",
+          "description": "Whether failure is attributable to the paper's code quality"
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "ResourceUsage": {
+      "type": "object",
+      "required": ["total_time_ms"],
+      "properties": {
+        "total_time_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "llm_tokens_input": {
+          "type": "integer"
+        },
+        "llm_tokens_output": {
+          "type": "integer"
+        },
+        "llm_cost_usd": {
+          "type": "number"
+        },
+        "gpu_hours": {
+          "type": "number"
+        },
+        "peak_gpu_memory_gb": {
+          "type": "number"
+        }
+      }
+    },
+    "Logs": {
+      "type": "object",
+      "properties": {
+        "setup_log_path": {
+          "type": "string",
+          "description": "Path to environment setup log"
+        },
+        "run_log_path": {
+          "type": "string",
+          "description": "Path to experiment execution log"
+        },
+        "environment_spec_path": {
+          "type": "string",
+          "description": "Path to pip freeze / conda list output"
+        },
+        "agent_transcript_path": {
+          "type": "string",
+          "description": "Path to full agent conversation transcript"
+        }
+      }
+    }
+  }
+}

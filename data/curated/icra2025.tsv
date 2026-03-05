@@ -1,0 +1,1016 @@
+title	venue	code_url	arxiv_id	paper_url	code_commit	status	notes	repo_valid	stars	domain	venue_track
+PTZ-Calib: Robust Pan-Tilt-Zoom Camera Calibration	ICRA	https://github.com/gjgjh/PTZ-Calib	2502.09075	https://arxiv.org/abs/2502.09075		auto					main
+Variable-Stiffness Nasotracheal Intubation Robot with Passive Buffering: A Modular Platform in Mannequin Studies	ICRA					auto					main
+HPRM: High-Performance Robotic Middleware for Intelligent Autonomous Systems	ICRA		2412.01799			auto					main
+Impedance Primitive-Augmented Hierarchical Reinforcement Learning for Sequential Tasks	ICRA		2508.19607	https://arxiv.org/abs/2508.19607		auto					main
+RoBiFusion: A Robust and Bidirectional Interaction Camera-LiDAR 3D Object Detection Framework	ICRA					auto					main
+A Visual Servo System for Robotic on-Orbit Servicing Based on 3D Perception of Non-Cooperative Satellite	ICRA					auto					main
+Multi-Drone-Truck Collaborative Delivery with En Route Operations: A Hierarchical MARL-Based Approach	ICRA					auto					main
+Robust Planning for Autonomous Driving via Mixed Adversarial Diffusion Predictions	ICRA		2505.12327	https://arxiv.org/abs/2505.12327		auto					main
+Efficiently Generating Expressive Quadruped Behaviors via Language-Guided Preference Learning	ICRA		2502.03717	https://arxiv.org/abs/2502.03717		auto					main
+Scalable Multi-Agent Surveillance: a Kernel-Based Approach	ICRA					auto					main
+Diffusion-Based Generative Models for 3D Occupancy Prediction in Autonomous Driving	ICRA		2505.23115	https://arxiv.org/abs/2505.23115		auto					main
+Improving Grip Stability Using Passive Compliant Microspine Arrays for Soft Robots in Unstructured Terrain	ICRA		2502.12347	https://arxiv.org/abs/2502.12347		auto					main
+Valg: Vision-Based Adaptive Laser Gripper for Model-Free Pose Control of Floating Objects at Air-Liquid Interface	ICRA					auto					main
+Designing Experimental Setup Emulating Log-Loader Manipulator and Implementing Anti-Sway Trajectory Planner	ICRA					auto					main
+Multi-Task Robustness Enhancement Framework against Various Adversarial Patches	ICRA					auto					main
+Fuel-Optimal Operational Speed Planning for Autonomous Trucking on Highways	ICRA					auto					main
+Design, Implementation, and Validation of an Ungrounded Visuo-Tactile Haptic Interface for Robotic Teleoperation in High-Risk Steel Production	ICRA					auto					main
+Detecting Perception-Based Attacks using Visual Odometry: Inconsistency Modeling and Checking on Robotic States	ICRA					auto					main
+Large Language Model Based Autonomous Task Planning for Abstract Commands	ICRA					auto					main
+Koopman Operator Based Linear Model Predictive Control for Quadruped Trotting	ICRA		2508.08259	https://arxiv.org/abs/2508.08259		auto					main
+Towards Evaluating the User Comfort and Experience of a Novel Steerable Drilling Robotic System in Pedicle Screw Fixation Procedures: A User Study	ICRA					auto					main
+Optimal Gait Control for a Tendon-Driven Soft Quadruped Robot by Model-Based Reinforcement Learning	ICRA					auto					main
+VSB - Variable Stiffness Based on Bowden Cables: A Simple Mechanism for Soft Robotic Hands	ICRA					auto					main
+AI-Enhanced Automatic Design of Efficient Underwater Gliders	ICRA		2505.00222	https://arxiv.org/abs/2505.00222		auto					main
+Gesturing Towards Efficient Robot Control: Exploring Sensor Placement and Control Modes for Mid-Air Human-Robot Interaction	ICRA					auto					main
+SANDRO: A Robust Solver with a Splitting Strategy for Point Cloud Registration	ICRA		2503.07743	https://arxiv.org/abs/2503.07743		auto					main
+SIMP: Real-Time Energy and Time-Efficient 3D Motion Planning for Bio-Inspired AUVs	ICRA					auto					main
+Learning Quiet Walking for a Small Home Robot	ICRA		2502.10983	https://arxiv.org/abs/2502.10983		auto					main
+Motion Tracks: A Unified Representation for Human-Robot Transfer in Few-Shot Imitation Learning	ICRA		2501.06994	https://arxiv.org/abs/2501.06994		auto					main
+UA-PnP: Uncertainty-Aware End-to-End Bird's Eye View Visual Perception and Prediction for Autonomous Driving	ICRA					auto					main
+JORD: A Benchmark Dataset for Off-Road LiDAR Place Recognition and SLAM	ICRA					auto					main
+Spatially Constrained and Deeply Learned Bilateral Structural Intensity-Depth Registration Autonomously Navigates a Flexible Endoscope	ICRA					auto					main
+Dynamic Compact Consensus Tracking for Aerial Robots	ICRA					auto					main
+Synthesizing Depowdering Trajectories for Robot Arms using Deep Reinforcement Learning	ICRA					auto					main
+Towards Safe and Energy-Efficient Real-Time Motion Planning in Windy Urban Environments	ICRA					auto					main
+Unlocking Potential: Gaze-Based Interfaces in Assistive Robotics for Users with Severe Speech and Motor Impairment	ICRA					auto					main
+Latent Embedding Adaptation for Human Preference Alignment in Diffusion Planners	ICRA		2503.18347	https://arxiv.org/abs/2503.18347		auto					main
+Whenever, Wherever: Towards Orchestrating Crowd Simulations with Spatio-Temporal Spawn Dynamics	ICRA		2503.16639	https://arxiv.org/abs/2503.16639		auto					main
+SEAL: A Sample-Efficient Adjustment-Learning Method for Table Tennis Robot Serve	ICRA					auto					main
+KFCalibNet: A KansFormer-Based Self-Calibration Network for Camera and LiDAR	ICRA					auto					main
+RMSeg-UDA: Unsupervised Domain Adaptation for Road Marking Segmentation Under Adverse Conditions	ICRA					auto					main
+DoorBot: Closed-Loop Task Planning and Manipulation for Door Opening in the Wild with Haptic Feedback	ICRA		2504.09358	https://arxiv.org/abs/2504.09358		auto					main
+Robotic Space Simulator: Controls Implementation for Auxiliary Axes and Zero-G Dynamics	ICRA					auto					main
+Reliable Aerial Manipulation: Combining Visual Tracking with Range Sensing for Robust Grasping	ICRA					auto					main
+ZeroBP: Learning Position-Aware Correspondence for Zero-Shot 6D Pose Estimation in Bin-Picking	ICRA		2502.01004	https://arxiv.org/abs/2502.01004		auto					main
+Back to the Cartesian: Pilot Study for Assessing Human Stiffness in 3D Cartesian Space by Transforming from Muscle Space in a Peg-In-Hole Scenario for Tele-Impedance	ICRA					auto					main
+Duolingo: Dynamics Utilization for Online Translation of Actions	ICRA					auto					main
+Target-Aware Viewpoint Generation for Active Robotic Exploration in Unknown Environments	ICRA					auto					main
+Distributed Loitering Synchronization with Fixed-Wing UAVs	ICRA					auto					main
+Parallel-Constraint Model Predictive Control: Exploiting Parallel Computation for Improving Safety	ICRA		2509.03261	https://arxiv.org/abs/2509.03261		auto					main
+Towards Latency-Aware 3D Streaming Perception for Autonomous Driving	ICRA		2504.19115	https://arxiv.org/abs/2504.19115		auto					main
+RL-GSBridge: 3D Gaussian Splatting Based Real2Sim2Real Method for Robotic Manipulation Learning	ICRA					auto					main
+Efficient Optimization of a Permanent Magnet Array for a Stable 2D Trap	ICRA		2511.19201	https://arxiv.org/abs/2511.19201		auto					main
+DART: Dexterous Augmented Reality Teleoperation Platform for Large-Scale Robot Data Collection in Simulation	ICRA					auto					main
+Neural Lyapunov Function Approximation with Self-Supervised Reinforcement Learning	ICRA	https://github.com/CAV-Research-Lab/SACLA.git	2503.15629	https://arxiv.org/abs/2503.15629		auto					main
+FLEX: A Framework for Learning Robot-Agnostic Force-Based Skills Involving Sustained Contact Object Manipulation	ICRA		2503.13418	https://arxiv.org/abs/2503.13418		auto					main
+DISC: Dataset for Analyzing Driving Styles in Simulated Crashes for Mixed Autonomy	ICRA		2502.00050	https://arxiv.org/abs/2502.00050		auto					main
+Configuration-Adaptive Visual Relative Localization for Spherical Modular Self-Reconfigurable Robots	ICRA					auto					main
+Multi-Segment Soft Robot Control Via Deep Koopman-Based Model Predictive Control	ICRA		2505.00354	https://arxiv.org/abs/2505.00354		auto					main
+Physics-Informed Split Koopman Operators for Data-Efficient Soft Robotic Simulation	ICRA		2502.00162	https://arxiv.org/abs/2502.00162		auto					main
+Task-Oriented 6-DoF Grasp Pose Detection in Clutters	ICRA		2502.16976	https://arxiv.org/abs/2502.16976		auto					main
+Diffusion Based Robust LiDAR Place Recognition	ICRA		2504.12412	https://arxiv.org/abs/2504.12412		auto					main
+LLGS: Unsupervised Gaussian Splatting for Image Enhancement and Reconstruction in Pure Dark Environment	ICRA		2503.18640	https://arxiv.org/abs/2503.18640		auto					main
+A Piezoresistive Printable Strain Sensor for Monitoring and Control of Soft Robotic Links	ICRA					auto					main
+OG-Gaussian: Occupancy Based Street Gaussians for Autonomous Driving	ICRA		2502.14235	https://arxiv.org/abs/2502.14235		auto					main
+Capacitated Agriculture Fleet Vehicle Routing with Implements and Limited Autonomy: A Model and a Two-Phase Solution Approach	ICRA					auto					main
+Automated Hybrid Reward Scheduling Via Large Language Models for Robotic Skill Learning	ICRA		2505.02483	https://arxiv.org/abs/2505.02483		auto					main
+Towards Transparent Multi-Agent Autonomous Systems Through Principled Multi-Source Knowledge Distillation	ICRA					auto					main
+RISED: Accurate and Efficient RGB-Colorized Mapping Using Image Selection and Point Cloud Densification	ICRA					auto					main
+A2DO: Adaptive Anti-Degradation Odometry with Deep Multi-Sensor Fusion for Autonomous Navigation	ICRA		2502.20767	https://arxiv.org/abs/2502.20767		auto					main
+From Configuration-Space Clearance to Feature-Space Margin: Sample Complexity in Learning-Based Collision Detection	ICRA		2502.04170	https://arxiv.org/abs/2502.04170		auto					main
+Inverse Kinematics on Guiding Vector Fields for Robot Path Following	ICRA		2502.17313	https://arxiv.org/abs/2502.17313		auto					main
+AstroLoc2: Fast Sequential Depth-Enhanced Localization for Free-Flying Robots	ICRA					auto					main
+OPRNet: Object-Centric Point Reconstruction Network for Multimodal 3D Object Detection in Adverse Weathers	ICRA					auto					main
+VLM-GroNav: Robot Navigation Using Physically Grounded Vision-Language Models in Outdoor Environments	ICRA					auto					main
+Tension Dependent Twisted String Actuator Modelling and Efficacy Benchmarking in Force and Impedance Control	ICRA					auto					main
+MBE-ARI: A Multimodal Dataset Mapping Bi-Directional Engagement in Animal-Robot Interaction	ICRA	https://github.com/RISELabPurdue/MBE-ARI	2504.08646	https://arxiv.org/abs/2504.08646		auto					main
+Fully Differentiable Adaptive Informative Path Planning	ICRA					auto					main
+Cocube: a Tabletop Modular Multi-Robot Platform for Education and Research	ICRA					auto					main
+DeepVL: Dynamics and Inertial Measurements-based Deep Velocity Learning for Underwater Odometry	ICRA		2502.07726	https://arxiv.org/abs/2502.07726		auto					main
+Deformable Multibody Modeling for Model Predictive Control in Legged Locomotion with Embodied Compliance	ICRA		2504.20301	https://arxiv.org/abs/2504.20301		auto					main
+Path Planning Using Instruction-Guided Probabilistic Roadmaps	ICRA		2502.16515	https://arxiv.org/abs/2502.16515		auto					main
+Tunable Leg Stiffness in a Monopedal Hopper for Energy-Efficient Vertical Hopping Across Varying Ground Profiles	ICRA		2508.02873	https://arxiv.org/abs/2508.02873		auto					main
+Deep Learning Based Topography Aware Gas Source Localization with Mobile Robot	ICRA					auto					main
+Brain-Inspired Spatial Continuous State Encoding for Efficient Spiking-Based Navigation	ICRA					auto					main
+Using Physiological Measures, Gaze, and Facial Expressions to Model Human Trust in a Robot Partner	ICRA		2504.05291	https://arxiv.org/abs/2504.05291		auto					main
+Stonefish: Supporting Machine Learning Research in Marine Robotics	ICRA		2502.11887	https://arxiv.org/abs/2502.11887		auto					main
+Indoor Localization of UAVs Using Only Few Measurements by Output-Sensitive Preimage Intersection	ICRA					auto					main
+A Novel Control Strategy for Offset Points Tracking in the Context of Agricultural Robotics	ICRA		2503.05835	https://arxiv.org/abs/2503.05835		auto					main
+CoL3D: Collaborative Learning of Single-view Depth and Camera Intrinsics for Metric 3D Shape Recovery	ICRA		2502.08902	https://arxiv.org/abs/2502.08902		auto					main
+AeroSafe: Mobile Indoor Air Purification Using Aerosol Residence Time Analysis and Robotic Cough Emulator Testbed	ICRA		2508.02947	https://arxiv.org/abs/2508.02947		auto					main
+Fine-Tuning Hard-to-Simulate Objectives for Quadruped Locomotion: A Case Study on Total Power Saving	ICRA		2502.10956	https://arxiv.org/abs/2502.10956		auto					main
+Near Time-Optimal Hybrid Motion Planning for Timber Cranes	ICRA		2506.20314	https://arxiv.org/abs/2506.20314		auto					main
+Training Human-Robot Teams by Improving Transparency Through a Virtual Spectator Interface	ICRA		2503.09849	https://arxiv.org/abs/2503.09849		auto					main
+Bio-Inspired Soft Magnetic Swimming Robot for Flexible Motions	ICRA					auto					main
+MonoLDP: LED Assisted Indoor Mobile Bot Monocular Depth Prediction and Pose Estimation System	ICRA					auto					main
+Graph2Nav: 3D Object-Relation Graph Generation to Robot Navigation	ICRA		2504.16782	https://arxiv.org/abs/2504.16782		auto					main
+V2X-DG: Domain Generalization for Vehicle-to-Everything Cooperative Perception	ICRA		2503.15435	https://arxiv.org/abs/2503.15435		auto					main
+SynerGuard: A Robust Framework for Point Cloud Classification via Local Geometry and Spatial Topology	ICRA					auto					main
+Learning and Online Replication of Grasp Forces from Electromyography Signals for Prosthetic Finger Control	ICRA		2505.02574	https://arxiv.org/abs/2505.02574		auto					main
+Generalized Mission Planning for Heterogeneous Multi-Robot Teams via LLM-Constructed Hierarchical Trees	ICRA		2501.16539	https://arxiv.org/abs/2501.16539		auto					main
+GPU-Accelerated Subsystem-Based ADMM for Large-Scale Interactive Simulation	ICRA					auto					main
+Diver to Robot Communication Underwater	ICRA					auto					main
+AF-RLIO: Adaptive Fusion of Radar-LiDAR-Inertial Information for Robust Odometry in Challenging Environments	ICRA		2507.18317	https://arxiv.org/abs/2507.18317		auto					main
+Robotic Colonoscopy: Can High Fidelity Simulation Optimize Robot Design and Validation?	ICRA					auto					main
+A Map-Free Deep Learning-Based Framework for Gate-to-Gate Monocular Visual Navigation Aboard Miniaturized Aerial Vehicles	ICRA		2503.05251	https://arxiv.org/abs/2503.05251		auto					main
+Realtime Limb Trajectory Optimization for Humanoid Running Through Centroidal Angular Momentum Dynamics	ICRA		2501.17351	https://arxiv.org/abs/2501.17351		auto					main
+MILE: Model-Based Intervention Learning	ICRA		2502.13519	https://arxiv.org/abs/2502.13519		auto					main
+Exploration and Analysis of Torso-Limb Coordination of Quadruped Walkers with Compliant Torso	ICRA					auto					main
+Hierarchical Visual Policy Learning for Long-Horizon Robot Manipulation in Densely Cluttered Scenes	ICRA					auto					main
+Deep Learning-Based Friction Compensation in Low Velocity for Enhanced Direct Teaching in Collaborative Manipulators	ICRA					auto					main
+Human-Like Walking Motion Generation for Self-Balancing Lower Limb Rehabilitation Exoskeletons	ICRA					auto					main
+Instance Segmentation-Based Hazard Detection with Lunar South Pole Lighting	ICRA					auto					main
+Distributed Certifiably Correct Range-Aided SLAM	ICRA		2503.03192	https://arxiv.org/abs/2503.03192		auto					main
+ZSORN: Language-Driven Object-Centric Zero-Shot Object Retrieval and Navigation	ICRA					auto					main
+Humanoid Walking Stabilization via Model Predictive Control with Step Adjustment Based on the 3D Divergent Component of Motion	ICRA					auto					main
+LUMOS: Language-Conditioned Imitation Learning with World Models	ICRA		2503.10370	https://arxiv.org/abs/2503.10370		auto					main
+Dy3DGS-SLAM: Monocular 3D Gaussian Splatting SLAM for Dynamic Environments	ICRA		2506.05965	https://arxiv.org/abs/2506.05965		auto					main
+Mathematical Modeling and Rolling Motion Generation of Planar Seven-link Robot That Forms Passive Closed and Active Open Chains	ICRA					auto					main
+RGB-Only Gaussian Splatting SLAM for Unbounded Outdoor Scenes	ICRA		2502.15633	https://arxiv.org/abs/2502.15633		auto					main
+Robust Optical Transceiver Manipulation in Cluttered Cable Environments Using 3D Scene Understanding and Planning	ICRA					auto					main
+Language-Guided Object Search in Agricultural Environments	ICRA		2503.01068	https://arxiv.org/abs/2503.01068		auto					main
+Efficient Cross-Boundary Grasping in Stacked Clutter with Single-Visual Mapping Multi-Step	ICRA					auto					main
+Multi-Covering a Point Set by $m$ Disks with Minimum Total Area	ICRA		2502.13773	https://arxiv.org/abs/2502.13773		auto					main
+A Magnetic-Actuated Vision-Based Whisker Array for Contact Perception and Grasping	ICRA		2503.00133	https://arxiv.org/abs/2503.00133		auto					main
+Improving Monocular Visual-Inertial Initialization with Structureless Visual-Inertial Bundle Adjustment	ICRA		2502.16598	https://arxiv.org/abs/2502.16598		auto					main
+Combined Modal Robust Cascade Control for Wheeled Self-Reconfigurable Robots Under Drive Failure and Safety Threat	ICRA					auto					main
+Towards Robust Autonomous Driving: Conditional Multimodal Large Language Models for Fine-Grained Perception	ICRA					auto					main
+Learning to Prune Branches in Modern Tree-Fruit Orchards	ICRA		2507.23015	https://arxiv.org/abs/2507.23015		auto					main
+Enhancing the Utilization of Color Information in Point Cloud Semantic Segmentation	ICRA					auto					main
+LAFNET: Lightweight Aerial Fire Detection Model for Onboard Edge Computing	ICRA					auto					main
+ASCENT: Autonomous Skill Learning Toward Complex Embodied Tasks With Foundation Models	ICRA					auto					main
+Efficient Gradient-Based Inference for Manipulation Planning in Contact Factor Graphs	ICRA		2503.06300	https://arxiv.org/abs/2503.06300		auto					main
+Leveraging LLMs for Mission Planning in Precision Agriculture	ICRA		2506.10093	https://arxiv.org/abs/2506.10093		auto					main
+Camera-Lidar Consistent Neural Radiance Fields	ICRA					auto					main
+Winding Number-Guided Edge-Preserving Implicit Neural Representation of CAD Surfaces	ICRA					auto					main
+Uncertainty-Aware Probabilistic Risk Quantification of SOTIF for Autonomous Vehicles	ICRA					auto					main
+Learning Direct Solution in Moving Horizon Estimation with Deep Learning Methods	ICRA					auto					main
+TREND: Tri-Teaching for Robust Preference-based Reinforcement Learning with Demonstrations	ICRA		2505.06079	https://arxiv.org/abs/2505.06079		auto					main
+THAMP-3D: Tangent-Based Hybrid A* Motion Planning for Tethered Robots in Sloped 3D Terrains	ICRA					auto					main
+MORDA: A Synthetic Dataset to Facilitate Adaptation of Object Detectors to Unseen Real-Target Domain While Preserving Performance on Real-Source Domain	ICRA		2501.04950	https://arxiv.org/abs/2501.04950		auto					main
+Real-Time 3D Reconstruction via Camera-Lidar (2D) Fusion for Mobile Robots: A Gaussian Splatting Approach	ICRA					auto					main
+Precision Harvesting in Cluttered Environments: Integrating End Effector Design with Dual Camera Perception	ICRA		2501.19395	https://arxiv.org/abs/2501.19395		auto					main
+Prompt-Responsive Object Retrieval with Memory-Augmented Student-Teacher Learning	ICRA		2505.02232	https://arxiv.org/abs/2505.02232		auto					main
+Teleoperating a 6 DoF Robotic Manipulator from Head Movements	ICRA					auto					main
+Quarry-Bot: A Reconfigurable Cable-Suspended Robot for Lunar Site Engineering	ICRA					auto					main
+SC-Former: A Segmentation Convolution Transformer for Lung Surgery Robots	ICRA					auto					main
+Online Multi-Robot Federated Learning for Distributed Coverage Control of Unknown Spatial Processes	ICRA					auto					main
+Self-Mixing Laser Interferometry for Robotic Tactile Sensing	ICRA	https://github.com/RemkoPr/icra2025-SMI-tactile-sensing	2502.15390	https://arxiv.org/abs/2502.15390		auto					main
+QuickGrasp: Lightweight Antipodal Grasp Planning with Point Clouds	ICRA		2504.19716	https://arxiv.org/abs/2504.19716		auto					main
+Dynamic Perception-Enhanced Motion Planning and Control for UAVs Flights in Challenging Dynamic Environments	ICRA					auto					main
+Realm: Real-Time Line-of-Sight Maintenance in Multi-Robot Navigation with Unknown Obstacles	ICRA	https://github.com/bairuofei/LoS_constrained_navigation	2502.15162	https://arxiv.org/abs/2502.15162		auto					main
+Range-Based 6-DoF Monte Carlo SLAM with Gradient-Guided Particle Filter on GPU	ICRA		2504.18056	https://arxiv.org/abs/2504.18056		auto					main
+Dur360BEV: A Real-World 360-Degree Single Camera Dataset and Benchmark for Bird-Eye View Mapping in Autonomous Driving	ICRA		2503.00675	https://arxiv.org/abs/2503.00675		auto					main
+An Algorithm for Geometric Navigation Planning Under Uncertainty Using Terrain Boundary Detection	ICRA					auto					main
+Visual Lidar Recursive Online Tracker (ViLiROT) for Autonomous Surface Vessels	ICRA					auto					main
+MT-PCR: Leveraging Modality Transformation for Large-Scale Point Cloud Registration with Limited Overlap	ICRA		2503.12833	https://arxiv.org/abs/2503.12833		auto					main
+Co-MTP: A Cooperative Trajectory Prediction Framework with Multi-Temporal Fusion for Autonomous Driving	ICRA		2502.16589	https://arxiv.org/abs/2502.16589		auto					main
+Indoor and Outdoor Multi-Terrain Stair-Climbing Robot Design	ICRA					auto					main
+Self-Corrective Task Planning by Inverse Prompting with Large Language Models	ICRA		2503.07317	https://arxiv.org/abs/2503.07317		auto					main
+Effective Heterogeneous Point Cloud-Based Place Recognition and Relative Localization for Ground and Aerial Vehicles	ICRA					auto					main
+Plug-and-Play Physics-Informed Learning Using Uncertainty Quantified Port-Hamiltonian Models	ICRA		2504.17966	https://arxiv.org/abs/2504.17966		auto					main
+Development of a New Biped Robot with Adaptive Suction Modules for Climbing on Curved Surfaces	ICRA					auto					main
+GARAD-SLAM: 3D Gaussian Splatting for Real-Time Anti Dynamic SLAM	ICRA		2502.03228	https://arxiv.org/abs/2502.03228		auto					main
+The Devil is in the Quality: Exploring Informative Samples for Semi-Supervised Monocular 3D Object Detection	ICRA					auto					main
+Surfaceaug: Toward Versatile, Multimodally Consistent Ground Truth Sampling	ICRA					auto					main
+TANGO: Traversability-Aware Navigation with Local Metric Control for Topological Goals	ICRA	https://github.com/podgorki/TANGO	2509.08699	https://arxiv.org/abs/2509.08699		auto					main
+Environmental Map Learning with Multiple-Robots	ICRA					auto					main
+CapBot: Enabling Battery-Free Swarm Robotics	ICRA					auto					main
+Actor-Critic Cooperative Compensation to Model Predictive Control for Off-Road Autonomous Vehicles Under Unknown Dynamics	ICRA		2503.00577	https://arxiv.org/abs/2503.00577		auto					main
+HS-SLAM: Hybrid Representation with Structural Supervision for Improved Dense SLAM	ICRA		2503.21778	https://arxiv.org/abs/2503.21778		auto					main
+Zippy: The Smallest Power-Autonomous Bipedal Robot	ICRA		2505.05686	https://arxiv.org/abs/2505.05686		auto					main
+Remote: Real-Time Ego-Motion Tracking for Various Endoscopes via Multimodal Visual Feature Learning	ICRA		2501.18124	https://arxiv.org/abs/2501.18124		auto					main
+Non-Parametric GNSS Integer Ambiguity Estimation via Positional Likelihood Field Marginalization	ICRA					auto					main
+DTRT: Enhancing Human Intent Estimation and Role Allocation for Physical Human-Robot Collaboration	ICRA		2505.17490	https://arxiv.org/abs/2505.17490		auto					main
+Contact Force Estimation for a Leg-Wheel Transformable Robot With Varying Contact Points	ICRA					auto					main
+“Oh! It's Fun Chatting with You!” a Humor-Aware Social Robot Chat Framework	ICRA					auto					main
+Promi: an Efficient Prototype-Mixture Baseline for Few-Shot Segmentation with Bounding-Box Annotations	ICRA	https://github.com/ThalesGroup/promi	2505.12547	https://arxiv.org/abs/2505.12547		auto					main
+A Helping (Human) Hand in Kinematic Structure Estimation	ICRA		2503.05301	https://arxiv.org/abs/2503.05301		auto					main
+BiFold: Bimanual Cloth Folding with Language Guidance	ICRA		2501.16458	https://arxiv.org/abs/2501.16458		auto					main
+High-Performance Reinforcement Learning on Spot: Optimizing Simulation Parameters with Distributional Measures	ICRA		2504.17857	https://arxiv.org/abs/2504.17857		auto					main
+Low-Rank Adaptation-Based All-Weather Removal for Autonomous Navigation	ICRA					auto					main
+Robotic 3D Flower Pose Estimation for Small-Scale Urban Farms	ICRA	https://github.com/harshmuriki/flowerPose.git	2509.02870	https://arxiv.org/abs/2509.02870		auto					main
+Improving Probe Localization for Freehand 3D Ultrasound Using Lightweight Cameras	ICRA					auto					main
+Optimal Motion Planning for a Class of Dynamical Systems	ICRA					auto					main
+SOF-E: An Energy Efficient Robot for Collaborative Transport and Placement of Mechanical Meta-Material Modules	ICRA					auto					main
+Safety-Critical Control for Aerial Physical Interaction in Uncertain Environment	ICRA		2501.16719	https://arxiv.org/abs/2501.16719		auto					main
+CoopDETR: A Unified Cooperative Perception Framework for 3D Detection via Object Query	ICRA		2502.19313	https://arxiv.org/abs/2502.19313		auto					main
+IEEE International Conference on Robotics and Automation, ICRA 2025, Atlanta, GA, USA, May 19-23, 2025	ICRA					auto					main
+Composing Dextrous Grasping and In-Hand Manipulation via Scoring with a Reinforcement Learning Critic	ICRA		2505.13253	https://arxiv.org/abs/2505.13253		auto					main
+Control Reallocation Using Deep Reinforcement Learning for Actuator Fault Recovery of an Autonomous Underwater Vehicle	ICRA					auto					main
+An EEG Conformer Model for Error Feedback During Human-Robot Interaction	ICRA					auto					main
+NavigateDiff: Visual Predictors are Zero-Shot Navigation Assistants	ICRA		2502.13894	https://arxiv.org/abs/2502.13894		auto					main
+Tightly Coupled Range Inertial Odometry and Mapping with Exact Point Cloud Downsampling	ICRA		2505.01017	https://arxiv.org/abs/2505.01017		auto					main
+Enhancing Multi-Agent Systems via Reinforcement Learning with LLM-Based Planner and Graph-Based Policy	ICRA		2503.10049	https://arxiv.org/abs/2503.10049		auto					main
+Master Rules from Chaos: Learning to Reason, Plan, and Interact from Chaos for Tangram Assembly	ICRA		2505.11818	https://arxiv.org/abs/2505.11818		auto					main
+A Bio-Inspired Sand-Rolling Robot: Effect of Body Shape on Sand Rolling Performance	ICRA		2503.13919	https://arxiv.org/abs/2503.13919		auto					main
+Blind Tactile Exploration for Surface Reconstruction	ICRA					auto					main
+Behavioral Manifolds: Representing the Landscape of Grasp Affordances in Relative Pose Space	ICRA					auto					main
+Beyond Sight: Finetuning Generalist Robot Policies with Heterogeneous Sensors via Language Grounding	ICRA		2501.04693	https://arxiv.org/abs/2501.04693		auto					main
+Optimizing Complex Control Systems with Differentiable Simulators: A Hybrid Approach to Reinforcement Learning and Trajectory Planning	ICRA					auto					main
+Robotic Mushroom Harvesting with Real2Sim2Real and Model Predictive Path Integral (MPPI) Based Planning	ICRA					auto					main
+Reduced-Order Model Guided Contact-Implicit Model Predictive Control for Humanoid Locomotion	ICRA		2502.15630	https://arxiv.org/abs/2502.15630		auto					main
+Magnetic Programming of Soft Materials Using Digitally Processed Laser Heating	ICRA					auto					main
+Occlusion-Aware 6D Pose Estimation with Depth-Guided Graph Encoding and Cross-Semantic Fusion for Robotic Grasping	ICRA					auto					main
+A Hybrid Approach to Indoor Social Navigation: Integrating Reactive Local Planning and Proactive Global Planning	ICRA		2506.02593	https://arxiv.org/abs/2506.02593		auto					main
+Continuous Wrist Control on the Hannes Prosthesis: A Vision-Based Shared Autonomy Framework	ICRA		2502.17265	https://arxiv.org/abs/2502.17265		auto					main
+Bridging In-Situ and Satellite Data: Enhancing Gas Concentration Estimation Through Integration of Data-Driven and Physics-Based Modeling	ICRA					auto					main
+RL-OGM-Parking: Lidar OGM-Based Hybrid Reinforcement Learning Planner for Autonomous Parking	ICRA		2502.18846	https://arxiv.org/abs/2502.18846		auto					main
+Monocular Depth Estimation and Segmentation for Transparent Object with Iterative Semantic and Geometric Fusion	ICRA	https://github.com/L-J-Yuan/MODEST	2502.14616	https://arxiv.org/abs/2502.14616		auto					main
+Illumination Adaptation for SAM to Achieve Accurate Segmentation of Images Taken in Low-Light Scenes	ICRA					auto					main
+Bio-Inspired Distributed Neural Locomotion Controller (D-NLC) for Robust Locomotion and Emergent Behaviors	ICRA					auto					main
+Robust Robotic Breast Ultrasound Scanning and Real-Time Lesion Localization	ICRA					auto					main
+Dynamic Mode Decomposition with Sonomyography and Electromyography for Predictive Modeling of Lower Limb Exoskeleton Walking	ICRA					auto					main
+MERLION: Marine ExploRation with Language guIded Online iNformative Visual Sampling and Enhancement	ICRA	https://github.com/MARVL-Lab/MERLION.git	2503.06953	https://arxiv.org/abs/2503.06953		auto					main
+Time-Correlated Model Predictive Path Integral: Smooth Action Generation for Sampling-Based Control	ICRA					auto					main
+3D Multi-Modal Object Detection Based on Cross-Attention Feature Fusion	ICRA					auto					main
+TransDiff: Diffusion-Based Method for Manipulating Transparent Objects Using a Single RGB-D Image	ICRA		2503.12779	https://arxiv.org/abs/2503.12779		auto					main
+Heterogeneous Exploration and Monitoring with Online Free-Space Ellipsoid Graphs	ICRA					auto					main
+Non-Destructive 3D Root Structure Modeling	ICRA					auto					main
+Multirotor Target Tracking through Policy Iteration for Visual Servoing	ICRA					auto					main
+Point and Go: Intuitive Reference Frame Reallocation in Mode Switching for Assistive Robotics	ICRA		2510.08753	https://arxiv.org/abs/2510.08753		auto					main
+Elderly Bodily Assistance Robot (E-BAR): A Robot System for Body-Weight Support, Ambulation Assistance, and Fall Catching, Without the Use of a Harness	ICRA					auto					main
+Data-Efficient Learning from Human Interventions for Mobile Robots	ICRA		2503.04969	https://arxiv.org/abs/2503.04969		auto					main
+Benchmarking Different QP Formulations and Solvers for Dynamic Quadrupedal Walking	ICRA		2502.01329	https://arxiv.org/abs/2502.01329		auto					main
+High Speed Robotic Table Tennis Swinging Using Lightweight Hardware with Model Predictive Control	ICRA		2505.01617	https://arxiv.org/abs/2505.01617		auto					main
+FlyKites: Human-Centric Interactive Exploration and Assistance Under Limited Communication	ICRA		2509.15807	https://arxiv.org/abs/2509.15807		auto					main
+Learning Optimal Design Manifolds to Design More Practical Robotic Systems	ICRA					auto					main
+Expert-Enhanced Masked Point Modeling for Point Cloud Self-Supervised Learning	ICRA					auto					main
+One Net to Rule Them All: Domain Randomization in Quadcopter Racing Across Different Platforms	ICRA		2504.21586	https://arxiv.org/abs/2504.21586		auto					main
+FlightForge: Advancing UAV Research with Procedural Generation of High-Fidelity Simulation and Integrated Autonomy	ICRA		2502.05038	https://arxiv.org/abs/2502.05038		auto					main
+Foundation Feature-Driven Online End-Effector Pose Estimation: A Marker-Free and Learning-Free Approach	ICRA		2503.14051	https://arxiv.org/abs/2503.14051		auto					main
+Unified Human Localization and Trajectory Prediction with Monocular Vision	ICRA	https://github.com/vita-epfl/MonoTransmotion	2503.03535	https://arxiv.org/abs/2503.03535		auto					main
+Self-Sufficient 5-DoF Discrete Global Localization for Magnetically-Actuated Endoscope in Bronchoscopy	ICRA					auto					main
+Label Anything: An Interpretable, High-Fidelity and Prompt-Free Annotator	ICRA		2502.02972	https://arxiv.org/abs/2502.02972		auto					main
+MORF: Magnetic Origami Reprogramming and Folding System for Repeatably Reconfigurable Structures with Fold Angle Control	ICRA					auto					main
+Estimating High-Resolution Neural Stiffness Fields Using Visuotactile Sensors	ICRA					auto					main
+MoRE: Unlocking Scalability in Reinforcement Learning for Quadruped Vision-Language-Action Models	ICRA		2503.08007	https://arxiv.org/abs/2503.08007		auto					main
+High-Resolution Reconstruction of Non-Planar Tactile Patterns From Low-Resolution Taxel-Based Tactile Sensors	ICRA					auto					main
+An Efficient NSGA-II-Based Algorithm for Multi-Robot Coverage Path Planning	ICRA					auto					main
+Multi-Heuristic Robotic Bin Packing of Regular and Irregular Objects	ICRA					auto					main
+LMH-MOT : A Light Multiple Hypothesis Framework for 3D Multi-Object Tracking	ICRA					auto					main
+Off-Road Freespace Detection with LiDAR-Camera Fusion and Self-Distillation	ICRA					auto					main
+Pushing Through Clutter with Movability Awareness of Blocking Obstacles	ICRA	https://github.com/tud-amr/SVG-MPPI	2502.20106	https://arxiv.org/abs/2502.20106		auto					main
+Vision-Based Fuzzy Control System with Intention Detection for Smart Walkers: Enhancing Usability for Stroke Survivors with Unilateral Upper Limb Impairments	ICRA					auto					main
+Design and Implementation of a Snake Robot for Cranial Surgery	ICRA					auto					main
+Enhancing 3D Robotic Vision Robustness by Minimizing Adversarial Mutual Information through Curriculum Training	ICRA					auto					main
+SLABIM: A SLAM-BIM Coupled Dataset in HKUST Main Building	ICRA	https://github.com/HKUST-Aerial-Robotics/SLABIM	2502.16856	https://arxiv.org/abs/2502.16856		auto					main
+Tendon Locking for Antagonistic Configuration- and Stiffness-Control in Soft Robots	ICRA					auto					main
+A Real-to-Sim-to-Real Approach to Robotic Manipulation with VLM-Generated Iterative Keypoint Rewards	ICRA		2502.08643	https://arxiv.org/abs/2502.08643		auto					main
+Multimodal Behaviour Trees for Robotic Laboratory Task Automation	ICRA		2506.20399	https://arxiv.org/abs/2506.20399		auto					main
+Airflow Source Seeking on Small Quadrotors Using a Single Flow Sensor	ICRA		2601.15607	https://arxiv.org/abs/2601.15607		auto					main
+Robot Planning Under Uncertainty for Object Assembly and Troubleshooting Using Human Causal Models	ICRA					auto					main
+Communication-Aware Iterative Map Compression for Online Path-Planning	ICRA		2503.10843	https://arxiv.org/abs/2503.10843		auto					main
+Learning Three-Dimensional Bin Packing with Adjustable-Order Semi-Online Setting	ICRA					auto					main
+Beyond Simulation: Benchmarking World Models for Planning and Causality in Autonomous Driving	ICRA		2508.01922	https://arxiv.org/abs/2508.01922		auto					main
+Active Illumination for Visual Ego-Motion Estimation in the Dark	ICRA		2502.13708	https://arxiv.org/abs/2502.13708		auto					main
+Vision-Based Movement Primitives for Lunar Hazard Avoidance	ICRA					auto					main
+Acoustic Wave Manipulation Through Sparse Robotic Actuation	ICRA		2502.08784	https://arxiv.org/abs/2502.08784		auto					main
+HSRL: A Hierarchical Control System Based on Spiking Deep Reinforcement Learning for Robot Navigation	ICRA					auto					main
+HeRo: A State Machine-Based, Fault-Tolerant Framework for Heterogeneous Multi-Robot Collaboration	ICRA					auto					main
+RE-TRIP: Reflectivity Instance Augmented Triangle Descriptor for 3D Place Recognition	ICRA		2505.16165	https://arxiv.org/abs/2505.16165		auto					main
+ADMM-MCBF-LCA: A Layered Control Architecture for Safe Real-Time Navigation	ICRA		2503.02208	https://arxiv.org/abs/2503.02208		auto					main
+Hri-Free: Cognitive Robotic Simulation for Evaluating Embodied Social Attention Models	ICRA					auto					main
+Boosting Cross-Spectral Unsupervised Domain Adaptation for Thermal Semantic Segmentation	ICRA		2505.06951	https://arxiv.org/abs/2505.06951		auto					main
+Chameleon: Fast-Slow Neuro-Symbolic Lane Topology Extraction	ICRA	https://github.com/XR-Lee/neural-symbolic	2503.07485	https://arxiv.org/abs/2503.07485		auto					main
+Design and Effectiveness of Virtual Monitors and AR-Based Endoscope Control for Robotically Assisted Laparoscopic Surgery	ICRA					auto					main
+LE-Object: Language Embedded Object-Level Neural Radiance Fields for Open-Vocabulary Scene	ICRA					auto					main
+Watch Your STEPP: Semantic Traversability Estimation Using Pose Projected Features	ICRA		2501.17594	https://arxiv.org/abs/2501.17594		auto					main
+Exploring Adversarial Obstacle Attacks in Search-Based Path Planning for Autonomous Mobile Robots	ICRA		2504.06154	https://arxiv.org/abs/2504.06154		auto					main
+SSF: Sparse Long-Range Scene Flow for Autonomous Driving	ICRA	https://github.com/KTH-RPL/SSF.git	2501.17821	https://arxiv.org/abs/2501.17821		auto					main
+Welcome	ICRA					auto					main
+BETTY Dataset: A Multi-Modal Dataset for Full-Stack Autonomy	ICRA		2505.07266	https://arxiv.org/abs/2505.07266		auto					main
+CA-IoU: Central-Gaussian Angle-IoU for Robust Bounding Box Regression	ICRA					auto					main
+OmniShape: Zero-Shot Multi-Hypothesis Shape and Pose Estimation in the Real World	ICRA		2508.03669	https://arxiv.org/abs/2508.03669		auto					main
+Interface Matters: Comparing First and Third-Person Perspective Interfaces for Bi-Manual Robot Behavioural Cloning	ICRA					auto					main
+Individual and Collective Behaviors in Soft Robot Worms Inspired by Living Worm Blobs	ICRA					auto					main
+A Reinforcement Learning-Based Social Robot for Personalized Learning in Children with Autism	ICRA					auto					main
+Optimizing Robot Programming: Mixed Reality Gripper Control	ICRA		2503.02042	https://arxiv.org/abs/2503.02042		auto					main
+Learning Coordinated Bimanual Manipulation Policies Using State Diffusion and Inverse Dynamics Models	ICRA		2503.23271	https://arxiv.org/abs/2503.23271		auto					main
+LuVo: Lunar Visual Odometry Using Homography-Based Image Feature Matching	ICRA					auto					main
+MambaGlue: Fast and Robust Local Feature Matching with Mamba	ICRA	https://github.com/url-kaist/MambaGlue	2502.00462	https://arxiv.org/abs/2502.00462		auto					main
+Modeling Trust Dynamics in Robot-Assisted Delivery: Impact of Trust Repair Strategies	ICRA		2506.10884	https://arxiv.org/abs/2506.10884		auto					main
+Semantic Cross-Pose Correspondence from a Single Example	ICRA					auto					main
+Robot Local Planner: A Periodic Sampling-Based Motion Planner with Minimal Waypoints for Home Environments	ICRA		2602.20645	https://arxiv.org/abs/2602.20645		auto					main
+3D Dense Captioning via Prototypical Momentum Distillation	ICRA					auto					main
+JPG-SLAM: Joint Point-Gaussian Splatting Representation for Dense Dynamic SLAM	ICRA					auto					main
+Spatial Sensitivity Equalization of ERT-Based Robotic Skin Through Gauge Factor Distribution Optimization	ICRA					auto					main
+Robust Orientation Control of Robot Manipulator Using Orientation Disturbance Observer	ICRA					auto					main
+Improved Bag-of-Words Image Retrieval with Geometric Constraints for Ground Texture Localization	ICRA		2505.11620	https://arxiv.org/abs/2505.11620		auto					main
+New Graph Distance Measures and Matching of Topological Maps for Robotic Exploration	ICRA					auto					main
+Risk-Aware Integrated Task and Motion Planning for Versatile Snake Robots Under Localization Failures	ICRA		2502.19690	https://arxiv.org/abs/2502.19690		auto					main
+Efficient Second-Order Cone Programming for the Close Enough Traveling Salesman Problem	ICRA					auto					main
+Contingency Formation Planning for Interactive Drone Light Shows	ICRA					auto					main
+MonLog: MONotonic-Constrained LOGistic Regressions for Automated Safety Curve Design	ICRA					auto					main
+Vibrotactile Haptics with Soft Magnetoresponsive Surface Interface	ICRA					auto					main
+Robotic Sim-to-Real Transfer for Long-Horizon Pick-and-Place Tasks in the Robotic Sim2Real Competition	ICRA		2503.11012	https://arxiv.org/abs/2503.11012		auto					main
+Integrating Model-Based Control and RL for Sim2Real Transfer of Tight Insertion Policies	ICRA		2505.11858	https://arxiv.org/abs/2505.11858		auto					main
+Efficient Coordination and Synchronization of Multi-Robot Systems Under Recurring Linear Temporal Logic	ICRA		2502.16531	https://arxiv.org/abs/2502.16531		auto					main
+Reliable and Efficient Multi-Agent Coordination via Graph Neural Network Variational Autoencoders	ICRA		2503.02954	https://arxiv.org/abs/2503.02954		auto					main
+APA-BI: Adaptive Partition Aggregation and Bidirectional Integration for UAV-View Geo-Localization	ICRA					auto					main
+Improving Indoor Localization Accuracy by Using an Efficient Implicit Neural Map Representation	ICRA	https://github.com/PRBonn/enm-mcl	2503.23480	https://arxiv.org/abs/2503.23480		auto					main
+Planning with Linear Temporal Logic Specifications: Handling Quantifiable and Unquantifiable Uncertainty	ICRA		2502.19603	https://arxiv.org/abs/2502.19603		auto					main
+Unified Adaptive and Cooperative Planning Using Multi-Task Coregionalized Gaussian Processes	ICRA					auto					main
+Robust Reinforcement Learning-Based Locomotion for Resource-Constrained Quadrupeds with Exteroceptive Sensing	ICRA	http://github.com/ETH-PBL/elmap-rl-controller	2505.12537	https://arxiv.org/abs/2505.12537		auto					main
+RAR-6: An Optimized Reconfigurable Asymmetric 6-DOF Haptic Robot for Gross and Fine Motor Tasks	ICRA					auto					main
+Efficient Trajectory Generation Based on Traversable Planes in 3D Complex Architectural Spaces	ICRA		2503.08076	https://arxiv.org/abs/2503.08076		auto					main
+DVM-SLAM: Decentralized Visual Monocular Simultaneous Localization and Mapping for Multi-Agent Systems	ICRA		2503.04126	https://arxiv.org/abs/2503.04126		auto					main
+Generative-AI-Driven Jumping Robot Design Using Diffusion Models	ICRA					auto					main
+DreamFLEX: Learning Fault-Aware Quadrupedal Locomotion Controller for Anomaly Situation in Rough Terrains	ICRA		2502.05817	https://arxiv.org/abs/2502.05817		auto					main
+Inverse Mixed Strategy Games with Generative Trajectory Models	ICRA		2502.03356	https://arxiv.org/abs/2502.03356		auto					main
+A Novel Telelocomotion Framework with CoM Estimation for Scalable Locomotion on Humanoid Robots	ICRA					auto					main
+Fine-Grained Open-Vocabulary Object Detection with Fined-Grained Prompts: Task, Dataset and Benchmark	ICRA		2503.14862	https://arxiv.org/abs/2503.14862		auto					main
+Online Waypoint Recognition of Controlled Agents in Uncertain Environments	ICRA					auto					main
+The Automation of Uncrewed Aircraft Systems Traffic Management Calibration Based on Experimental Platform Data	ICRA					auto					main
+Lyapunov-Certified Trajectory Tracking for Mobile Robot With a Tail Wheel: Differential-Flatness and Adaptive Backstepping Design	ICRA					auto					main
+Compliance Control with Dynamic and Self-Sensing Hydraulic Artificial Muscles for Wearable Assistive Devices	ICRA					auto					main
+Gradient Guided Search for Aircraft Contingency Landing Planning	ICRA					auto					main
+Improving Generalization Ability for 3D Object Detection by Learning Sparsity-Invariant Features	ICRA	https://github.com/Tiffamy/3DOD-LSF	2502.02322	https://arxiv.org/abs/2502.02322		auto					main
+Physics-Informed Hybrid Modeling of Pneumatic Artificial Muscles	ICRA					auto					main
+Energy Efficient Planning for Repetitive Heterogeneous Tasks in Precision Agriculture	ICRA		2504.03938	https://arxiv.org/abs/2504.03938		auto					main
+A Full-Optical Pretouch Dual-Modal and Dual-Mechanism (PDM2) Sensor for Robotic Grasping	ICRA					auto					main
+Self-Supervised Learning of Reconstructing Deformable Linear Objects Under Single-Frame Occluded View	ICRA					auto					main
+DP-Habitat: Bridging the Gap Between Simulation and Reality for Visual Navigation in Dynamic Pedestrian Environments	ICRA					auto					main
+Infield Self-Calibration of Intrinsic Parameters for Two Rigidly Connected IMUs	ICRA					auto					main
+Multi-Robot Collaboration Through Reinforcement Learning and Abstract Simulation	ICRA		2503.05092	https://arxiv.org/abs/2503.05092		auto					main
+ViTa-Zero: Zero-shot Visuotactile Object 6D Pose Estimation	ICRA		2504.13179	https://arxiv.org/abs/2504.13179		auto					main
+Iterative Volume Fusion for Asymmetric Stereo Matching	ICRA		2508.09543	https://arxiv.org/abs/2508.09543		auto					main
+Hierarchical Spatiotemporal Fusion for Event-Visible Object Detection	ICRA					auto					main
+Rapid Online Learning of Hip Exoskeleton Assistance Preferences	ICRA		2502.15366	https://arxiv.org/abs/2502.15366		auto					main
+Endpoint-Explicit Differential Dynamic Programming via Exact Resolution	ICRA		2503.03897	https://arxiv.org/abs/2503.03897		auto					main
+An Iterative Approach for Heterogeneous Multi-Agent Route Planning with Resource Transportation Uncertainty and Temporal Logic Goals	ICRA		2508.19429	https://arxiv.org/abs/2508.19429		auto					main
+Adaptive Grasping of Moving Objects in Dense Clutter via Global-to-Local Detection and Static-to-Dynamic Planning	ICRA		2502.05916	https://arxiv.org/abs/2502.05916		auto					main
+FedEFM: Federated Endovascular Foundation Model with Unseen Data	ICRA		2501.16992	https://arxiv.org/abs/2501.16992		auto					main
+MFSeg: Efficient Multi-Frame 3D Semantic Segmentation	ICRA		2505.04408	https://arxiv.org/abs/2505.04408		auto					main
+GaRLIO: Gravity Enhanced Radar-LiDAR-Inertial Odometry	ICRA	https://github.com/ChiyunNoh/GaRLIO	2502.07703	https://arxiv.org/abs/2502.07703		auto					main
+LACNS: Language-Assisted Continuous Navigation in Structured Spaces	ICRA					auto					main
+Focused Blind Switching Manipulation Based on Constrained and Regional Touch States of Multi-Fingered Hand Using Deep Learning	ICRA		2503.07757	https://arxiv.org/abs/2503.07757		auto					main
+High-Force Electroadhesion Based on Unique Liquid-Solid Dielectrics for UAV Perching	ICRA					auto					main
+Drive with the Flow	ICRA					auto					main
+Delayed-Decision Motion Planning in the Presence of Multiple Predictions	ICRA		2502.20636	https://arxiv.org/abs/2502.20636		auto					main
+Dynamic End Effector Trajectory Tracking for Small-Scale Underwater Vehicle-Manipulator Systems (UVMS): Modeling, Control, and Experimental Validation	ICRA					auto					main
+Application of Koopman Direct Encoding-Based Model Predictive Control to Nonlinear Electromechanical Systems	ICRA					auto					main
+Space-Aware Instruction Tuning: Dataset and Benchmark for Guide Dog Robots Assisting the Visually Impaired	ICRA	https://github.com/byungokhan/Space-awareVLM	2502.07183	https://arxiv.org/abs/2502.07183		auto					main
+A New Framework for Repetitive Control of Robot Manipulators via Operator-Theoretic Robust Stabilization	ICRA					auto					main
+E2B: A Single Modality Point-Based Tracker with Event Cameras	ICRA					auto					main
+TaskExp: Enhancing Generalization of Multi-Robot Exploration with Multi-Task Pre-Training	ICRA					auto					main
+Human Activity Recognition by Using Enhanced Radar Point Cloud 2D Histograms and Doppler Feature Fusion	ICRA					auto					main
+Flora: Sample-Efficient Preference-Based Rl Via Low-Rank Style Adaptation of Reward Functions	ICRA		2504.10002	https://arxiv.org/abs/2504.10002		auto					main
+Enhancing Repeatability and Reliability of Accelerated Risk Assessment in Robot Testing	ICRA					auto					main
+Juzu Type Gripper That Can Change Both Shape and Firmness	ICRA					auto					main
+Pre-Surgical Planner for Robot-Assisted Vitreoretinal Surgery: Integrating Eye Posture, Robot Position and Insertion Point	ICRA		2502.18230	https://arxiv.org/abs/2502.18230		auto					main
+A Highly Robust Contact Sensor for Precise Contact Detection of Fabric	ICRA					auto					main
+Autonomous Bimanual Manipulation of Deformable Objects Using Deep Reinforcement Learning Guided Adaptive Control	ICRA					auto					main
+Ground-Level Viewpoint Vision-and-Language Navigation in Continuous Environments	ICRA		2502.19024	https://arxiv.org/abs/2502.19024		auto					main
+Causal Contrastive Learning with Data Augmentations for Imitation-Based Planning	ICRA					auto					main
+MARF: Cooperative Multi-Agent Path Finding with Reinforcement Learning and Frenet Lattice in Dynamic Environments	ICRA					auto					main
+SAP-SLAM: Semantic-Assisted Perception SLAM with 3D Gaussian Splatting	ICRA					auto					main
+ZeroMimic: Distilling Robotic Manipulation Skills from Web Videos	ICRA		2503.23877	https://arxiv.org/abs/2503.23877		auto					main
+IntelliRMS: A Robotic Manipulation System for Domain-Specific Tasks Using Vision and Language Foundational Models	ICRA					auto					main
+Physics-Aware Robotic Palletization With Online Masking Inference	ICRA		2502.13443	https://arxiv.org/abs/2502.13443		auto					main
+Ergodic Exploration over Meshable Surfaces	ICRA		2503.05026	https://arxiv.org/abs/2503.05026		auto					main
+Efficient Path Planning in Complex Environments with Trust Region Continuous Belief Tree Search	ICRA					auto					main
+CNSv2: Probabilistic Correspondence Encoded Neural Image Servo	ICRA		2503.00132	https://arxiv.org/abs/2503.00132		auto					main
+NeRF-Based Transparent Object Grasping Enhanced by Shape Priors	ICRA		2504.09868	https://arxiv.org/abs/2504.09868		auto					main
+An Adversarial Learning Framework for Reliable Myoelectric Force Estimation Under Fatigue	ICRA					auto					main
+Multi-Scale Convolutional Networks with Class-Normalized Logit Clipping for Robust Sea State Estimation from Noisy Ship Motion Data	ICRA					auto					main
+Rapid Dynamic Obstacle Avoidance for UAVs Enhanced by DVS and Neuromorphic Computing	ICRA					auto					main
+Introspective Loop Closure for SLAM with 4D Imaging Radar	ICRA		2503.02383	https://arxiv.org/abs/2503.02383		auto					main
+FitnessAgent: A Unified Agent Framework for Open-Set and Personalized Fitness Evaluation	ICRA					auto					main
+Online Design Optimization of Passive Exoskeletons Using Fast Biomechanics Simulation and Reinforcement Learning	ICRA					auto					main
+MuST: Multi-Head Skill Transformer for Long-Horizon Dexterous Manipulation with Skill Progress	ICRA		2502.02753	https://arxiv.org/abs/2502.02753		auto					main
+Design of a Formation Control System to Assist Human Operators in Flying a Swarm of Robotic Blimps	ICRA		2505.09511	https://arxiv.org/abs/2505.09511		auto					main
+Digiforests: a Longitudinal Lidar Dataset for Forestry Robotics	ICRA					auto					main
+CC-STAR: An Estimation for Contact State Transition Using Reconstruction-Based Anomaly Detection for Peg-in-Hole Assembly	ICRA					auto					main
+Doppler Former: Velocity Supervision of Raw Radar Data	ICRA					auto					main
+A Hierarchical Graph-Based Terrain-Aware Autonomous Navigation Approach for Complementary Multimodal Ground-Aerial Exploration	ICRA		2505.14859	https://arxiv.org/abs/2505.14859		auto					main
+Kineto-Dynamical Planning and Accurate Execution of Minimum-Time Maneuvers on Three-Dimensional Circuits	ICRA		2502.03454	https://arxiv.org/abs/2502.03454		auto					main
+Force-Conditioned Diffusion Policies for Compliant Sheet Separation Tasks in Bimanual Robotic Cells	ICRA					auto					main
+PACE: Proactive Assistance in Human-Robot Collaboration Through Action-Completion Estimation	ICRA					auto					main
+Robust and Accurate Multi-View 2D/3D Image Registration with Differentiable X-Ray Rendering and Dual Cross-View Constraints	ICRA		2506.22191	https://arxiv.org/abs/2506.22191		auto					main
+Introducing KUGE: A Simultaneous Control Co-Design Architecture and its Application to Aerial Robotics Development	ICRA					auto					main
+Computationally and Sample Efficient Safe Reinforcement Learning Using Adaptive Conformal Prediction	ICRA		2503.17678	https://arxiv.org/abs/2503.17678		auto					main
+A Hybrid User Interface Combining AR, Desktop, and Mobile Interfaces for Enhanced Industrial Robot Programming	ICRA					auto					main
+PUGS: Zero-Shot Physical Understanding with Gaussian Splatting	ICRA	https://github.com/EverNorif/PUGS	2502.12231	https://arxiv.org/abs/2502.12231		auto					main
+Enhancing 3D Scene Graphs with Real-Time Room Classification	ICRA					auto					main
+Online Nonlinear MPC for Multimodal Locomotion	ICRA					auto					main
+FreeDriveRF: Monocular RGB Dynamic NeRF Without Poses for Autonomous Driving via Point-Level Dynamic-Static Decoupling	ICRA		2505.09406	https://arxiv.org/abs/2505.09406		auto					main
+V-Pilot: A Velocity Vector Control Agent for Fixed-Wing UAVs from Imperfect Demonstrations	ICRA					auto					main
+Neural Ranging Inertial Odometry	ICRA		2512.10531	https://arxiv.org/abs/2512.10531		auto					main
+Distributed Invariant Kalman Filter for Object-Level Multi-Robot Pose SLAM	ICRA					auto					main
+Depth Estimation Through Translucent Surfaces	ICRA					auto					main
+Persistent Object Gaussian Splat (POGS) for Tracking Human and Robot Manipulation of Irregularly Shaped Objects	ICRA		2503.05189	https://arxiv.org/abs/2503.05189		auto					main
+D3-ARM: High-Dynamic, Dexterous and Fully Decoupled Cable-Driven Robotic Arm	ICRA		2502.12963	https://arxiv.org/abs/2502.12963		auto					main
+Pitching Motion in a Humanoid Robot Using Human-Inspired Shoulder Elastic Energy and Motor Torque Optimization	ICRA					auto					main
+A Novel Dynamic Motion Primitives Framework for Safe Human-Robot Collaboration	ICRA					auto					main
+Ultrasound-Guided Robotic Blood Drawing and In Vivo Studies on Submillimetre Vessels of Rats	ICRA		2504.05329	https://arxiv.org/abs/2504.05329		auto					main
+Towards Autonomous Verification: Integrating Cognitive AI and Semantic Digital Twins in Medical Robotics	ICRA					auto					main
+A Variable Stiffness and Transformable Entanglement Soft Robotic Gripper	ICRA					auto					main
+Evaluating Robotic Performative Autonomy in Collaborative Contexts Impacted by Latency	ICRA					auto					main
+Program	ICRA					auto					main
+LiftFeat: 3D Geometry-Aware Local Feature Matching	ICRA	https://github.com/lyp-deeplearning/LiftFeat	2505.03422	https://arxiv.org/abs/2505.03422		auto					main
+Scenario-Based Curriculum Generation for Multi-Agent Driving	ICRA					auto					main
+A Data-Driven Velocity Estimator for Autonomous Underwater Vehicles Experiencing Unmeasurable Flow and Wave Disturbance	ICRA					auto					main
+Predictive Kinematic Coordinate Control for Aerial Manipulators Based on Modified Kinematics Learning	ICRA		2503.02408	https://arxiv.org/abs/2503.02408		auto					main
+Here's your PDDL Problem File! On Using VLMs for Generating Symbolic PDDL Problem Files	ICRA					auto					main
+Structure-Aware Radar-Camera Depth Estimation	ICRA	https://github.com/FreyZhangYeh/SA-RCD	2506.05008	https://arxiv.org/abs/2506.05008		auto					main
+SMART: Advancing Scalable Map Priors for Driving Topology Reasoning	ICRA		2502.04329	https://arxiv.org/abs/2502.04329		auto					main
+Model-Based Control Strategies Comparison of One Bionic Ankle Tensegrity Exoskeleton: BATE	ICRA					auto					main
+Collapsible Airfoil Single Actuator ROtor-Craft (CASARO) - Construction and Analysis of a Soft Rotary Wing Robot	ICRA					auto					main
+VIP-Dock: Vision, Inertia, and Pressure Sensor Fusion for Underwater Docking with Optical Beacon Guidance	ICRA					auto					main
+Efficient 7-DoF Grasp for Target-Driven Object in Dense Cluttered Scenes	ICRA					auto					main
+Safe Multi-Agent Navigation Guided by Goal-Conditioned Safe Reinforcement Learning	ICRA		2502.17813	https://arxiv.org/abs/2502.17813		auto					main
+Interpretable Active Inference Gait Control Learning	ICRA					auto					main
+The Influence of Counterbalance System on the Dynamic Characterization of Heavy Industrial Robots	ICRA					auto					main
+Gradient-Based Adversarial Attacks on Deep LiDAR Odometry	ICRA					auto					main
+KUDA: Keypoints to Unify Dynamics Learning and Visual Prompting for Open-Vocabulary Robotic Manipulation	ICRA		2503.10546	https://arxiv.org/abs/2503.10546		auto					main
+Soft Actor-Critic-Based Control Barrier Adaptation for Robust Autonomous Navigation in Unknown Environments	ICRA		2503.08479	https://arxiv.org/abs/2503.08479		auto					main
+Estimating User Engagement in Human Robot Interaction Using a Dynamic Bayesian Network	ICRA					auto					main
+Enhanced View Planning for Robotic Harvesting: Tackling Occlusions with Imitation Learning	ICRA		2503.10334	https://arxiv.org/abs/2503.10334		auto					main
+TrackOcc: Camera-Based 4D Panoptic Occupancy Tracking	ICRA	https://github.com/Tsinghua-MARS-Lab/TrackOcc	2503.08471	https://arxiv.org/abs/2503.08471		auto					main
+Assembly Order Planning for Modular Structures by Autonomous Multi-Robot Systems	ICRA					auto					main
+RadarMask: A Novel End-to-End Sparse Millimeter-Wave Radar Sequence Panoptic Segmentation and Tracking Method	ICRA					auto					main
+An Equilibrium Analysis of Magnetic Quadrupole Force Field With Applications to Microrobotic Swarm Coordination	ICRA					auto					main
+Map-SemNav: Advancing Zero-Shot Continuous Vision-and-Language Navigation Through Visual Semantics and Map Integration	ICRA					auto					main
+Do Looks Matter? Exploring Functional and Aesthetic Design Preferences for a Robotic Guide Dog	ICRA		2503.16450	https://arxiv.org/abs/2503.16450		auto					main
+Hierarchically Accelerated Coverage Path Planning for Redundant Manipulators	ICRA		2502.19591	https://arxiv.org/abs/2502.19591		auto					main
+Context-Aware Collaborative Pushing of Heavy Objects Using Skeleton-Based Intention Prediction	ICRA		2505.10239	https://arxiv.org/abs/2505.10239		auto					main
+Magnetometer-Calibrated Hybrid Transformer for Robust Inertial Tracking in Robotics	ICRA					auto					main
+CAFE-AD: Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving	ICRA	https://github.com/AlniyatRui/CAFE-AD	2504.06584	https://arxiv.org/abs/2504.06584		auto					main
+6-DoF Shape Servoing of Deformable Objects in Co-Rotated Space of Modal Graph	ICRA					auto					main
+OpenGS-SLAM: Open-Set Dense Semantic SLAM with 3D Gaussian Splatting for Object-Level Scene Understanding	ICRA		2503.01646	https://arxiv.org/abs/2503.01646		auto					main
+Large-Scale Gaussian Splatting SLAM	ICRA		2505.09915	https://arxiv.org/abs/2505.09915		auto					main
+An Average-Distance Minimizing Motion Sweep for Bounded Spatial Objects and Its Application in Bézier-Like Freeform Motion Generation	ICRA					auto					main
+RE0: Recognize Everything with 3D Zero-Shot Instance Segmentation	ICRA					auto					main
+COIGAN: Controllable Object Inpainting Through Generative Adversarial Network for Defect Synthesis in Data Augmentation	ICRA					auto					main
+Olympus: A Jumping Quadruped for Planetary Exploration Utilizing Reinforcement Learning for In-Flight Attitude Control	ICRA		2503.03574	https://arxiv.org/abs/2503.03574		auto					main
+Pedestrian Intention and Trajectory Prediction in Unstructured Traffic Using IDD-PeD	ICRA		2506.22111	https://arxiv.org/abs/2506.22111		auto					main
+TWIN: Two-handed Intelligent Benchmark for Bimanual Manipulation	ICRA					auto					main
+Informed Repurposing of Quadruped Legs for New Tasks	ICRA					auto					main
+EMATO: Energy-Model-Aware Trajectory Optimization for Autonomous Driving	ICRA					auto					main
+Ephemerality Meets Lidar-Based Lifelong Mapping	ICRA	https://github.com/dongjae0107/ELite	2502.13452	https://arxiv.org/abs/2502.13452		auto					main
+Hybrid Decentralization for Multi-Robot Orienteering with Mothership-Passenger Systems	ICRA					auto					main
+CTSAC: Curriculum-Based Transformer Soft Actor-Critic for Goal-Oriented Robot Exploration	ICRA		2503.14254	https://arxiv.org/abs/2503.14254		auto					main
+Large-Expansion Bi-Layer Auxetics Create Compliant Cellular Motion	ICRA					auto					main
+Modeling and Control of Aerial Robot SERPENT: A Soft Structure Incorporated Multirotor Aerial Robot Capable of In-Flight Flexible Deformation	ICRA					auto					main
+A Comparative Study of Pulley and Bowden Transmissions in a Novel Cable-Driven Exosuit, the Stillsuit	ICRA					auto					main
+A New Semidefinite Relaxation for Linear and Piecewise-Affine Optimal Control with Time Scaling	ICRA		2504.13170	https://arxiv.org/abs/2504.13170		auto					main
+REACT: Multi Robot Energy-Aware Orchestrator for Indoor Search and Rescue Critical Tasks	ICRA		2503.05904	https://arxiv.org/abs/2503.05904		auto					main
+DVS-Aware Visual Perception for Pose Estimation of Mobile Robots with Neuromorphic Implementation	ICRA					auto					main
+Towards Perpetually-Deployable Ubiquitous Aerial Robotics: An Amphibious Self-Sustainable Solar Small-UAS	ICRA					auto					main
+Robotic Tissue Manipulation in Endoscopic Submucosal Dissection Via Visual Feedback	ICRA					auto					main
+VizFlyt: Perception-centric Pedagogical Framework For Autonomous Aerial Robots	ICRA		2503.22876	https://arxiv.org/abs/2503.22876		auto					main
+RipGAN: A GAN-Based Rip Current Data Augmentation Method	ICRA					auto					main
+From Simple to Complex Skills: The Case of In-Hand Object Reorientation	ICRA		2501.05439	https://arxiv.org/abs/2501.05439		auto					main
+Stands on Shoulders of Giants: Learning to Lift 2D Detection to 3D with Geometry-Driven Objectives	ICRA					auto					main
+Propagative Distance Optimization for Motion Planning	ICRA					auto					main
+ICBSS: An Improved Algorithm for Multi-Agent Combinatorial Path Finding	ICRA					auto					main
+MARVEL: Multi-Agent Reinforcement Learning for Constrained Field-of-View Multi-Robot Exploration in Large-Scale Environments	ICRA		2502.20217	https://arxiv.org/abs/2502.20217		auto					main
+TranSplat: Surface Embedding-Guided 3D Gaussian Splatting for Transparent Object Manipulation	ICRA		2502.07840	https://arxiv.org/abs/2502.07840		auto					main
+Tensiworm: A Novel Tensegrity Robot with Enhanced Peristaltic Locomotion Efficiency	ICRA					auto					main
+Dynamic Object Goal Pushing with Mobile Manipulators Through Model-Free Constrained Reinforcement Learning	ICRA		2502.01546	https://arxiv.org/abs/2502.01546		auto					main
+PROBE: Proprioceptive Obstacle Detection and Estimation while Navigating in Clutter	ICRA		2505.11848	https://arxiv.org/abs/2505.11848		auto					main
+Asymptotically Optimal Sampling-Based Motion Planning Through Anytime Incremental Lazy Bidirectional Heuristic Search	ICRA					auto					main
+Accelerated Quasi-Static FEM for Real-Time Modeling of Continuum Robots with Multiple Contacts and Large Deformation	ICRA		2503.06922	https://arxiv.org/abs/2503.06922		auto					main
+UR-MVO: Robust Monocular Visual Odometry for Underwater Scenarios	ICRA					auto					main
+$\mathcal{D}(\mathcal{R}, \mathcal{O})$ Grasp: A Unified Representation of Robot and Object Interaction for Cross-Embodiment Dexterous Grasping	ICRA					auto					main
+A Control Strategy for an Orbital Manipulator Equipped with an External Actuator at the End-Effector	ICRA					auto					main
+Learning Dual-Arm Coordination for Grasping Large Flat Objects	ICRA		2504.03500	https://arxiv.org/abs/2504.03500		auto					main
+Safe Radial Segregation Algorithm for Swarms of Dubins-Like Robots	ICRA					auto					main
+Dense Fixed-Wing Swarming Using Receding-Horizon NMPC	ICRA		2502.04174	https://arxiv.org/abs/2502.04174		auto					main
+Bi-Stream Knowledge Transfer for Semi-Supervised 3D Point Cloud Object Detection	ICRA					auto					main
+Neuro-Symbolic Imitation Learning: Discovering Symbolic Abstractions for Skill Learning	ICRA		2503.21406	https://arxiv.org/abs/2503.21406		auto					main
+Internal-Stably Energy-Saving Cooperative Control of Articulated Wheeled Robot with Distributed Drive Units	ICRA					auto					main
+OpenBench: A New Benchmark and Baseline for Semantic Navigation in Smart Logistics	ICRA		2502.09238	https://arxiv.org/abs/2502.09238		auto					main
+Leader-Follower Formation Enabled by Pressure Sensing in Free-Swimming Undulatory Robotic Fish	ICRA		2502.07282	https://arxiv.org/abs/2502.07282		auto					main
+A Stochastic Cloning Square-Root Information Filter with Accurate Feature Tracking for Visual-Inertial Odometry	ICRA					auto					main
+DetailRefine: Towards Fine-Grained and Efficient Online Monocular 3D Reconstruction	ICRA					auto					main
+AERAS: Adaptive Experience Replay with Attention-Based Sequence Embedding for Improved Multi-Agent Reinforcement Learning	ICRA					auto					main
+Task-Specific Embodied Tactile Sensing for Dexterous Hand	ICRA					auto					main
+Learning to Predict the Future from Monocular Vision for Efficient Human-Aware Navigation	ICRA					auto					main
+3D Whole-Body Pose Estimation Using Graph High-Resolution Network for Humanoid Robot Teleoperation	ICRA					auto					main
+Passivity Filters for Bilateral Teleoperation with Variable Impedance Control	ICRA					auto					main
+DVLO4D: Deep Visual-Lidar Odometry with Sparse Spatial-Temporal Fusion	ICRA		2509.06023	https://arxiv.org/abs/2509.06023		auto					main
+SRL-Gym: A Morphology and Controller Co-Optimization Framework for Supernumerary Robotic Limbs in Load-Bearing Locomotion	ICRA					auto					main
+PUGS: Perceptual Uncertainty for Grasp Selection in Underwater Environments	ICRA		2502.09824	https://arxiv.org/abs/2502.09824		auto					main
+Adaptive Perching and Grasping by Aerial Robot with Light-Weight and High Grip-Force Tendon-Driven Three-Fingered Hand Using Single Actuator	ICRA		2503.17711	https://arxiv.org/abs/2503.17711		auto					main
+CGTrack: Cascade Gating Network with Hierarchical Feature Aggregation for UAV Tracking	ICRA	https://github.com/Nightwatch-Fox11/CGTrack	2505.05936	https://arxiv.org/abs/2505.05936		auto					main
+Knowledge-Driven Visual Target Navigation: Dual Graph Navigation	ICRA					auto					main
+Chemistry3D: Robotic Interaction Toolkit for Chemistry Experiments	ICRA					auto					main
+Multi-Task Invariant Representation Imitation Learning for Autonomous Driving	ICRA					auto					main
+Aerial Grasping by Multi-Limbed Flying Robot SPIDAR Based on Vectored Thrust Control	ICRA					auto					main
+A Modified Resistance Model for Magnetic Honeycomb Robots to Navigate in Low Reynolds Number Fluids	ICRA					auto					main
+Diverse Motion Planning with Stein Diffusion Trajectory Inference	ICRA					auto					main
+A Direct-Drive Gripper Designed by Ellipse Synthesis Across Two Output Modes	ICRA					auto					main
+DA-Fusion: Deformable Attention-Based RGB-D Fusion Transformer for Unseen Object Instance Segmentation	ICRA					auto					main
+Ensemble Control of a 2-DOF Parallel Link Arm in a Capsule Robot Using Oscillating External Magnetic Fields	ICRA					auto					main
+ThermoStereoRT: Thermal Stereo Matching in Real Time via Knowledge Distillation and Attention-Based Refinement	ICRA	https://github.com/SJTU-ViSYS-team/ThermoStereoRT	2504.07418	https://arxiv.org/abs/2504.07418		auto					main
+Analysis of Kinematics and Propulsion of a Self-Sensing Multi-DoF Undulating Soft Robotic Fish	ICRA					auto					main
+Component-Aware Unsupervised Logical Anomaly Generation for Industrial Anomaly Detection	ICRA		2502.11712	https://arxiv.org/abs/2502.11712		auto					main
+Visuo-Tactile Object Pose Estimation for a Multi-Finger Robot Hand With Low-Resolution in-Hand Tactile Sensing	ICRA		2503.19893	https://arxiv.org/abs/2503.19893		auto					main
+The Mini Wheelbot: A Testbed for Learning-based Balancing, Flips, and Articulated Driving	ICRA		2502.04582	https://arxiv.org/abs/2502.04582		auto					main
+The qPCRBot: Combining Automated Data Handling, Standardization, and Robotic Labware Transport for Better qPCR Measurements	ICRA					auto					main
+Online Aggregation of Trajectory Predictors	ICRA		2502.07178	https://arxiv.org/abs/2502.07178		auto					main
+Helical Structured Soft Growing Robot for Hazardous Gas Suction in Inaccessible Environments	ICRA					auto					main
+A Novel Tendon-Driven Articulated Continuum Robot with Stabilized Self-Locking Joints	ICRA					auto					main
+Decentralized Drone Swaps for Online Rebalancing of Drone Delivery Tasks	ICRA					auto					main
+Multi-Modality Test-Time Adaptation for Semantic Segmentation in Robotic Perception	ICRA					auto					main
+NeuGrasp: Generalizable Neural Surface Reconstruction with Background Priors for Material-Agnostic Object Grasp Detection	ICRA		2503.03511	https://arxiv.org/abs/2503.03511		auto					main
+EPRecon: An Efficient Framework for Real-Time Panoptic 3D Reconstruction from Monocular Video	ICRA					auto					main
+Robust Nonprehensile Dynamic Object Transportation: A Closed-Loop Sensitivity Approach	ICRA					auto					main
+Points, Images and Texts: Boosting Point Cloud Completion with Multi-Modal Features	ICRA					auto					main
+Multi-Agent Collective Construction of General Modular Structures	ICRA					auto					main
+A Tugging Controller that Maximizes Lateral Resistive Force by Mounding Sandy Terrain	ICRA					auto					main
+Multi-Layer Feature Exchange Transformer for Multi-View 6D Object Pose Estimation in Robot Bin Picking	ICRA					auto					main
+Risk-Aware Energy-Constrained UAV-UGV Cooperative Routing Using Attention-Guided Reinforcement Learning	ICRA					auto					main
+Neural Encodings for Energy-Efficient Motion Planning	ICRA					auto					main
+A Haptic Feedback Device Actuated by Electromagnetic Torque	ICRA					auto					main
+Robot Policy Transfer with Online Demonstrations: An Active Reinforcement Learning Approach	ICRA		2503.12993	https://arxiv.org/abs/2503.12993		auto					main
+Trustworthy Robot Behavior Tree Generation Based on Multi-Source Heterogeneous Knowledge Graph	ICRA					auto					main
+Trajectory Planning and Control for Differentially Flat Fixed-Wing Aerial Systems	ICRA		2502.00581	https://arxiv.org/abs/2502.00581		auto					main
+Sampling-Based Grasp and Collision Prediction for Assisted Teleoperation	ICRA		2504.18186	https://arxiv.org/abs/2504.18186		auto					main
+WaLTER: A Wheel and Leg Tumbling Expedition Robot	ICRA					auto					main
+HeRCULES: Heterogeneous Radar Dataset in Complex Urban Environment for Multi-Session Radar SLAM	ICRA		2502.01946	https://arxiv.org/abs/2502.01946		auto					main
+Real-Time Grasp Quality in Boundary-Constrained Granular Swarm Robots	ICRA					auto					main
+High Accuracy Aerial Maneuvers on Legged Robots using Variational Integrator Discretized Trajectory Optimization	ICRA					auto					main
+Personalization in Human-Robot Interaction Through Preference-Based Action Representation Learning	ICRA					auto					main
+HFUS-NeRF: Hybrid Representation for Fast Ultrasound Reconstruction in Robotic Ultrasound System	ICRA					auto					main
+Adaptive Ankle-Foot Prosthesis with Passive Agonist-Antagonist Design	ICRA					auto					main
+Design of an Articulated Modular Caterpillar Using Spherical Linkages	ICRA					auto					main
+Dualdiff: Dual-Branch Diffusion Model for Autonomous Driving with Semantic Fusion	ICRA		2505.01857	https://arxiv.org/abs/2505.01857		auto					main
+CRAB: Camera-Radar Fusion for Reducing Depth Ambiguity in Backward Projection Based View Transformation	ICRA		2509.05785	https://arxiv.org/abs/2509.05785		auto					main
+Logic-RAG: Augmenting Large Multimodal Models with Visual-Spatial Knowledge for Road Scene Understanding	ICRA	https://github.com/Imran2205/LogicRAG	2503.12663	https://arxiv.org/abs/2503.12663		auto					main
+Asynchronous Multi-Object Tracking with an Event Camera	ICRA		2505.08126	https://arxiv.org/abs/2505.08126		auto					main
+Human-Robot Collaboration for the Remote Control of Mobile Humanoid Robots With Torso-Arm Coordination	ICRA		2505.05773	https://arxiv.org/abs/2505.05773		auto					main
+Chain-of-Modality: Learning Manipulation Programs from Multimodal Human Videos with Vision-Language-Models	ICRA		2504.13351	https://arxiv.org/abs/2504.13351		auto					main
+Deep Learning-Enhanced Visual Monitoring in Hazardous Underwater Environments with a Swarm of Micro-Robots	ICRA	https://github.com/ChrisChen1023/Micro-Robot-Swarm	2503.02752	https://arxiv.org/abs/2503.02752		auto					main
+RLPP: A Residual Method for Zero-Shot Real-World Autonomous Racing on Scaled Platforms	ICRA		2501.17311	https://arxiv.org/abs/2501.17311		auto					main
+VLN-KHVR: Knowledge-And-History Aware Visual Representation for Continuous Vision-and-Language Navigation	ICRA					auto					main
+A System for Endoscopic Submucosal Dissection Featuring Concentric Push-Pull Manipulators	ICRA					auto					main
+Polyhedral Collision Detection via Vertex Enumeration	ICRA		2501.13201	https://arxiv.org/abs/2501.13201		auto					main
+Routing Manipulation of Deformable Linear Object Using Reinforcement Learning and Diffusion Policy	ICRA					auto					main
+A Data-Efficient Progressive Learning Framework for Robot Scooping Task	ICRA					auto					main
+Complementary Information Guided Occupancy Prediction via Multi-Level Representation Fusion	ICRA	https://github.com/VitaLemonTea1/CIGOcc	2510.13198	https://arxiv.org/abs/2510.13198		auto					main
+Adaptive Emotional Expression in Social Robots: A Multimodal Approach to Dynamic Emotion Modeling	ICRA					auto					main
+Robotic Flexible Magnetic Retractor for Dynamic Tissue Manipulation in Endoscopic Submucosal Dissection	ICRA					auto					main
+Strain-Coordinated Formation, Migration, and Encapsulation Behaviors in a Tethered Robot Collective	ICRA					auto					main
+NDOB-Based Control of a UAV with Delta-Arm Considering Manipulator Dynamics	ICRA		2501.06122	https://arxiv.org/abs/2501.06122		auto					main
+Learning Dexterous Bimanual Catch Skills Through Adversarial-Cooperative Heterogeneous-Agent Reinforcement Learning	ICRA		2502.11437	https://arxiv.org/abs/2502.11437		auto					main
+Autonomous Navigation in Crowded Space Using Multi-Sensory Data Fusion	ICRA					auto					main
+Fan-Out Revisited: The Impact of the Human Element on Scalability of Human Multi-Robot Teams	ICRA					auto					main
+Proactive Tactile Exploration for Object-Agnostic Shape Reconstruction from Minimal Visual Priors	ICRA		2505.11975	https://arxiv.org/abs/2505.11975		auto					main
+IBURD: Image Blending for Underwater Robotic Detection	ICRA		2502.17706	https://arxiv.org/abs/2502.17706		auto					main
+Music-Driven Legged Robots: Synchronized Walking to Rhythmic Beats	ICRA		2503.04063	https://arxiv.org/abs/2503.04063		auto					main
+Digital Beamforming Enhanced Radar Odometry	ICRA		2503.13252	https://arxiv.org/abs/2503.13252		auto					main
+TinySense: A Lighter Weight and More Power-Efficient Avionics System for Flying Insect-Scale Robots	ICRA		2501.03416	https://arxiv.org/abs/2501.03416		auto					main
+Model Q-II: An Underactuated Hand with Enhanced Grasping Modes and Primitives for Dexterous Manipulation	ICRA					auto					main
+Feasibility-Aware Imitation Learning from Observations Through a Hand-Mounted Demonstration Interface	ICRA		2503.09018	https://arxiv.org/abs/2503.09018		auto					main
+Ambient Flow Perception of Freely Swimming Robotic Fish Using an Artificial Lateral Line System	ICRA					auto					main
+CDMFusion: RGB-T Image Fusion Based on Conditional Diffusion Models via Few Denoising Steps in Open Environments	ICRA					auto					main
+Generalizable Zero-Shot Object Pose Estimation for Bin-Picking	ICRA					auto					main
+OPPA: Online Planner's Parameter Adaptation for Enhanced Mobile Robot Navigation	ICRA					auto					main
+Shared Control for Cable Routing with Tactile Sensing	ICRA					auto					main
+LoFSORT: Sample Online and Real-time Tracking in Low Frame Rate Scenarios	ICRA					auto					main
+Uncertainty-aware Probabilistic 3D Human Motion Forecasting via Invertible Networks	ICRA		2507.14694	https://arxiv.org/abs/2507.14694		auto					main
+Optimal Framework for Constrained Admittance Path-Following Control	ICRA					auto					main
+DGS-SLAM: A Visual Dense SLAM Based on Gaussian Splatting in Dynamic Environments	ICRA					auto					main
+On Chain Driven, Adaptive, Underactuated Fingers for the Development of Affordable, Robust Humanlike Prosthetic Hands	ICRA					auto					main
+Three-Dimension Tip Force Perception and Axial Contact Location Identification for Flexible Endoscopy Using Tissue-Compliant Soft Distal Attachment Cap Sensors	ICRA					auto					main
+IROAM: Improving Roadside Monocular 3D Object Detection Learning from Autonomous Vehicle Data Domain	ICRA		2501.18162	https://arxiv.org/abs/2501.18162		auto					main
+Bandwidth-Adaptive Spatiotemporal Correspondence Identification for Collaborative Perception	ICRA		2502.12098	https://arxiv.org/abs/2502.12098		auto					main
+Trajectory Planning with Signal Temporal Logic Costs Using Deterministic Path Integral Optimization	ICRA		2503.01476	https://arxiv.org/abs/2503.01476		auto					main
+Conference Information	ICRA					auto					main
+The Role of Tactile Sensing for Learning Reach and Grasp	ICRA		2502.20367	https://arxiv.org/abs/2502.20367		auto					main
+Integrated Motion State Prediction for Sit-to-Stand and Stand-to-Sit Motions Toward Effective Power Assist Control	ICRA					auto					main
+3DSSDF: Underwater 3D Sonar Reconstruction Using Signed Distance Functions	ICRA					auto					main
+A Novel Underwater Robot with Carangiform Locomotion Achieved via Single Degree of Actuation and Magnetically Transmitted Traveling Wave	ICRA					auto					main
+A Full-Cycle Assembly Operation: From Digital Planning to Trajectory Execution Using a Robotic Arm	ICRA					auto					main
+Foresee and Act Ahead: Task Prediction and Pre-Scheduling Enabled Efficient Robotic Warehousing	ICRA					auto					main
+ERetinex: Event Camera Meets Retinex Theory for Low-Light Image Enhancement	ICRA		2503.02484	https://arxiv.org/abs/2503.02484		auto					main
+On the Necessity of Real-Time Principles in GPU-Driven Autonomous Robots	ICRA					auto					main
+IRef-VLA: A Benchmark for Interactive Referential Grounding with Imperfect Language in 3D Scenes	ICRA	https://github.com/HaochenZ11/IRef-VLA	2503.17406	https://arxiv.org/abs/2503.17406		auto					main
+In-Vivo Cable-Driven Rodent Ankle Exoskeleton System for Sensorimotor Rehabilitation	ICRA					auto					main
+Embodied Adaptive Sensing for Odor Concentration Maximization in Bio-Inspired Robotics	ICRA					auto					main
+HULK: Large-Scale Hierarchical Coordination Under Continual and Uncertain Temporal Tasks	ICRA					auto					main
+UncAD: Towards Safe End-to-end Autonomous Driving via Online Map Uncertainty	ICRA	https://github.com/pengxuanyang/UncAD	2504.12826	https://arxiv.org/abs/2504.12826		auto					main
+Resettable Land Anchor Launcher for Unmanned Rover Rescue and Slope Climbing	ICRA					auto					main
+Braided Artificial Muscle with Programmable Body Morphing and its Application to Elbow Joint Flexion	ICRA					auto					main
+Optimizing Underwater Robot Navigation: A Study of DRL Algorithms and Multi-Modal Sensor Fusion	ICRA					auto					main
+Image-Based Compliance Control for Robotic Steering of a Ferromagnetic Guidewire	ICRA					auto					main
+Enhancing Navigation Efficiency of Quadruped Robots via Leveraging Personal Transportation Platforms	ICRA		2602.03397	https://arxiv.org/abs/2602.03397		auto					main
+Lightweight Yet High-Performance Defect Detector for Uav-Based Large-Scale Infrastructure Real-Time Inspection	ICRA					auto					main
+Stochastic Trajectory Prediction Under Unstructured Constraints	ICRA		2503.14203	https://arxiv.org/abs/2503.14203		auto					main
+VQA-Driven Event Maps for Assistive Navigation for People with Low Vision in Urban Environments	ICRA					auto					main
+Parking-SG: Open-Vocabulary Hierarchical 3D Scene Graph Representation for Open Parking Environments	ICRA					auto					main
+Stable Tracking of Eye Gaze Direction During Ophthalmic Surgery	ICRA		2507.00635	https://arxiv.org/abs/2507.00635		auto					main
+Inducing Matrix Sparsity Bias for Improved Dynamic Identification of Parallel Kinematic Manipulators using Deep Learning	ICRA					auto					main
+Exploring the Domain-Invariant Flow Representation in Vision-Based Tactile Sensors for Omni-Hardness Perception	ICRA					auto					main
+Embedded Robust Model Predictive Path Integral Control Using Sensitivity Tubes and GPU Acceleration	ICRA					auto					main
+Equivariant Filter Design for Range-Only SLAM	ICRA		2503.03973	https://arxiv.org/abs/2503.03973		auto					main
+A Novel Decomposed Feature-Oriented Framework for Open-Set Semantic Segmentation on LiDAR Data	ICRA	https://github.com/nubot-nudt/DOSS	2503.11097	https://arxiv.org/abs/2503.11097		auto					main
+Atom: Adaptive Theory-of-Mind-Based Human Motion Prediction in Long-Term Human-Robot Interactions	ICRA	https://github.com/centiLinda/AToM-human-prediction.git	2502.05792	https://arxiv.org/abs/2502.05792		auto					main
+RACE: A Fast and Lightweight Urban Exploration and Search Strategy for Multi-Robot Systems	ICRA					auto					main
+Planning-Oriented Cooperative Perception Among Heterogeneous Vehicles	ICRA					auto					main
+Dragonfly Drone: A Novel Tilt-Rotor Aerial Platform with Body-Morphing Capability	ICRA					auto					main
+An Omnidirectional Non-Tethered Aerial Prototype with Fixed Uni-Directional Thrusters	ICRA					auto					main
+DENSER: 3D Gaussian Splatting for Scene Reconstruction of Dynamic Urban Environments	ICRA					auto					main
+Goal-Driven Robotic Pushing Manipulation Under Uncertain Object Properties	ICRA					auto					main
+Command Filtered Cartesian Impedance Control for Tendon Driven Continuum Manipulators with Actuator Fault Compensation	ICRA					auto					main
+Learning Time-Optimal Online Replanning for Distributed Model Predictive Contouring Control of Quadrotors	ICRA					auto					main
+Surface Roughness Estimation for Terrain Perception	ICRA					auto					main
+Milli-Scale AcousTac Sensing Using Soft Helmholtz Resonators	ICRA					auto					main
+LCSPose: Efficient, Accurate and Scalable Markerless 6-DoF Pose Estimation of a Quay Crane Spreader Based on LiDAR and Camera	ICRA					auto					main
+Watch Less, Feel More: Sim-to-Real RL for Generalizable Articulated Object Manipulation via Motion Adaptation and Impedance Control	ICRA		2502.14457	https://arxiv.org/abs/2502.14457		auto					main
+DFM: Deep Fourier Mimic for Expressive Dance Motion Learning	ICRA		2502.10980	https://arxiv.org/abs/2502.10980		auto					main
+Reinforcement Learning on Reconfigurable Hardware: Overcoming Material Variability in Laser Material Processing	ICRA		2501.19102	https://arxiv.org/abs/2501.19102		auto					main
+Bridging Spectral-Wise and Multi-Spectral Depth Estimation Via Geometry-Guided Contrastive Learning	ICRA	https://github.com/UkcheolShin/BridgeMultiSpectralDepth	2503.00793	https://arxiv.org/abs/2503.00793		auto					main
+Beyond Robustness: Learning Unknown Dynamic Load Adaptation for Quadruped Locomotion on Rough Terrain	ICRA		2507.07825	https://arxiv.org/abs/2507.07825		auto					main
+Fostering Trust Through Gesture and Voice-Controlled Robot Trajectories in Industrial Human-Robot Collaboration*	ICRA					auto					main
+A Novel Computational Framework of Robot Trust for Human-Robot Teams	ICRA					auto					main
+Learning Adversarial Policies for Swarm Leader Identification Using a Probing Agent	ICRA					auto					main
+Interactive Motion Planning for a 7-DOF Robot	ICRA					auto					main
+Universal Online Temporal Calibration for Optimization-Based Visual-Inertial Navigation Systems	ICRA		2501.01788	https://arxiv.org/abs/2501.01788		auto					main
+Optimizing Efficiency of Mixed Traffic Through Reinforcement Learning: A Topology-Independent Approach and Benchmark	ICRA		2501.16728	https://arxiv.org/abs/2501.16728		auto					main
+Geometry and Force-Informed Robotic Assembly with Small Relative Initial Deviations for Circular Electrical Connectors	ICRA					auto					main
+PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal	ICRA					auto					main
+Next-Best-Trajectory Planning of Robot Manipulators for Effective Observation and Exploration	ICRA		2503.22588	https://arxiv.org/abs/2503.22588		auto					main
+MonoDiff9D: Monocular Category-Level 9D Object Pose Estimation via Diffusion Model	ICRA	https://github.com/CNJianLiu/MonoDiff9D	2504.10433	https://arxiv.org/abs/2504.10433		auto					main
+A Large-Scale Dataset for Humanoid Robotics Enabling a Novel Data-Driven Fall Prediction	ICRA					auto					main
+User-Aware Collaborative Learning in Human-Robot Interactions	ICRA					auto					main
+Seeing Eye to Eye: Design and Evaluation of a Custom Expressive Eye Display Module for the Stretch Mobile Manipulator	ICRA					auto					main
+Autonomous Continuous Capsulorhexis Based on a Force-Vision-Guided Robot System	ICRA					auto					main
+RM-Planner: Integrating Reinforcement Learning with Whole-Body Model Predictive Control for Mobile Manipulation	ICRA					auto					main
+Optimal Torque Distribution via Dynamic Adaptation for Quadrupedal Locomotion on Slippery Terrains	ICRA					auto					main
+Automatic Robotic-Assisted Diffuse Reflectance Spectroscopy Scanning System	ICRA		2503.08470	https://arxiv.org/abs/2503.08470		auto					main
+Dexterous Ungrasping Manipulation in Three Dimensions	ICRA					auto					main
+Investigating Security Threats in Multi-Tenant ROS 2 Systems	ICRA					auto					main
+Design and Implementation of a Swimming and Walking Quadruped for Seafloor Exploration	ICRA					auto					main
+FGO-SLAM: Enhancing Gaussian SLAM with Globally Consistent Opacity Radiance Field	ICRA		2509.01547	https://arxiv.org/abs/2509.01547		auto					main
+OMASTAR Optimal Magnetic Actuation System Arrangement	ICRA					auto					main
+Single-Fiber Optical Frequency Domain Reflectometry (Ofdr) Shape Sensing of Continuum Manipulators With Planar Bending	ICRA					auto					main
+CubeDN: Real-Time Drone Detection in 3D Space from Dual mmWave Radar Cubes	ICRA		2508.17831	https://arxiv.org/abs/2508.17831		auto					main
+M3DSS: A Multi-Platform, Multi-Sensor, and Multi-Scenario Dataset for SLAM System	ICRA					auto					main
+MonoCT: Overcoming Monocular 3D Detection Domain Shift with Consistent Teacher Models	ICRA		2503.13743	https://arxiv.org/abs/2503.13743		auto					main
+MochiSwarm: A Testbed for Robotic Micro-Blimps in Realistic Environments	ICRA					auto					main
+Enhancing AR-to-Robot Registration Accuracy: A Comparative Study of Marker Detection Algorithms and Registration Parameters	ICRA					auto					main
+A Complete and Bounded-Suboptimal Algorithm for a Moving Target Traveling Salesman Problem with Obstacles in 3D*	ICRA		2504.14680	https://arxiv.org/abs/2504.14680		auto					main
+Hash-GS: Anchor-Based 3D Gaussian Splatting with Multi-Resolution Hash Encoding for Efficient Scene Reconstruction	ICRA					auto					main
+Open-Loop Position Control of a Miniature Magnetic Robot Using Two-Dimensional Divergence Control of a Magnetic Force	ICRA					auto					main
+TDFANet: Encoding Sequential 4D Radar Point Clouds Using Trajectory-Guided Deformable Feature Aggregation for Place Recognition	ICRA		2504.05103	https://arxiv.org/abs/2504.05103		auto					main
+A New Stereo Fisheye Event Camera for Fast Drone Detection and Tracking	ICRA					auto					main
+Whole-Body Model Predictive Control for Mobile Manipulation With Task Priority Transition	ICRA					auto					main
+Comparison of Three Interface Approaches for Gaze Control of Assistive Robots for Individuals with Tetraplegia	ICRA					auto					main
+Certificated Actor-Critic: Hierarchical Reinforcement Learning with Control Barrier Functions for Safe Navigation	ICRA		2501.17424	https://arxiv.org/abs/2501.17424		auto					main
+Retinex-BEVFormer: Using Retinex to Enhance Multi-View Image-Based BEV Detector in Low Light Scenes	ICRA					auto					main
+A Virtual Gravity Controller for Efficient Underactuated Biped Robots	ICRA					auto					main
+Explainable Reinforcement Learning via Dynamic Mixture Policies	ICRA					auto					main
+Reservoir Computing Encodes Physical Adaptations for Reinforcement Learning	ICRA					auto					main
+Ego-$A^{\mathbf{3}}$: Adaptive Fusion-Based Disentangled Transformer for Egocentric Action Anticipation	ICRA					auto					main
+VSS-SLAM: Voxelized Surfel Splatting for Geometally Accurate SLAM	ICRA					auto					main
+Wavelet-Based Distributed Coverage for Heterogeneous Agents	ICRA					auto					main
+Variable-Friction In-Hand Manipulation for Arbitrary Objects via Diffusion-Based Imitation Learning	ICRA		2503.02738	https://arxiv.org/abs/2503.02738		auto					main
+Real-Time Sampling-based Online Planning for Drone Interception	ICRA		2502.14231	https://arxiv.org/abs/2502.14231		auto					main
+Gaze and Go: Harnessing Visual Attention Valence in Upper-Limb Robotic Rehabilitation With Tailored Gamification and Eye Tracking for Neuroplasticity	ICRA					auto					main
+Evaluating Global Geo-Alignment for Precision Learned Autonomous Vehicle Localization Using Aerial Data	ICRA		2503.13896	https://arxiv.org/abs/2503.13896		auto					main
+Integrating Human-Robot Teaming Dynamics Into Mission Planning Tools for Transparent Tactics in Multi-Robot Human Integrated Teams	ICRA					auto					main
+Realizing Emergent Collective Behaviors Through Robotic Swarmalators	ICRA					auto					main
+Transferring Visual Knowledge: Semi-Supervised Instance Segmentation for Object Navigation Across Varying Height Viewpoints	ICRA					auto					main
+The Experiment Orchestration System (EOS): Comprehensive Foundation for Laboratory Automation	ICRA					auto					main
+UpViTaL: Unpaired Visual-Tactile Self-Supervised Representation Learning for Dexterous Robotic Manipulation	ICRA					auto					main
+Hybrid Deep Reinforcement Learning for Radio Tracer Localisation in Robotic-Assisted Radioguided Surgery	ICRA		2503.08492	https://arxiv.org/abs/2503.08492		auto					main
+“Hierarchy of Needs” for Robots: Control Synthesis for Compositions of Hierarchical, Complex Objectives	ICRA					auto					main
+Learning Better Representations for Crowded Pedestrians in Offboard LiDAR-Camera 3D Tracking-by-detection	ICRA		2505.16029	https://arxiv.org/abs/2505.16029		auto					main
+The Impact of Sensor Faults on Connected Autonomous Vehicle Localization	ICRA					auto					main
+A Control Scheme for Collaborative Object Transportation between a Human and a Quadruped Robot Using the MIGHTY Suction Cup	ICRA		2508.00584	https://arxiv.org/abs/2508.00584		auto					main
+SIGMA: Sheaf-Informed Geometric Multi-Agent Pathfinding	ICRA	https://github.com/marmotlab/SIGMA	2502.06440	https://arxiv.org/abs/2502.06440		auto					main
+Autonomous Drone for Dynamic Smoke Plume Tracking	ICRA		2504.12664	https://arxiv.org/abs/2504.12664		auto					main
+QVIO2: Quantized Map-Based Visual-Inertial Odometry	ICRA					auto					main
+Deliberative Control-Aware Motion Planning for Kinematic-Constrained UAVs in a Dynamic Environment	ICRA					auto					main
+TriHRCBot: A Robotic Architecture for Triadic Human-Robot Collaboration Through Mediated Object Alignment	ICRA					auto					main
+Strategic System Design for High Precision in Assembly Processes of CPU	ICRA					auto					main
+Development of Contactless Delivery Service Robot with Modular Working Platform in Isolation Wards	ICRA					auto					main
+Domain Randomization for Object Detection in Manufacturing Applications Using Synthetic Data: A Comprehensive Study	ICRA		2506.07539	https://arxiv.org/abs/2506.07539		auto					main
+Radar4VoxMap: Accurate Odometry from Blurred Radar Observations	ICRA					auto					main
+Advanced $X \theta$ Reluctance Electromagnetic Micropositioning System for Precision Motion Control	ICRA					auto					main
+Is Discretization Fusion All You Need for Collaborative Perception?	ICRA	https://github.com/sidiangongyuan/ACCO	2503.13946	https://arxiv.org/abs/2503.13946		auto					main
+Heterogeneous Sensor Fusion and Active Perception for Transparent Object Reconstruction with a PDM2 Sensor and a Camera	ICRA					auto					main
+Dual-BEV Nav: Dual-Layer BEV-Based Heuristic Path Planning for Robotic Navigation in Unstructured Outdoor Environments	ICRA		2501.18351	https://arxiv.org/abs/2501.18351		auto					main
+Stiffness Regulation Co-Pilot in Bilateral Teleimpedance Control: A Preliminary User Study	ICRA					auto					main
+Intelligence Evaluation Methods for Autonomous Vehicles	ICRA					auto					main
+Cross-Platform Learning-Based Fault Tolerant Surfacing Controller for Underwater Robots	ICRA		2502.07133	https://arxiv.org/abs/2502.07133		auto					main
+Collision Avoidance in Model Predictive Control Using Velocity Damper	ICRA					auto					main
+UAD: Unsupervised Affordance Distillation for Generalization in Robotic Manipulation	ICRA		2506.09284	https://arxiv.org/abs/2506.09284		auto					main
+Proprioceptive Object Shape and Size Extraction via In-Hand-Manipulation with a Variable Friction Robot Gripper	ICRA					auto					main
+Scalable Multi-Session Visual SLAM in Large-Scale Scenes with Subgraph Optimization	ICRA					auto					main
+Modeling of Deformable Linear Objects Under Incomplete State Information	ICRA					auto					main
+Enhancing Connection Strength in Freeform Modular Reconfigurable Robots Through Holey Sphere and Gripper Mechanisms	ICRA					auto					main
+Estimating Control Barriers from Offline Data	ICRA		2503.10641	https://arxiv.org/abs/2503.10641		auto					main
+HGAT-CP: Heterogeneous Graph Attention Network for Collision Prediction in Autonomous Driving	ICRA					auto					main
+EAR-SLAM: Environment-Aware Robust Localization System for Terrestrial-Aerial Bimodal Vehicles	ICRA					auto					main
+Tool-Mediated Robot Perception of Granular Substances Using Multiple Sensory Modalities	ICRA					auto					main
+CoDynTrust: Robust Asynchronous Collaborative Perception via Dynamic Feature Trust Modulus	ICRA	https://github.com/CrazyShout/CoDynTrust	2502.08169	https://arxiv.org/abs/2502.08169		auto					main
+Non-Prehensile Shape Manipulation of Elastoplastic Objects With Reinforcement Learning	ICRA					auto					main
+Improving Coverage Performance of a Size-Reconfigurable Robot Based on Overlapping and Reconfiguration Reduction Criteria	ICRA					auto					main
+MJPR: Multi-Modal Joint Predictive Representation in Deep Reinforcement Learning	ICRA					auto					main
+Deep Reinforcement Learning-Based Semi-Autonomous Control for Magnetic Micro-Robot Navigation with Immersive Manipulation	ICRA		2503.06359	https://arxiv.org/abs/2503.06359		auto					main
+Towards Autonomous Wood-Log Grasping with a Forestry Crane: Simulator and Benchmarking	ICRA		2502.01304	https://arxiv.org/abs/2502.01304		auto					main
+Beyond Traversing in a Thin Pipe: Self-Sensing Odometry of a Pipeline Robot Driven by High-Frequency Dielectric Elastomer Actuators	ICRA					auto					main
+RLCNet: A Novel Deep Feature-Matching-Based Method for Online Target-Free Radar-LiDAR Calibration	ICRA					auto					main
+MPC-QP-Based Control Framework for Compliant Behavior of Humanoid Robots in Physical Collaboration with Humans	ICRA					auto					main
+Semantic and Feature Guided Uncertainty Quantification of Visual Localization for Autonomous Vehicles	ICRA		2506.15851	https://arxiv.org/abs/2506.15851		auto					main
+Goal-Guided Reinforcement Learning: Leveraging Large Language Models for Long-Horizon Task Decomposition	ICRA					auto					main
+Distributed Pursuit of an Evader with Adaptive Robust Path Control Under State Measurement Uncertainty	ICRA					auto					main
+Unsupervised Domain Adaptation for Gait State Estimation	ICRA					auto					main
+Safety and Naturalness Perceptions of Robot-to-Human Handovers Performed by Data-Driven Robotic Mimicry of Human Givers	ICRA					auto					main
+Robust Swimming Controller for Soft Robots via Drop-Out Learning	ICRA					auto					main
+MDC-Seg: Multi-Directional Convolution-Based Semantic Segmentation for LiDAR Point Clouds	ICRA					auto					main
+ME-PATS: Mutually Enhancing Search-Based Planner and Learning-Based Agent for Tractor-Trailer Systems	ICRA					auto					main
+SAM-Guided Pseudo Label Enhancement for Multi-Modal 3D Semantic Segmentation	ICRA		2502.00960	https://arxiv.org/abs/2502.00960		auto					main
+A Quantum Annealing Approach to Target Tracking	ICRA					auto					main
+Real-Time LiDAR Point Cloud Compression and Transmission for Resource-Constrained Robots	ICRA	https://github.com/HITSZ-NRSL/RCPCC.git	2502.06123	https://arxiv.org/abs/2502.06123		auto					main
+Safe Quadrotor Navigation Using Composite Control Barrier Functions	ICRA		2502.04101	https://arxiv.org/abs/2502.04101		auto					main
+Hierarchical Contact-Rich Trajectory Optimization for Multi-Modal Manipulation Using Tight Convex Relaxations	ICRA		2503.07963	https://arxiv.org/abs/2503.07963		auto					main
+Coarse-to-Fine Cross-Modality Generation for Enhancing Vehicle Re-Identification with High-Fidelity Synthetic Data	ICRA					auto					main
+ARS-SLAM: Accurate Robust Spinning LiDAR SLAM for a Quadruped Robot in Large-Scale Scenario	ICRA					auto					main
+eViper-2D: A Thin Large-Area Soft Robotics Platform	ICRA					auto					main
+Tunable Virtual IMU Frame by Weighted Averaging of Multiple Non-Collocated IMUs	ICRA		2506.00371	https://arxiv.org/abs/2506.00371		auto					main
+AVD2: Accident Video Diffusion for Accident Video Description	ICRA		2502.14801	https://arxiv.org/abs/2502.14801		auto					main
+Neural Dynamics Augmented Diffusion Policy	ICRA					auto					main
+Intelligent Self-Healing Artificial Muscle: Mechanisms for Damage Detection and Autonomous Repair of Puncture Damage in Soft Robotics	ICRA					auto					main
+Patch Tree: Exploiting the Gauss Map and Principal Component Analysis for Robotic Grasping	ICRA					auto					main
+Towards Neurorobotic Interface for Finger Joint Angle Estimation: A Multi-Stage CNN-LSTM Network with Transfer Learning	ICRA					auto					main
+Context Graph-Based Visual-Language Place Recognition	ICRA					auto					main
+Privileged-Dreamer: Explicit Imagination of Privileged Information for Rapid Adaptation of Learned Policies	ICRA		2502.11377	https://arxiv.org/abs/2502.11377		auto					main
+Belief Roadmaps with Uncertain Landmark Evanescence	ICRA		2501.17982	https://arxiv.org/abs/2501.17982		auto					main
+Pneumatic Logic Systems for Selectively Operating Distributed Pneumatic Elements	ICRA					auto					main
+DOPT: D-Learning with Off-Policy Target toward Sample Efficiency and Fast Convergence Control	ICRA					auto					main
+ConTrack3D: Contrastive Learning Contributes Concise 3D Multi-Object Tracking	ICRA					auto					main
+Efficient Scale-Uniform 3D Visual Coverage Algorithm for UAV Based on Elastic Photogrammetric Constraints	ICRA					auto					main
+RINA: Rapid Introspective Neural Adaptation for Out-of-Distribution Payload Configurations on Quadruped Robots	ICRA					auto					main
+Task-Aware Semantic Map: Autonomous Robot Task Assignment Beyond Commands	ICRA					auto					main
+UPTor: Unified 3D Human Pose Dynamics and Trajectory Prediction for Human-Robot Interaction	ICRA		2505.14866	https://arxiv.org/abs/2505.14866		auto					main
+Automated Video Object Detection of Motile Cells Under Microscopy	ICRA					auto					main
+MicroASV: An Affordable 3D-Printed Centimeter-Scale Autonomous Surface Vehicle	ICRA					auto					main
+Real-Time UAV Tracking: A Comparative Study of YOLOv8 with Object Tracking Algorithms	ICRA					auto					main
+Learning a High-Quality Robotic Wiping Policy Using Systematic Reward Analysis and Visual-Language Model Based Curriculum	ICRA		2502.12599	https://arxiv.org/abs/2502.12599		auto					main
+MatchMaker: Automated Asset Generation for Robotic Assembly	ICRA		2503.05887	https://arxiv.org/abs/2503.05887		auto					main
+Domain Adaptation-Based Crossmodal Knowledge Distillation for 3D Semantic Segmentation	ICRA		2509.00379	https://arxiv.org/abs/2509.00379		auto					main
+JRN-Geo: A Joint Perception Network Based on RGB and Normal Images for Cross-View Geo-Localization	ICRA		2509.05696	https://arxiv.org/abs/2509.05696		auto					main
+A Cooperative Bearing-Rate Approach for Observability-Enhanced Target Motion Estimation	ICRA		2502.08089	https://arxiv.org/abs/2502.08089		auto					main
+Multi-View Stereo with Geometric Encoding for Dense Scene Reconstruction	ICRA					auto					main
+SCAM-P: Spatial Channel Attention Module for Panoptic Driving Perception	ICRA					auto					main
+Portable, High-Frequency, and High-Voltage Control Circuits for Untethered Miniature Robots Driven by Dielectric Elastomer Actuators	ICRA		2502.06166	https://arxiv.org/abs/2502.06166		auto					main
+Model Predictive Control with Visibility Graphs for Humanoid Path Planning and Tracking Against Adversarial Opponents	ICRA		2504.02184	https://arxiv.org/abs/2504.02184		auto					main
+Integrating Field of View in Human-Aware Collaborative Planning	ICRA		2505.14805	https://arxiv.org/abs/2505.14805		auto					main
+A Novel Under-Actuated Gripper Based on Passive-Locking Mechanism for Stable Gripping Under Environmental Constraints	ICRA					auto					main
+RACCOON: Grounding Embodied Question-Answering with State Summaries from Existing Robot Modules	ICRA					auto					main
+Learn to Swim: Data-Driven LSTM Hydrodynamic Model for Quadruped Robot Gait Optimization	ICRA		2505.03146	https://arxiv.org/abs/2505.03146		auto					main
+Adaptive Thresholding for Sequence-Based Place Recognition	ICRA					auto					main
+Cascaded Diffusion Models for Neural Motion Planning	ICRA		2505.15157	https://arxiv.org/abs/2505.15157		auto					main
+Simplifying Reward Design in Complex Robotics: Average-Reward Maximum Entropy Reinforcement Learning	ICRA					auto					main
+Distributed Multi-Robot Source Seeking in Unknown Environments with Unknown Number of Sources	ICRA		2503.11048	https://arxiv.org/abs/2503.11048		auto					main
+Slamspoof: Practical Lidar Spoofing Attacks on Localization Systems Guided by Scan Matching Vulnerability Analysis	ICRA	https://github.com/Keio-CSG/slamspoof	2502.13641	https://arxiv.org/abs/2502.13641		auto					main
+Accurately Modeling the Output Torque and Stiffness of Ankle-Foot Orthoses with a Compliant Linkage Model	ICRA					auto					main
+Continuous Convolution for Automated Measurement of Sperm Flagella	ICRA					auto					main
+ShadowTac: Dense Measurement of Shear and Normal Deformation of a Tactile Membrane from Colored Shadows	ICRA					auto					main
+$U^2$ Frame: A Unified and Unsupervised Learning Framework for LiDAR-Based Loop Closing	ICRA					auto					main
+Safety-Critical Online Quadrotor Trajectory Planner for Agile Flights in Unknown Environments	ICRA					auto					main
+You Only Estimate Once: Unified, One-stage, Real-Time Category-Level Articulated Object 6D Pose Estimation for Robotic Grasping	ICRA		2506.05719	https://arxiv.org/abs/2506.05719		auto					main
+Stair Climbing of a Transformable Robot Using Varying Leg-Wheel Contact Points	ICRA					auto					main
+Physical Simulation with Force Feedback Aids Robot Factors Design	ICRA					auto					main
+In-Pipe Navigation Development Environment and a Smooth Path Planning Method on Pipeline Surface	ICRA					auto					main
+Online Trajectory Replanner for Dynamically Grasping Irregular Objects	ICRA		2501.17968	https://arxiv.org/abs/2501.17968		auto					main
+Deep Reinforcement Learning for Coordinated Payload Transport in Biped-Wheeled Robots	ICRA					auto					main
+Composite Learning Neural Network Tracking Control of Articulated Soft Robots	ICRA					auto					main
+ICRA 2025 Author Index	ICRA					auto					main
+Online Risk-Bounded Graph-Based Local Planning for Autonomous Driving With Theoretical Guarantees*	ICRA					auto					main
+GAGrasp: Geometric Algebra Diffusion for Dexterous Grasping	ICRA		2503.04123	https://arxiv.org/abs/2503.04123		auto					main
+Integrating Multi-Robot Adaptive Sampling and Informative Path Planning for Spatiotemporal Natural Environment Prediction	ICRA					auto					main
+Dexterous Assembly Using a Planar Hand Having Programmable Passive Compliance	ICRA					auto					main
+EVLoc: Event-Based Visual Localization in LiDAR Maps via Event-Depth Registration	ICRA		2503.00167	https://arxiv.org/abs/2503.00167		auto					main
+Depth-Temporal Attention with Dual Modality Data for Walking Intention Prediction in Close-Proximity Front-Following	ICRA					auto					main
+MPI-Mamba: Cross Propagation Mamba for Multipath Interference Correction	ICRA					auto					main
+Adaptive Deadlock Avoidance for Decentralized Multi-Agent Systems via CBF-Inspired Risk Measurement	ICRA		2503.09621	https://arxiv.org/abs/2503.09621		auto					main
+Quart-Online: Latency-Free Multimodal Large Language Model for Quadruped Robot Learning	ICRA					auto					main
+Intraoperative Trocar-Based Eyeball Rotation Estimation Using Only 2D Microscope Images	ICRA					auto					main
+ROD: RGB-Only Fast and Efficient Off-Road Freespace Detection	ICRA		2508.08697	https://arxiv.org/abs/2508.08697		auto					main
+Self-Reflective Perceptual Adaptation for Robust Ground Navigation in Unstructured Off-Road Environments	ICRA					auto					main
+SurgPose: Generalisable Surgical Instrument Pose Estimation Using Zero-Shot Learning and Stereo Vision	ICRA		2505.11439	https://arxiv.org/abs/2505.11439		auto					main
+Dexterous Three-Finger Gripper based on Offset Trimmed Helicoids (OTHs)	ICRA		2503.00574	https://arxiv.org/abs/2503.00574		auto					main
+Evaluating Human-Robot Skill Gaps in Electrical Circuit Inspection: A New Electronic Task Board for Benchmarking Manipulation	ICRA					auto					main
+GenCo: A Dual VLM Generate-Correct Framework for Adaptive Peg-in-Hole Robotics	ICRA					auto					main
+Miniature Dielectric Elastomer Actuator Probe Inspecting Confined Spaces Embedding a CMOS Sensor	ICRA					auto					main
+FedDet: Data Poisoning Attack Detection for Federated Skeleton-based Action Recognition	ICRA					auto					main
+Reinforcement Learning for Adaptive Planner Parameter Tuning: A Perspective on Hierarchical Architecture	ICRA		2503.18366	https://arxiv.org/abs/2503.18366		auto					main
+SCA3D: Enhancing Cross-Modal 3D Retrieval via 3D Shape and Caption Paired Data Augmentation	ICRA	https://github.com/3DAgentWorld/SCA3D	2502.19128	https://arxiv.org/abs/2502.19128		auto					main
+Design of a Bioinspired Jumping Mechanism for Self-Takeoff of Flapping Robot	ICRA					auto					main
+Differentiable Composite Neural Signed Distance Fields for Robot Navigation in Dynamic Indoor Environments	ICRA		2502.02664	https://arxiv.org/abs/2502.02664		auto					main
+How Sound-Based Robot Communication Impacts Perceptions of Robotic Failure	ICRA					auto					main
+Flapping-Wing Flying Robot with Integrated Dual-Arm Scissors-Type Flora Sampling System	ICRA					auto					main
+A Kinematics Optimization Framework with Improved Computational Efficiency for Task-Based Optimum Design of Serial Manipulators in Cluttered Environments	ICRA					auto					main
+How to Train Your Robots? The Impact of Demonstration Modality on Imitation Learning	ICRA		2503.07017	https://arxiv.org/abs/2503.07017		auto					main
+Improving Efficiency in Path Planning: Tangent Line Decomposition Algorithm	ICRA					auto					main
+Jointly Assigning Processes to Machines and Generating Plans for Autonomous Mobile Robots in a Smart Factory	ICRA		2502.21101	https://arxiv.org/abs/2502.21101		auto					main
+Robot-Based Automatic Charging for Electric Vehicles Using Incremental Learning and Biomimetic Control	ICRA					auto					main
+Diffusion-Based Self-Supervised Imitation Learning from Imperfect Visual Servoing Demonstrations for Robotic Glass Installation	ICRA					auto					main
+An End-to-End Learning-Based Multi-Sensor Fusion for Autonomous Vehicle Localization	ICRA		2503.05088	https://arxiv.org/abs/2503.05088		auto					main
+Dynamic Bipedal MPC with Foot-Level Obstacle Avoidance and Adjustable Step Timing	ICRA		2505.13715	https://arxiv.org/abs/2505.13715		auto					main
+Comparison of User Interface Paradigms for Assistive Robotic Manipulators	ICRA					auto					main
+SafePCA: Enhancing Autonomous Robot Navigation in Dynamic Crowds Using Proximal Policy Optimization and Cellular Automata	ICRA					auto					main
+Design and Evaluation of High-Performance Motion-Decoupled Cable Transmission Modules	ICRA					auto					main
+PlaneHEC: Efficient Hand-Eye Calibration for Multi-View Robotic Arm via Any Point Cloud Plane Detection	ICRA		2507.19851	https://arxiv.org/abs/2507.19851		auto					main
+Limits of Specifiability for Sensor-Based Robotic Planning Tasks	ICRA		2503.05623	https://arxiv.org/abs/2503.05623		auto					main
+Feedback RoI Features Improve Aerial Object Detection	ICRA					auto					main
+CAFEs: Cable-Driven Collaborative Floating End-Effectors for Agriculture Applications	ICRA		2503.00514	https://arxiv.org/abs/2503.00514		auto					main
+LamPro: Multi-Prototype Representation Learning for Enhanced Visual Pattern Recognition	ICRA					auto					main
+Force Admittance Control of an Underactuated Gripper with Full-State Feedback	ICRA					auto					main
+Jailbreaking LLM-Controlled Robots	ICRA					auto					main
+GMF: Gravitational Mass-Force Framework for Parametric Multi-Level Coordination in Multi-Robot and Swarm Robotic Systems	ICRA					auto					main
+Scalable Multi-Robot Task Allocation and Coordination Under Signal Temporal Logic Specifications	ICRA		2503.02719	https://arxiv.org/abs/2503.02719		auto					main
+Finite-Step Capturability and Recursive Feasibility for Bipedal Walking in Constrained Regions	ICRA					auto					main
+Is Iteration Worth It? Revisit its Impact in Sliding-Window VIO	ICRA					auto					main
+3DWG: 3D Weakly Supervised Visual Grounding via Category and Instance-Level Alignment	ICRA		2505.01809	https://arxiv.org/abs/2505.01809		auto					main
+InsCMPR: Efficient Cross-Modal Place Recognition via Instance-Aware Hybrid Mamba-Transformer	ICRA					auto					main
+SaViD: Spectravista Aesthetic Vision Integration for Robust and Discerning 3D Object Detection in Challenging Environments	ICRA	https://github.com/sanjay-810/SAVID	2503.20614	https://arxiv.org/abs/2503.20614		auto					main
+Whisker-Based Active Tactile Perception for Contour Reconstruction	ICRA		2507.23305	https://arxiv.org/abs/2507.23305		auto					main
+Ground-Aware Automotive Radar Odometry	ICRA					auto					main
+H3O: Hyper-Efficient 3D Occupancy Prediction with Heterogeneous Supervision	ICRA		2503.04059	https://arxiv.org/abs/2503.04059		auto					main
+LiDAR-enhanced 3D Gaussian Splatting Mapping	ICRA		2503.05425	https://arxiv.org/abs/2503.05425		auto					main
+Enabling In-Flight Metamorphosis in Multirotors with a Center-Driven Scissor Extendable Airframe for Adaptive Navigation	ICRA					auto					main
+CLSTR: Capability-Level System for Tracking Robots	ICRA					auto					main
+Segment Any Repeated Object	ICRA					auto					main
+Keypoint Detection and Description for Raw Bayer Images	ICRA		2503.08673	https://arxiv.org/abs/2503.08673		auto					main
+Deformable Gaussian Splatting for Efficient and High-Fidelity Reconstruction of Surgical Scenes	ICRA		2501.01101	https://arxiv.org/abs/2501.01101		auto					main
+Bring Your Own Grasp Generator: Leveraging Robot Grasp Generation for Prosthetic Grasping	ICRA		2503.00466	https://arxiv.org/abs/2503.00466		auto					main
+SurgPose: a Dataset for Articulated Robotic Surgical Tool Pose Estimation and Tracking	ICRA		2502.11534	https://arxiv.org/abs/2502.11534		auto					main
+UDSV: Unsupervised Deep Stitching for Tractor-Trailer Surround View	ICRA					auto					main
+Optimize and Coordinate Multiple DMPs Under Constraints to Achieve a Collaborative Manipulation Task	ICRA					auto					main
+Model-Free Safety Filter for Soft Robots: A Q-Learning Approach	ICRA					auto					main
+Adaptive Walker: User Intention and Terrain Aware Intelligent Walker with High-Resolution Tactile and IMU Sensor	ICRA					auto					main
+Soft Robotic Dynamic in-Hand Pen Spinning	ICRA					auto					main
+3D Lane Detection Based on Projection-Consistent Reference Points and Intra- & Inter-lane Context	ICRA					auto					main
+SuFIA-BC: Generating High Quality Demonstration Data for Visuomotor Policy Learning in Surgical Subtasks	ICRA		2504.14857	https://arxiv.org/abs/2504.14857		auto					main
+UASTHN: Uncertainty-Aware Deep Homography Estimation for UAV Satellite-Thermal Geo-Localization	ICRA		2502.01035	https://arxiv.org/abs/2502.01035		auto					main
+An Ultra-Light Seedling Planting Mechanism for Use in Aerial Reforestation	ICRA					auto					main
+Kalman-Filter-Based Pose Estimation of Cable-Driven Parallel Robots Using Cable-Length Measurements with Colored Noise	ICRA					auto					main
+Controlled Robot Language with Frame Semantics (FrameCRL) for Autonomous Context-Aware High-Level Planning	ICRA					auto					main
+Leg Exoskeleton Odometry using a Limited FOV Depth Sensor	ICRA		2502.19237	https://arxiv.org/abs/2502.19237		auto					main
+Online Informative Motion Planning for Active Information Gathering of a Non-Stationary Gaussian Process	ICRA					auto					main
+TrofyBot: A Transformable Rolling and Flying Robot with High Energy Efficiency	ICRA					auto					main
+Enhancing Feature Tracking Reliability for Visual Navigation Using Real-Time Safety Filter	ICRA		2502.01092	https://arxiv.org/abs/2502.01092		auto					main
+Enhancing Adaptivity of Two-Fingered Object Reorientation Using Tactile-Based Online Optimization of Deconstructed Actions	ICRA		2503.11041	https://arxiv.org/abs/2503.11041		auto					main
+LiDARDustX: A LiDAR Dataset for Dusty Unstructured Road Environments	ICRA	https://github.com/vincentweikey/LiDARDustX	2505.21914	https://arxiv.org/abs/2505.21914		auto					main
+Decoupled Training Neural Solver for Dynamic Traveling Salesman Problem	ICRA					auto					main
+A New Variable-Gain Sliding Mode Filter and Its Application to Velocity Filtering	ICRA					auto					main
+Point Cloud Decomposition for Task-Oriented Grasping	ICRA					auto					main
+Top Menu	ICRA					auto					main
+Multi-Agent Inverse Q-Learning from Demonstrations	ICRA		2503.04679	https://arxiv.org/abs/2503.04679		auto					main
+LeAP: Consistent multi-domain 3D labeling using Foundation Models	ICRA		2502.03901	https://arxiv.org/abs/2502.03901		auto					main
+Safety-Critical Control with Saliency Detection for Mobile Robots in Dynamic Multi-Obstacle Environments	ICRA					auto					main
+Towards Accurate Semi-Supervised BEV 3D Object Detection with Depth-Aware Refinement and Denoising-Aided Alignment	ICRA					auto					main
+End-to-End Underwater Multi-View Stereo for Dense Scene Reconstruction	ICRA					auto					main
+Advancing Dense Endoscopic Reconstruction with Gaussian Splatting-Driven Surface Normal-Aware Tracking and Mapping	ICRA	http://github.com/lastbasket/Endo-2DTAM	2501.19319	https://arxiv.org/abs/2501.19319		auto					main
+Sim4EndoR: A Reinforcement Learning Centered Simulation Platform for Task Automation of Endovascular Robotics	ICRA		2504.05330	https://arxiv.org/abs/2504.05330		auto					main
+Hyperdimensional Computing-Based Federated Learning in Mobile Robots Through Synthetic Oversampling	ICRA					auto					main
+CAO-RONet: A Robust 4D Radar Odometry with Exploring More Information from Low-Quality Points	ICRA		2503.01438	https://arxiv.org/abs/2503.01438		auto					main
+Plug-and-Play Multi-Domain Fusion Adaptation for Cross-Subject EEG-Based Motor Imagery Classification	ICRA					auto					main
+Design, Contact Modeling, and Collision-Inclusive Planning of a Dual-Stiffness Aerial RoboT (DART)	ICRA		2504.18780	https://arxiv.org/abs/2504.18780		auto					main
+Intraoperative 3D Shape Estimation of Magnetic Soft Guidewire	ICRA					auto					main
+Design of a Novel Pneumatic Soft Gripper for Robust Adaptive Grasping	ICRA					auto					main
+SAS-Prompt: Large Language Models as Numerical Optimizers for Robot Self-Improvement	ICRA		2504.20459	https://arxiv.org/abs/2504.20459		auto					main
+Na Vid-4D: Unleashing Spatial Intelligence in Egocentric RGB-D Videos for Vision-and-Language Navigation	ICRA					auto					main
+UltraFastCrackSeg: A Lightweight Real-Time Crack Segmentation Model with Task-Oriented Pretraining	ICRA					auto					main
+The Spinning Blimp: Design and Control of a Novel Minimalist Aerial Vehicle Leveraging Rotational Dynamics and Locomotion	ICRA		2503.04112	https://arxiv.org/abs/2503.04112		auto					main
+A Method for Constructing Building Structure Grid Map Based on a Climbing Algorithm	ICRA					auto					main
+Helios: Heterogeneous Lidar Place Recognition via Overlap-Based Learning and Local Spherical Transformer	ICRA	https://github.com/minwoo0611/HeLiOS	2501.18943	https://arxiv.org/abs/2501.18943		auto					main
+$\mathbf{F}^{2} \mathbf{R}^{2}$: Frequency Filtering-Based Rectification Robustness Method for Stereo Matching	ICRA					auto					main
+CDM: Contact Diffusion Model for Multi-Contact Point Localization	ICRA		2502.06109	https://arxiv.org/abs/2502.06109		auto					main
+Digital Model-Driven Genetic Algorithm for Optimizing Layout and Task Allocation in Human-Robot Collaborative Assemblies	ICRA		2503.02774	https://arxiv.org/abs/2503.02774		auto					main
+A Cane-Mounted System for Dynamic Orientation Prediction for Correcting Incorrect Cane-Tapping by Visually Challenged Persons	ICRA					auto					main
+Hybrid State Estimation and Mode Identification of an Amphibious Robot	ICRA					auto					main
+Kinodynamic Model Predictive Control for Energy Efficient Locomotion of Legged Robots with Parallel Elasticity	ICRA		2503.05666	https://arxiv.org/abs/2503.05666		auto					main
+Rapid Autonomous Exploration of Large-Scale Environments for Ground Robots Based on Region Partitioning	ICRA					auto					main
+Occ-LLM: Enhancing Autonomous Driving with Occupancy-Based Large Language Models	ICRA		2502.06419	https://arxiv.org/abs/2502.06419		auto					main
+Social Gesture Recognition in spHRI: Leveraging Fabric-Based Tactile Sensing on Humanoid Robots	ICRA		2503.03234	https://arxiv.org/abs/2503.03234		auto					main
+Versatile Distributed Maneuvering With Generalized Formations Using Guiding Vector Fields	ICRA		2505.05840	https://arxiv.org/abs/2505.05840		auto					main
+SE-STDGNN: A Self-Evolving Spatial-Temporal Directed Graph Neural Network for Multi-Vehicle Trajectory Prediction	ICRA					auto					main
+Robust 4D Radar-Aided Inertial Navigation for Aerial Vehicles	ICRA		2502.15452	https://arxiv.org/abs/2502.15452		auto					main
+Systematic Comparison of Projection Methods for Monocular 3D Human Pose Estimation on Fisheye Images	ICRA		2506.19747	https://arxiv.org/abs/2506.19747		auto					main
+Robo-DM: Data Management for Large Robot Datasets	ICRA		2505.15558	https://arxiv.org/abs/2505.15558		auto					main
+Topology-Based Visual Active Room Segmentation	ICRA					auto					main
+Joint 3D Point Cloud Segmentation Using Real-Sim Loop: From Panels to Trees and Branches	ICRA		2503.05630	https://arxiv.org/abs/2503.05630		auto					main
+Semantic-Supervised Spatial-Temporal Fusion for LiDAR-Based 3D Object Detection	ICRA		2503.10579	https://arxiv.org/abs/2503.10579		auto					main
+Diff-Refiner: Enhancing Multi-Agent Trajectory Prediction with a Plug-and-Play Diffusion Refiner	ICRA					auto					main
+Multi-Agent Ergodic Exploration Under Smoke-Based Time-Varying Sensor Visibility Constraints	ICRA		2503.04998	https://arxiv.org/abs/2503.04998		auto					main
+A Modeling and Control Strategy for the Gaze-Guided Teleoperation of Robotic Manipulators via Smart Glasses	ICRA					auto					main
+A Comprehensive LLM-powered Framework for Driving Intelligence Evaluation	ICRA		2503.05164	https://arxiv.org/abs/2503.05164		auto					main
+Data Augmentation for NeRFs in the Low Data Limit	ICRA		2503.02092	https://arxiv.org/abs/2503.02092		auto					main
+Would You Trust Me Now? A Study on Trust Repair Strategies in Human-Robot Collaboration	ICRA					auto					main
+No Plan but Everything Under Control: Robustly Solving Sequential Tasks with Dynamically Composed Gradient Descent	ICRA		2503.01732	https://arxiv.org/abs/2503.01732		auto					main
+Design and Experimental Validation of Woodwork-Inspired Soft Pneumatic Grippers	ICRA					auto					main
+AdaptBot: Combining LLM with Knowledge Graphs and Human Input for Generic-to-Specific Task Decomposition and Knowledge Refinement	ICRA		2502.02067	https://arxiv.org/abs/2502.02067		auto					main
+Towards Survivability in Complex Motion Scenarios: RGB-Event Object Tracking via Historical Trajectory Prompting	ICRA					auto					main
+Dark-DENet: A Lightweight Enhancement Network for Low-Light Object Detection	ICRA					auto					main
+Interaction-Driven Updates: 3D Scene Graph Maintenance During Robot Task Execution	ICRA					auto					main
+FDPP: Fine-Tune Diffusion Policy with Human Preference	ICRA		2501.08259	https://arxiv.org/abs/2501.08259		auto					main
+Curiosity-Driven Imagination: Discovering Plan Operators and Learning Associated Policies for Open-World Adaptation	ICRA		2503.04931	https://arxiv.org/abs/2503.04931		auto					main
+RelAIBotiX: Reliability Assessment for AI-Controlled Robotic Systems	ICRA					auto					main
+Traffic Regulation-aware Path Planning with Regulation Databases and Vision-Language Models	ICRA		2503.09024	https://arxiv.org/abs/2503.09024		auto					main
+Learning IMU Bias with Diffusion Model	ICRA		2505.11763	https://arxiv.org/abs/2505.11763		auto					main
+On the Benefits of Hysteresis in Tendon Driven Continuum Robots	ICRA					auto					main
+Ground-Optimized 4D Radar-Inertial Odometry Via Continuous Velocity Integration Using Gaussian Process	ICRA	https://github.com/wooseongY/Go-RIO	2502.08093	https://arxiv.org/abs/2502.08093		auto					main
+Dynamic Multi-Objective Ergodic Path Planning Using Decomposition Methods	ICRA					auto					main
+Anti-Sensing: Defense Against Unauthorized Radar-Based Human Vital Sign Sensing with Physically Realizable Wearable Oscillators	ICRA		2505.10864	https://arxiv.org/abs/2505.10864		auto					main
+Robust Self-Reconfiguration for Fault-Tolerant Control of Modular Aerial Robot Systems	ICRA	https://github.com/RuiHuangNUS/MARS-Reconfig	2503.09376	https://arxiv.org/abs/2503.09376		auto					main
+Automating Tension Calibration for Tendon-Driven Continuum Robots: A Low-Cost Approach Towards Consistent Teleoperation	ICRA					auto					main
+Towards Autonomous Data Annotation and System-Agnostic Robotic Grasping Benchmarking with 3D-Printed Fixtures	ICRA					auto					main
+Inference Based Multi-Object Reactive Search in a Partially Known Environment With Temporal Logic Specifications	ICRA					auto					main
+S2BEV: Lightweight, Robust, and Precise SLAM-Oriented Segmentation Bird Eye's View Mapping Approach	ICRA					auto					main
+Nezha-Mb: Design and Implementation of a Morphing Hybrid Aerial-Underwater Vehicle	ICRA					auto					main
+RaccoonBot: An Autonomous Wire-Traversing Solar-Tracking Robot for Persistent Environmental Monitoring	ICRA		2501.14151	https://arxiv.org/abs/2501.14151		auto					main
+Real-World Automated Vehicle Longitudinal Stability Analysis: Controller Design and Field Test	ICRA					auto					main
+Model-Based Robotic Cell Aspiration: Tackling the Impact of Air Segment	ICRA					auto					main
+A Comparative Study Between a Virtual Wand and a One-to-One Approach for the Teleoperation of a Nearby Robotic Manipulator	ICRA					auto					main
+Learning-Based Tip Contact Force Estimation for FBG-Embedded Continuum Robots	ICRA					auto					main
+SliceOcc: Indoor 3D Semantic Occupancy Prediction with Vertical Slice Representation	ICRA	https://github.com/NorthSummer/SliceOcc	2501.16684	https://arxiv.org/abs/2501.16684		auto					main
+Robotic Framework for Iterative and Adaptive Profile Grading of Sand	ICRA					auto					main
+A Robust Deep Reinforcement Learning Framework for Image-Based Autonomous Guidewire Navigation	ICRA					auto					main
+Generating Diverse Challenging Terrains for Legged Robots Using Quality-Diversity Algorithm	ICRA		2506.01362	https://arxiv.org/abs/2506.01362		auto					main
+Multi-Agent Path Planning in Complex Environments using Gaussian Belief Propagation with Global Path Finding	ICRA		2502.20369	https://arxiv.org/abs/2502.20369		auto					main
+Geometry-Aware Volumetric Data Stitching Using Local Surface Mapping and Robot Optical Coherence Tomography	ICRA					auto					main
+TS-DETR: Traffic Sign Detection Based on Positive and Negative Sample Augmentation	ICRA					auto					main
+Semi-Autonomous 2.5D Control of Untethered Magnetic Suture Needle	ICRA					auto					main
+Enhancing Robotic Perception with Low-Cost Fast Active Vision Achieving Sub-Millimeter Accurate Marker-Based Pose Estimation	ICRA					auto					main
+Overlapping Free: Anchorless UWB-Assisted Relative Pose Estimation for Multi-Robot Systems	ICRA					auto					main
+Relative Velocity-Based Reward Model for Socially-Aware Navigation with Deep Reinforcement Learning	ICRA					auto					main
+Shape-Programming Robotic Reflectors for Wireless Networks	ICRA					auto					main
+Think on Your Feet: Seamless Transition Between Human-Like Locomotion in Response to Changing Commands	ICRA		2502.18901	https://arxiv.org/abs/2502.18901		auto					main
+Learning-Based Adaptive Navigation for Scalar Field Mapping and Feature Tracking	ICRA					auto					main
+LEVA: A High-Mobility Logistic Vehicle with Legged Suspension	ICRA		2503.10028	https://arxiv.org/abs/2503.10028		auto					main
+SCU-Hand: Soft Conical Universal Robotic Hand for Scooping Granular Media from Containers of Various Sizes	ICRA		2505.04162	https://arxiv.org/abs/2505.04162		auto					main
+Interactive OT Gym: A Reinforcement Learning-Based Interactive Optical Tweezer (OT)-Driven Microrobotics Simulation Platform	ICRA		2505.20751	https://arxiv.org/abs/2505.20751		auto					main
+Learning-Based Dynamic Robot-to-Human Handover	ICRA		2502.12602	https://arxiv.org/abs/2502.12602		auto					main
+Adaptive Concertina Locomotion of a Robotic Snake Through Narrow Uncertain Channels	ICRA					auto					main
+Added Mass and Accuracy of the FF -SLIP Model for Legged Swimming	ICRA					auto					main
+Estimating Commonsense Scene Composition on Belief Scene Graphs	ICRA		2505.02405	https://arxiv.org/abs/2505.02405		auto					main
+Synthesizing Grasps and Regrasps for Complex Manipulation Tasks	ICRA		2501.18075	https://arxiv.org/abs/2501.18075		auto					main
+A Novel Hybrid Hysteresis Modeling Method for Multiloop-Asymmetry Hysteresis Behavior of Nonlinear Compliant Actuators	ICRA					auto					main
+Overlapping Social Navigation Principles: A Framework for Social Robot Navigation	ICRA					auto					main
+Bat-VUFN: Bat-Inspired Visual-and-Ultrasound Fusion Network for Robust Perception in Adverse Conditions	ICRA					auto					main
+High-Precision Object Pose Estimation Using Visual-Tactile Information for Dynamic Interactions in Robotic Grasping	ICRA					auto					main
+A Unified End-to-End Network for Category-Level and Instance-Level Object Pose Estimation from RGB Images	ICRA					auto					main
+Integrating Learning-Based Manipulation and Physics-Based Locomotion for Whole-Body Badminton Robot Control	ICRA		2504.17771	https://arxiv.org/abs/2504.17771		auto					main
+ProDapt: Proprioceptive Adaptation Using Long-Term Memory Diffusion	ICRA	https://github.com/Federico-PizarroBejarano/prodapt	2503.00193	https://arxiv.org/abs/2503.00193		auto					main
+Nonlinear Motion-Guided and Spatio-Temporal Aware Network for Unsupervised Event-Based Optical Flow	ICRA		2505.05089	https://arxiv.org/abs/2505.05089		auto					main
+How About Them Apples: 3D Pose and Cluster Estimation of Apple Fruitlets in a Commercial Orchard	ICRA					auto					main
+Heuristically Guided Compilation for Task Assignment and Path Finding	ICRA					auto					main
+One-Shot Dual-Arm Imitation Learning	ICRA		2503.06831	https://arxiv.org/abs/2503.06831		auto					main
+Cascade IPG Observer for Underwater Robot State Estimation	ICRA		2504.15235	https://arxiv.org/abs/2504.15235		auto					main
+NaviDiffusor: Cost-Guided Diffusion Model for Visual Navigation	ICRA	https://github.com/SYSU-RoboticsLab/NaviD	2504.10003	https://arxiv.org/abs/2504.10003		auto					main
+From Ceilings to Walls: Universal Dynamic Perching of Quadrotors on Surfaces with Variable Orientations	ICRA					auto					main
+Continuous Control of Diverse Skills in Quadruped Robots Without Complete Expert Datasets	ICRA		2503.03476	https://arxiv.org/abs/2503.03476		auto					main
+Speedtuning: Speeding Up Policy Execution with Lightweight Reinforcement Learning	ICRA					auto					main
+PolyTouch: A Robust Multi-Modal Tactile Sensor for Contact-Rich Manipulation Using Tactile-Diffusion Policies	ICRA		2504.19341	https://arxiv.org/abs/2504.19341		auto					main
+Optimal Fault-Tolerant Control for Tugboats Robust Path Following in Nearshore	ICRA					auto					main
+A Coarse-to-Fine Event-based Framework for Camera Pose Relocalization with Spatio-Temporal Retrieval and Refinement Network	ICRA					auto					main
+Sea-U-Whale: A Reconfigurable Marine Robot with Multi-Modal Motion	ICRA					auto					main
+Introducing Collaborative Robots as a First Step Towards Autonomous Reprocessing of Medical Equipment	ICRA					auto					main
+Multi-Agent Path Finding Using Conflict-Based Search and Structural-Semantic Topometric Maps	ICRA		2501.17661	https://arxiv.org/abs/2501.17661		auto					main
+Tri-AutoAug: Single Domain Generalization for Bird's-Eye-View 3D Object Detection Through Pixel-2D-3D Features	ICRA					auto					main
+Fault Management System for the Safety of Perception Systems in Highly Automated Agricultural Machines	ICRA					auto					main
+Manual, Semi or Fully Autonomous Flipper Control? A Framework for Fair Comparison	ICRA		2503.14389	https://arxiv.org/abs/2503.14389		auto					main
+Optimal Trajectory Planning for Cooperative Manipulation with Multiple Quadrotors Using Control Barrier Functions	ICRA		2503.01096	https://arxiv.org/abs/2503.01096		auto					main
+Dual-Conditioned Temporal Diffusion Modeling for Driving Scene Generation	ICRA					auto					main
+Hierarchical Reinforcement Learning for Safe Mapless Navigation with Congestion Estimation	ICRA		2503.12036	https://arxiv.org/abs/2503.12036		auto					main
+Unlock the Power of Unlabeled Data in Language Driving Model	ICRA		2503.10586	https://arxiv.org/abs/2503.10586		auto					main
+This&That: Language-Gesture Controlled Video Generation for Robot Planning	ICRA					auto					main
+Learning to Double Guess: An Active Perception Approach for Estimating the Center of Mass of Arbitrary Objects	ICRA		2502.02663	https://arxiv.org/abs/2502.02663		auto					main
+Anomalies-by-Synthesis: Anomaly Detection using Generative Diffusion Models for Off-Road Navigation	ICRA		2505.22805	https://arxiv.org/abs/2505.22805		auto					main
+Suture Thread Modeling Using Control Barrier Functions for Autonomous Surgery	ICRA		2502.09813	https://arxiv.org/abs/2502.09813		auto					main
+A Synergistic Framework for Learning Shape Estimation and Shape-Aware Whole-Body Control Policy for Continuum Robots	ICRA		2501.03859	https://arxiv.org/abs/2501.03859		auto					main
+Safety-Critical Traffic Simulation with Adversarial Transfer of Driving Intentions	ICRA		2503.05180	https://arxiv.org/abs/2503.05180		auto					main
+Simultaneous Collision Detection and Force Estimation for Dynamic Quadrupedal Locomotion	ICRA		2504.17201	https://arxiv.org/abs/2504.17201		auto					main
+Robotic Dry-Stacking of Clocháin with Irregular Stones	ICRA					auto					main
+4DRadDet: Cluster-Queried Enhanced 3D Object Detection with 4D Radar	ICRA					auto					main
+Generating Causal Explanations of Vehicular Agent Behavioural Interactions with Learnt Reward Profiles	ICRA		2503.14557	https://arxiv.org/abs/2503.14557		auto					main
+Development of Multi-Joint Biohybrid Soft Robot by Using Skeletal Muscle Tissue	ICRA					auto					main
+Uncertainty-Aware Deep Reinforcement Learning with Calibrated Quantile Regression and Evidential Learning	ICRA					auto					main
+In-Plane Manipulation of Soft Micro-Fiber with Ultrasonic Transducer Array and Microscope	ICRA					auto					main
+Visual-Linguistic Reasoning for Pedestrian Trajectory Prediction	ICRA					auto					main
+Minimally Invasive Endotracheal Inside-Out Flexible Needle Driving System Towards Microendoscope-Guided Robotic Tracheostomy	ICRA					auto					main
+A Human-in-the-Loop Simulation Framework for Evaluating Control Strategies in Gait Assistive Robots	ICRA		2503.05825	https://arxiv.org/abs/2503.05825		auto					main
+Wearable Soft Sensing Band with Stretchable Sensors for Torque Estimation and Hand Gesture Recognition	ICRA					auto					main
+Reduced-Order Model-Based Gait Generation for Snake Robot Locomotion Using NMPC	ICRA		2503.06402	https://arxiv.org/abs/2503.06402		auto					main
+Self-Deformable Magnetic Miniature Robot for Traction Assistance in Endoscopic Submucosal Dissection	ICRA					auto					main
+Error-Subspace Transform Kalman Filter Based Real-Time Gait Prediction for Rehabilitation Exoskeletons	ICRA					auto					main
+Ms. NAMI: Multimodal Semantic Navigation on Relative Metric Intention Graph	ICRA					auto					main
+Monotone Subsystem Decomposition for Efficient Multi-Objective Robot Design	ICRA		2505.11624	https://arxiv.org/abs/2505.11624		auto					main
+OCCUQ: Exploring Efficient Uncertainty Quantification for 3D Occupancy Prediction	ICRA	https://github.com/ika-rwth-aachen/OCCUQ	2503.10605	https://arxiv.org/abs/2503.10605		auto					main
+Discrete Contrastive Learning for Diffusion Policies in Autonomous Driving	ICRA		2503.05229	https://arxiv.org/abs/2503.05229		auto					main
+Image-Guided Surgical Planning for Percutaneous Nephrolithotomy Using CTRs: A Phantom-Based Study	ICRA					auto					main
+A Simple Dynamics Model for Cable Driven Continuum Robots with Actuator Coupling	ICRA					auto					main
+Neuraloc: Visual Localization in Neural Implicit Map With Dual Complementary Features	ICRA		2503.06117	https://arxiv.org/abs/2503.06117		auto					main
+Hide-in-Motion: Embedding Steganographic Copyright Information into 4D Gaussian Splatting Assets	ICRA					auto					main
+mmDEAR: mmWave Point Cloud Density Enhancement for Accurate Human Body Reconstruction	ICRA		2503.02375	https://arxiv.org/abs/2503.02375		auto					main
+Resolution Optimal Motion Planning for Medical Needle Steering from Airway Walls in the Lung	ICRA					auto					main
+Implicit Physics-aware Policy for Dynamic Manipulation of Rigid Objects via Soft Body Tools	ICRA		2502.05696	https://arxiv.org/abs/2502.05696		auto					main
+Multi-Nonholonomic Robot Object Transportation with Obstacle Crossing Using a Deformable Sheet	ICRA					auto					main
+Manipulability Transfer and Tracking Control: Bridging Domain Adaptation with Predictive Feasibility	ICRA					auto					main
+Affordance-Based Explanations of Robot Navigation	ICRA					auto					main
+PRIDEV: A Plug-and-Play Refinement for Improved Depth Estimation in Videos	ICRA					auto					main
+Polyp-Gen: Realistic and Diverse Polyp Image Generation for Endoscopic Dataset Expansion	ICRA	https://github.com/CUHK-AIM-Group/Polyp-Gen	2501.16679	https://arxiv.org/abs/2501.16679		auto					main
+Towards Open-Ended Robotic Exploration Using Vision-Inspired Similarity and Foundation Models	ICRA					auto					main
+Improving Vision-Language-Action Model with Online Reinforcement Learning	ICRA		2501.16664	https://arxiv.org/abs/2501.16664		auto					main
+Direction Informed Trees (DIT*): Optimal Path Planning via Direction Filter and Direction Cost Heuristic	ICRA		2508.19168	https://arxiv.org/abs/2508.19168		auto					main

@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+venv/
+
+# Large data files (tracked via curated TSVs instead)
+data/papers/*.json
+
+# Results (generated, not source)
+data/results/*.json
+
+# Logs
+*.log
