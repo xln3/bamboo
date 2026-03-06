@@ -1,0 +1,97 @@
+# PANDA System Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                          PANDA Agent                                │
+│                                                                     │
+│  ┌───────────────────────────────────────────────────────────────┐  │
+│  │                      Input Layer                              │  │
+│  │   Paper PDF ──→ Paper Parser ──→ Structured Paper Info        │  │
+│  │   Code URL  ──→ Repo Analyzer ──→ Dependency Graph            │  │
+│  │                  └──→ Environment Builder ──→ Setup Plan       │  │
+│  └───────────────────────────────────────────────────────────────┘  │
+│                              │                                      │
+│                              ▼                                      │
+│  ┌───────────────────────────────────────────────────────────────┐  │
+│  │                   Context Manager                             │  │
+│  │  ┌─────────────┐ ┌──────────────┐ ┌────────────────────────┐ │  │
+│  │  │ Tier 1      │ │ Tier 2       │ │ Tier 3                 │ │  │
+│  │  │ Foundation  │ │ Operational  │ │ Contextual Notify      │ │  │
+│  │  │ (identity,  │ │ (phase rules,│ │ (recency-biased,       │ │  │
+│  │  │  safety)    │ │  tool docs)  │ │  env state, warnings)  │ │  │
+│  │  └─────────────┘ └──────────────┘ └────────────────────────┘ │  │
+│  └───────────────────────────────────────────────────────────────┘  │
+│                              │                                      │
+│                              ▼                                      │
+│  ┌───────────────────────────────────────────────────────────────┐  │
+│  │                    Core Agent Loop                            │  │
+│  │                                                               │  │
+│  │  ┌──────────┐    ┌─────────────┐    ┌──────────────────────┐ │  │
+│  │  │ Executor │───→│  LLM Query  │───→│   Tool Executor      │ │  │
+│  │  │ Context  │    │ (Anthropic/ │    │  42 tools, dynamic   │ │  │
+│  │  │          │    │  OpenAI)    │    │  ToolProfile select  │ │  │
+│  │  │          │    │             │    │  ToolCorrector fix   │ │  │
+│  │  │          │◄───│  Thinking   │◄───│                      │ │  │
+│  │  │          │    │  Budget     │    │  TodoEnforcer        │ │  │
+│  │  └────┬─────┘    └─────────────┘    └──────────┬───────────┘ │  │
+│  │       │                                         │             │  │
+│  │       │  no tool calls (executor thinks done)   │ tool calls  │  │
+│  │       ▼                                         ▼             │  │
+│  │  ┌──────────┐                          ┌────────────────┐     │  │
+│  │  │Evaluator │  PASS ──→ return result  │ Execute tools  │     │  │
+│  │  │(separate │  FAIL ──→ inject feedback│ collect evidence│     │  │
+│  │  │ context) │          loop back ↑     │ recurse ↑      │     │  │
+│  │  └──────────┘                          └────────────────┘     │  │
+│  │                                                               │  │
+│  │  Context Compactor: L1 thinking trim → L2 truncate →          │  │
+│  │                     L3 summarize → L4 drop old turns          │  │
+│  └───────────────────────────────────────────────────────────────┘  │
+│                              │                                      │
+│                              ▼                                      │
+│  ┌───────────────────────────────────────────────────────────────┐  │
+│  │                   Execution Backend                           │  │
+│  │  ┌─────────┐    ┌─────────────┐    ┌────────────────┐        │  │
+│  │  │  Local   │    │     SSH     │    │    Docker      │        │  │
+│  │  │ Backend  │    │   Backend   │    │   Backend      │        │  │
+│  │  │          │    │ ControlMstr │    │  (planned)     │        │  │
+│  │  │          │    │ + tmux      │    │                │        │  │
+│  │  └─────────┘    └─────────────┘    └────────────────┘        │  │
+│  └───────────────────────────────────────────────────────────────┘  │
+│                              │                                      │
+│                              ▼                                      │
+│  ┌───────────────────────────────────────────────────────────────┐  │
+│  │                  Scientific Evaluation                        │  │
+│  │                                                               │  │
+│  │  pass^4 Progressive Levels:                                   │  │
+│  │  ┌────────┐   ┌────────┐   ┌────────────┐   ┌─────────────┐ │  │
+│  │  │L1 Build│──→│L2 Run  │──→│L3 Reproduce│──→│L4 Cross-HW  │ │  │
+│  │  │env setup│   │no crash│   │results match│   │consistency  │ │  │
+│  │  │deps ok  │   │output  │   │±5% tolerance│   │across GPUs  │ │  │
+│  │  └────────┘   └────────┘   └────────────┘   └─────────────┘ │  │
+│  │                                                               │  │
+│  │  On failure:                                                  │  │
+│  │  ┌──────────────────┐   ┌──────────────────────────────────┐ │  │
+│  │  │  Barrier Model   │   │   Failure Attribution            │ │  │
+│  │  │  L1 Environment  │   │   - primary barrier identified   │ │  │
+│  │  │  L2 Build/Deps   │──→│   - auto_fixable assessment     │ │  │
+│  │  │  L3 Framework    │   │   - likely_paper_issue flag      │ │  │
+│  │  │  L4 Hardware     │   │   - Diff-Act differential debug  │ │  │
+│  │  │  L5 Microarch    │   └──────────────────────────────────┘ │  │
+│  │  └──────────────────┘                                        │  │
+│  └───────────────────────────────────────────────────────────────┘  │
+│                              │                                      │
+│  ┌───────────────────────────────────────────────────────────────┐  │
+│  │                   Notification                                │  │
+│  │       Feishu (webhook + app-bot)  │  Email                    │  │
+│  │       NotifyHuman / AskHuman tool │  Progress reports         │  │
+│  └───────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+## Key Design Decisions
+
+1. **Executor + Evaluator**: Separate contexts prevent "grading own homework"
+2. **Dynamic ToolProfile**: 42 → 8-28 tools loaded per phase (minimal/coding/research/reproduction)
+3. **Progressive Thinking Budget**: Planning 16k → Execution 4k → Verification 12k tokens
+4. **4-Level Context Compaction**: Keeps conversation within context window
+5. **Five-Barrier Failure Model**: Structured diagnosis of reproduction failures
