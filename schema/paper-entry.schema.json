@@ -34,10 +34,18 @@
       "enum": ["main", "workshop", "findings", "demo", "datasets-benchmarks"],
       "default": "main"
     },
+    "abstract": {
+      "type": "string",
+      "description": "Paper abstract text"
+    },
     "paper_url": {
       "type": "string",
       "format": "uri",
-      "description": "URL to paper PDF"
+      "description": "URL to paper landing page"
+    },
+    "pdf_url": {
+      "type": "string",
+      "description": "Direct URL to paper PDF"
     },
     "code_url": {
       "type": "string",
@@ -152,43 +160,25 @@
         "tier": {
           "type": "integer",
           "enum": [1, 2, 3, 4],
-          "description": "Difficulty tier"
+          "description": "Difficulty tier (1=Easy, 2=Medium, 3=Hard, 4=Expert)"
         },
         "composite_score": {
           "type": "number",
           "minimum": 1.0,
           "maximum": 5.0,
-          "description": "Weighted composite difficulty score"
+          "description": "Weighted composite difficulty score (1.0-5.0)"
         },
-        "framework_complexity": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 5
-        },
-        "dependency_count_score": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 5
-        },
-        "dataset_requirements": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 5
-        },
-        "hardware_requirements": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 5
-        },
-        "code_quality": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 5
-        },
-        "reproduction_time": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 5
+        "dimensions": {
+          "type": "object",
+          "description": "Per-dimension scores (0.0-1.0 scale)",
+          "properties": {
+            "framework_complexity": { "type": "number", "minimum": 0, "maximum": 1 },
+            "dependency_count": { "type": "number", "minimum": 0, "maximum": 1 },
+            "dataset_requirements": { "type": "number", "minimum": 0, "maximum": 1 },
+            "hardware_requirements": { "type": "number", "minimum": 0, "maximum": 1 },
+            "code_quality": { "type": "number", "minimum": 0, "maximum": 1 },
+            "reproduction_time": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
         }
       }
     },

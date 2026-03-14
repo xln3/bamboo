@@ -28,8 +28,11 @@ log = logging.getLogger("pdf_extractor")
 # ---------------------------------------------------------------------------
 
 def extract_text_mineru(pdf_path: str, *, method: str = "auto",
-                        timeout: int = 300) -> str:
+                        timeout: int = 120) -> str:
     """Extract text from a PDF using MinerU's pipeline backend.
+
+    Note: MinerU on CPU can be very slow (minutes per paper). Consider
+    using extract_text_fast() for batch processing without GPU.
 
     Args:
         pdf_path: Path to the PDF file.
@@ -116,6 +119,23 @@ def _fallback_pdftotext(pdf_path: str) -> str:
             return result.stdout
     except Exception as e:
         log.warning(f"pdftotext fallback also failed: {e}")
+    return ""
+
+
+def extract_text_fast(pdf_path: str) -> str:
+    """Fast text extraction using pdftotext (no ML model overhead).
+
+    Use this for batch processing when MinerU/GPU is unavailable.
+    """
+    try:
+        result = subprocess.run(
+            ["pdftotext", "-layout", str(pdf_path), "-"],
+            capture_output=True, text=True, timeout=60,
+        )
+        if result.returncode == 0 and len(result.stdout) > 100:
+            return result.stdout
+    except Exception as e:
+        log.warning(f"pdftotext failed: {e}")
     return ""
 
 
