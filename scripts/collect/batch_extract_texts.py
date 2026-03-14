@@ -39,46 +39,25 @@ def download_and_extract(paper_id: str, pdf_url: str, output_path: str) -> bool:
     if os.path.exists(output_path) and os.path.getsize(output_path) > 200:
         return True  # Already cached
 
-    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=True) as tmp:
-        # Download with retries
-        success = False
-        # Use aria2c for multi-connection download (bypasses slow single-connection)
-        for attempt in range(2):
-            try:
-                result = subprocess.run(
-                    ["aria2c", "-x", "8", "-s", "8", "--no-proxy", "*",
-                     "--max-tries", "2", "--timeout", "120",
-                     "--file-allocation=none", "--console-log-level=error",
-                     "-d", os.path.dirname(tmp.name),
-                     "-o", os.path.basename(tmp.name),
-                     pdf_url],
-                    capture_output=True, text=True,
-                    timeout=180,
-                )
-                if result.returncode == 0 and os.path.getsize(tmp.name) > 1000:
-                    success = True
-                    break
-            except (subprocess.TimeoutExpired, FileNotFoundError):
-                pass
-            # Fallback to curl
-            result = subprocess.run(
-                ["curl", "-sL", "--noproxy", "*", "-o", tmp.name,
-                 "--max-time", "180",
-                 "-H", "User-Agent: Mozilla/5.0",
-                 pdf_url],
-                capture_output=True, text=True,
-                timeout=200,
-            )
-            if result.returncode == 0 and os.path.getsize(tmp.name) > 1000:
-                success = True
-                break
-            time.sleep(2)
-        if not success:
+    pdf_tmp = f"/tmp/bamboo_dl_{paper_id}.pdf"
+    try:
+        # Download with curl (use system proxy if set — often faster via CDN)
+        result = subprocess.run(
+            ["curl", "-sL", "-o", pdf_tmp,
+             "--max-time", "120", "--retry", "2", "--retry-delay", "3",
+             "-H", "User-Agent: Mozilla/5.0 (compatible; BAMBOO/1.0)",
+             pdf_url],
+            capture_output=True, text=True,
+            timeout=180,
+        )
+        if result.returncode != 0 or not os.path.exists(pdf_tmp):
+            return False
+        if os.path.getsize(pdf_tmp) < 1000:
             return False
 
         # Extract text
         result = subprocess.run(
-            ["pdftotext", "-layout", tmp.name, output_path],
+            ["pdftotext", "-layout", pdf_tmp, output_path],
             capture_output=True, text=True, timeout=60,
         )
         if result.returncode != 0:
@@ -91,7 +70,12 @@ def download_and_extract(paper_id: str, pdf_url: str, output_path: str) -> bool:
                 pass
             return False
 
-    return True
+        return True
+    finally:
+        try:
+            os.remove(pdf_tmp)
+        except OSError:
+            pass
 
 
 def main():
