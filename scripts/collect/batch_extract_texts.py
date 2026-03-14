@@ -42,19 +42,37 @@ def download_and_extract(paper_id: str, pdf_url: str, output_path: str) -> bool:
     with tempfile.NamedTemporaryFile(suffix=".pdf", delete=True) as tmp:
         # Download with retries
         success = False
+        # Use aria2c for multi-connection download (bypasses slow single-connection)
         for attempt in range(2):
+            try:
+                result = subprocess.run(
+                    ["aria2c", "-x", "8", "-s", "8", "--no-proxy", "*",
+                     "--max-tries", "2", "--timeout", "120",
+                     "--file-allocation=none", "--console-log-level=error",
+                     "-d", os.path.dirname(tmp.name),
+                     "-o", os.path.basename(tmp.name),
+                     pdf_url],
+                    capture_output=True, text=True,
+                    timeout=180,
+                )
+                if result.returncode == 0 and os.path.getsize(tmp.name) > 1000:
+                    success = True
+                    break
+            except (subprocess.TimeoutExpired, FileNotFoundError):
+                pass
+            # Fallback to curl
             result = subprocess.run(
-                ["curl", "-sL", "-o", tmp.name, "--max-time", "600",
-                 "--retry", "1", "--retry-delay", "5",
-                 "-H", "User-Agent: Mozilla/5.0 (compatible; BAMBOO-benchmark/1.0)",
+                ["curl", "-sL", "--noproxy", "*", "-o", tmp.name,
+                 "--max-time", "180",
+                 "-H", "User-Agent: Mozilla/5.0",
                  pdf_url],
                 capture_output=True, text=True,
-                timeout=660,
+                timeout=200,
             )
             if result.returncode == 0 and os.path.getsize(tmp.name) > 1000:
                 success = True
                 break
-            time.sleep(3)
+            time.sleep(2)
         if not success:
             return False
 
