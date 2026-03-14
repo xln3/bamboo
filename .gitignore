@@ -12,3 +12,5 @@ data/results/*.json
 
 # Logs
 *.log
+data/paper_texts/
+data/paper_claims/
