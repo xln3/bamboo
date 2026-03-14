@@ -17,7 +17,7 @@ import subprocess
 import sys
 import tempfile
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed, Future
 from pathlib import Path
 
 log = logging.getLogger("batch_extract")
@@ -40,15 +40,22 @@ def download_and_extract(paper_id: str, pdf_url: str, output_path: str) -> bool:
         return True  # Already cached
 
     with tempfile.NamedTemporaryFile(suffix=".pdf", delete=True) as tmp:
-        # Download
-        result = subprocess.run(
-            ["curl", "-sL", "-o", tmp.name, "--max-time", "60", pdf_url],
-            capture_output=True, text=True,
-        )
-        if result.returncode != 0:
-            return False
-
-        if os.path.getsize(tmp.name) < 1000:
+        # Download with retries
+        success = False
+        for attempt in range(2):
+            result = subprocess.run(
+                ["curl", "-sL", "-o", tmp.name, "--max-time", "600",
+                 "--retry", "1", "--retry-delay", "5",
+                 "-H", "User-Agent: Mozilla/5.0 (compatible; BAMBOO-benchmark/1.0)",
+                 pdf_url],
+                capture_output=True, text=True,
+                timeout=660,
+            )
+            if result.returncode == 0 and os.path.getsize(tmp.name) > 1000:
+                success = True
+                break
+            time.sleep(3)
+        if not success:
             return False
 
         # Extract text
