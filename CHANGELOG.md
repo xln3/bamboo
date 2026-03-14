@@ -1,15 +1,24 @@
 # CHANGELOG
 
-## 2026-03-14
+## 2026-03-14 (Latest)
 
 ### Dataset
 - **Total papers**: 6,148 across 9 venues (ICML 1,758 / ICLR 1,318 / NeurIPS 947 / ICCV 598 / CVPR 437 / ACL 399 / EMNLP 351 / AAAI 285 / ICRA 55)
-- **Domains**: 12 categories; NLP (2,307), Vision (792), Other (640), Generative (573), Multimodal (522), Theory (452), RL (237), Graph (179), Robotics (137), Systems (126), Tabular (106), Audio (77)
+- **Domains**: 12 categories; NLP (2,782), Vision (893), Generative (567), Theory (449), Multimodal (443), RL (220), Other (189), Graph (177), Robotics (155), Systems (110), Tabular (92), Audio (71)
 - **Code coverage**: 100% — all entries have verified `code_url` and pinned `code_commit`
 - **arXiv IDs**: 3,949/6,148 (64%)
-- **Abstracts**: 4,023/6,148 (65%)
-- **Ground truth claims**: 0/6,148 — not yet extracted
-- **Difficulty scores**: 0/6,148 — not yet computed
+- **Abstracts**: 6,148/6,148 (**100%**) — fetched from arXiv API
+- **Difficulty scores**: 6,148/6,148 (**100%**) — text-based heuristic scoring (Tier 2: 6,032 / Tier 3: 116)
+- **Ground truth claims**: 0/6,148 — requires LLM API for extraction (pipeline ready)
+
+### New in this release
+- **MinerU integration**: `pdf_extractor.py` wraps MinerU 2.7.6 for high-quality PDF→markdown extraction with table preservation; includes pdftotext fallback
+- **Abstract completion**: `fetch_arxiv_abstracts.py` batch-fetches abstracts from arXiv API with retry logic; took coverage from 65% → 100%
+- **Difficulty scoring**: `compute_difficulty.py` computes 6-dimension difficulty scores (framework complexity, dependency count, dataset requirements, hardware requirements, code quality, reproduction time) and assigns tiers 1-4; supports both GitHub API-enhanced and text-only modes
+- **Domain re-classification**: With 100% abstracts available, re-ran domain classification — "Other" reduced from 640 → 189 papers (10.4% → 3.1%)
+- **Claim extraction pipeline**: `extract_claims.py` updated to use MinerU for text extraction and supports direct `bamboo_final.json` processing; `extract_claims_heuristic.py` provides regex-based extraction as fallback
+- **Schema update**: `paper-entry.schema.json` updated to match actual difficulty output format (0-1 dimension scores), added `abstract` and `pdf_url` fields
+- **Finalization update**: `finalize_dataset.py` now carries over `ground_truth_claims` and `difficulty` into final dataset, reports data completeness stats
 
 ### Benchmark Framework
 - Evaluation harness (`evaluate.py`, `metrics.py`) complete and tested
@@ -22,12 +31,12 @@
 - All 5 phases implemented: collection → code finding → repo validation → claim extraction → finalization
 - 9 venue adapters: OpenReview (ICLR/ICML/NeurIPS), CVF (CVPR/ICCV), ACL Portal (ACL/EMNLP), AAAI OJS, Semantic Scholar (ICRA)
 - Multi-source code finding: PapersWithCode, Semantic Scholar, HuggingFace, arXiv, PDF extraction
+- MinerU-based PDF text extraction for improved table/formula parsing
 
-### Known Gaps
-- `ground_truth_claims` empty — L3 evaluation falls back to agent self-report
-- `difficulty` null — no tier-based stratification available
-- 35% papers missing abstracts
-- L4 Cross-Hardware deferred
+### Remaining Work
+- `ground_truth_claims` — run `extract_claims.py` with `OPENAI_API_KEY` set (or any OpenAI-compatible API via `--api-base`)
+- Difficulty scoring can be improved with GitHub API data (`--token GITHUB_TOKEN` flag)
+- L4 Cross-Hardware evaluation deferred
 
 ---
 
