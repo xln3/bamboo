@@ -141,10 +141,13 @@ def score_framework_complexity(languages: dict, title: str,
             max_score = max(max_score, score)
 
     # C/C++ or CUDA presence bumps complexity
-    if languages:
-        total_bytes = sum(languages.values()) or 1
-        cpp_bytes = languages.get("C++", 0) + languages.get("C", 0)
-        cuda_bytes = languages.get("Cuda", 0) + languages.get("CUDA", 0)
+    if languages and isinstance(languages, dict):
+        try:
+            total_bytes = sum(int(v) for v in languages.values()) or 1
+            cpp_bytes = int(languages.get("C++", 0)) + int(languages.get("C", 0))
+            cuda_bytes = int(languages.get("Cuda", 0)) + int(languages.get("CUDA", 0))
+        except (ValueError, TypeError):
+            total_bytes, cpp_bytes, cuda_bytes = 1, 0, 0
         if cuda_bytes > 0:
             max_score = max(max_score, 0.7)
         elif cpp_bytes / total_bytes > 0.2:
@@ -327,8 +330,15 @@ def compute_difficulty(paper: dict, repo_info: dict | None,
 # ---------------------------------------------------------------------------
 
 def process_papers(papers: list[dict], token: str = "",
-                   limit: int | None = None) -> int:
+                   limit: int | None = None,
+                   use_api: bool = True) -> int:
     """Compute difficulty for papers missing it.
+
+    Args:
+        papers: List of paper dicts (modified in place).
+        token: GitHub API token for higher rate limits.
+        limit: Max papers to process.
+        use_api: If False, skip GitHub API calls (fast text-only mode).
 
     Returns number of papers scored.
     """
@@ -341,42 +351,41 @@ def process_papers(papers: list[dict], token: str = "",
         to_process = to_process[:limit]
 
     log.info(f"Computing difficulty for {len(to_process)} papers "
-             f"({sum(1 for p in papers if p.get('difficulty'))} already done)")
+             f"({sum(1 for p in papers if p.get('difficulty'))} already done)"
+             f"{'' if use_api else ' (text-only mode, no API)'}")
 
     scored = 0
     api_calls = 0
 
     for idx, (i, paper) in enumerate(to_process):
-        code_url = paper.get("code_url", "")
-        parsed = parse_github_url(code_url)
-
         repo_info = None
         languages = None
 
-        if parsed:
-            owner, repo = parsed
-            repo_info = get_repo_info(owner, repo, token)
-            if repo_info:
-                languages = get_repo_languages(owner, repo, token)
-                api_calls += 2
-            else:
-                api_calls += 1
+        if use_api:
+            code_url = paper.get("code_url", "")
+            parsed = parse_github_url(code_url)
 
-            # Rate limit: GitHub allows 5000/hour with token, 60/hour without
-            if api_calls % 50 == 0:
-                time.sleep(1.0)
-        else:
-            # Non-GitHub repos: score with text-only heuristics
-            pass
+            if parsed:
+                owner, repo = parsed
+                repo_info = get_repo_info(owner, repo, token)
+                if repo_info:
+                    languages = get_repo_languages(owner, repo, token)
+                    api_calls += 2
+                else:
+                    api_calls += 1
+
+                # Rate limit: GitHub allows 5000/hour with token, 60/hour without
+                if api_calls % 50 == 0:
+                    time.sleep(1.0)
 
         difficulty = compute_difficulty(paper, repo_info, languages)
         papers[i]["difficulty"] = difficulty
         scored += 1
 
-        if (idx + 1) % 100 == 0:
+        if (idx + 1) % 500 == 0:
             done_pct = (idx + 1) / len(to_process) * 100
-            log.info(f"  [{idx + 1}/{len(to_process)}] ({done_pct:.0f}%) "
-                     f"api_calls={api_calls}")
+            log.info(f"  [{idx + 1}/{len(to_process)}] ({done_pct:.0f}%)"
+                     + (f" api_calls={api_calls}" if use_api else ""))
 
     return scored
 
@@ -394,6 +403,8 @@ def main():
                         help="Input JSON path")
     parser.add_argument("--output", type=str, default=None,
                         help="Output JSON path (default: overwrite input)")
+    parser.add_argument("--no-api", action="store_true",
+                        help="Skip GitHub API calls, use text-only heuristics")
     args = parser.parse_args()
 
     logging.basicConfig(
@@ -409,7 +420,8 @@ def main():
 
     log.info(f"Loaded {len(papers)} papers from {input_path}")
 
-    scored = process_papers(papers, token=args.token, limit=args.limit)
+    scored = process_papers(papers, token=args.token, limit=args.limit,
+                            use_api=not args.no_api)
 
     # Save
     with open(output_path, "w") as f:
