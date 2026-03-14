@@ -301,7 +301,7 @@ def is_eligible(paper: Dict[str, Any]) -> bool:
 def build_entry(paper: Dict[str, Any], paper_id: str) -> Dict[str, Any]:
     """Build a clean final-schema entry from a raw paper dict."""
     code_url = paper.get("code_url", "")
-    return {
+    entry = {
         "paper_id": paper_id,
         "title": paper.get("title", ""),
         "venue": paper.get("venue", ""),
@@ -319,9 +319,11 @@ def build_entry(paper: Dict[str, Any], paper_id: str) -> Dict[str, Any]:
             paper.get("title", ""),
             paper.get("abstract", ""),
         ),
-        "difficulty": None,
+        "difficulty": paper.get("difficulty"),
+        "ground_truth_claims": paper.get("ground_truth_claims", []),
         "tags": [],
     }
+    return entry
 
 
 def finalize() -> List[Dict[str, Any]]:
@@ -371,6 +373,32 @@ def print_summary(dataset: List[Dict[str, Any]]) -> None:
     print(f"\nCode platform breakdown:")
     for platform, count in sorted(platform_counts.items(), key=lambda x: -x[1]):
         print(f"  {platform:>15s}: {count:>5d}")
+
+    # Data completeness
+    n_abstracts = sum(1 for e in dataset if e.get("abstract"))
+    n_claims = sum(1 for e in dataset if e.get("ground_truth_claims"))
+    n_difficulty = sum(1 for e in dataset if e.get("difficulty"))
+    total_claims = sum(
+        len(e["ground_truth_claims"]) for e in dataset
+        if e.get("ground_truth_claims")
+    )
+    print(f"\nData completeness:")
+    print(f"  Abstracts: {n_abstracts}/{len(dataset)} "
+          f"({100.0 * n_abstracts / max(len(dataset), 1):.1f}%)")
+    print(f"  Ground truth claims: {n_claims}/{len(dataset)} "
+          f"({total_claims} total claims)")
+    print(f"  Difficulty scores: {n_difficulty}/{len(dataset)}")
+
+    # Difficulty tier distribution
+    if n_difficulty > 0:
+        tier_counts: Dict[int, int] = {}
+        for e in dataset:
+            d = e.get("difficulty")
+            if d and "tier" in d:
+                tier_counts[d["tier"]] = tier_counts.get(d["tier"], 0) + 1
+        print(f"\nDifficulty tiers:")
+        for tier in sorted(tier_counts):
+            print(f"  Tier {tier}: {tier_counts[tier]:>5d}")
 
     print(f"\nOutput: {OUTPUT_PATH}")
     print(f"{'='*60}\n")

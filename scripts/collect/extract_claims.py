@@ -2,12 +2,15 @@
 """Extract ground truth claims from paper PDFs using an LLM.
 
 Phase 3 of the BAMBOO dataset construction pipeline.
-For each paper with a validated repo, downloads the PDF, extracts text,
-sends it to an LLM to identify all quantitative claims, and saves
-structured claim data back into the venue JSON.
+For each paper, downloads the PDF, extracts text using MinerU (with
+pdftotext fallback), sends it to an LLM to identify all quantitative
+claims, and saves structured claim data back into bamboo_final.json.
+
+Supports both per-venue JSONs (legacy) and bamboo_final.json (current).
 
 Usage:
-    python extract_claims.py [--venue iclr2025] [--limit 10] [--model gpt-4o-mini] [--api-base URL]
+    python extract_claims.py [--limit 10] [--model gpt-4o-mini] [--api-base URL]
+    python extract_claims.py --venue iclr2025  # legacy per-venue mode
 
 Environment:
     OPENAI_API_KEY  - required for LLM API auth
@@ -136,7 +139,18 @@ def download_pdf(url: str, path: str) -> bool:
 
 
 def extract_text(pdf_path: str) -> str:
-    """Extract text from PDF using pdftotext."""
+    """Extract text from PDF using MinerU (with pdftotext fallback)."""
+    try:
+        from pdf_extractor import extract_text_mineru
+        text = extract_text_mineru(pdf_path)
+        if text and len(text) > 100:
+            return text
+    except ImportError:
+        log.warning("pdf_extractor module not available, using pdftotext")
+    except Exception as e:
+        log.warning(f"MinerU extraction failed: {e}")
+
+    # Fallback to pdftotext
     try:
         result = subprocess.run(
             ["pdftotext", "-layout", pdf_path, "-"],
@@ -442,14 +456,106 @@ def process_venue(venue_id: str, model: str, api_base: str, api_key: str,
              f"Total with claims: {total_with_claims}/{valid_total}")
 
 
+FINAL_JSON = Path(__file__).parent.parent.parent / "data" / "bamboo_final.json"
+
+
+def process_final_json(model: str, api_base: str, api_key: str,
+                       limit: int | None = None, retry_failed: bool = False):
+    """Process bamboo_final.json directly (current mode)."""
+    if not FINAL_JSON.exists():
+        log.error(f"bamboo_final.json not found at {FINAL_JSON}")
+        return
+
+    with open(FINAL_JSON) as f:
+        papers = json.load(f)
+
+    # Select papers to process
+    to_process = []
+    for i, p in enumerate(papers):
+        if p.get("ground_truth_claims"):
+            continue
+        if p.get("_claims_error") and not retry_failed:
+            continue
+        to_process.append((i, p))
+
+    if limit is not None:
+        to_process = to_process[:limit]
+
+    already_done = sum(1 for p in papers if p.get("ground_truth_claims"))
+    log.info(f"Total: {len(papers)} papers, {already_done} already extracted, "
+             f"processing {len(to_process)}")
+
+    if not to_process:
+        return
+
+    # Clear error flags for retry
+    if retry_failed:
+        for i, p in to_process:
+            if "_claims_error" in papers[i]:
+                del papers[i]["_claims_error"]
+
+    success = 0
+    failed = 0
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        for idx, (i, paper) in enumerate(to_process):
+            title = paper.get("title", "Unknown")
+            log.info(f"[{idx + 1}/{len(to_process)}] {title[:70]}")
+
+            try:
+                claims = process_paper(paper, tmpdir, model, api_base, api_key)
+
+                if claims is not None and len(claims) > 0:
+                    papers[i]["ground_truth_claims"] = claims
+                    papers[i]["_claims_extracted_at"] = time.strftime(
+                        "%Y-%m-%dT%H:%M:%S+00:00", time.gmtime()
+                    )
+                    papers[i]["_claims_model"] = model
+                    success += 1
+                elif claims is not None and len(claims) == 0:
+                    log.warning(f"  No claims extracted")
+                    papers[i]["_claims_error"] = "no_claims_found"
+                    failed += 1
+                else:
+                    papers[i]["_claims_error"] = "extraction_failed"
+                    failed += 1
+
+            except Exception as e:
+                log.error(f"  Unexpected error: {e}")
+                papers[i]["_claims_error"] = f"exception: {str(e)[:100]}"
+                failed += 1
+
+            time.sleep(1.0)
+
+            # Save progress every 10 papers
+            if (idx + 1) % 10 == 0:
+                with open(FINAL_JSON, "w") as f:
+                    json.dump(papers, f, indent=2, ensure_ascii=False)
+                log.info(f"  Progress saved. {success} success, {failed} failed "
+                         f"({idx + 1}/{len(to_process)})")
+
+    # Final save
+    with open(FINAL_JSON, "w") as f:
+        json.dump(papers, f, indent=2, ensure_ascii=False)
+
+    total_with_claims = sum(1 for p in papers if p.get("ground_truth_claims"))
+    total_claim_count = sum(
+        len(p["ground_truth_claims"]) for p in papers
+        if p.get("ground_truth_claims")
+    )
+    log.info(f"Done: +{success} extracted, {failed} failed. "
+             f"Total: {total_with_claims}/{len(papers)} "
+             f"({total_claim_count} claims)")
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Extract ground truth claims from paper PDFs using an LLM",
     )
     parser.add_argument("--venue", type=str, default=None,
-                        help="Process only this venue (e.g., iclr2025)")
+                        help="Process only this venue (legacy per-venue mode)")
     parser.add_argument("--limit", type=int, default=None,
-                        help="Max papers to process per venue")
+                        help="Max papers to process")
     parser.add_argument("--model", type=str, default="gpt-4o-mini",
                         help="LLM model name (default: gpt-4o-mini)")
     parser.add_argument("--api-base", type=str, default="https://api.openai.com/v1",
@@ -469,55 +575,25 @@ def main():
         sys.exit(1)
 
     if args.venue:
-        venues = [args.venue]
+        # Legacy per-venue mode
+        process_venue(args.venue, args.model, args.api_base, api_key, args.limit)
     else:
-        venues = [
-            f.stem for f in sorted(DATA_DIR.glob("*.json"))
-            if f.stem not in ("all_papers", "papers_with_code", "papers_validated")
-        ]
-
-    # If --retry-failed, clear _claims_error flags before processing
-    if args.retry_failed:
-        for venue_id in venues:
-            path = DATA_DIR / f"{venue_id}.json"
-            if not path.exists():
-                continue
-            with open(path) as f:
-                papers = json.load(f)
-            cleared = 0
-            for p in papers:
-                if "_claims_error" in p:
-                    del p["_claims_error"]
-                    cleared += 1
-            if cleared:
-                with open(path, "w") as f:
-                    json.dump(papers, f, indent=2, ensure_ascii=False)
-                log.info(f"{venue_id}: cleared {cleared} error flags for retry")
-
-    for venue_id in venues:
-        process_venue(venue_id, args.model, args.api_base, api_key, args.limit)
+        # Current mode: process bamboo_final.json directly
+        process_final_json(args.model, args.api_base, api_key,
+                           limit=args.limit, retry_failed=args.retry_failed)
 
     # Summary
-    print("\n" + "=" * 60)
-    total_valid = 0
-    total_claims = 0
-    for f in sorted(DATA_DIR.glob("*.json")):
-        if f.stem in ("all_papers", "papers_with_code", "papers_validated"):
-            continue
-        papers = json.loads(f.read_text())
-        n_valid = sum(1 for p in papers if p.get("_repo_valid"))
-        n_claims = sum(1 for p in papers if p.get("ground_truth_claims"))
+    if FINAL_JSON.exists():
+        papers = json.loads(FINAL_JSON.read_text())
+        n_with_claims = sum(1 for p in papers if p.get("ground_truth_claims"))
         n_total_claims = sum(
             len(p["ground_truth_claims"]) for p in papers
             if p.get("ground_truth_claims")
         )
-        if n_valid:
-            print(f"  {f.stem:>12}: {n_claims:>4} extracted / {n_valid:>4} valid "
-                  f"({n_total_claims} claims)")
-        total_valid += n_valid
-        total_claims += n_claims
-    print(f"  {'TOTAL':>12}: {total_claims:>4} extracted / {total_valid:>4} valid")
-    print("=" * 60)
+        print(f"\n{'='*60}")
+        print(f"  Papers with claims: {n_with_claims}/{len(papers)}")
+        print(f"  Total claims: {n_total_claims}")
+        print(f"{'='*60}")
 
 
 if __name__ == "__main__":
