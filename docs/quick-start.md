@@ -50,7 +50,8 @@ Each entry in `data/bamboo_final.json`:
   "venue_track": "main",
   "code_platform": "github",
   "domain": "robotics",
-  "difficulty": null,
+  "difficulty": {"tier": 2, "composite_score": 2.79, "dimensions": {"framework_complexity": 0.7, ...}},
+  "ground_truth_claims": [],
   "tags": []
 }
 ```
@@ -61,8 +62,10 @@ Each entry in `data/bamboo_final.json`:
 |-----------|-----------|
 | **Total papers** | 6,148 |
 | **Venues** | ICML (1,758), ICLR (1,318), NeurIPS (947), ICCV (598), CVPR (437), ACL (399), EMNLP (351), AAAI (285), ICRA (55) |
-| **Domains** | NLP (2,307), Vision (792), Other (640), Generative (573), Multimodal (522), Theory (452), RL (237), Graph (179), Robotics (137), Systems (126), Tabular (106), Audio (77) |
+| **Domains** | NLP (2,782), Vision (893), Generative (567), Theory (449), Multimodal (443), RL (220), Other (189), Graph (177), Robotics (155), Systems (110), Tabular (92), Audio (71) |
 | **Code coverage** | 100% — all papers have verified `code_url` + pinned `code_commit` |
+| **Abstracts** | 100% — fetched from arXiv API |
+| **Difficulty scores** | 100% — 6-dimension heuristic scoring (Tier 2: 6,032 / Tier 3: 116) |
 
 ### 2.3 What Your Agent Receives
 
