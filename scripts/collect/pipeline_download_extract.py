@@ -84,11 +84,11 @@ def download_one(paper_id: str, pdf_url: str) -> bool:
 
     try:
         result = subprocess.run(
-            ["curl", "-sL", "-o", str(pdf_path),
-             "--max-time", "180", "--retry", "2", "--retry-delay", "5",
+            ["curl", "-sL", "--noproxy", "*", "-o", str(pdf_path),
+             "--max-time", "60", "--retry", "2", "--retry-delay", "3",
              "-H", "User-Agent: Mozilla/5.0 (compatible; BAMBOO/1.0)",
              pdf_url],
-            capture_output=True, text=True, timeout=240,
+            capture_output=True, text=True, timeout=120,
         )
         if result.returncode == 0 and is_valid_pdf(pdf_path):
             return True
