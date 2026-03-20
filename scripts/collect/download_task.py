@@ -3,13 +3,14 @@
 
 Usage:
     python scripts/collect/download_task.py                          # download all
-    python scripts/collect/download_task.py --workers 4              # fewer workers
+    python scripts/collect/download_task.py --workers 16             # adjust concurrency
     python scripts/collect/download_task.py --venue ICML             # only ICML
     python scripts/collect/download_task.py --task data/task_neurips_iclr_icml.json
 """
 import argparse
 import json
 import subprocess
+import time
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -37,7 +38,7 @@ def is_valid(path):
     return True
 
 
-def download_one(task, pdf_dir):
+def download_one(task, pdf_dir, max_retries=3):
     pid = task["paper_id"]
     url = task["url"]
     method = task["method"]
@@ -57,19 +58,24 @@ def download_one(task, pdf_dir):
             "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         ]
 
-    try:
-        subprocess.run(
-            ["curl", "-sL", "-o", str(pp), "--max-time", "180"] + headers + [url],
-            capture_output=True,
-            timeout=240,
-        )
-        if is_valid(pp):
-            return True
-        pp.unlink(missing_ok=True)
-        return False
-    except Exception:
-        pp.unlink(missing_ok=True)
-        return False
+    for attempt in range(max_retries):
+        try:
+            subprocess.run(
+                ["curl", "-sL", "-o", str(pp), "--max-time", "180",
+                 "--retry", "2", "--retry-delay", "3"] + headers + [url],
+                capture_output=True,
+                timeout=240,
+            )
+            if is_valid(pp):
+                return True
+            pp.unlink(missing_ok=True)
+        except Exception:
+            pp.unlink(missing_ok=True)
+
+        if attempt < max_retries - 1:
+            time.sleep(2 * (attempt + 1))  # backoff: 2s, 4s
+
+    return False
 
 
 def main():
@@ -90,25 +96,56 @@ def main():
     pdf_dir = Path("data/paper_pdfs")
     pdf_dir.mkdir(parents=True, exist_ok=True)
 
-    # Skip already done
-    tasks = [t for t in tasks if not is_valid(pdf_dir / f"{t['paper_id']}.pdf")]
-    print(f"Downloading {len(tasks)} PDFs with {args.workers} workers...")
+    # Split by source — arxiv can handle more concurrency than openreview
+    arxiv_tasks = [t for t in tasks if t["method"] == "arxiv_direct"
+                   and not is_valid(pdf_dir / f"{t['paper_id']}.pdf")]
+    or_tasks = [t for t in tasks if t["method"] == "openreview_browser_headers"
+                and not is_valid(pdf_dir / f"{t['paper_id']}.pdf")]
 
+    print(f"arxiv: {len(arxiv_tasks)} papers (workers={args.workers})")
+    print(f"openreview: {len(or_tasks)} papers (workers={min(args.workers, 4)})")
+
+    # Phase 1: arxiv (full concurrency)
     ok = 0
     fail = 0
-    with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        futs = {ex.submit(download_one, t, pdf_dir): t["paper_id"] for t in tasks}
-        for i, f in enumerate(as_completed(futs)):
-            if f.result():
-                ok += 1
-            else:
-                fail += 1
-            if (i + 1) % 100 == 0:
-                total = sum(1 for p in pdf_dir.glob("*.pdf") if is_valid(p))
-                print(f"  [{i+1}/{len(tasks)}] +{ok} ok, {fail} fail | total PDFs: {total}")
+    if arxiv_tasks:
+        print(f"\n--- Downloading {len(arxiv_tasks)} arxiv PDFs ---")
+        with ThreadPoolExecutor(max_workers=args.workers) as ex:
+            futs = {ex.submit(download_one, t, pdf_dir): t["paper_id"]
+                    for t in arxiv_tasks}
+            for i, f in enumerate(as_completed(futs)):
+                if f.result():
+                    ok += 1
+                else:
+                    fail += 1
+                if (i + 1) % 100 == 0:
+                    total = sum(1 for p in pdf_dir.glob("*.pdf") if is_valid(p))
+                    print(f"  arxiv [{i+1}/{len(arxiv_tasks)}] "
+                          f"+{ok} ok, {fail} fail | total PDFs: {total}")
+        print(f"  arxiv done: +{ok} ok, {fail} fail")
+
+    # Phase 2: openreview (limited concurrency to avoid 403/rate limit)
+    ok2 = 0
+    fail2 = 0
+    or_workers = min(args.workers, 4)  # max 4 for openreview
+    if or_tasks:
+        print(f"\n--- Downloading {len(or_tasks)} openreview PDFs (max {or_workers} workers) ---")
+        with ThreadPoolExecutor(max_workers=or_workers) as ex:
+            futs = {ex.submit(download_one, t, pdf_dir): t["paper_id"]
+                    for t in or_tasks}
+            for i, f in enumerate(as_completed(futs)):
+                if f.result():
+                    ok2 += 1
+                else:
+                    fail2 += 1
+                if (i + 1) % 100 == 0:
+                    total = sum(1 for p in pdf_dir.glob("*.pdf") if is_valid(p))
+                    print(f"  openreview [{i+1}/{len(or_tasks)}] "
+                          f"+{ok2} ok, {fail2} fail | total PDFs: {total}")
+        print(f"  openreview done: +{ok2} ok, {fail2} fail")
 
     total = sum(1 for p in pdf_dir.glob("*.pdf") if is_valid(p))
-    print(f"Done: +{ok} ok, {fail} fail | Total valid PDFs: {total}")
+    print(f"\n=== TOTAL: +{ok+ok2} ok, {fail+fail2} fail | Valid PDFs: {total} ===")
 
 
 if __name__ == "__main__":
