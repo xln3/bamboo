@@ -14,3 +14,6 @@ data/results/*.json
 *.log
 data/paper_texts/
 data/paper_claims/
+data/paper_pdfs/
+data/paper_markdowns/
+data/pipeline_status.txt
