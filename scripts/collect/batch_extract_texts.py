@@ -44,11 +44,11 @@ def download_and_extract(paper_id: str, pdf_url: str, output_path: str) -> bool:
         # Download with curl (use system proxy if set — often faster via CDN)
         result = subprocess.run(
             ["curl", "-sL", "-o", pdf_tmp,
-             "--max-time", "120", "--retry", "2", "--retry-delay", "3",
+             "--max-time", "300", "--retry", "2", "--retry-delay", "3",
              "-H", "User-Agent: Mozilla/5.0 (compatible; BAMBOO/1.0)",
              pdf_url],
             capture_output=True, text=True,
-            timeout=180,
+            timeout=360,
         )
         if result.returncode != 0 or not os.path.exists(pdf_tmp):
             return False
