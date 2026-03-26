@@ -168,7 +168,7 @@ def paper_issue_rate(results: list[dict]) -> float:
         return 0.0
     attributed = sum(
         1 for r in failed
-        if r.get("failure_attribution", {}).get("likely_paper_issue", False)
+        if (r.get("failure_attribution") or {}).get("likely_paper_issue", False)
     )
     return attributed / len(failed)
 

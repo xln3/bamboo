@@ -17,6 +17,7 @@ import argparse
 import json
 import os
 import sys
+from pathlib import Path
 from typing import Any
 
 from . import metrics
@@ -209,12 +210,15 @@ def evaluate_claim(
 def evaluate_paper(
     result: dict,
     gt_entry: dict,
+    judge_claims: list[dict] | None = None,
 ) -> dict:
     """Evaluate a single agent result against ground truth.
 
     Args:
         result: agent output per result.schema.json
         gt_entry: paper entry from bamboo_final.json (with ground_truth_claims)
+        judge_claims: Independent judge's extracted claim results (preferred over
+                      agent self-report). Each entry has claim_id + actual_value.
 
     Returns:
         Enriched result dict with evaluation metrics attached.
@@ -224,12 +228,16 @@ def evaluate_paper(
     gt_scoring = [c for c in gt_claims if c.get("category", "main") != "baseline"]
     gt_all = gt_claims  # keep all for recall computation
 
-    # Get agent's claim list -- may be in different locations
-    agent_claims = (
-        result.get("pass4", {}).get("l3_reproduce", {}).get("claim_results")
-        or result.get("claims_extracted")
-        or []
-    )
+    # Use judge results if available (independent extraction),
+    # otherwise fall back to agent self-report (less trustworthy)
+    if judge_claims is not None:
+        agent_claims = judge_claims
+    else:
+        agent_claims = (
+            result.get("pass4", {}).get("l3_reproduce", {}).get("claim_results")
+            or result.get("claims_extracted")
+            or []
+        )
 
     # Match claims
     matches = match_claims(agent_claims, gt_scoring)
@@ -518,6 +526,21 @@ def main() -> None:
     print(f"Loaded {len(agent_results)} result(s) from {args.results_dir}",
           file=sys.stderr)
 
+    # Load judge results if available
+    judge_dir = Path(args.results_dir) / "judge"
+    judge_index: dict[str, list[dict]] = {}
+    if judge_dir.is_dir():
+        for jf in judge_dir.glob("bamboo-*.json"):
+            try:
+                jdata = json.loads(jf.read_text())
+                jpid = jdata.get("paper_id", jf.stem)
+                judge_index[jpid] = jdata.get("claim_results", [])
+            except (json.JSONDecodeError, OSError):
+                pass
+        if judge_index:
+            print(f"Loaded {len(judge_index)} judge result(s) from {judge_dir}",
+                  file=sys.stderr)
+
     # Evaluate each paper
     evaluated = []
     missing_gt = 0
@@ -529,7 +552,10 @@ def main() -> None:
                   "using agent self-report only", file=sys.stderr)
             missing_gt += 1
             gt_entry = {"paper_id": pid}
-        evaluated.append(evaluate_paper(result, gt_entry))
+
+        # Use judge results (independent) over agent self-report
+        jclaims = judge_index.get(pid)
+        evaluated.append(evaluate_paper(result, gt_entry, judge_claims=jclaims))
 
     if missing_gt:
         print(f"WARNING: {missing_gt}/{len(agent_results)} papers had no "
