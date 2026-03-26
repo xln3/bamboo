@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
-"""Sync PDFs and MDs with HuggingFace dataset repo.
+"""Sync data directories with HuggingFace dataset repo (xln3/bamboo-papers).
 
-Supports multi-server coordination:
-- Pull: download PDFs/MDs that exist on HF but not locally
-- Push: upload local PDFs/MDs that don't exist on HF yet
-- Status: show what's done, what's local-only, what's remote-only
+Syncs: paper_pdfs, paper_markdowns, paper_claims_v2.
 
 Usage:
-    python hf_sync.py status              # show sync status
-    python hf_sync.py pull                # download missing PDFs/MDs from HF
-    python hf_sync.py pull --mds-only     # only download MDs
-    python hf_sync.py push                # upload new local PDFs/MDs to HF
-    python hf_sync.py push --mds-only     # only upload MDs
+    python hf_sync.py status                          # show sync status
+    python hf_sync.py pull                             # download all missing files
+    python hf_sync.py pull --only paper_claims_v2      # only download claims
+    python hf_sync.py push                             # upload all local files
+    python hf_sync.py push --only paper_claims_v2      # only upload claims
 """
 from __future__ import annotations
 
@@ -25,11 +22,16 @@ from huggingface_hub import HfApi, hf_hub_download, list_repo_tree
 
 REPO_ID = "xln3/bamboo-papers"
 BASE = Path(__file__).parent.parent.parent
-PDF_DIR = BASE / "data" / "paper_pdfs"
-MD_DIR = BASE / "data" / "paper_markdowns"
 
-PDF_DIR.mkdir(exist_ok=True)
-MD_DIR.mkdir(exist_ok=True)
+# All syncable data directories: (remote_prefix, local_dir, suffix, min_size)
+SYNC_DIRS = [
+    ("paper_pdfs",      BASE / "data" / "paper_pdfs",      ".pdf",  10000),
+    ("paper_markdowns", BASE / "data" / "paper_markdowns",  ".md",   500),
+    ("paper_claims_v2", BASE / "data" / "paper_claims_v2",  ".json", 10),
+]
+
+for _, d, _, _ in SYNC_DIRS:
+    d.mkdir(exist_ok=True)
 
 
 def get_remote_files(api: HfApi, prefix: str) -> set[str]:
@@ -53,55 +55,48 @@ def get_local_files(directory: Path, suffix: str) -> set[str]:
 def cmd_status(args):
     api = HfApi()
 
-    remote_pdfs = get_remote_files(api, "paper_pdfs")
-    remote_mds = get_remote_files(api, "paper_markdowns")
-    local_pdfs = get_local_files(PDF_DIR, ".pdf")
-    local_mds = get_local_files(MD_DIR, ".md")
+    print(f"{'Directory':>20} {'Remote':>8} {'Local':>8} {'Both':>8} {'Remote-only':>12} {'Local-only':>12}")
+    print("-" * 72)
 
-    both_pdfs = remote_pdfs & local_pdfs
-    remote_only_pdfs = remote_pdfs - local_pdfs
-    local_only_pdfs = local_pdfs - remote_pdfs
+    total_pull = 0
+    total_push = 0
+    for prefix, local_dir, suffix, min_size in SYNC_DIRS:
+        remote = get_remote_files(api, prefix)
+        local = get_local_files(local_dir, suffix)
+        both = remote & local
+        remote_only = remote - local
+        local_only = local - remote
+        total_pull += len(remote_only)
+        total_push += len(local_only)
+        print(f"{prefix:>20} {len(remote):>8} {len(local):>8} {len(both):>8} {len(remote_only):>12} {len(local_only):>12}")
 
-    both_mds = remote_mds & local_mds
-    remote_only_mds = remote_mds - local_mds
-    local_only_mds = local_mds - remote_mds
-
-    print(f"{'':>20} {'Remote':>8} {'Local':>8} {'Both':>8} {'Remote-only':>12} {'Local-only':>12}")
-    print("-" * 70)
-    print(f"{'PDFs':>20} {len(remote_pdfs):>8} {len(local_pdfs):>8} {len(both_pdfs):>8} {len(remote_only_pdfs):>12} {len(local_only_pdfs):>12}")
-    print(f"{'MDs':>20} {len(remote_mds):>8} {len(local_mds):>8} {len(both_mds):>8} {len(remote_only_mds):>12} {len(local_only_mds):>12}")
     print()
-    if remote_only_pdfs:
-        print(f"Run 'python hf_sync.py pull' to download {len(remote_only_pdfs)} PDFs + {len(remote_only_mds)} MDs")
-    if local_only_pdfs or local_only_mds:
-        print(f"Run 'python hf_sync.py push' to upload {len(local_only_pdfs)} PDFs + {len(local_only_mds)} MDs")
+    if total_pull:
+        print(f"Run 'python hf_sync.py pull' to download {total_pull} files")
+    if total_push:
+        print(f"Run 'python hf_sync.py push' to upload {total_push} files")
 
 
 def cmd_pull(args):
     api = HfApi()
+    only = set(args.only.split(",")) if args.only else None
 
-    if not args.mds_only:
-        remote_pdfs = get_remote_files(api, "paper_pdfs")
-        local_pdfs = get_local_files(PDF_DIR, ".pdf")
-        to_download = remote_pdfs - local_pdfs
-        print(f"Pulling {len(to_download)} PDFs...")
+    for prefix, local_dir, suffix, _ in SYNC_DIRS:
+        if only and prefix not in only:
+            continue
+        remote = get_remote_files(api, prefix)
+        local = get_local_files(local_dir, suffix)
+        to_download = remote - local
+        if not to_download:
+            print(f"{prefix}: up to date")
+            continue
+        print(f"Pulling {len(to_download)} {prefix}...")
         for i, name in enumerate(sorted(to_download)):
-            hf_hub_download(REPO_ID, f"paper_pdfs/{name}", repo_type="dataset",
+            hf_hub_download(REPO_ID, f"{prefix}/{name}", repo_type="dataset",
                             local_dir=str(BASE / "data"), local_dir_use_symlinks=False)
             if (i + 1) % 100 == 0:
                 print(f"  [{i+1}/{len(to_download)}]", flush=True)
-        print(f"Done: {len(to_download)} PDFs pulled")
-
-    remote_mds = get_remote_files(api, "paper_markdowns")
-    local_mds = get_local_files(MD_DIR, ".md")
-    to_download = remote_mds - local_mds
-    print(f"Pulling {len(to_download)} MDs...")
-    for i, name in enumerate(sorted(to_download)):
-        hf_hub_download(REPO_ID, f"paper_markdowns/{name}", repo_type="dataset",
-                        local_dir=str(BASE / "data"), local_dir_use_symlinks=False)
-        if (i + 1) % 100 == 0:
-            print(f"  [{i+1}/{len(to_download)}]", flush=True)
-    print(f"Done: {len(to_download)} MDs pulled")
+        print(f"Done: {len(to_download)} {prefix} pulled")
 
 
 def cmd_push(args):
@@ -110,31 +105,29 @@ def cmd_push(args):
     import tempfile
 
     api = HfApi()
+    only = set(args.only.split(",")) if args.only else None
 
-    # Create a staging dir with the right repo structure (symlinks)
     staging = Path(tempfile.mkdtemp(prefix="hf_push_"))
     try:
-        if not args.mds_only:
-            dst = staging / "paper_pdfs"
+        total = 0
+        for prefix, local_dir, suffix, min_size in SYNC_DIRS:
+            if only and prefix not in only:
+                continue
+            dst = staging / prefix
             dst.mkdir()
             count = 0
-            for f in PDF_DIR.glob("*.pdf"):
-                if f.stat().st_size > 10000:
+            for f in local_dir.glob(f"*{suffix}"):
+                if f.stat().st_size > min_size and not f.name.startswith("_tmp_"):
                     (dst / f.name).symlink_to(f.resolve())
                     count += 1
-            print(f"Staging {count} PDFs...")
+            print(f"Staging {count} {prefix}...")
+            total += count
 
-        if not args.pdfs_only:
-            dst = staging / "paper_markdowns"
-            dst.mkdir()
-            count = 0
-            for f in MD_DIR.glob("*.md"):
-                if f.stat().st_size > 500 and not f.name.startswith("_tmp_"):
-                    (dst / f.name).symlink_to(f.resolve())
-                    count += 1
-            print(f"Staging {count} MDs...")
+        if total == 0:
+            print("Nothing to push")
+            return
 
-        print("Uploading (resumable)...")
+        print(f"Uploading {total} files (resumable)...")
         api.upload_large_folder(
             folder_path=str(staging),
             repo_id=REPO_ID,
@@ -154,11 +147,10 @@ def main():
     sub.add_parser("status")
 
     pull_p = sub.add_parser("pull")
-    pull_p.add_argument("--mds-only", action="store_true")
+    pull_p.add_argument("--only", help="Comma-separated prefixes to sync (e.g., paper_claims_v2,paper_markdowns)")
 
     push_p = sub.add_parser("push")
-    push_p.add_argument("--mds-only", action="store_true")
-    push_p.add_argument("--pdfs-only", action="store_true")
+    push_p.add_argument("--only", help="Comma-separated prefixes to sync (e.g., paper_claims_v2)")
 
     args = parser.parse_args()
     if args.cmd == "status":
