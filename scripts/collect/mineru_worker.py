@@ -83,7 +83,7 @@ def process_one(pid, device):
             ["mineru", "-p", str(pdf_path), "-o", str(tmp_out),
              "-b", "hybrid-auto-engine"],
             capture_output=True, text=True,
-            timeout=900 if device == "cpu" else 600,
+            timeout=1800 if device == "cpu" else 1200,
             env=env,
         )
         md_files = list(tmp_out.rglob("*.md"))

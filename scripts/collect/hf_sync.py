@@ -105,42 +105,46 @@ def cmd_pull(args):
 
 
 def cmd_push(args):
+    """Push using upload_large_folder for resilient, resumable uploads."""
+    import shutil
+    import tempfile
+
     api = HfApi()
 
-    if not args.mds_only:
-        remote_pdfs = get_remote_files(api, "paper_pdfs")
-        local_pdfs = get_local_files(PDF_DIR, ".pdf")
-        to_upload = local_pdfs - remote_pdfs
-        if to_upload:
-            print(f"Pushing {len(to_upload)} new PDFs...")
-            # Upload in batches to avoid timeout
-            api.upload_folder(
-                folder_path=str(PDF_DIR),
-                path_in_repo="paper_pdfs",
-                repo_id=REPO_ID,
-                repo_type="dataset",
-                ignore_patterns=[".*"],
-            )
-            print(f"Done: PDFs pushed")
-        else:
-            print("No new PDFs to push")
+    # Create a staging dir with the right repo structure (symlinks)
+    staging = Path(tempfile.mkdtemp(prefix="hf_push_"))
+    try:
+        if not args.mds_only:
+            dst = staging / "paper_pdfs"
+            dst.mkdir()
+            count = 0
+            for f in PDF_DIR.glob("*.pdf"):
+                if f.stat().st_size > 10000:
+                    (dst / f.name).symlink_to(f.resolve())
+                    count += 1
+            print(f"Staging {count} PDFs...")
 
-    if not args.pdfs_only:
-        remote_mds = get_remote_files(api, "paper_markdowns")
-        local_mds = get_local_files(MD_DIR, ".md")
-        to_upload = local_mds - remote_mds
-        if to_upload:
-            print(f"Pushing {len(to_upload)} new MDs...")
-            api.upload_folder(
-                folder_path=str(MD_DIR),
-                path_in_repo="paper_markdowns",
-                repo_id=REPO_ID,
-                repo_type="dataset",
-                ignore_patterns=["_tmp_*", ".*", "*_images"],
-            )
-            print(f"Done: MDs pushed")
-        else:
-            print("No new MDs to push")
+        if not args.pdfs_only:
+            dst = staging / "paper_markdowns"
+            dst.mkdir()
+            count = 0
+            for f in MD_DIR.glob("*.md"):
+                if f.stat().st_size > 500 and not f.name.startswith("_tmp_"):
+                    (dst / f.name).symlink_to(f.resolve())
+                    count += 1
+            print(f"Staging {count} MDs...")
+
+        print("Uploading (resumable)...")
+        api.upload_large_folder(
+            folder_path=str(staging),
+            repo_id=REPO_ID,
+            repo_type="dataset",
+            ignore_patterns=[".*", "_tmp_*", "*_images*", ".cache*"],
+            num_workers=8,
+        )
+        print("Done: push complete")
+    finally:
+        shutil.rmtree(staging, ignore_errors=True)
 
 
 def main():
