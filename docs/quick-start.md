@@ -10,8 +10,15 @@ BAMBOO (Benchmark for Autonomous ML Build-and-Output Observation) is a benchmark
 
 ```
 bamboo/
+├── configs/
+│   ├── models.example.json        # Model config template (safe to commit)
+│   └── models.json                # Live model configs with API keys (git-ignored)
 ├── data/
-│   ├── bamboo_final.json          # Main dataset: 6,148 paper entries
+│   ├── bamboo_final.json          # Full dataset: 6,148 paper entries
+│   ├── bamboo_curated.json        # Curated subset: 3,994 papers with markdowns + claims
+│   ├── paper_pdfs/                # Downloaded PDFs (5,618)
+│   ├── paper_markdowns/           # MinerU PDF→Markdown (3,994)
+│   ├── paper_claims_v2/           # Extracted claims per paper (709)
 │   ├── papers/                    # Raw per-venue paper metadata (JSON)
 │   ├── curated/                   # Human-curated TSVs (for manual review)
 │   └── results/                   # Agent evaluation results go here
@@ -19,12 +26,21 @@ bamboo/
 │   ├── paper-entry.schema.json    # Paper entry schema
 │   └── result.schema.json         # Agent output schema (must conform)
 ├── scripts/
-│   ├── evaluate/                  # Evaluation harness
-│   │   ├── evaluate.py            # Main evaluator
-│   │   └── metrics.py             # Aggregate metrics
-│   └── collect/                   # Dataset construction pipeline (already run)
+│   ├── collect/                   # Data collection pipeline
+│   │   ├── hf_sync.py             # HuggingFace dataset sync (push/pull)
+│   │   ├── extract_claims.py      # LLM-based claim extraction
+│   │   └── ...                    # Collection & validation scripts
+│   ├── run/                       # Agent runner framework
+│   │   ├── runner.py              # Comparative agent runner
+│   │   ├── prompt_builder.py      # Prompt construction
+│   │   └── agents/                # Adapters: panda, claude-code, opencode, codex
+│   └── evaluate/                  # Evaluation harness
+│       ├── evaluate.py            # Main evaluator
+│       ├── judge.py               # Independent claim judge (anti-leak)
+│       └── metrics.py             # Aggregate metrics
 └── docs/
     ├── design.md                  # Full benchmark specification
+    ├── usage.md                   # Comprehensive usage guide (Chinese)
     └── evaluation-protocol.md     # Detailed evaluation protocol
 ```
 
@@ -258,7 +274,7 @@ Each file must contain a valid result JSON with `paper_id` matching the filename
 ```bash
 cd bamboo/
 
-python -m scripts.evaluate.evaluate \
+python3 -m scripts.evaluate.evaluate \
     --results-dir data/results/my-agent/ \
     --dataset data/bamboo_final.json \
     --output data/results/my-agent/report.json
@@ -270,7 +286,7 @@ Stratify by venue, tier, or domain:
 
 ```bash
 # Stratify by venue only
-python -m scripts.evaluate.evaluate \
+python3 -m scripts.evaluate.evaluate \
     --results-dir data/results/my-agent/ \
     --dataset data/bamboo_final.json \
     --output data/results/my-agent/report.json \
@@ -361,7 +377,7 @@ python -m scripts.evaluate.evaluate \
 │  3. Collect all per-paper JSONs into a results directory    │
 ├─────────────────────────────────────────────────────────────┤
 │  4. Run the evaluation harness                              │
-│     python -m scripts.evaluate.evaluate ...                 │
+│     python3 -m scripts.evaluate.evaluate ...                 │
 ├─────────────────────────────────────────────────────────────┤
 │  5. Review the report: pass^4 rates, claim metrics,         │
 │     barrier distribution, cost efficiency                   │
@@ -394,7 +410,7 @@ cat > data/results/test-agent/bamboo-00001.json << 'EOF'
 EOF
 
 # Run evaluation
-python -m scripts.evaluate.evaluate \
+python3 -m scripts.evaluate.evaluate \
     --results-dir data/results/test-agent/ \
     --dataset data/bamboo_final.json \
     --output data/results/test-agent/report.json
@@ -430,7 +446,7 @@ with open("data/bamboo_subset.json", "w") as f:
 Then run evaluation against the subset:
 
 ```bash
-python -m scripts.evaluate.evaluate \
+python3 -m scripts.evaluate.evaluate \
     --results-dir data/results/my-agent/ \
     --dataset data/bamboo_subset.json \
     --output data/results/my-agent/report_subset.json
@@ -440,20 +456,21 @@ python -m scripts.evaluate.evaluate \
 
 ### What's Ready
 - **Dataset**: 6,148 papers with verified code URLs and pinned commits
+- **Curated subset**: 3,994 papers with MinerU markdowns and ground truth claims
+- **Paper PDFs**: 5,618 downloaded
+- **Paper markdowns**: 3,994 MinerU PDF→Markdown extractions
+- **Ground truth claims**: 2,658 papers with inline claims; 709 paper_claims_v2 files
+- **Abstracts**: 100% coverage
+- **Difficulty scores**: 100% computed (Tier 2: 6,032 / Tier 3: 116)
 - **Evaluation harness**: Fully functional claim matching, metrics, stratified reporting
+- **Independent Judge**: Anti-leak claim evaluation (judge cannot see expected values)
+- **Agent runner**: Comparative runner with 4 agent adapters (panda, claude-code, opencode, codex)
+- **HuggingFace sync**: PDFs, markdowns, and claims synced to [xln3/bamboo-papers](https://huggingface.co/datasets/xln3/bamboo-papers)
 - **Schema definitions**: Both paper entry and result schemas are complete
-- **Documentation**: Design spec, evaluation protocol, related work survey
 
-### Not Yet Populated
-- **`difficulty`**: Tier/composite difficulty scores are not yet computed (all null)
-- **`ground_truth_claims`**: LLM-based claim extraction has not been run at scale; the evaluator can still function using agent self-reported claims, but claim-level evaluation (L3 Reproduce) will fall back to agent self-report when no ground truth is available
-- **`abstract`**: 2,125 papers missing abstracts (35%)
+### Not Yet Complete
+- **Ground truth claims**: 709/3,994 curated papers have claims_v2 extracted — extraction ongoing
 - **L4 Cross-Hardware**: Deferred to future iterations
-
-### Implications for Current Use
-Without ground truth claims, the evaluator relies on agent self-report for L3 status. To get full evaluation power:
-1. Run `scripts/collect/extract_claims.py` to extract claims (requires OpenAI-compatible LLM API)
-2. Or manually curate claims for a small subset of papers
 
 ## 11. Leaderboard Ranking
 

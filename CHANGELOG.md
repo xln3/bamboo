@@ -1,6 +1,28 @@
 # CHANGELOG
 
-## 2026-03-14 (Latest)
+## 2026-03-27 (Latest)
+
+### Data Progress
+- **Curated subset**: 3,994 papers in `bamboo_curated.json` (up from 12-paper pilot)
+- **Paper PDFs**: 5,618 downloaded
+- **Paper markdowns**: 3,994 MinerU PDF→Markdown extractions
+- **Ground truth claims**: 2,658 papers with inline claims; 709 paper_claims_v2 files
+- **HuggingFace sync**: PDFs, markdowns, and claims synced to [xln3/bamboo-papers](https://huggingface.co/datasets/xln3/bamboo-papers) via `hf_sync.py`
+
+### Agent Runner Framework
+- **Comparative runner** (`scripts/run/runner.py`): run multiple agents × models × papers with one command
+- **4 agent adapters**: PANDA, Claude Code, OpenCode, Codex
+- **Prompt builder** (`scripts/run/prompt_builder.py`): constructs anti-leak prompts with paper context
+- **Independent Judge** (`scripts/evaluate/judge.py`): extracts actual values from agent output without seeing expected values (anti-cheat)
+- **Model configs** (`configs/models.json`): plug-and-play model switching via `--model` flag
+
+### Documentation
+- **Usage guide** (`docs/usage.md`): comprehensive Chinese guide covering setup, models, running, evaluation, custom agents
+- Updated README, quick-start, and CHANGELOG to reflect current data and runner state
+
+---
+
+## 2026-03-14
 
 ### Dataset
 - **Total papers**: 6,148 across 9 venues (ICML 1,758 / ICLR 1,318 / NeurIPS 947 / ICCV 598 / CVPR 437 / ACL 399 / EMNLP 351 / AAAI 285 / ICRA 55)
