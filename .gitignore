@@ -11,12 +11,16 @@ configs/models.json
 data/papers/*.json
 
 # Results (generated, not source)
-data/results/*.json
+data/results/
 
 # Logs
 *.log
+
+# Large data dirs (synced via HuggingFace, not git)
 data/paper_texts/
 data/paper_claims/
+data/paper_claims_v2/
 data/paper_pdfs/
 data/paper_markdowns/
 data/pipeline_status.txt
+data/task_remaining.json

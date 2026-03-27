@@ -210,7 +210,22 @@ data/results/panda-glm-5/           # 结果目录（agent名-模型名）
     └── bamboo-06080.json
 ```
 
-### 3.5 运行过程输出
+### 3.5 实时查看日志
+
+Agent 运行期间，stdout/stderr 会**实时写入日志文件**，启动后控制台会打印日志路径：
+
+```bash
+# 实时跟踪当前 agent 的输出
+tail -f data/results/panda-glm-5/logs/bamboo-06089/stdout.txt
+
+# 查看 stderr（报错信息）
+tail -f data/results/panda-glm-5/logs/bamboo-06089/stderr.txt
+
+# 查看整体运行进度
+tail -f data/results/run_glm5_12papers.log
+```
+
+### 3.6 运行过程输出
 
 ```
 Model: glm-5 → glm-5 @ https://open.bigmodel.cn/api/coding/paas/v4
