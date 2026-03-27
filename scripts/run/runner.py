@@ -5,23 +5,24 @@ Runs multiple agents on the same set of papers and collects results
 for evaluation by scripts/evaluate/evaluate.py.
 
 Usage:
-    # Run default 3 agents (panda, claude-code, opencode) on pilot papers
-    python -m scripts.run.runner
+    # Run panda with glm-5 on specific papers
+    python -m scripts.run.runner --agents panda --model glm-5 --papers bamboo-06079
 
-    # Run specific agents (codex needs direct OpenAI key, not proxy)
-    python -m scripts.run.runner --agents panda claude-code
+    # Run panda with claude-sonnet on pilot papers
+    python -m scripts.run.runner --agents panda --model claude-sonnet
 
-    # Run on specific papers
-    python -m scripts.run.runner --papers bamboo-00003 bamboo-00110
+    # Compare two models on the same papers
+    python -m scripts.run.runner --agents panda --model glm-5 --papers bamboo-06079
+    python -m scripts.run.runner --agents panda --model claude-sonnet --papers bamboo-06079
+
+    # Use a different dataset file
+    python -m scripts.run.runner --agents panda --model glm-5 --dataset data/bamboo_curated.json
 
     # Run on N random papers with claims
-    python -m scripts.run.runner --sample 10
-
-    # Set timeout (seconds)
-    python -m scripts.run.runner --timeout 1800
+    python -m scripts.run.runner --agents panda --model glm-5 --sample 10
 
     # Dry run (print prompts only)
-    python -m scripts.run.runner --dry-run
+    python -m scripts.run.runner --agents panda --model glm-5 --dry-run
 """
 
 from __future__ import annotations
@@ -43,7 +44,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 BAMBOO_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = BAMBOO_ROOT / "data"
 RESULTS_DIR = DATA_DIR / "results"
-DATASET_PATH = DATA_DIR / "bamboo_final.json"
+CONFIGS_DIR = BAMBOO_ROOT / "configs"
+DEFAULT_DATASET = DATA_DIR / "bamboo_final.json"
+MODELS_CONFIG = CONFIGS_DIR / "models.json"
 WORKDIR_BASE = Path("/tmp/bamboo")
 
 # Agents
@@ -74,14 +77,60 @@ DEFAULT_PILOTS = [
 CLAIMS_V2_DIR = DATA_DIR / "paper_claims_v2"
 
 
-def load_dataset() -> dict[str, dict]:
+def load_model_config(profile_name: str) -> dict[str, Any]:
+    """Load a model profile from configs/models.json.
+
+    Returns a dict with keys: provider, model, base_url, api_key,
+    plus _profile_name for agent_id generation.
+    """
+    if not MODELS_CONFIG.exists():
+        print(f"ERROR: Model config not found: {MODELS_CONFIG}")
+        print(f"  Copy configs/models.example.json → configs/models.json and fill in API keys.")
+        sys.exit(1)
+
+    with open(MODELS_CONFIG) as f:
+        all_profiles = json.load(f)
+
+    if profile_name not in all_profiles:
+        available = ", ".join(sorted(all_profiles.keys()))
+        print(f"ERROR: Model profile '{profile_name}' not found.")
+        print(f"  Available profiles: {available}")
+        print(f"  Edit {MODELS_CONFIG} to add it.")
+        sys.exit(1)
+
+    config = all_profiles[profile_name]
+    config["_profile_name"] = profile_name
+    return config
+
+
+def list_model_profiles() -> None:
+    """Print available model profiles."""
+    if not MODELS_CONFIG.exists():
+        print(f"No model config found at {MODELS_CONFIG}")
+        print(f"Copy configs/models.example.json → configs/models.json and fill in API keys.")
+        return
+
+    with open(MODELS_CONFIG) as f:
+        profiles = json.load(f)
+
+    print(f"Available model profiles ({MODELS_CONFIG}):\n")
+    for name, cfg in sorted(profiles.items()):
+        model = cfg.get("model", "?")
+        url = cfg.get("base_url", "?")
+        has_key = "yes" if cfg.get("api_key") else "NO"
+        print(f"  {name:<20s}  model={model:<30s}  url={url}")
+        print(f"  {'':20s}  api_key={'***' if has_key == 'yes' else 'MISSING'}")
+
+
+def load_dataset(dataset_path: Path | None = None) -> dict[str, dict]:
     """Load the BAMBOO dataset keyed by paper_id.
 
     Overlays paper_claims_v2/ individual claim files onto the dataset,
     preferring v2 claims (more complete, with dataset field) over the
-    older claims in bamboo_final.json.
+    older claims in the base dataset.
     """
-    with open(DATASET_PATH) as f:
+    path = dataset_path or DEFAULT_DATASET
+    with open(path) as f:
         data = json.load(f)
     if isinstance(data, list):
         index = {p["paper_id"]: p for p in data}
@@ -114,14 +163,10 @@ def make_fallback_result(
     run: RunResult,
 ) -> dict[str, Any]:
     """Create a minimal result JSON when the agent didn't write one."""
-    # Try to determine what level was reached from stderr/stdout
-    combined = (run.stdout or "") + "\n" + (run.stderr or "")
-
     detail = ""
     if run.error:
         detail = run.error
     elif run.exit_code != 0:
-        # Last 500 chars of stderr
         detail = (run.stderr or "")[-500:]
     else:
         detail = "Agent completed but did not write result JSON"
@@ -180,7 +225,7 @@ def run_single(
     print(f"\n{'='*60}")
     print(f"[RUN] Agent={agent_id}  Paper={paper_id}  Timeout={timeout_s}s")
     print(f"  Title: {paper['title'][:70]}")
-    print(f"  Repo:  {paper['code_url']}")
+    print(f"  Repo:  {paper.get('code_url') or 'N/A'}")
     print(f"  Claims: {len(paper.get('ground_truth_claims', []))}")
     sys.stdout.flush()
 
@@ -188,15 +233,19 @@ def run_single(
     if result_path.exists():
         result_path.unlink()
 
+    # Stream logs to files in real time (allows `tail -f` during run)
+    log_dir = RESULTS_DIR / agent_id / "logs" / paper_id
+    print(f"  Logs:  tail -f {log_dir}/stdout.txt")
+    sys.stdout.flush()
+
     start = time.time()
-    run_result = agent.run(prompt, workdir, result_path, timeout_s)
+    run_result = agent.run(prompt, workdir, result_path, timeout_s, log_dir=log_dir)
     elapsed = time.time() - start
 
     run_result.paper_id = paper_id
 
     if run_result.result_json:
         result = run_result.result_json
-        # Ensure paper_id and agent_id are set
         result.setdefault("paper_id", paper_id)
         result.setdefault("agent_id", agent_id)
         result.setdefault("timestamp", datetime.now(timezone.utc).isoformat())
@@ -217,27 +266,44 @@ def run_single(
     if run_result.error:
         print(f"  ERROR: {run_result.error[:200]}")
 
-    # Save agent stdout/stderr as transcript
-    log_dir = RESULTS_DIR / agent_id / "logs" / paper_id
-    log_dir.mkdir(parents=True, exist_ok=True)
-    if run_result.stdout:
-        (log_dir / "stdout.txt").write_text(run_result.stdout[-200000:])
-    if run_result.stderr:
-        (log_dir / "stderr.txt").write_text(run_result.stderr[-100000:])
-
     return result
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="BAMBOO comparative agent runner")
-    # Default to 3 agents (codex requires direct OpenAI key, not proxy)
-    default_agents = ["panda", "claude-code", "opencode"]
+    parser = argparse.ArgumentParser(
+        description="BAMBOO comparative agent runner",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""\
+Examples:
+  # Run panda + glm-5 on 12 papers from curated dataset
+  python -m scripts.run.runner --agents panda --model glm-5 \\
+    --dataset data/bamboo_curated.json \\
+    --papers bamboo-06079 bamboo-06080 bamboo-06081
+
+  # List available model profiles
+  python -m scripts.run.runner --list-models
+
+  # Dry run to preview prompts
+  python -m scripts.run.runner --agents panda --model glm-5 --dry-run
+""",
+    )
     parser.add_argument(
         "--agents",
         nargs="+",
         choices=list(AGENT_REGISTRY.keys()),
-        default=default_agents,
-        help="Which agents to run (default: panda, claude-code, opencode)",
+        default=["panda"],
+        help="Which agents to run (default: panda)",
+    )
+    parser.add_argument(
+        "--model",
+        type=str,
+        required=False,
+        help="Model profile name from configs/models.json (e.g. glm-5, claude-sonnet)",
+    )
+    parser.add_argument(
+        "--list-models",
+        action="store_true",
+        help="List available model profiles and exit",
     )
     parser.add_argument(
         "--papers",
@@ -261,12 +327,6 @@ def main() -> None:
         help="Print prompts without running agents",
     )
     parser.add_argument(
-        "--sequential",
-        action="store_true",
-        default=True,
-        help="Run agents sequentially (default, safer)",
-    )
-    parser.add_argument(
         "--skip-judge",
         action="store_true",
         help="Skip independent judge after agent runs",
@@ -276,10 +336,28 @@ def main() -> None:
         default="opus",
         help="Model for independent judge (default: opus)",
     )
+    parser.add_argument(
+        "--dataset",
+        type=Path,
+        default=DEFAULT_DATASET,
+        help=f"Path to dataset JSON (default: {DEFAULT_DATASET})",
+    )
     args = parser.parse_args()
 
-    dataset = load_dataset()
-    print(f"Loaded {len(dataset)} papers from {DATASET_PATH}")
+    # List models mode
+    if args.list_models:
+        list_model_profiles()
+        return
+
+    # Load model config
+    if not args.model:
+        parser.error("--model is required. Use --list-models to see available profiles.")
+
+    model_config = load_model_config(args.model)
+    print(f"Model: {args.model} → {model_config['model']} @ {model_config['base_url']}")
+
+    dataset = load_dataset(args.dataset)
+    print(f"Loaded {len(dataset)} papers from {args.dataset}")
 
     # Select papers
     if args.papers:
@@ -302,8 +380,8 @@ def main() -> None:
 
     print(f"Selected {len(papers)} paper(s): {[p['paper_id'] for p in papers]}")
 
-    # Instantiate agents
-    agents = [AGENT_REGISTRY[name]() for name in args.agents]
+    # Instantiate agents with model config
+    agents = [AGENT_REGISTRY[name](model_config=model_config) for name in args.agents]
     print(f"Agents: {[a.agent_id for a in agents]}")
     print(f"Timeout: {args.timeout}s per paper")
 
@@ -367,13 +445,14 @@ def main() -> None:
     # Print summary matrix
     if not args.dry_run:
         print(f"\n{'='*60}")
-        print(f"  BAMBOO Comparative Run Summary")
+        print(f"  BAMBOO Run Summary")
+        print(f"  Model: {args.model}")
         print(f"  Total time: {total_elapsed:.0f}s")
         print(f"{'='*60}\n")
 
         # Build matrix
         agent_ids = [a.agent_id for a in agents]
-        header = f"{'Paper':<16s}" + "".join(f"{aid:>14s}" for aid in agent_ids)
+        header = f"{'Paper':<16s}" + "".join(f"{aid:>20s}" for aid in agent_ids)
         print(header)
         print("-" * len(header))
 
@@ -387,7 +466,7 @@ def main() -> None:
             row = f"{pid:<16s}"
             for aid in agent_ids:
                 level = by_paper[pid].get(aid, "?")
-                row += f"{'L' + str(level):>14s}"
+                row += f"{'L' + str(level):>20s}"
             print(row)
 
         print()
@@ -395,7 +474,7 @@ def main() -> None:
         for aid in agent_ids:
             print(f"  python -m scripts.evaluate.evaluate "
                   f"--results-dir data/results/{aid}/ "
-                  f"--dataset data/bamboo_final.json "
+                  f"--dataset {args.dataset} "
                   f"--output data/results/{aid}/report.json")
 
 

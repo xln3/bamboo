@@ -15,7 +15,7 @@ DENO = Path(os.environ.get("DENO_BIN", Path.home() / ".deno" / "bin" / "deno"))
 
 class PandaAdapter(AgentAdapter):
     @property
-    def agent_id(self) -> str:
+    def _base_agent_id(self) -> str:
         return "panda"
 
     def build_command(
@@ -31,21 +31,31 @@ class PandaAdapter(AgentAdapter):
             "--profile",
             "coding",
             "--max-tokens",
-            "64000",
+            "32000",
         ]
 
     def env_overrides(self) -> dict[str, str]:
-        # Panda reads .env from its own directory, but also honor explicit env
+        mc = self._model_config
+        if not mc.get("api_key"):
+            raise ValueError(
+                "PandaAdapter requires model config with api_key. "
+                "Use --model <profile> or set PANDA_API_KEY env var.\n"
+                "See configs/models.example.json for config format."
+            )
+
         overrides = {
-            "PANDA_API_KEY": os.environ.get("PANDA_API_KEY", ""),
-            "PANDA_BASE_URL": os.environ.get("PANDA_BASE_URL", "https://aihubmix.com/v1"),
-            "PANDA_PROVIDER": os.environ.get("PANDA_PROVIDER", "openai"),
-            "PANDA_MODEL": os.environ.get("PANDA_MODEL", "claude-sonnet-4-20250514"),
+            "PANDA_API_KEY": mc["api_key"],
+            "PANDA_BASE_URL": mc["base_url"],
+            "PANDA_PROVIDER": mc.get("provider", "openai"),
+            "PANDA_MODEL": mc["model"],
         }
-        # Disable proxy for Deno — aihubmix needs direct connection
-        overrides["HTTP_PROXY"] = ""
-        overrides["HTTPS_PROXY"] = ""
-        overrides["http_proxy"] = ""
-        overrides["https_proxy"] = ""
-        overrides["NO_PROXY"] = "*"
+
+        # Handle proxy settings
+        no_proxy_extra = mc.get("no_proxy", "")
+        if no_proxy_extra:
+            existing = os.environ.get("NO_PROXY", os.environ.get("no_proxy", ""))
+            no_proxy = f"{existing},{no_proxy_extra}" if existing else no_proxy_extra
+            overrides["NO_PROXY"] = no_proxy
+            overrides["no_proxy"] = no_proxy
+
         return overrides

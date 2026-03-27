@@ -1,0 +1,21 @@
+{
+  "glm-5": {
+    "provider": "openai",
+    "model": "glm-5",
+    "base_url": "https://open.bigmodel.cn/api/coding/paas/v4",
+    "api_key": "<your-zhipuai-api-key>"
+  },
+  "claude-sonnet": {
+    "provider": "openai",
+    "model": "claude-sonnet-4-20250514",
+    "base_url": "https://aihubmix.com/v1",
+    "api_key": "<your-aihubmix-key>",
+    "no_proxy": "aihubmix.com"
+  },
+  "gpt-4o": {
+    "provider": "openai",
+    "model": "gpt-4o",
+    "base_url": "https://api.openai.com/v1",
+    "api_key": "<your-openai-key>"
+  }
+}

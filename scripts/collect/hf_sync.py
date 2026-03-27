@@ -38,7 +38,7 @@ def get_remote_files(api: HfApi, prefix: str) -> set[str]:
     """List files on HF under a prefix."""
     files = set()
     try:
-        for item in api.list_repo_tree(REPO_ID, path_prefix=prefix, repo_type="dataset"):
+        for item in api.list_repo_tree(REPO_ID, path_in_repo=prefix, repo_type="dataset"):
             if hasattr(item, "rfilename"):
                 name = item.rfilename.split("/")[-1]
                 files.add(name)

@@ -34,9 +34,10 @@ def build_prompt(
     """Build the prompt that instructs an agent to reproduce a paper."""
     paper_id = paper["paper_id"]
     title = paper["title"]
-    code_url = paper["code_url"]
+    code_url = paper.get("code_url") or ""
     commit = paper.get("code_commit", "HEAD")
     arxiv_id = paper.get("arxiv_id", "")
+    paper_url = paper.get("paper_url", "")
     abstract = paper.get("abstract", "")[:500]
 
     claims = paper.get("ground_truth_claims") or []
@@ -59,20 +60,30 @@ def build_prompt(
         "<agent_id>", agent_id
     )
 
+    # Build repo section based on whether code_url is available
+    if code_url:
+        repo_info = f"- Repository: {code_url}\n- Commit: {commit}"
+        clone_step = f"1. Clone the repository: git clone {code_url} repo && cd repo && git checkout {commit}"
+    else:
+        repo_info = f"- Repository: NOT PROVIDED (find it from the paper or arxiv page)\n- Paper URL: {paper_url}"
+        clone_step = (
+            "1. Find the official code repository from the paper URL or arxiv page, "
+            "then clone it: git clone <repo_url> repo && cd repo"
+        )
+
     prompt = f"""\
 TASK: Reproduce the machine learning paper "{title}" using its original code.
 
 PAPER INFO:
 - Paper ID: {paper_id}
 - ArXiv: {arxiv_id}
-- Repository: {code_url}
-- Commit: {commit}
+{repo_info}
 - Abstract: {abstract}
 
 {claims_block}
 
 INSTRUCTIONS:
-1. Clone the repository: git clone {code_url} repo && cd repo && git checkout {commit}
+{clone_step}
 2. Read the README and paper to understand how to run experiments.
 3. Set up the environment (conda/venv, install dependencies).
 4. Run the experiments listed above. Let ALL output print to stdout — do NOT suppress or redirect experiment output.

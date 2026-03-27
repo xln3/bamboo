@@ -16,7 +16,7 @@ from .base import AgentAdapter
 
 class CodexAdapter(AgentAdapter):
     @property
-    def agent_id(self) -> str:
+    def _base_agent_id(self) -> str:
         return "codex"
 
     def build_command(
@@ -27,17 +27,20 @@ class CodexAdapter(AgentAdapter):
             cmd = [codex_bin]
         else:
             cmd = ["npx", "@openai/codex"]
+        mc = self._model_config
+        model = mc.get("model") or os.environ.get("CODEX_MODEL", "o4-mini")
         return [
             *cmd,
             "exec",
             "--full-auto",
             "-m",
-            os.environ.get("CODEX_MODEL", "o4-mini"),
+            model,
             prompt,
         ]
 
     def env_overrides(self) -> dict[str, str]:
+        mc = self._model_config
         return {
-            "OPENAI_API_KEY": os.environ.get("OPENAI_API_KEY", ""),
-            "OPENAI_BASE_URL": os.environ.get("OPENAI_BASE_URL", "https://aihubmix.com/v1"),
+            "OPENAI_API_KEY": mc.get("api_key") or os.environ.get("OPENAI_API_KEY", ""),
+            "OPENAI_BASE_URL": mc.get("base_url") or os.environ.get("OPENAI_BASE_URL", ""),
         }

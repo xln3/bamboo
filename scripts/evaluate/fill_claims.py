@@ -77,10 +77,18 @@ RULES:
 2. If reported as "95.3 ± 0.2", use metric_value: 95.3.
 3. Do NOT extract: hyperparameters, dataset statistics, training cost, qualitative results.
 4. Extract EXACT values from the paper. Do not fabricate.
-5. Prioritise main results (Table 1/2), also include ablation results.
-6. Bold/underlined values are especially important — capture them.
+5. Bold/underlined values are especially important — capture them.
 
-Return ONLY a JSON array of claim objects. No markdown fences, no commentary."""
+COMPLETENESS IS CRITICAL — do NOT omit any result:
+6. Extract EVERY row and column for the authors' method from EVERY results table (Table 1, 2, 3, ...).
+7. Extract ALL ablation study results (every variant/component removal row).
+8. Extract results from Figures if exact numeric values are given (bar charts with labels, user studies with percentages, inference time comparisons).
+9. If the method has multiple variants/scales (e.g., Small/Base/Large, different backbones), extract ALL of them.
+10. Include analysis results: inference speed, FLOPs, parameter counts if reported as experimental results.
+11. Go through the paper section by section — do not stop after the main results table.
+
+Return ONLY a JSON array of claim objects. No markdown fences, no commentary.
+IMPORTANT: Output compact JSON (no indentation, no pretty-printing) to avoid output truncation."""
 
 
 def build_prompt(paper: dict, md_text: str) -> str:
@@ -97,7 +105,7 @@ Code: {paper['code_url']}
 {md_text}
 --- END PAPER MARKDOWN ---
 
-Extract all reproducible quantitative claims. Return ONLY a JSON array."""
+Extract all reproducible quantitative claims. Return ONLY a compact JSON array (no indentation)."""
 
 
 def validate_claim(claim: dict, idx: int) -> dict | None:
@@ -150,7 +158,7 @@ def validate_claim(claim: dict, idx: int) -> dict | None:
 
 
 def parse_claims_json(text: str) -> list[dict] | None:
-    """Extract JSON array from LLM output text."""
+    """Extract JSON array from LLM output text, handling truncated output."""
     text = text.strip()
 
     # Strip markdown code fences
@@ -162,6 +170,11 @@ def parse_claims_json(text: str) -> list[dict] | None:
             lines = lines[1:]
         text = "\n".join(lines)
 
+    # Strip any leading commentary before the array
+    bracket_pos = text.find("[")
+    if bracket_pos > 0:
+        text = text[bracket_pos:]
+
     try:
         result = json.loads(text)
         if isinstance(result, list):
@@ -169,15 +182,70 @@ def parse_claims_json(text: str) -> list[dict] | None:
     except json.JSONDecodeError:
         pass
 
-    # Try to find JSON array in the text
-    match = re.search(r"\[.*\]", text, re.DOTALL)
-    if match:
+    # Try to find all JSON arrays in text and concatenate them
+    # (model sometimes outputs multiple arrays separated by ---)
+    all_claims = []
+    for match in re.finditer(r"\[.*?\]", text, re.DOTALL):
         try:
-            result = json.loads(match.group(0))
-            if isinstance(result, list):
-                return result
+            chunk = json.loads(match.group(0))
+            if isinstance(chunk, list):
+                all_claims.extend(chunk)
         except json.JSONDecodeError:
-            pass
+            continue
+    if all_claims:
+        return all_claims
+
+    # Handle truncated output: try to recover partial JSON array
+    # Case 1: truncated at end (has [ but no ])
+    if "[" in text:
+        arr_start = text.index("[")
+        last_brace = text.rfind("}")
+        if last_brace > arr_start:
+            candidate = text[arr_start:last_brace + 1].rstrip().rstrip(",") + "]"
+            try:
+                result = json.loads(candidate)
+                if isinstance(result, list) and len(result) > 0:
+                    log.info(f"Recovered {len(result)} claims from end-truncated output")
+                    return result
+            except json.JSONDecodeError:
+                last_complete = candidate.rfind("},")
+                if last_complete > 0:
+                    candidate = candidate[:last_complete + 1] + "]"
+                    try:
+                        result = json.loads(candidate)
+                        if isinstance(result, list) and len(result) > 0:
+                            log.info(f"Recovered {len(result)} claims from end-truncated output")
+                            return result
+                    except json.JSONDecodeError:
+                        pass
+
+    # Case 2: truncated at start (no [ but has claim_id objects)
+    if '"claim_id"' in text:
+        # Find first complete claim object
+        first_obj = text.find('{"claim_id"')
+        if first_obj < 0:
+            first_obj = text.find("{\"claim_id\"")
+        if first_obj >= 0:
+            fragment = text[first_obj:]
+            last_brace = fragment.rfind("}")
+            if last_brace > 0:
+                candidate = "[" + fragment[:last_brace + 1].rstrip().rstrip(",") + "]"
+                try:
+                    result = json.loads(candidate)
+                    if isinstance(result, list) and len(result) > 0:
+                        log.info(f"Recovered {len(result)} claims from start-truncated output")
+                        return result
+                except json.JSONDecodeError:
+                    last_complete = candidate.rfind("},")
+                    if last_complete > 0:
+                        candidate = candidate[:last_complete + 1] + "]"
+                        try:
+                            result = json.loads(candidate)
+                            if isinstance(result, list) and len(result) > 0:
+                                log.info(f"Recovered {len(result)} claims from start-truncated output")
+                                return result
+                        except json.JSONDecodeError:
+                            pass
 
     return None
 
@@ -187,11 +255,11 @@ def extract_one(paper: dict) -> tuple[str, list[dict] | None]:
     pid = paper["paper_id"]
     out_file = CLAIMS_V2 / f"{pid}.json"
 
-    # Resume: skip if already extracted
+    # Resume: skip if already extracted (including valid 0-claim papers)
     if out_file.exists():
         try:
             claims = json.loads(out_file.read_text())
-            if isinstance(claims, list) and len(claims) > 0:
+            if isinstance(claims, list):
                 return pid, claims
         except (json.JSONDecodeError, OSError):
             pass  # re-extract on corrupt file
@@ -222,16 +290,14 @@ def extract_one(paper: dict) -> tuple[str, list[dict] | None]:
         result = subprocess.run(
             [
                 "claude", "-p",
-                "--model", "opus",
-                "--effort", "medium",
+                "--model", "sonnet",
                 "--output-format", "text",
-                "--no-session-persistence",
                 "--max-turns", "1",
             ],
             input=prompt,
             capture_output=True,
             text=True,
-            timeout=300,  # 5 min per paper
+            timeout=900,  # 15 min per paper
         )
     except subprocess.TimeoutExpired:
         log.error(f"{pid}: claude CLI timed out")
@@ -338,7 +404,7 @@ def main():
         if v2_file.exists():
             try:
                 c = json.loads(v2_file.read_text())
-                if isinstance(c, list) and len(c) > 0:
+                if isinstance(c, list):  # accept 0-claim papers as done
                     already_done += 1
                     continue
             except (json.JSONDecodeError, OSError):
@@ -371,8 +437,9 @@ def main():
             counter += 1
             try:
                 _, claims = future.result()
-                if claims and len(claims) > 0:
-                    papers_by_id[pid]["ground_truth_claims"] = claims
+                if claims is not None:
+                    if len(claims) > 0:
+                        papers_by_id[pid]["ground_truth_claims"] = claims
                     success += 1
                     log.info(f"[{counter}/{len(to_extract)}] {pid}: "
                              f"{len(claims)} claims ✓")

@@ -4,6 +4,9 @@ __pycache__/
 .venv/
 venv/
 
+# Model configs contain API keys — only commit the example
+configs/models.json
+
 # Large data files (tracked via curated TSVs instead)
 data/papers/*.json
 

@@ -10,7 +10,7 @@ from .base import AgentAdapter
 
 class ClaudeCodeAdapter(AgentAdapter):
     @property
-    def agent_id(self) -> str:
+    def _base_agent_id(self) -> str:
         return "claude-code"
 
     def build_command(

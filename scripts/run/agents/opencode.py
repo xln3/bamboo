@@ -11,14 +11,15 @@ from .base import AgentAdapter
 
 class OpenCodeAdapter(AgentAdapter):
     @property
-    def agent_id(self) -> str:
+    def _base_agent_id(self) -> str:
         return "opencode"
 
     def build_command(
         self, prompt: str, workdir: Path, timeout_s: int
     ) -> list[str]:
         opencode_bin = shutil.which("opencode") or "opencode"
-        model = os.environ.get("OPENCODE_MODEL", "openai/gpt-4o-mini")
+        mc = self._model_config
+        model = mc.get("model") or os.environ.get("OPENCODE_MODEL", "openai/gpt-4o-mini")
         return [
             opencode_bin,
             "run",
@@ -28,7 +29,8 @@ class OpenCodeAdapter(AgentAdapter):
         ]
 
     def env_overrides(self) -> dict[str, str]:
+        mc = self._model_config
         return {
-            "OPENAI_API_KEY": os.environ.get("OPENAI_API_KEY", ""),
-            "OPENAI_BASE_URL": os.environ.get("OPENAI_BASE_URL", "https://aihubmix.com/v1"),
+            "OPENAI_API_KEY": mc.get("api_key") or os.environ.get("OPENAI_API_KEY", ""),
+            "OPENAI_BASE_URL": mc.get("base_url") or os.environ.get("OPENAI_BASE_URL", ""),
         }
