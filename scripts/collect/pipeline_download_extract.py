@@ -38,23 +38,28 @@ PDF_DIR.mkdir(exist_ok=True)
 MD_DIR.mkdir(exist_ok=True)
 
 
-def get_pdf_url(paper: dict) -> str:
-    """Get PDF download URL for a paper."""
+def get_pdf_urls(paper: dict) -> list[tuple[str, str]]:
+    """Get PDF download URLs for a paper, in fallback order. Returns [(source, url), ...]."""
+    urls = []
     if paper.get("pdf_url"):
-        return paper["pdf_url"]
+        urls.append(("pdf_url", paper["pdf_url"]))
     arxiv_id = paper.get("arxiv_id", "")
     if arxiv_id:
-        return f"https://arxiv.org/pdf/{arxiv_id}"
+        urls.append(("arxiv", f"https://arxiv.org/pdf/{arxiv_id}"))
     paper_url = paper.get("paper_url", "")
     if "openreview.net" in paper_url:
         if "/forum?" in paper_url:
-            return paper_url.replace("/forum?", "/pdf?")
-        return paper_url
+            urls.append(("openreview", paper_url.replace("/forum?", "/pdf?")))
+        else:
+            urls.append(("openreview", paper_url))
     if "aclanthology.org" in paper_url:
         if not paper_url.endswith(".pdf"):
-            return paper_url.rstrip("/") + ".pdf"
-        return paper_url
-    return paper_url
+            urls.append(("acl", paper_url.rstrip("/") + ".pdf"))
+        else:
+            urls.append(("acl", paper_url))
+    if not urls and paper_url:
+        urls.append(("generic", paper_url))
+    return urls
 
 
 def is_valid_pdf(path: Path) -> bool:
@@ -76,27 +81,41 @@ def is_valid_pdf(path: Path) -> bool:
         return False
 
 
-def download_one(paper_id: str, pdf_url: str) -> bool:
-    """Download a single PDF."""
+def download_one(paper_id: str, urls: list[tuple[str, str]]) -> bool:
+    """Download a single PDF, trying each URL in fallback order."""
     pdf_path = PDF_DIR / f"{paper_id}.pdf"
     if is_valid_pdf(pdf_path):
         return True  # already done
 
-    try:
-        result = subprocess.run(
-            ["curl", "-sL", "--noproxy", "*", "-o", str(pdf_path),
-             "--max-time", "60", "--retry", "2", "--retry-delay", "3",
-             "-H", "User-Agent: Mozilla/5.0 (compatible; BAMBOO/1.0)",
-             pdf_url],
-            capture_output=True, text=True, timeout=120,
-        )
-        if result.returncode == 0 and is_valid_pdf(pdf_path):
-            return True
-        pdf_path.unlink(missing_ok=True)
-        return False
-    except (subprocess.TimeoutExpired, Exception):
-        pdf_path.unlink(missing_ok=True)
-        return False
+    for source, url in urls:
+        headers = [
+            "-H", "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                   "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        ]
+        if source == "openreview":
+            headers += [
+                "-H", "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "-H", "Referer: https://openreview.net/",
+            ]
+
+        for attempt in range(3):
+            try:
+                subprocess.run(
+                    ["curl", "-sL", "-o", str(pdf_path),
+                     "--max-time", "180", "--retry", "2", "--retry-delay", "3"]
+                    + headers + [url],
+                    capture_output=True, text=True, timeout=240,
+                )
+                if is_valid_pdf(pdf_path):
+                    return True
+                pdf_path.unlink(missing_ok=True)
+            except (subprocess.TimeoutExpired, Exception):
+                pdf_path.unlink(missing_ok=True)
+
+            if attempt < 2:
+                time.sleep(2 * (attempt + 1))
+
+    return False
 
 
 def mineru_one(paper_id: str) -> bool:
@@ -149,13 +168,13 @@ def phase1_download(papers: list[dict], workers: int = 64, limit: int | None = N
     skipped = 0
     for p in papers:
         pid = p["paper_id"]
-        url = get_pdf_url(p)
-        if not url:
+        urls = get_pdf_urls(p)
+        if not urls:
             continue
         if is_valid_pdf(PDF_DIR / f"{pid}.pdf"):
             skipped += 1
             continue
-        to_download.append((pid, url))
+        to_download.append((pid, urls))
 
     if limit:
         to_download = to_download[:limit]
@@ -170,7 +189,7 @@ def phase1_download(papers: list[dict], workers: int = 64, limit: int | None = N
     start = time.time()
 
     with ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = {executor.submit(download_one, pid, url): pid for pid, url in to_download}
+        futures = {executor.submit(download_one, pid, urls): pid for pid, urls in to_download}
         for i, future in enumerate(as_completed(futures)):
             try:
                 if future.result():

@@ -21,7 +21,8 @@ class PandaAdapter(AgentAdapter):
     def build_command(
         self, prompt: str, workdir: Path, timeout_s: int
     ) -> list[str]:
-        return [
+        mc = self._model_config
+        cmd = [
             str(DENO),
             "run",
             "--allow-all",
@@ -33,6 +34,10 @@ class PandaAdapter(AgentAdapter):
             "--max-tokens",
             "32000",
         ]
+        cost_limit = mc.get("cost_limit")
+        if cost_limit:
+            cmd.extend(["--cost-limit", str(cost_limit)])
+        return cmd
 
     def env_overrides(self) -> dict[str, str]:
         mc = self._model_config
@@ -50,11 +55,18 @@ class PandaAdapter(AgentAdapter):
             "PANDA_MODEL": mc["model"],
         }
 
-        # Handle proxy settings
+        # Auto-extract domain from base_url for NO_PROXY
+        from urllib.parse import urlparse
+        api_domain = urlparse(mc["base_url"]).hostname or ""
         no_proxy_extra = mc.get("no_proxy", "")
-        if no_proxy_extra:
+        domains = {d.strip() for d in no_proxy_extra.split(",") if d.strip()}
+        if api_domain:
+            domains.add(api_domain)
+
+        if domains:
             existing = os.environ.get("NO_PROXY", os.environ.get("no_proxy", ""))
-            no_proxy = f"{existing},{no_proxy_extra}" if existing else no_proxy_extra
+            all_domains = {d.strip() for d in existing.split(",") if d.strip()} | domains
+            no_proxy = ",".join(sorted(all_domains))
             overrides["NO_PROXY"] = no_proxy
             overrides["no_proxy"] = no_proxy
 
