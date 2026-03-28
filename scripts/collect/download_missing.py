@@ -23,7 +23,7 @@ except ImportError:
 
 BASE = Path(__file__).resolve().parent.parent.parent
 PDF_DIR = BASE / "data" / "paper_pdfs"
-CURATED = BASE / "data" / "bamboo_curated.json"
+CURATED_DIR = BASE / "data" / "bamboo_curated"
 
 
 def is_valid(path):
@@ -101,8 +101,10 @@ def main():
     parser.add_argument("--workers", type=int, default=8)
     args = parser.parse_args()
 
-    with open(CURATED) as f:
-        papers = json.load(f)
+    papers = []
+    for f in sorted(CURATED_DIR.glob("bamboo-*.json")):
+        with open(f) as fh:
+            papers.extend(json.load(fh))
 
     pdf_files = set(
         f.replace(".pdf", "")

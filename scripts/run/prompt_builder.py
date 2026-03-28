@@ -3,8 +3,77 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from pathlib import Path
 from typing import Any
+
+
+def probe_environment() -> str:
+    """Probe the host environment once and return a structured summary.
+
+    This runs at the runner level (not inside the agent), so the agent
+    receives facts instead of having to discover them itself.
+    """
+    parts: list[str] = []
+
+    # Python
+    try:
+        r = subprocess.run(
+            ["python3", "-c",
+             "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}')"],
+            capture_output=True, text=True, timeout=5,
+        )
+        parts.append(f"python: {r.stdout.strip()}")
+    except Exception:
+        parts.append("python: unknown")
+
+    # Torch + CUDA
+    try:
+        r = subprocess.run(
+            ["python3", "-c",
+             "import torch; print(f'torch={torch.__version__} cuda={torch.version.cuda} gpu={torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"none\"}')"],
+            capture_output=True, text=True, timeout=10,
+        )
+        parts.append(r.stdout.strip())
+    except Exception:
+        parts.append("torch: not installed")
+
+    # GPU memory
+    try:
+        r = subprocess.run(
+            ["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader"],
+            capture_output=True, text=True, timeout=5,
+        )
+        if r.returncode == 0 and r.stdout.strip():
+            parts.append(f"gpu: {r.stdout.strip()}")
+    except Exception:
+        pass
+
+    # Key pre-installed packages
+    try:
+        r = subprocess.run(
+            ["python3", "-c",
+             "import importlib; pkgs = ['torchvision','torchaudio','numpy','scipy','transformers','timm','einops'];\n"
+             "[print(f'{p}={importlib.import_module(p).__version__}') for p in pkgs if importlib.util.find_spec(p)]"],
+            capture_output=True, text=True, timeout=10,
+        )
+        if r.stdout.strip():
+            parts.append("pre-installed: " + ", ".join(r.stdout.strip().split("\n")))
+    except Exception:
+        pass
+
+    return "\n".join(parts)
+
+
+# Cache the probe result (runs once per process)
+_ENV_CACHE: str | None = None
+
+
+def get_env_summary() -> str:
+    global _ENV_CACHE
+    if _ENV_CACHE is None:
+        _ENV_CACHE = probe_environment()
+    return _ENV_CACHE
 
 RESULT_SCHEMA_SNIPPET = """\
 {
@@ -35,7 +104,7 @@ def build_prompt(
     paper_id = paper["paper_id"]
     title = paper["title"]
     code_url = paper.get("code_url") or ""
-    commit = paper.get("code_commit", "HEAD")
+    commit = paper.get("code_commit") or "HEAD"
     arxiv_id = paper.get("arxiv_id", "")
     paper_url = paper.get("paper_url", "")
     abstract = paper.get("abstract", "")[:500]
@@ -71,6 +140,8 @@ def build_prompt(
             "then clone it: git clone <repo_url> repo && cd repo"
         )
 
+    env_summary = get_env_summary()
+
     prompt = f"""\
 TASK: Reproduce the machine learning paper "{title}" using its original code.
 
@@ -80,12 +151,21 @@ PAPER INFO:
 {repo_info}
 - Abstract: {abstract}
 
+HOST ENVIRONMENT (already installed — do NOT re-download these):
+{env_summary}
+
 {claims_block}
 
 INSTRUCTIONS:
 {clone_step}
 2. Read the README and paper to understand how to run experiments.
-3. Set up the environment (conda/venv, install dependencies).
+3. Set up the environment:
+   - Create venv with: python3 -m venv .venv --system-site-packages
+     This inherits the system torch/CUDA listed above — no need to download them.
+   - Read requirements.txt. Only install packages that are MISSING. Do NOT blindly
+     pip install the whole file if it would downgrade working system packages.
+   - If the paper pins an old torch version, evaluate whether the code actually
+     needs it or just needs a compatible version. Prefer the system torch.
 4. Run the experiments listed above. Let ALL output print to stdout — do NOT suppress or redirect experiment output.
 5. If an experiment produces result files (CSV, JSON, logs), leave them in the working directory.
 
@@ -95,6 +175,9 @@ IMPORTANT RULES:
 - If you encounter an error you cannot fix after 3 attempts, record it as a barrier and move on.
 - Do NOT skip steps — always attempt environment setup even if you expect failure.
 - Do NOT fabricate, estimate, or hard-code any metric values.
+- NETWORK: If a download is slow (< 1MB/s) or fails, do not keep retrying the same source.
+  Try alternatives: use a mirror, use uv instead of pip, or ask the user about
+  proxy/mirror settings via AskHuman.
 
 OUTPUT: When done, write a JSON result file to exactly this path:
   {result_path}

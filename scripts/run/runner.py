@@ -45,7 +45,7 @@ BAMBOO_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = BAMBOO_ROOT / "data"
 RESULTS_DIR = DATA_DIR / "results"
 CONFIGS_DIR = BAMBOO_ROOT / "configs"
-DEFAULT_DATASET = DATA_DIR / "bamboo_final.json"
+DEFAULT_DATASET = DATA_DIR / "bamboo_curated"
 MODELS_CONFIG = CONFIGS_DIR / "models.json"
 WORKDIR_BASE = Path("/tmp/bamboo")
 
@@ -125,13 +125,33 @@ def list_model_profiles() -> None:
 def load_dataset(dataset_path: Path | None = None) -> dict[str, dict]:
     """Load the BAMBOO dataset keyed by paper_id.
 
+    Supports:
+    - A single JSON file (list or dict of papers)
+    - A directory of partitioned JSON chunk files (data/bamboo_curated/)
+
     Overlays paper_claims_v2/ individual claim files onto the dataset,
     preferring v2 claims (more complete, with dataset field) over the
     older claims in the base dataset.
     """
     path = dataset_path or DEFAULT_DATASET
-    with open(path) as f:
-        data = json.load(f)
+
+    # Support directory of chunk files
+    if path.is_dir():
+        data = []
+        for f in sorted(path.glob("bamboo-*.json")):
+            with open(f) as fh:
+                data.extend(json.load(fh))
+    elif path.suffix == ".json" and not path.exists() and path.with_suffix("").is_dir():
+        # bamboo_curated.json → bamboo_curated/ directory fallback
+        chunk_dir = path.with_suffix("")
+        data = []
+        for f in sorted(chunk_dir.glob("bamboo-*.json")):
+            with open(f) as fh:
+                data.extend(json.load(fh))
+    else:
+        with open(path) as f:
+            data = json.load(f)
+
     if isinstance(data, list):
         index = {p["paper_id"]: p for p in data}
     else:

@@ -503,17 +503,23 @@ def load_claims_for_paper(paper_id: str, dataset_path: Path | None) -> list[dict
         except (json.JSONDecodeError, OSError):
             pass
 
-    # Fall back to dataset
-    if dataset_path and dataset_path.exists():
-        with open(dataset_path) as f:
-            data = json.load(f)
-        if isinstance(data, list):
-            for p in data:
-                if p["paper_id"] == paper_id:
-                    return p.get("ground_truth_claims", [])
-        elif isinstance(data, dict):
-            entry = data.get(paper_id, {})
-            return entry.get("ground_truth_claims", [])
+    # Fall back to dataset (file or directory of chunks)
+    if dataset_path:
+        if dataset_path.is_dir():
+            for f in dataset_path.glob("bamboo-*.json"):
+                for p in json.loads(f.read_text()):
+                    if p["paper_id"] == paper_id:
+                        return p.get("ground_truth_claims", [])
+        elif dataset_path.exists():
+            with open(dataset_path) as f:
+                data = json.load(f)
+            if isinstance(data, list):
+                for p in data:
+                    if p["paper_id"] == paper_id:
+                        return p.get("ground_truth_claims", [])
+            elif isinstance(data, dict):
+                entry = data.get(paper_id, {})
+                return entry.get("ground_truth_claims", [])
 
     return []
 
@@ -522,8 +528,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="BAMBOO independent judge")
     parser.add_argument("--paper", help="Single paper ID to judge")
     parser.add_argument("--agent", required=True, help="Agent ID")
-    parser.add_argument("--dataset", default=str(DATA_DIR / "bamboo_curated.json"),
-                        help="Path to dataset JSON")
+    parser.add_argument("--dataset", default=str(DATA_DIR / "bamboo_curated"),
+                        help="Path to dataset JSON file or directory of chunk files")
     parser.add_argument("--model", default="opus", help="Judge LLM model")
     parser.add_argument("--all", action="store_true",
                         help="Judge all completed runs for this agent")

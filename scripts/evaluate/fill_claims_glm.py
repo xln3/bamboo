@@ -34,7 +34,7 @@ log = logging.getLogger("fill_claims_glm")
 
 BASE = Path(__file__).resolve().parent.parent.parent
 DATA = BASE / "data"
-CURATED = DATA / "bamboo_curated.json"
+CURATED_DIR = DATA / "bamboo_curated"
 CLAIMS_V2 = DATA / "paper_claims_v2"
 MD_DIR = DATA / "paper_markdowns"
 
@@ -454,12 +454,29 @@ def merge_into_curated(papers: list[dict]) -> int:
     return updated
 
 
+def load_curated() -> list[dict]:
+    """Load all papers from the partitioned curated directory."""
+    papers = []
+    for f in sorted(CURATED_DIR.glob("bamboo-*.json")):
+        with open(f) as fh:
+            papers.extend(json.load(fh))
+    papers.sort(key=lambda p: p["paper_id"])
+    return papers
+
+
 def save(papers: list[dict]):
-    """Atomically save curated JSON."""
-    tmp = CURATED.with_suffix(".tmp")
-    with open(tmp, "w") as f:
-        json.dump(papers, f, indent=2, ensure_ascii=False)
-    tmp.replace(CURATED)
+    """Save papers back to partitioned chunk files (100 per file)."""
+    papers.sort(key=lambda p: p["paper_id"])
+    chunk_size = 100
+    for old in CURATED_DIR.glob("bamboo-*.json"):
+        old.unlink()
+    for i in range(0, len(papers), chunk_size):
+        chunk = papers[i:i + chunk_size]
+        first_id = chunk[0]["paper_id"]
+        last_id = chunk[-1]["paper_id"]
+        out = CURATED_DIR / f"{first_id}_to_{last_id}.json"
+        with open(out, "w") as f:
+            json.dump(chunk, f, indent=2, ensure_ascii=False)
 
 
 async def run_extraction(papers: list[dict], workers: int, save_every: int,
@@ -593,8 +610,7 @@ def main():
 
     CLAIMS_V2.mkdir(exist_ok=True)
 
-    with open(CURATED) as f:
-        papers = json.load(f)
+    papers = load_curated()
 
     if args.verify_only:
         asyncio.run(verify_claims(papers, limit=args.limit or 50))

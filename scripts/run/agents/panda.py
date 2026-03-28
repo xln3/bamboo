@@ -33,6 +33,7 @@ class PandaAdapter(AgentAdapter):
             "coding",
             "--max-tokens",
             "32000",
+            "--log-detail",
         ]
         cost_limit = mc.get("cost_limit")
         if cost_limit:

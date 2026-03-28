@@ -111,9 +111,11 @@ def build_prompt(paper: dict, md_text: str) -> tuple[str, str]:
 
 def load_paper_prompt(paper_id: str) -> tuple[str, str]:
     """Load a single paper and return prompts."""
-    curated_path = DATA / "bamboo_curated.json"
-    with open(curated_path) as f:
-        papers = json.load(f)
+    curated_dir = DATA / "bamboo_curated"
+    papers = []
+    for f in sorted(curated_dir.glob("bamboo-*.json")):
+        with open(f) as fh:
+            papers.extend(json.load(fh))
     paper = next((p for p in papers if p["paper_id"] == paper_id), None)
     if not paper:
         raise ValueError(f"Paper {paper_id} not found in curated list")
