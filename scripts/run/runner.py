@@ -231,7 +231,7 @@ def run_single(
     result_dir.mkdir(parents=True, exist_ok=True)
     result_path = result_dir / f"{paper_id}.json"
 
-    prompt = build_prompt(paper, agent_id, result_path, workdir)
+    prompt = build_prompt(paper, agent_id, result_path, workdir, timeout_s)
 
     if dry_run:
         print(f"\n{'='*60}")

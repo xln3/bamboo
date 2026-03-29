@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -62,6 +63,18 @@ def probe_environment() -> str:
     except Exception:
         pass
 
+    # Proxy / network
+    for var in ("http_proxy", "https_proxy", "HTTP_PROXY", "HTTPS_PROXY"):
+        val = os.environ.get(var, "")
+        if val:
+            parts.append(f"proxy: {var}={val}")
+            parts.append(
+                "proxy-hints: use --no-check-certificate for wget; "
+                "set HF_HUB_DISABLE_SSL_VERIFY=1 for huggingface_hub; "
+                "set REQUESTS_CA_BUNDLE='' if SSL errors persist"
+            )
+            break
+
     return "\n".join(parts)
 
 
@@ -99,6 +112,7 @@ def build_prompt(
     agent_id: str,
     result_path: Path,
     workdir: Path,
+    timeout_s: int = 1800,
 ) -> str:
     """Build the prompt that instructs an agent to reproduce a paper."""
     paper_id = paper["paper_id"]
@@ -114,12 +128,21 @@ def build_prompt(
     if claims:
         claim_lines = []
         for c in claims:
+            feasibility = c.get("feasibility", "")
+            note = c.get("feasibility_note", "")
+            tag = f" [INFEASIBLE: {note}]" if feasibility else ""
             claim_lines.append(
                 f"  - {c['claim_id']}: {c['description']} "
                 f"(metric={c['metric_name']}, dataset={c.get('dataset','N/A')}, "
-                f"category={c.get('category','main')})"
+                f"category={c.get('category','main')}){tag}"
             )
-        claims_block = "Experiments to reproduce:\n" + "\n".join(claim_lines)
+        feasible = [c for c in claims if not c.get("feasibility")]
+        infeasible = [c for c in claims if c.get("feasibility")]
+        header = f"Experiments to reproduce ({len(feasible)} feasible"
+        if infeasible:
+            header += f", {len(infeasible)} infeasible — skip infeasible ones"
+        header += "):"
+        claims_block = header + "\n" + "\n".join(claim_lines)
     else:
         claims_block = (
             "No pre-extracted claims. Identify and run the main experiments from the paper/README."
@@ -154,6 +177,13 @@ PAPER INFO:
 HOST ENVIRONMENT (already installed — do NOT re-download these):
 {env_summary}
 
+TIME BUDGET: You have {timeout_s} seconds ({timeout_s // 60} minutes) from now. The runner \
+will kill your process at {timeout_s + 60}s with NO warning. Plan accordingly:
+- Write a provisional result JSON within the first 5 minutes (after env setup).
+- Allocate no more than 30% of total time ({timeout_s * 30 // 100}s) to downloads.
+- Reserve the last 10% ({timeout_s * 10 // 100}s) for writing final results.
+- If time is short, run experiments with AVAILABLE checkpoints first.
+
 {claims_block}
 
 INSTRUCTIONS:
@@ -169,6 +199,13 @@ INSTRUCTIONS:
 4. Run the experiments listed above. Let ALL output print to stdout — do NOT suppress or redirect experiment output.
 5. If an experiment produces result files (CSV, JSON, logs), leave them in the working directory.
 
+STRATEGY FOR LARGE EXPERIMENTS:
+- If multiple model checkpoints are needed, run experiments with ALREADY-AVAILABLE
+  checkpoints FIRST while downloading the rest in parallel.
+- After each experiment completes, update the result JSON immediately.
+- Do NOT block all experiments on all downloads completing.
+- Prioritize: write L1 result → run available experiments → download more → run more.
+
 IMPORTANT RULES:
 - Work in directory: {workdir}
 - You do NOT know the expected metric values. Run experiments honestly and let the output speak for itself.
@@ -178,19 +215,26 @@ IMPORTANT RULES:
 - NETWORK: If a download is slow (< 1MB/s) or fails, do not keep retrying the same source.
   Try alternatives: use a mirror, use uv instead of pip, or ask the user about
   proxy/mirror settings via AskHuman.
+  Multi-GB checkpoint downloads through a proxy will be slow (5-20 MB/s). Factor this
+  into your time budget — a 2 GB file takes ~2-7 minutes. Do NOT wait for all downloads
+  before starting experiments.
 
-OUTPUT: When done, write a JSON result file to exactly this path:
+OUTPUT: Write the result JSON to exactly this path:
   {result_path}
 
 The JSON must follow this schema:
 {schema_snippet}
 
+CRITICAL — Write the result JSON EARLY and UPDATE it as you progress:
+1. After environment setup succeeds → write with l1_build="pass", overall_level=1
+2. After each experiment completes → update with l2_run status and any metrics
+3. Before any long operation (download, training) → ensure the JSON file is current
+The runner may kill your process at any time. Only what is ON DISK counts.
+
 Rules for the result JSON:
 - overall_level: 0 if L1 (build) failed, 1 if L1 passed but L2 (run) failed, 2 if experiments ran to completion
 - L3 (reproduce) is evaluated by an independent judge — set l3 status to "skip"
 - Record any barriers encountered with evidence (error messages)
-- resource_usage.total_time_ms = your total wall time in milliseconds
-
-Write the result JSON file BEFORE your final response. This is critical."""
+- resource_usage.total_time_ms = your total wall time in milliseconds"""
 
     return prompt
