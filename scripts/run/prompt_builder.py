@@ -1,19 +1,43 @@
-"""Build the reproduction prompt for a paper entry."""
+"""Build the reproduction prompt for a paper entry.
+
+Supports three prompt tiers that control how much guidance the agent receives:
+
+  bare    — Task definition only (paper, result schema, workdir, timeout).
+            Tests raw agent capability: can it discover the environment, identify
+            what to reproduce, manage time, and organise its own workflow?
+
+  neutral — bare + host environment facts + pre-extracted claims.
+            Equal-information comparison: all agents start with the same facts,
+            but no advice on what to do with them.  Claims coverage (how many
+            experiments the agent identifies on its own) is measurable at the
+            bare tier.
+
+  guided  — neutral + strategy coaching (time allocation, download tactics,
+            dependency management, progressive result writing).
+            Maximises success rate but measures instruction-following, not autonomy.
+
+The delta between tiers is itself valuable benchmark data.
+"""
 
 from __future__ import annotations
 
-import json
 import os
 import subprocess
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
+PromptTier = Literal["bare", "neutral", "guided"]
+
+PROMPT_TIERS: list[PromptTier] = ["bare", "neutral", "guided"]
+
+
+# ── Environment probing ─────────────────────────────────────────
 
 def probe_environment() -> str:
-    """Probe the host environment once and return a structured summary.
+    """Probe the host environment and return a plain-fact summary.
 
-    This runs at the runner level (not inside the agent), so the agent
-    receives facts instead of having to discover them itself.
+    Returns only observable facts — no advice, no recommendations.
+    Used by the 'neutral' and 'guided' tiers.
     """
     parts: list[str] = []
 
@@ -63,30 +87,28 @@ def probe_environment() -> str:
     except Exception:
         pass
 
-    # Proxy / network
+    # Proxy / network — just the address, no hints
     for var in ("http_proxy", "https_proxy", "HTTP_PROXY", "HTTPS_PROXY"):
         val = os.environ.get(var, "")
         if val:
             parts.append(f"proxy: {var}={val}")
-            parts.append(
-                "proxy-hints: use --no-check-certificate for wget; "
-                "set HF_HUB_DISABLE_SSL_VERIFY=1 for huggingface_hub; "
-                "set REQUESTS_CA_BUNDLE='' if SSL errors persist"
-            )
             break
 
     return "\n".join(parts)
 
 
-# Cache the probe result (runs once per process)
 _ENV_CACHE: str | None = None
 
 
 def get_env_summary() -> str:
+    """Cached environment probe (runs once per process)."""
     global _ENV_CACHE
     if _ENV_CACHE is None:
         _ENV_CACHE = probe_environment()
     return _ENV_CACHE
+
+
+# ── Constants ────────────────────────────────────────────────────
 
 RESULT_SCHEMA_SNIPPET = """\
 {
@@ -106,6 +128,42 @@ RESULT_SCHEMA_SNIPPET = """\
   "resource_usage": {"total_time_ms": <int>}
 }"""
 
+PROXY_HINTS = (
+    "proxy-hints: use --no-check-certificate for wget; "
+    "set HF_HUB_DISABLE_SSL_VERIFY=1 for huggingface_hub; "
+    "set REQUESTS_CA_BUNDLE='' if SSL errors persist"
+)
+
+
+# ── Prompt builder ───────────────────────────────────────────────
+
+def _build_claims_block(claims: list[dict[str, Any]]) -> str:
+    """Format the claims list. Shared across all tiers."""
+    if not claims:
+        return (
+            "No pre-extracted claims. Identify and run the main "
+            "experiments from the paper/README."
+        )
+
+    lines = []
+    for c in claims:
+        feasibility = c.get("feasibility", "")
+        note = c.get("feasibility_note", "")
+        tag = f" [INFEASIBLE: {note}]" if feasibility else ""
+        lines.append(
+            f"  - {c['claim_id']}: {c['description']} "
+            f"(metric={c['metric_name']}, dataset={c.get('dataset', 'N/A')}, "
+            f"category={c.get('category', 'main')}){tag}"
+        )
+
+    feasible = [c for c in claims if not c.get("feasibility")]
+    infeasible = [c for c in claims if c.get("feasibility")]
+    header = f"Experiments to reproduce ({len(feasible)} feasible"
+    if infeasible:
+        header += f", {len(infeasible)} infeasible — skip infeasible ones"
+    header += "):"
+    return header + "\n" + "\n".join(lines)
+
 
 def build_prompt(
     paper: dict[str, Any],
@@ -113,8 +171,16 @@ def build_prompt(
     result_path: Path,
     workdir: Path,
     timeout_s: int = 1800,
+    tier: PromptTier = "guided",
 ) -> str:
-    """Build the prompt that instructs an agent to reproduce a paper."""
+    """Build the prompt that instructs an agent to reproduce a paper.
+
+    Args:
+        tier: Controls how much guidance the agent receives.
+              "bare"    — task definition only
+              "neutral" — + environment facts
+              "guided"  — + strategy coaching (current default)
+    """
     paper_id = paper["paper_id"]
     title = paper["title"]
     code_url = paper.get("code_url") or ""
@@ -123,118 +189,187 @@ def build_prompt(
     paper_url = paper.get("paper_url", "")
     abstract = paper.get("abstract", "")[:500]
 
-    claims = paper.get("ground_truth_claims") or []
-    claims_block = ""
-    if claims:
-        claim_lines = []
-        for c in claims:
-            feasibility = c.get("feasibility", "")
-            note = c.get("feasibility_note", "")
-            tag = f" [INFEASIBLE: {note}]" if feasibility else ""
-            claim_lines.append(
-                f"  - {c['claim_id']}: {c['description']} "
-                f"(metric={c['metric_name']}, dataset={c.get('dataset','N/A')}, "
-                f"category={c.get('category','main')}){tag}"
-            )
-        feasible = [c for c in claims if not c.get("feasibility")]
-        infeasible = [c for c in claims if c.get("feasibility")]
-        header = f"Experiments to reproduce ({len(feasible)} feasible"
-        if infeasible:
-            header += f", {len(infeasible)} infeasible — skip infeasible ones"
-        header += "):"
-        claims_block = header + "\n" + "\n".join(claim_lines)
-    else:
-        claims_block = (
-            "No pre-extracted claims. Identify and run the main experiments from the paper/README."
-        )
+    schema_snippet = RESULT_SCHEMA_SNIPPET.replace(
+        "<paper_id>", paper_id
+    ).replace("<agent_id>", agent_id)
 
-    schema_snippet = RESULT_SCHEMA_SNIPPET.replace("<paper_id>", paper_id).replace(
-        "<agent_id>", agent_id
-    )
-
-    # Build repo section based on whether code_url is available
     if code_url:
         repo_info = f"- Repository: {code_url}\n- Commit: {commit}"
-        clone_step = f"1. Clone the repository: git clone {code_url} repo && cd repo && git checkout {commit}"
     else:
-        repo_info = f"- Repository: NOT PROVIDED (find it from the paper or arxiv page)\n- Paper URL: {paper_url}"
-        clone_step = (
-            "1. Find the official code repository from the paper URL or arxiv page, "
-            "then clone it: git clone <repo_url> repo && cd repo"
+        repo_info = (
+            f"- Repository: NOT PROVIDED (find it from the paper or arxiv page)\n"
+            f"- Paper URL: {paper_url}"
         )
 
-    env_summary = get_env_summary()
+    claims = paper.get("ground_truth_claims") or []
 
-    prompt = f"""\
-TASK: Reproduce the machine learning paper "{title}" using its original code.
+    # ── Assemble sections by tier ────────────────────────────
+    sections: list[str] = []
 
-PAPER INFO:
-- Paper ID: {paper_id}
-- ArXiv: {arxiv_id}
-{repo_info}
-- Abstract: {abstract}
+    # — Task header (all tiers) —
+    sections.append(
+        f'TASK: Reproduce the machine learning paper "{title}" '
+        f"using its original code."
+    )
 
-HOST ENVIRONMENT (already installed — do NOT re-download these):
-{env_summary}
+    # — Paper info (all tiers) —
+    sections.append(
+        f"PAPER INFO:\n"
+        f"- Paper ID: {paper_id}\n"
+        f"- ArXiv: {arxiv_id}\n"
+        f"{repo_info}\n"
+        f"- Abstract: {abstract}"
+    )
 
-TIME BUDGET: You have {timeout_s} seconds ({timeout_s // 60} minutes) from now. The runner \
-will kill your process at {timeout_s + 60}s with NO warning. Plan accordingly:
-- Write a provisional result JSON within the first 5 minutes (after env setup).
-- Allocate no more than 30% of total time ({timeout_s * 30 // 100}s) to downloads.
-- Reserve the last 10% ({timeout_s * 10 // 100}s) for writing final results.
-- If time is short, run experiments with AVAILABLE checkpoints first.
+    # — Environment facts (neutral, guided) —
+    if tier in ("neutral", "guided"):
+        env_summary = get_env_summary()
+        if tier == "guided":
+            sections.append(
+                f"HOST ENVIRONMENT (already installed — do NOT re-download these):\n"
+                f"{env_summary}\n"
+                f"{PROXY_HINTS}"
+            )
+        else:
+            # neutral: facts only, no advice
+            sections.append(f"HOST ENVIRONMENT:\n{env_summary}")
 
-{claims_block}
+    # — Time budget —
+    if tier == "guided":
+        sections.append(
+            f"TIME BUDGET: You have {timeout_s} seconds ({timeout_s // 60} minutes) "
+            f"from now. The runner will kill your process at {timeout_s + 60}s "
+            f"with NO warning. Plan accordingly:\n"
+            f"- Write a provisional result JSON within the first 5 minutes "
+            f"(after env setup).\n"
+            f"- Allocate no more than 30% of total time "
+            f"({timeout_s * 30 // 100}s) to downloads.\n"
+            f"- Reserve the last 10% ({timeout_s * 10 // 100}s) for writing "
+            f"final results.\n"
+            f"- If time is short, run experiments with AVAILABLE checkpoints first."
+        )
+    else:
+        # bare, neutral: just the number
+        sections.append(
+            f"TIME BUDGET: {timeout_s} seconds ({timeout_s // 60} minutes). "
+            f"Hard kill at {timeout_s + 60}s."
+        )
 
-INSTRUCTIONS:
-{clone_step}
-2. Read the README and paper to understand how to run experiments.
-3. Set up the environment:
-   - Create venv with: python3 -m venv .venv --system-site-packages
-     This inherits the system torch/CUDA listed above — no need to download them.
-   - Read requirements.txt. Only install packages that are MISSING. Do NOT blindly
-     pip install the whole file if it would downgrade working system packages.
-   - If the paper pins an old torch version, evaluate whether the code actually
-     needs it or just needs a compatible version. Prefer the system torch.
-4. Run the experiments listed above. Let ALL output print to stdout — do NOT suppress or redirect experiment output.
-5. If an experiment produces result files (CSV, JSON, logs), leave them in the working directory.
+    # — Claims (neutral, guided) / open-ended task (bare) —
+    if tier == "bare":
+        sections.append(
+            "Read the paper and its code repository. Identify the main "
+            "experiments and reproduce them."
+        )
+    else:
+        sections.append(_build_claims_block(claims))
 
-STRATEGY FOR LARGE EXPERIMENTS:
-- If multiple model checkpoints are needed, run experiments with ALREADY-AVAILABLE
-  checkpoints FIRST while downloading the rest in parallel.
-- After each experiment completes, update the result JSON immediately.
-- Do NOT block all experiments on all downloads completing.
-- Prioritize: write L1 result → run available experiments → download more → run more.
+    # — Instructions —
+    if tier == "guided":
+        if code_url:
+            clone_step = (
+                f"1. Clone the repository: git clone {code_url} repo "
+                f"&& cd repo && git checkout {commit}"
+            )
+        else:
+            clone_step = (
+                "1. Find the official code repository from the paper URL or "
+                "arxiv page, then clone it: git clone <repo_url> repo && cd repo"
+            )
+        sections.append(
+            f"INSTRUCTIONS:\n"
+            f"{clone_step}\n"
+            f"2. Read the README and paper to understand how to run experiments.\n"
+            f"3. Set up the environment:\n"
+            f"   - Create venv with: python3 -m venv .venv --system-site-packages\n"
+            f"     This inherits the system torch/CUDA listed above — no need to "
+            f"download them.\n"
+            f"   - Read requirements.txt. Only install packages that are MISSING. "
+            f"Do NOT blindly\n"
+            f"     pip install the whole file if it would downgrade working system "
+            f"packages.\n"
+            f"   - If the paper pins an old torch version, evaluate whether the "
+            f"code actually\n"
+            f"     needs it or just needs a compatible version. Prefer the system "
+            f"torch.\n"
+            f"4. Run the experiments listed above. Let ALL output print to stdout "
+            f"— do NOT suppress or redirect experiment output.\n"
+            f"5. If an experiment produces result files (CSV, JSON, logs), leave "
+            f"them in the working directory."
+        )
+        sections.append(
+            "STRATEGY FOR LARGE EXPERIMENTS:\n"
+            "- If multiple model checkpoints are needed, run experiments with "
+            "ALREADY-AVAILABLE\n"
+            "  checkpoints FIRST while downloading the rest in parallel.\n"
+            "- After each experiment completes, update the result JSON "
+            "immediately.\n"
+            "- Do NOT block all experiments on all downloads completing.\n"
+            "- Prioritize: write L1 result → run available experiments → "
+            "download more → run more."
+        )
+        sections.append(
+            f"IMPORTANT RULES:\n"
+            f"- Work in directory: {workdir}\n"
+            f"- You do NOT know the expected metric values. Run experiments "
+            f"honestly and let the output speak for itself.\n"
+            f"- If you encounter an error you cannot fix after 3 attempts, "
+            f"record it as a barrier and move on.\n"
+            f"- Do NOT skip steps — always attempt environment setup even if "
+            f"you expect failure.\n"
+            f"- Do NOT fabricate, estimate, or hard-code any metric values.\n"
+            f"- NETWORK: If a download is slow (< 1MB/s) or fails, do not keep "
+            f"retrying the same source.\n"
+            f"  Try alternatives: use a mirror, use uv instead of pip, or ask "
+            f"the user about\n"
+            f"  proxy/mirror settings via AskHuman.\n"
+            f"  Multi-GB checkpoint downloads through a proxy will be slow "
+            f"(5-20 MB/s). Factor this\n"
+            f"  into your time budget — a 2 GB file takes ~2-7 minutes. Do NOT "
+            f"wait for all downloads\n"
+            f"  before starting experiments."
+        )
+    else:
+        # bare, neutral: minimal — let the agent figure out workflow
+        sections.append(
+            f"INSTRUCTIONS:\n"
+            f"Reproduce the experiments listed above.\n"
+            f"Work in directory: {workdir}\n"
+            f"Do NOT fabricate or hard-code any metric values."
+        )
 
-IMPORTANT RULES:
-- Work in directory: {workdir}
-- You do NOT know the expected metric values. Run experiments honestly and let the output speak for itself.
-- If you encounter an error you cannot fix after 3 attempts, record it as a barrier and move on.
-- Do NOT skip steps — always attempt environment setup even if you expect failure.
-- Do NOT fabricate, estimate, or hard-code any metric values.
-- NETWORK: If a download is slow (< 1MB/s) or fails, do not keep retrying the same source.
-  Try alternatives: use a mirror, use uv instead of pip, or ask the user about
-  proxy/mirror settings via AskHuman.
-  Multi-GB checkpoint downloads through a proxy will be slow (5-20 MB/s). Factor this
-  into your time budget — a 2 GB file takes ~2-7 minutes. Do NOT wait for all downloads
-  before starting experiments.
+    # — Output spec (all tiers) —
+    sections.append(
+        f"OUTPUT: Write the result JSON to exactly this path:\n"
+        f"  {result_path}\n\n"
+        f"The JSON must follow this schema:\n"
+        f"{schema_snippet}"
+    )
 
-OUTPUT: Write the result JSON to exactly this path:
-  {result_path}
+    # — Progressive writing advice (guided only) —
+    if tier == "guided":
+        sections.append(
+            "CRITICAL — Write the result JSON EARLY and UPDATE it as you "
+            "progress:\n"
+            "1. After environment setup succeeds → write with l1_build=\"pass\","
+            " overall_level=1\n"
+            "2. After each experiment completes → update with l2_run status "
+            "and any metrics\n"
+            "3. Before any long operation (download, training) → ensure the "
+            "JSON file is current\n"
+            "The runner may kill your process at any time. Only what is ON DISK "
+            "counts."
+        )
 
-The JSON must follow this schema:
-{schema_snippet}
+    # — Result JSON semantics (all tiers — these are schema docs, not strategy) —
+    sections.append(
+        "Rules for the result JSON:\n"
+        "- overall_level: 0 if L1 (build) failed, 1 if L1 passed but L2 "
+        "(run) failed, 2 if experiments ran to completion\n"
+        "- L3 (reproduce) is evaluated by an independent judge — set l3 "
+        'status to "skip"\n'
+        "- Record any barriers encountered with evidence (error messages)\n"
+        "- resource_usage.total_time_ms = your total wall time in milliseconds"
+    )
 
-CRITICAL — Write the result JSON EARLY and UPDATE it as you progress:
-1. After environment setup succeeds → write with l1_build="pass", overall_level=1
-2. After each experiment completes → update with l2_run status and any metrics
-3. Before any long operation (download, training) → ensure the JSON file is current
-The runner may kill your process at any time. Only what is ON DISK counts.
-
-Rules for the result JSON:
-- overall_level: 0 if L1 (build) failed, 1 if L1 passed but L2 (run) failed, 2 if experiments ran to completion
-- L3 (reproduce) is evaluated by an independent judge — set l3 status to "skip"
-- Record any barriers encountered with evidence (error messages)
-- resource_usage.total_time_ms = your total wall time in milliseconds"""
-
-    return prompt
+    return "\n\n".join(sections)

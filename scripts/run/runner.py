@@ -55,7 +55,7 @@ from .agents.claude_code import ClaudeCodeAdapter
 from .agents.opencode import OpenCodeAdapter
 from .agents.codex import CodexAdapter
 from .agents.base import AgentAdapter, RunResult
-from .prompt_builder import build_prompt
+from .prompt_builder import build_prompt, PROMPT_TIERS
 
 AGENT_REGISTRY: dict[str, type[AgentAdapter]] = {
     "panda": PandaAdapter,
@@ -221,6 +221,7 @@ def run_single(
     paper: dict[str, Any],
     timeout_s: int,
     dry_run: bool = False,
+    prompt_tier: str = "guided",
 ) -> dict[str, Any]:
     """Run a single agent on a single paper. Returns the result dict."""
     paper_id = paper["paper_id"]
@@ -231,11 +232,11 @@ def run_single(
     result_dir.mkdir(parents=True, exist_ok=True)
     result_path = result_dir / f"{paper_id}.json"
 
-    prompt = build_prompt(paper, agent_id, result_path, workdir, timeout_s)
+    prompt = build_prompt(paper, agent_id, result_path, workdir, timeout_s, tier=prompt_tier)
 
     if dry_run:
         print(f"\n{'='*60}")
-        print(f"[DRY RUN] Agent={agent_id}  Paper={paper_id}")
+        print(f"[DRY RUN] Agent={agent_id}  Paper={paper_id}  Tier={prompt_tier}")
         print(f"Workdir: {workdir}")
         print(f"Result:  {result_path}")
         print(f"Prompt ({len(prompt)} chars):")
@@ -243,7 +244,7 @@ def run_single(
         return {"paper_id": paper_id, "agent_id": agent_id, "dry_run": True}
 
     print(f"\n{'='*60}")
-    print(f"[RUN] Agent={agent_id}  Paper={paper_id}  Timeout={timeout_s}s")
+    print(f"[RUN] Agent={agent_id}  Paper={paper_id}  Timeout={timeout_s}s  Tier={prompt_tier}")
     print(f"  Title: {paper['title'][:70]}")
     print(f"  Repo:  {paper.get('code_url') or 'N/A'}")
     print(f"  Claims: {len(paper.get('ground_truth_claims', []))}")
@@ -357,6 +358,14 @@ Examples:
         help="Model for independent judge (default: opus)",
     )
     parser.add_argument(
+        "--prompt-tier",
+        choices=PROMPT_TIERS,
+        default="guided",
+        help="How much guidance the prompt gives the agent "
+             "(bare=task only, neutral=+env facts, guided=+strategy coaching; "
+             "default: guided)",
+    )
+    parser.add_argument(
         "--dataset",
         type=Path,
         default=DEFAULT_DATASET,
@@ -404,6 +413,7 @@ Examples:
     agents = [AGENT_REGISTRY[name](model_config=model_config) for name in args.agents]
     print(f"Agents: {[a.agent_id for a in agents]}")
     print(f"Timeout: {args.timeout}s per paper")
+    print(f"Prompt tier: {args.prompt_tier}")
 
     if args.dry_run:
         print("\n*** DRY RUN MODE ***\n")
@@ -414,7 +424,7 @@ Examples:
 
     for paper in papers:
         for agent in agents:
-            result = run_single(agent, paper, args.timeout, args.dry_run)
+            result = run_single(agent, paper, args.timeout, args.dry_run, args.prompt_tier)
 
             # Run independent judge (unless skipped or dry run)
             judge_found = 0
@@ -466,7 +476,7 @@ Examples:
     if not args.dry_run:
         print(f"\n{'='*60}")
         print(f"  BAMBOO Run Summary")
-        print(f"  Model: {args.model}")
+        print(f"  Model: {args.model}  Tier: {args.prompt_tier}")
         print(f"  Total time: {total_elapsed:.0f}s")
         print(f"{'='*60}\n")
 
