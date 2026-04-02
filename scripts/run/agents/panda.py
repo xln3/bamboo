@@ -31,7 +31,7 @@ class PandaAdapter(AgentAdapter):
             "-p",
             prompt,
             "--profile",
-            "coding",
+            "reproduction",
             "--max-tokens",
             "32000",
             "--log-detail",
@@ -56,6 +56,16 @@ class PandaAdapter(AgentAdapter):
             "PANDA_PROVIDER": mc.get("provider", "openai"),
             "PANDA_MODEL": mc["model"],
         }
+
+        # Pass through notification + structurer env vars if set in parent
+        for key in ("PANDA_FEISHU_WEBHOOK_URL", "PANDA_FEISHU_APP_ID",
+                     "PANDA_FEISHU_APP_SECRET", "PANDA_FEISHU_CHAT_ID",
+                     "PANDA_STRUCTURER_MODEL", "PANDA_STRUCTURER_BASE_URL",
+                     "PANDA_STRUCTURER_API_KEY", "PANDA_STRUCTURER_MAX_TOKENS",
+                     "PANDA_STRUCTURER_PROVIDER"):
+            val = os.environ.get(key)
+            if val:
+                overrides[key] = val
 
         # Auto-extract domain from base_url for NO_PROXY
         from urllib.parse import urlparse
