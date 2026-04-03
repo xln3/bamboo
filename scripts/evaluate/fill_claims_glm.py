@@ -267,7 +267,7 @@ async def call_glm(
                         "anthropic-version": "2023-06-01",
                         "content-type": "application/json",
                     },
-                    timeout=300.0,
+                    timeout=600.0,
                 )
 
                 if resp.status_code == 200:
@@ -531,7 +531,7 @@ async def run_extraction(papers: list[dict], workers: int, save_every: int,
     failed = 0
     counter = 0
 
-    async with httpx.AsyncClient(timeout=httpx.Timeout(300.0)) as client:
+    async with httpx.AsyncClient(timeout=httpx.Timeout(600.0)) as client:
         # Process in batches for checkpoint saves
         batch_size = save_every
         for batch_start in range(0, len(to_extract), batch_size):
@@ -594,6 +594,9 @@ def main():
                         help="Override API key")
     parser.add_argument("--partition", type=str, default=None,
                         help="Worker partition 'K/N' — this worker takes every Nth paper starting at K (0-indexed)")
+    parser.add_argument("--source", type=str, default="curated",
+                        choices=["curated", "full"],
+                        help="Paper source: 'curated' (3994) or 'full' (bamboo_final.json, 6148)")
     args = parser.parse_args()
 
     if args.model:
@@ -610,7 +613,12 @@ def main():
 
     CLAIMS_V2.mkdir(exist_ok=True)
 
-    papers = load_curated()
+    if args.source == "full":
+        with open(DATA / "bamboo_final.json") as f:
+            papers = json.load(f)
+        log.info(f"Loaded {len(papers)} papers from bamboo_final.json")
+    else:
+        papers = load_curated()
 
     if args.verify_only:
         asyncio.run(verify_claims(papers, limit=args.limit or 50))

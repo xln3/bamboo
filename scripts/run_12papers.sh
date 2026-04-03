@@ -105,7 +105,7 @@ for PAPER_ID in "${PAPERS[@]}"; do
       RESUMING=false
     else
       echo "[SKIP] $PAPER_ID (before resume point $RESUME_FROM)" | tee -a "$RUN_LOG"
-      ((SKIPPED++))
+      SKIPPED=$((SKIPPED + 1))
       continue
     fi
   fi
@@ -115,7 +115,7 @@ for PAPER_ID in "${PAPERS[@]}"; do
   if [[ -z "$DRY_RUN" && -f "$RESULT_FILE" ]]; then
     LEVEL=$(python3 -c "import json; r=json.load(open('$RESULT_FILE')); print(r.get('pass4',{}).get('overall_level','?'))" 2>/dev/null || echo "?")
     echo "[EXISTS] $PAPER_ID → L${LEVEL}, skipping (delete $RESULT_FILE to re-run)" | tee -a "$RUN_LOG"
-    ((SKIPPED++))
+    SKIPPED=$((SKIPPED + 1))
     continue
   fi
 
@@ -124,6 +124,8 @@ for PAPER_ID in "${PAPERS[@]}"; do
 
   START_TS=$(date +%s)
 
+  # Run with set +e so timeout/failure doesn't abort the whole batch
+  set +e
   python3 -m scripts.run.runner \
     --agents "$AGENT" \
     --model "$MODEL" \
@@ -136,15 +138,16 @@ for PAPER_ID in "${PAPERS[@]}"; do
     2>&1 | tee -a "$RUN_LOG"
 
   EXIT_CODE=${PIPESTATUS[0]}
+  set -e
   END_TS=$(date +%s)
   ELAPSED=$(( END_TS - START_TS ))
 
   if [[ $EXIT_CODE -eq 0 ]]; then
     echo "[DONE] $PAPER_ID  (${ELAPSED}s)" | tee -a "$RUN_LOG"
-    ((COMPLETED++))
+    COMPLETED=$((COMPLETED + 1))
   else
     echo "[FAIL] $PAPER_ID  exit=$EXIT_CODE  (${ELAPSED}s)" | tee -a "$RUN_LOG"
-    ((FAILED++))
+    FAILED=$((FAILED + 1))
   fi
 
   # Brief pause between papers to be gentle on rate limits

@@ -3,6 +3,10 @@
 
 Filters validated papers, assigns paper IDs, classifies domain, and writes
 the final benchmark JSON.
+
+Paper IDs are assigned via a persistent mapping file (data/id_mapping.json)
+so that once a paper gets a bamboo-XXXXX ID, it keeps it across re-runs —
+even if new papers are added or the sort order changes.
 """
 from __future__ import annotations
 
@@ -22,6 +26,8 @@ VENUE_IDS = [
 ]
 
 OUTPUT_PATH = DATA_DIR.parent / "bamboo_final.json"
+ID_MAPPING_PATH = DATA_DIR / "id_mapping.json"
+EXTRAS_PATH = DATA_DIR / "benchmark_extras.json"
 
 
 # ---------------------------------------------------------------------------
@@ -326,8 +332,42 @@ def build_entry(paper: Dict[str, Any], paper_id: str) -> Dict[str, Any]:
     return entry
 
 
+def _paper_stable_key(paper: Dict[str, Any]) -> str:
+    """Compute a stable key for a paper that persists across re-runs.
+
+    Uses paper_url (OpenReview/arXiv URL) as primary key since it is
+    unique and immutable.  Falls back to title+venue for papers
+    without a URL.
+    """
+    url = paper.get("paper_url", "").strip()
+    if url:
+        return url
+    return f"{paper.get('venue', '')}::{paper.get('title', '')}"
+
+
+def load_id_mapping() -> Dict[str, str]:
+    """Load persistent {stable_key: paper_id} mapping."""
+    if ID_MAPPING_PATH.exists():
+        with open(ID_MAPPING_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def save_id_mapping(mapping: Dict[str, str]) -> None:
+    """Save the ID mapping to disk."""
+    with open(ID_MAPPING_PATH, "w", encoding="utf-8") as f:
+        json.dump(mapping, f, indent=2, ensure_ascii=False, sort_keys=True)
+    print(f"  ID mapping saved: {len(mapping)} entries → {ID_MAPPING_PATH}")
+
+
 def finalize() -> List[Dict[str, Any]]:
-    """Run the full finalization pipeline."""
+    """Run the full finalization pipeline.
+
+    Paper IDs are assigned via a persistent mapping so that re-running
+    this function never shuffles existing IDs.  New papers get the next
+    available ID; papers removed from venues keep their mapping entry
+    (tombstone) so the ID is never reused.
+    """
     # Collect eligible papers from all venues
     eligible: List[Dict[str, Any]] = []
     for venue_id in VENUE_IDS:
@@ -336,14 +376,70 @@ def finalize() -> List[Dict[str, Any]]:
             if is_eligible(p):
                 eligible.append(p)
 
-    # Sort by venue (uppercase) then title for deterministic ID assignment
+    # Include benchmark extras (papers outside tracked venues, e.g. from
+    # other years, that have been manually prepared with PDFs/claims).
+    if EXTRAS_PATH.exists():
+        with open(EXTRAS_PATH, encoding="utf-8") as f:
+            extras = json.load(f)
+        seen_keys = {_paper_stable_key(p) for p in eligible}
+        added = 0
+        for p in extras:
+            key = _paper_stable_key(p)
+            if key not in seen_keys:
+                eligible.append(p)
+                seen_keys.add(key)
+                added += 1
+        if added:
+            print(f"  Added {added} benchmark extras from {EXTRAS_PATH.name}")
+
+    # Sort for deterministic processing (but NOT for ID assignment)
     eligible.sort(key=lambda p: (p.get("venue", "").upper(), p.get("title", "")))
 
-    # Assign paper IDs and build final entries
+    # Load persistent mapping
+    mapping = load_id_mapping()
+    reverse = {v: k for k, v in mapping.items()}  # paper_id → key
+
+    # Phase 1: assign IDs to papers that already have one
+    assigned: Dict[str, Dict[str, Any]] = {}  # paper_id → paper
+    unassigned: List[Dict[str, Any]] = []
+    for paper in eligible:
+        key = _paper_stable_key(paper)
+        if key in mapping:
+            paper_id = mapping[key]
+            assigned[paper_id] = paper
+        else:
+            unassigned.append(paper)
+
+    # Phase 2: find next available IDs for new papers
+    used_ids = set(mapping.values())
+    next_num = max((int(pid.split("-")[1]) for pid in used_ids), default=0) + 1
+
+    new_count = 0
+    for paper in unassigned:
+        # Skip IDs that are already taken (by mapping or this run)
+        while f"bamboo-{next_num:05d}" in used_ids:
+            next_num += 1
+        paper_id = f"bamboo-{next_num:05d}"
+        key = _paper_stable_key(paper)
+        mapping[key] = paper_id
+        used_ids.add(paper_id)
+        assigned[paper_id] = paper
+        next_num += 1
+        new_count += 1
+
+    if new_count:
+        print(f"  Assigned {new_count} new paper IDs")
+    reused = len(eligible) - new_count
+    if reused:
+        print(f"  Reused {reused} existing paper IDs from mapping")
+
+    # Save updated mapping
+    save_id_mapping(mapping)
+
+    # Build final entries sorted by paper_id
     dataset: List[Dict[str, Any]] = []
-    for i, paper in enumerate(eligible, start=1):
-        paper_id = f"bamboo-{i:05d}"
-        entry = build_entry(paper, paper_id)
+    for paper_id in sorted(assigned):
+        entry = build_entry(assigned[paper_id], paper_id)
         dataset.append(entry)
 
     return dataset
@@ -404,6 +500,69 @@ def print_summary(dataset: List[Dict[str, Any]]) -> None:
     print(f"{'='*60}\n")
 
 
+def verify_consistency(dataset: List[Dict[str, Any]]) -> int:
+    """Check that paper_markdowns match metadata titles.
+
+    Returns the number of mismatches found.
+    """
+    md_dir = DATA_DIR / "paper_markdowns"
+    if not md_dir.exists():
+        return 0
+
+    mismatches = 0
+    for entry in dataset:
+        pid = entry["paper_id"]
+        md_path = md_dir / f"{pid}.md"
+        if not md_path.exists():
+            continue
+
+        # Read first 5 lines of markdown to extract title
+        with open(md_path, encoding="utf-8", errors="replace") as f:
+            lines = []
+            for _ in range(5):
+                line = f.readline()
+                if not line:
+                    break
+                lines.append(line.strip())
+
+        md_title = ""
+        for line in lines:
+            # Skip empty lines and markdown headers
+            clean = line.lstrip("#").strip()
+            if clean and len(clean) > 10:
+                md_title = clean
+                break
+
+        if not md_title:
+            continue
+
+        # Check if the metadata title appears in the markdown title (fuzzy)
+        meta_title = entry.get("title", "")
+        # Use first 30 chars for comparison (titles may be truncated differently)
+        meta_prefix = meta_title[:30].lower().strip()
+        md_prefix = md_title[:30].lower().strip()
+
+        if meta_prefix and md_prefix and meta_prefix != md_prefix:
+            # Check if they share significant overlap
+            meta_words = set(meta_prefix.split())
+            md_words = set(md_prefix.split())
+            overlap = len(meta_words & md_words) / max(len(meta_words | md_words), 1)
+            if overlap < 0.3:
+                mismatches += 1
+                print(f"  MISMATCH {pid}:")
+                print(f"    metadata: {meta_title[:70]}")
+                print(f"    markdown: {md_title[:70]}")
+
+    if mismatches:
+        print(f"\n  WARNING: {mismatches} paper(s) have metadata/markdown title mismatch!")
+        print(f"  This usually means finalize was re-run after PDFs were downloaded.")
+        print(f"  Fix: update metadata or re-download affected PDFs.")
+    else:
+        print(f"  Consistency check passed (all markdowns match metadata)")
+
+    return mismatches
+
+
 def main() -> None:
     dataset = finalize()
 
@@ -413,6 +572,10 @@ def main() -> None:
         json.dump(dataset, f, indent=2, ensure_ascii=False)
 
     print_summary(dataset)
+
+    # Verify PDF/markdown consistency
+    print("\nVerifying metadata ↔ markdown consistency...")
+    verify_consistency(dataset)
 
 
 if __name__ == "__main__":

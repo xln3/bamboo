@@ -1,0 +1,416 @@
+[
+  {
+    "paper_id": "bamboo-06079",
+    "title": "Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction",
+    "venue": "NeurIPS 2024",
+    "year": 2025,
+    "code_url": "https://github.com/FoundationVision/VAR",
+    "code_commit": "HEAD",
+    "arxiv_id": "",
+    "authors": [
+      "Xingyu Ren",
+      "Pengwei Liu",
+      "Pengkai Wang",
+      "Guanyu Chen",
+      "Qinxin Wu",
+      "Dong Ni"
+    ],
+    "abstract": "We present Visual AutoRegressive modeling (VAR), a new generation paradigm that redefines the autoregressive learning on images as coarse-to-fine \"next-scale prediction\" or \"next-resolution prediction\", diverging from the standard raster-scan \"next-token prediction\". This simple, intuitive methodology allows autoregressive (AR) transformers to learn visual distributions and generate images via next-scale prediction.",
+    "paper_url": "https://arxiv.org/abs/2404.02905",
+    "pdf_url": "https://openreview.net/pdf/6ab7fdc7050d0cb5e28a62a618f767225c61bd38.pdf",
+    "venue_track": "poster",
+    "code_platform": "github",
+    "domain": "theory",
+    "difficulty": {
+      "tier": 2,
+      "composite_score": 2.39,
+      "dimensions": {
+        "framework_complexity": 0.3,
+        "dependency_count": 0.05,
+        "dataset_requirements": 0.6,
+        "hardware_requirements": 0.3,
+        "code_quality": 0.7,
+        "reproduction_time": 0.2
+      }
+    },
+    "tags": [],
+    "_repo_valid": true
+  },
+  {
+    "paper_id": "bamboo-06080",
+    "title": "Infinity: Scaling Bitwise AutoRegressive Modeling for High-Resolution Image Synthesis",
+    "venue": "arXiv 2024",
+    "year": 2025,
+    "code_url": "https://github.com/FoundationVision/Infinity",
+    "code_commit": "HEAD",
+    "arxiv_id": "",
+    "authors": [
+      "Fan-Ming Luo",
+      "Lei Yuan",
+      "Yang Yu"
+    ],
+    "abstract": "We present Infinity, a Bitwise Visual AutoRegressive Modeling capable of generating high-resolution, photorealistic images following language instruction. Infinity redefines visual autoregressive model under a bitwise token prediction framework with an infinite-vocabulary tokenizer & classifier and bitwise self-correction mechanism, remarkably improving the generation capacity and details.",
+    "paper_url": "https://arxiv.org/abs/2412.04431",
+    "pdf_url": "https://openreview.net/pdf/4d329906b712c3b27c9aa333f7ea1c9a9045d45f.pdf",
+    "venue_track": "poster",
+    "code_platform": "github",
+    "domain": "other",
+    "difficulty": {
+      "tier": 2,
+      "composite_score": 2.27,
+      "dimensions": {
+        "framework_complexity": 0.3,
+        "dependency_count": 0.05,
+        "dataset_requirements": 0.3,
+        "hardware_requirements": 0.3,
+        "code_quality": 0.7,
+        "reproduction_time": 0.4
+      }
+    },
+    "tags": [],
+    "_repo_valid": true
+  },
+  {
+    "paper_id": "bamboo-06081",
+    "title": "Not All Image Regions Matter: Masked Vector Quantization for Autoregressive Image Generation",
+    "venue": "CVPR 2023",
+    "year": 2025,
+    "code_url": "https://github.com/CrossmodalGroup/MaskedVectorQuantization",
+    "code_commit": "HEAD",
+    "arxiv_id": "",
+    "authors": [
+      "Runqing Miao",
+      "Sheng Xu",
+      "Runyi Zhao",
+      "Wai Kin Victor Chan",
+      "Guiliang Liu"
+    ],
+    "abstract": "Existing autoregressive models follow the two-stage generation paradigm that first learns a codebook in the latent space for image reconstruction and then completes the image generation autoregressively based on the learned codebook. However, existing codebook learning simply models all local region information of images without distinguishing their different perceptual importance.",
+    "paper_url": "https://arxiv.org/abs/2305.13607",
+    "pdf_url": "https://openreview.net/pdf/5a2b3dd262ac7dccf9cd44a7d9b0f353589a25cb.pdf",
+    "venue_track": "poster",
+    "code_platform": "github",
+    "domain": "robotics",
+    "difficulty": {
+      "tier": 2,
+      "composite_score": 2.27,
+      "dimensions": {
+        "framework_complexity": 0.3,
+        "dependency_count": 0.05,
+        "dataset_requirements": 0.3,
+        "hardware_requirements": 0.3,
+        "code_quality": 0.7,
+        "reproduction_time": 0.4
+      }
+    },
+    "tags": [],
+    "_repo_valid": true
+  },
+  {
+    "paper_id": "bamboo-06082",
+    "title": "Autoregressive-Based Progressive Coding for Ultra-Low Bitrate Image Compression",
+    "venue": "ICLR 2025",
+    "year": 2025,
+    "code_url": "https://github.com/Joanna-0421/ARPC",
+    "code_commit": "HEAD",
+    "arxiv_id": "",
+    "authors": [
+      "Mingze Dong",
+      "Leda Wang",
+      "Yuval Kluger"
+    ],
+    "abstract": "Generative models have demonstrated significant results in ultra-low bitrate image compression, owing to their powerful capabilities for content generation and texture completion. Existing works primarily based on diffusion models still face challenges such as limited bitrate adaptability and high computational complexity for encoding and decoding. Inspired by the success of Visual AutoRegressive modeling, we propose ARPC.",
+    "paper_url": "https://openreview.net/forum?id=ARPC2025",
+    "pdf_url": "https://openreview.net/pdf/76171a8f5c61c67558097e72d0cafc70e31d77d1.pdf",
+    "venue_track": "poster",
+    "code_platform": "github",
+    "domain": "nlp",
+    "difficulty": {
+      "tier": 2,
+      "composite_score": 2.75,
+      "dimensions": {
+        "framework_complexity": 0.3,
+        "dependency_count": 0.05,
+        "dataset_requirements": 0.6,
+        "hardware_requirements": 0.3,
+        "code_quality": 0.7,
+        "reproduction_time": 0.8
+      }
+    },
+    "tags": [],
+    "_repo_valid": true
+  },
+  {
+    "paper_id": "bamboo-06083",
+    "title": "Customizable ROI-Based Deep Image Compression",
+    "venue": "arXiv 2025",
+    "year": 2025,
+    "code_url": "https://github.com/hccavgcyv/Customizable-ROI-Based-Deep-Image-Compression",
+    "code_commit": "HEAD",
+    "arxiv_id": "",
+    "authors": [
+      "Weixin Chen",
+      "Han Zhao"
+    ],
+    "abstract": "Region of Interest (ROI)-based image compression optimizes bit allocation by prioritizing ROI for higher-quality reconstruction. However, as the users (including human clients and downstream machine tasks) become more diverse, ROI-based image compression needs to be customizable to support various preferences. We propose a customizable ROI-based deep image compression framework.",
+    "paper_url": "https://arxiv.org/abs/2412.14575",
+    "pdf_url": "https://openreview.net/pdf/2629d312a9f708208e1a1afc731f7da25589f40a.pdf",
+    "venue_track": "poster",
+    "code_platform": "github",
+    "domain": "theory",
+    "difficulty": {
+      "tier": 2,
+      "composite_score": 2.23,
+      "dimensions": {
+        "framework_complexity": 0.3,
+        "dependency_count": 0.05,
+        "dataset_requirements": 0.3,
+        "hardware_requirements": 0.4,
+        "code_quality": 0.7,
+        "reproduction_time": 0.2
+      }
+    },
+    "tags": [],
+    "_repo_valid": true
+  },
+  {
+    "paper_id": "bamboo-06084",
+    "title": "SCALAR: Scale-wise Controllable Visual AutoRegressive Learning",
+    "venue": "arXiv 2025",
+    "year": 2025,
+    "code_url": "https://github.com/AMAP-ML/SCALAR",
+    "code_commit": "HEAD",
+    "arxiv_id": "",
+    "authors": [
+      "Jiayi Yuan",
+      "Hao Li",
+      "Xinheng Ding",
+      "Wenya Xie",
+      "Yu-Jhe Li",
+      "Wentian Zhao",
+      "Kun Wan",
+      "Jing Shi",
+      "Xia Hu",
+      "Zirui Liu"
+    ],
+    "abstract": "Controllable image synthesis, which enables fine-grained control over generated outputs, has emerged as a key focus in visual generative modeling. However, controllable generation remains challenging for Visual Autoregressive (VAR) models due to their hierarchical, next-scale prediction style. We propose SCALAR for scale-wise controllable visual autoregressive learning.",
+    "paper_url": "https://arxiv.org/abs/2504.09582",
+    "pdf_url": "https://openreview.net/pdf/0025fad6ba784349766905dc7158027e8500db26.pdf",
+    "venue_track": "oral",
+    "code_platform": "github",
+    "domain": "nlp",
+    "difficulty": {
+      "tier": 2,
+      "composite_score": 2.81,
+      "dimensions": {
+        "framework_complexity": 0.3,
+        "dependency_count": 0.05,
+        "dataset_requirements": 0.3,
+        "hardware_requirements": 0.9,
+        "code_quality": 0.7,
+        "reproduction_time": 0.5
+      }
+    },
+    "tags": [],
+    "_repo_valid": true
+  },
+  {
+    "paper_id": "bamboo-06085",
+    "title": "TEAL: Training-Free Activation Sparsity in Large Language Models",
+    "venue": "NeurIPS 2024",
+    "year": 2025,
+    "code_url": "https://github.com/FasterDecoding/TEAL",
+    "code_commit": "HEAD",
+    "arxiv_id": "",
+    "authors": [
+      "Yu Li",
+      "Jin Jiang",
+      "Jianhua Zhu",
+      "Shuai Peng",
+      "Baole Wei",
+      "Yuxuan Zhou",
+      "Liangcai Gao"
+    ],
+    "abstract": "Activation sparsity can enable practical inference speedups in large language models (LLMs) by reducing the compute and memory-movement required for matrix multiplications during the forward pass. However, existing methods face limitations that inhibit widespread adoption. We propose TEAL, a training-free method that applies magnitude-based activation sparsity to the hidden states of any LLM.",
+    "paper_url": "https://arxiv.org/abs/2410.09347",
+    "pdf_url": "https://openreview.net/pdf/3dd785cbc6aae769caf4551e9c6b46669c23a030.pdf",
+    "venue_track": "spotlight",
+    "code_platform": "github",
+    "domain": "nlp",
+    "difficulty": {
+      "tier": 2,
+      "composite_score": 2.99,
+      "dimensions": {
+        "framework_complexity": 0.3,
+        "dependency_count": 0.05,
+        "dataset_requirements": 0.6,
+        "hardware_requirements": 0.6,
+        "code_quality": 0.7,
+        "reproduction_time": 0.8
+      }
+    },
+    "tags": [],
+    "_repo_valid": true
+  },
+  {
+    "paper_id": "bamboo-06086",
+    "title": "Are Self-Attentions Effective for Time Series Forecasting?",
+    "venue": "NeurIPS 2024",
+    "year": 2025,
+    "code_url": "https://github.com/dongbeank/CATS",
+    "code_commit": "HEAD",
+    "arxiv_id": "",
+    "authors": [
+      "Ruichuan An",
+      "Sihan Yang",
+      "Renrui Zhang",
+      "Zijun Shen",
+      "Ming Lu",
+      "Gaole Dai",
+      "Hao Liang",
+      "Ziyu Guo",
+      "Shilin Yan",
+      "Yulin Luo",
+      "Bocheng Zou",
+      "Chaoqun Yang",
+      "Wentao Zhang"
+    ],
+    "abstract": "Time series forecasting is crucial for applications across multiple domains and various scenarios. Although Transformers have dramatically advanced the landscape of forecasting, their effectiveness remains debated. Recent findings have indicated that simpler linear models might outperform complex Transformer-based approaches. We propose CATS (Cross-time and -variable Attention for Time Series).",
+    "paper_url": "https://arxiv.org/abs/2405.16877",
+    "pdf_url": "https://openreview.net/pdf/1ae2bd941680e6165e1ce651c7d75b69e44c9d7f.pdf",
+    "venue_track": "poster",
+    "code_platform": "github",
+    "domain": "nlp",
+    "difficulty": {
+      "tier": 2,
+      "composite_score": 2.57,
+      "dimensions": {
+        "framework_complexity": 0.3,
+        "dependency_count": 0.05,
+        "dataset_requirements": 0.3,
+        "hardware_requirements": 0.6,
+        "code_quality": 0.7,
+        "reproduction_time": 0.5
+      }
+    },
+    "tags": [],
+    "_repo_valid": true
+  },
+  {
+    "paper_id": "bamboo-06087",
+    "title": "ARCQuant: Boosting NVFP4 Quantization with Augmented Residual Channels for LLMs",
+    "venue": "arXiv 2026",
+    "year": 2025,
+    "code_url": "https://github.com/actypedef/ARCQuant",
+    "code_commit": "HEAD",
+    "arxiv_id": "",
+    "authors": [
+      "Rui Tian",
+      "Mingfei Gao",
+      "Mingze Xu",
+      "Jiaming Hu",
+      "Jiasen Lu",
+      "Zuxuan Wu",
+      "Yinfei Yang",
+      "Afshin Dehghan"
+    ],
+    "abstract": "The emergence of fine-grained numerical formats like NVFP4 presents new opportunities for efficient Large Language Model (LLM) inference. However, it is difficult to adapt existing Post-Training Quantization (PTQ) strategies to these formats: rotation-based methods compromise fine-grained block isolation; smoothing techniques struggle with significant 4-bit quantization errors. We propose ARCQuant.",
+    "paper_url": "https://arxiv.org/abs/2503.01807",
+    "pdf_url": "https://openreview.net/pdf/aaf1dfc4cc34853277d406dd6964a87ffe69276f.pdf",
+    "venue_track": "poster",
+    "code_platform": "github",
+    "domain": "nlp",
+    "difficulty": {
+      "tier": 2,
+      "composite_score": 2.99,
+      "dimensions": {
+        "framework_complexity": 0.3,
+        "dependency_count": 0.05,
+        "dataset_requirements": 0.6,
+        "hardware_requirements": 0.6,
+        "code_quality": 0.7,
+        "reproduction_time": 0.8
+      }
+    },
+    "tags": [],
+    "_repo_valid": true
+  },
+  {
+    "paper_id": "bamboo-06088",
+    "title": "FlatQuant: Flatness Matters for LLM Quantization",
+    "venue": "NeurIPS 2024",
+    "year": 2025,
+    "code_url": "https://github.com/ruikangliu/FlatQuant",
+    "code_commit": "HEAD",
+    "arxiv_id": "",
+    "authors": [
+      "Pengwei Liu",
+      "Hangjie Yuan",
+      "Bo Dong",
+      "Jiazheng Xing",
+      "Jinwang Wang",
+      "Rui Zhao",
+      "Weihua Chen",
+      "Fan Wang"
+    ],
+    "abstract": "Recently, quantization has been widely used for the compression and acceleration of large language models (LLMs). Due to the outliers in LLMs, it is crucial to flatten weights and activations to minimize quantization error with equally spaced quantization points. We propose FlatQuant, a new post-training quantization approach that uses per-channel scaling and Kronecker decomposition.",
+    "paper_url": "https://arxiv.org/abs/2410.09426",
+    "pdf_url": "https://openreview.net/pdf/a64b3bd03f187fa4ec75b30e76bcea19b828239b.pdf",
+    "venue_track": "poster",
+    "code_platform": "github",
+    "domain": "vision",
+    "difficulty": {
+      "tier": 2,
+      "composite_score": 2.51,
+      "dimensions": {
+        "framework_complexity": 0.3,
+        "dependency_count": 0.05,
+        "dataset_requirements": 0.3,
+        "hardware_requirements": 0.6,
+        "code_quality": 0.7,
+        "reproduction_time": 0.4
+      }
+    },
+    "tags": [],
+    "_repo_valid": true
+  },
+  {
+    "paper_id": "bamboo-06089",
+    "title": "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models",
+    "venue": "ICML 2023",
+    "year": 2025,
+    "code_url": "https://github.com/mit-han-lab/smoothquant",
+    "code_commit": "HEAD",
+    "arxiv_id": "",
+    "authors": [
+      "Xiaoqi Zhao",
+      "Youwei Pang",
+      "Chenyang Yu",
+      "Lihe Zhang",
+      "Huchuan Lu",
+      "Shijian Lu",
+      "Georges El Fakhri",
+      "Xiaofeng Liu"
+    ],
+    "abstract": "Large language models (LLMs) show excellent performance but are compute- and memory-intensive. Quantization can reduce memory and accelerate inference. However, existing methods cannot maintain accuracy and hardware efficiency at the same time. We propose SmoothQuant, a training-free, accuracy-preserving, and general-purpose post-training quantization (PTQ) solution.",
+    "paper_url": "https://arxiv.org/abs/2211.10438",
+    "pdf_url": "https://openreview.net/pdf/00dfab52f539e4587cd7ca6ea572f8d517ba595d.pdf",
+    "venue_track": "poster",
+    "code_platform": "github",
+    "domain": "vision",
+    "difficulty": {
+      "tier": 2,
+      "composite_score": 2.43,
+      "dimensions": {
+        "framework_complexity": 0.3,
+        "dependency_count": 0.05,
+        "dataset_requirements": 0.4,
+        "hardware_requirements": 0.4,
+        "code_quality": 0.7,
+        "reproduction_time": 0.4
+      }
+    },
+    "tags": [],
+    "_repo_valid": true
+  }
+]

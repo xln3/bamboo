@@ -264,7 +264,7 @@ def extract_one(paper: dict) -> tuple[str, list[dict] | None]:
         except (json.JSONDecodeError, OSError):
             pass  # re-extract on corrupt file
 
-    md_path = DATA / paper["md_file"]
+    md_path = DATA / paper.get("md_file", f"paper_markdowns/{pid}.md")
     if not md_path.exists():
         log.warning(f"{pid}: markdown not found")
         return pid, None
@@ -309,7 +309,7 @@ def extract_one(paper: dict) -> tuple[str, list[dict] | None]:
         os.unlink(prompt_file)
 
     if result.returncode != 0:
-        log.error(f"{pid}: claude exit code {result.returncode}: {result.stderr[:200]}")
+        log.error(f"{pid}: claude exit code {result.returncode}: stdout={result.stdout[:200]} stderr={result.stderr[:200]}")
         return pid, None
 
     raw = parse_claims_json(result.stdout)
