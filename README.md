@@ -12,15 +12,15 @@ BAMBOO fills this gap with **6,148 papers** from 9 top AI venues, evaluating the
 
 | Metric | Value |
 |--------|-------|
-| **Papers** | 6,148 (curated subset: 3,994) |
+| **Papers** | 6,148 |
 | **Venues** | 9 (ICML, ICLR, NeurIPS, ICCV, CVPR, ACL, EMNLP, AAAI, ICRA) |
 | **Code coverage** | 100% (verified `code_url` + pinned `code_commit`) |
 | **Abstracts** | 100% |
 | **Difficulty scores** | 100% (6-dimension scoring, Tier 2: 6,032 / Tier 3: 116) |
 | **Domains** | 12 categories (NLP 45%, Vision 15%, Generative 9%, Theory 7%, Multimodal 7%, ...) |
-| **Paper PDFs** | 5,618 downloaded |
-| **Paper markdowns** | 3,994 (MinerU PDF→Markdown extraction) |
-| **Ground truth claims** | 2,658 papers with inline claims; 709 paper_claims_v2 files |
+| **Paper PDFs** | 6,064 downloaded |
+| **Paper markdowns** | 7,031 (MinerU PDF→Markdown extraction) |
+| **Ground truth claims** | 6,051 paper_claims_v2 files |
 | **HuggingFace** | Synced to [xln3/bamboo-papers](https://huggingface.co/datasets/xln3/bamboo-papers) |
 
 ## Key Features
@@ -32,6 +32,7 @@ BAMBOO fills this gap with **6,148 papers** from 9 top AI venues, evaluating the
 - **Large scale** — 6,148 papers (vs PaperBench's 20, CORE-Bench's 90)
 - **2025 papers** — minimal data contamination risk
 - **MinerU-powered PDF extraction** — high-quality text/table extraction for claim identification
+- **Stable paper IDs** — persistent ID mapping ensures IDs never shuffle across re-runs
 
 ## Directory Structure
 
@@ -54,15 +55,15 @@ bamboo/
 │   └── result.schema.json        # Evaluation result schema
 ├── scripts/
 │   ├── collect/                  # Data collection pipeline
+│   │   ├── finalize_dataset.py   # Build bamboo_final.json with stable IDs
 │   │   ├── pdf_extractor.py      # MinerU-based PDF extraction
 │   │   ├── extract_claims.py     # LLM-based claim extraction
 │   │   ├── hf_sync.py            # HuggingFace dataset sync (push/pull)
 │   │   ├── compute_difficulty.py # Difficulty scoring
-│   │   ├── fetch_arxiv_abstracts.py  # arXiv abstract fetching
 │   │   └── ...                   # Collection & validation scripts
 │   ├── run/                      # Agent runner framework
 │   │   ├── runner.py             # Comparative agent runner
-│   │   ├── prompt_builder.py     # Prompt construction
+│   │   ├── prompt_builder.py     # Prompt construction (bare/neutral/guided tiers)
 │   │   └── agents/               # Agent adapters
 │   │       ├── panda.py          # PANDA agent
 │   │       ├── claude_code.py    # Claude Code
@@ -74,10 +75,12 @@ bamboo/
 │       └── metrics.py            # Aggregate metrics
 └── data/
     ├── bamboo_final.json         # Full dataset (6,148 papers)
-    ├── bamboo_curated.json       # Curated subset (3,994 papers with markdowns + claims)
-    ├── paper_pdfs/               # Downloaded PDFs (5,618)
-    ├── paper_markdowns/          # MinerU PDF→Markdown (3,994)
-    ├── paper_claims_v2/          # Extracted claims per paper (709)
+    ├── bamboo_curated/           # 62 chunked JSON files (100 papers each)
+    ├── id_mapping.json           # Persistent paper_url → bamboo-XXXXX mapping
+    ├── benchmark_extras.json     # Extra papers outside tracked venues
+    ├── paper_pdfs/               # Downloaded PDFs (6,064) — via HuggingFace
+    ├── paper_markdowns/          # MinerU PDF→Markdown (7,031) — via HuggingFace
+    ├── paper_claims_v2/          # Extracted claims per paper (6,051) — via HuggingFace
     ├── curated/                  # Human-editable venue TSVs
     └── results/                  # Agent evaluation results
 ```
@@ -86,41 +89,64 @@ bamboo/
 
 See [docs/quick-start.md](docs/quick-start.md) (English) or [docs/usage.md](docs/usage.md) (Chinese) for the full guide.
 
-### 1. Configure models
+### 1. Clone and download data
+
+```bash
+git clone https://github.com/xln3/bamboo.git
+cd bamboo
+pip install huggingface_hub
+
+# Download large files from HuggingFace (PDFs, markdowns, claims)
+python3 scripts/collect/hf_sync.py pull
+
+# Or download only what you need:
+python3 scripts/collect/hf_sync.py pull --only paper_claims_v2              # claims only (~small)
+python3 scripts/collect/hf_sync.py pull --only paper_markdowns              # markdowns only
+python3 scripts/collect/hf_sync.py pull --only paper_claims_v2,paper_markdowns  # both, no PDFs
+```
+
+### 2. Configure models
 
 ```bash
 cp configs/models.example.json configs/models.json
 # Edit configs/models.json — add your API keys
 ```
 
-### 2. Run an agent on a paper
+### 3. Run an agent on a paper
 
 ```bash
+# Run on a single paper (uses bamboo_final.json by default)
 python3 -m scripts.run.runner \
   --agents panda \
   --model glm-5 \
-  --dataset data/bamboo_curated.json \
-  --papers bamboo-06089 \
+  --papers bamboo-00001 \
+  --timeout 1800
+
+# Run on a 100-paper subset
+python3 -m scripts.run.runner \
+  --agents panda \
+  --model glm-5 \
+  --dataset data/bamboo_curated/bamboo-00001_to_bamboo-00100.json \
   --timeout 1800
 ```
 
 Supported agents: `panda`, `claude-code`, `opencode`, `codex`. See [docs/usage.md](docs/usage.md) for how to add your own.
-
-### 3. Sync data with HuggingFace
-
-```bash
-python3 scripts/collect/hf_sync.py status   # see what's new
-python3 scripts/collect/hf_sync.py pull      # download missing files
-python3 scripts/collect/hf_sync.py push      # upload local files
-```
 
 ### 4. Run evaluation
 
 ```bash
 python3 -m scripts.evaluate.evaluate \
     --results-dir data/results/panda-glm-5/ \
-    --dataset data/bamboo_curated.json \
+    --dataset data/bamboo_final.json \
     --output data/results/panda-glm-5/report.json
+```
+
+### 5. Sync data with HuggingFace
+
+```bash
+python3 scripts/collect/hf_sync.py status   # see what's new
+python3 scripts/collect/hf_sync.py pull      # download missing files
+python3 scripts/collect/hf_sync.py push      # upload local files
 ```
 
 ## Quick Links
