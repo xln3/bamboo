@@ -2,9 +2,9 @@
 
 Same paper, same model, two consecutive runs:
 
-    Cold run:  PANDA_KNOWLEDGE_ROOT=$(mktemp -d) + PANDA_EVOLUTION_V7=1
+    Cold run:  PANDA_KNOWLEDGE_ROOT=$(mktemp -d) + PANDA_CROSS_RUN_LEARNING=1
                 (empty wiki/skills/experiences — agent starts from scratch)
-    Warm run:  PANDA_KNOWLEDGE_ROOT=<real knowledge dir> + PANDA_EVOLUTION_V7=1
+    Warm run:  PANDA_KNOWLEDGE_ROOT=<real knowledge dir> + PANDA_CROSS_RUN_LEARNING=1
                 (whatever the agent has accumulated to date)
 
 Captured per run: overall_level (pass4), wall_time_ms, turn_count (parsed
@@ -28,6 +28,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import sys
 import tempfile
 import time
@@ -36,11 +37,20 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+# Names preserved across the cold→warm reset. Reusing these is exactly what
+# wiki knowledge should let the agent do quickly; reusing cold's source
+# edits or trained checkpoints would confound the gate.
+_PRESERVE_NAMES = (
+    ".venv", "venv",
+    "dataset", "datasets", "data",
+    "pretrained", "pretrained_weights", "ckpt_pretrained",
+)
+
 # Default warm root mirrors panda's compile-time default
 # (~/.local/share/panda/knowledge). Override via env var if the user moved it.
 DEFAULT_WARM_ROOT = Path.home() / ".local" / "share" / "panda" / "knowledge"
 
-# Speed/turn-count threshold from the evolution-v7 plan.
+# Speed/turn-count threshold from the cross-run-learning plan.
 EFFICIENCY_RATIO = 0.7
 
 TURN_COUNT_RE = re.compile(
@@ -158,6 +168,37 @@ def evaluate_gate(cold: RunMetrics, warm: RunMetrics) -> dict[str, Any]:
     }
 
 
+def _reset_workdir_preserving_env(workdir: Path) -> None:
+    """Revert source-code edits and remove training artifacts left by the
+    cold pass, while preserving the Python venv, downloaded datasets, and
+    pretrained weights.
+
+    G5 measures whether the wiki helps a fresh attempt. Reusing cold's
+    environment / datasets / pretrained weights is fair — those are what
+    wiki should teach the agent to obtain efficiently. Reusing cold's
+    source-code edits or its trained checkpoints would let warm inherit
+    cold's actual labor, so we git-reset every repo under the workdir and
+    git-clean it with the preserve list excluded.
+    """
+    if not workdir.exists():
+        return
+    repos: list[Path] = []
+    if (workdir / ".git").is_dir():
+        repos.append(workdir)
+    for child in workdir.iterdir():
+        if child.is_dir() and (child / ".git").is_dir():
+            repos.append(child)
+    for repo in repos:
+        subprocess.run(
+            ["git", "reset", "--hard", "HEAD"],
+            cwd=repo, check=False, capture_output=True,
+        )
+        clean_args = ["git", "clean", "-fdx"]
+        for name in _PRESERVE_NAMES:
+            clean_args += ["-e", name]
+        subprocess.run(clean_args, cwd=repo, check=False, capture_output=True)
+
+
 def compare_paper(
     agent: Any,  # AgentAdapter
     paper: dict[str, Any],
@@ -187,7 +228,7 @@ def compare_paper(
     try:
         # Cold pass: empty knowledge.
         os.environ["PANDA_KNOWLEDGE_ROOT"] = str(cold_root)
-        os.environ["PANDA_EVOLUTION_V7"] = "1"
+        os.environ["PANDA_CROSS_RUN_LEARNING"] = "1"
         cold_log_dir = base_log_dir / paper_id / "cold"
         cold_log_dir.mkdir(parents=True, exist_ok=True)
         cold_result = _run_with_log_dir(
@@ -201,6 +242,12 @@ def compare_paper(
             cold_result["exit_code"],
             cold_result.get("error"),
         )
+
+        # Reset workdir before warm pass: revert cold's source edits and
+        # drop its trained checkpoints, but keep the venv / datasets /
+        # pretrained weights so warm doesn't waste time re-downloading.
+        from .runner import WORKDIR_BASE as _WB
+        _reset_workdir_preserving_env(_WB / agent.agent_id / paper_id)
 
         # Warm pass: real knowledge.
         os.environ["PANDA_KNOWLEDGE_ROOT"] = str(warm_root)

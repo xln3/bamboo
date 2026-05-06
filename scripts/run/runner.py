@@ -376,7 +376,7 @@ Examples:
         action="store_true",
         help="G5 acceptance gate: run each paper twice (cold empty knowledge "
              "vs warm real knowledge) and emit a per-paper gate verdict. "
-             "Implies PANDA_EVOLUTION_V7=1; bypasses the independent judge.",
+             "Implies PANDA_CROSS_RUN_LEARNING=1; bypasses the independent judge.",
     )
     parser.add_argument(
         "--warm-knowledge-root",
