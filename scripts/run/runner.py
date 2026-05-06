@@ -371,6 +371,20 @@ Examples:
         default=DEFAULT_DATASET,
         help=f"Path to dataset JSON (default: {DEFAULT_DATASET})",
     )
+    parser.add_argument(
+        "--baseline-vs-evolved",
+        action="store_true",
+        help="G5 acceptance gate: run each paper twice (cold empty knowledge "
+             "vs warm real knowledge) and emit a per-paper gate verdict. "
+             "Implies PANDA_EVOLUTION_V7=1; bypasses the independent judge.",
+    )
+    parser.add_argument(
+        "--warm-knowledge-root",
+        type=Path,
+        default=None,
+        help="Override the warm knowledge root for --baseline-vs-evolved "
+             "(default: $HOME/.local/share/panda/knowledge).",
+    )
     args = parser.parse_args()
 
     # List models mode
@@ -416,7 +430,53 @@ Examples:
     print(f"Prompt tier: {args.prompt_tier}")
 
     if args.dry_run:
+        if args.baseline_vs_evolved:
+            parser.error("--baseline-vs-evolved cannot be combined with --dry-run")
         print("\n*** DRY RUN MODE ***\n")
+
+    # Baseline-vs-evolved acceptance gate (G5). Each paper runs twice
+    # (cold empty knowledge → warm real knowledge) and produces a gate
+    # verdict instead of going through the standard run + judge flow.
+    if args.baseline_vs_evolved:
+        from .baseline_vs_evolved import compare_paper, DEFAULT_WARM_ROOT
+
+        warm_root = args.warm_knowledge_root or DEFAULT_WARM_ROOT
+        print(f"\n*** BASELINE-vs-EVOLVED MODE *** warm_root={warm_root}\n")
+
+        gate_summary: list[dict] = []
+        total_start = time.time()
+        for paper in papers:
+            for agent in agents:
+                comparison = compare_paper(
+                    agent=agent,
+                    paper=paper,
+                    timeout_s=args.timeout,
+                    prompt_tier=args.prompt_tier,
+                    warm_root=warm_root,
+                    results_dir=RESULTS_DIR,
+                    run_single=run_single,
+                )
+                gate_summary.append(comparison)
+
+        total_elapsed = time.time() - total_start
+        passed = sum(1 for c in gate_summary if c["gate"]["passed"])
+        print(f"\n{'='*60}")
+        print(f"  BASELINE-vs-EVOLVED Summary")
+        print(f"  {passed}/{len(gate_summary)} papers passed the gate")
+        print(f"  Total time: {total_elapsed:.0f}s")
+        print(f"{'='*60}\n")
+        for c in gate_summary:
+            mark = "PASS" if c["gate"]["passed"] else "FAIL"
+            cold = c["cold"]
+            warm = c["warm"]
+            print(
+                f"  [{mark}] {c['paper_id']} ({c['agent_id']}): "
+                f"cold L{cold['overall_level']}/{cold['turn_count']}t/"
+                f"{cold['wall_time_ms']}ms vs "
+                f"warm L{warm['overall_level']}/{warm['turn_count']}t/"
+                f"{warm['wall_time_ms']}ms"
+            )
+        return
 
     # Run matrix: agents × papers, then judge
     summary: list[dict] = []
