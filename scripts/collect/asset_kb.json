@@ -1,0 +1,1115 @@
+{
+  "_meta": {
+    "description": "Curated size/canonical-name lookup for high-traffic ML datasets and model checkpoints. Used by extract_assets.py to override LLM size estimates with authoritative numbers. Keys are normalized lowercase; aliases live under '_aliases'. Optional fields: 'access_pattern' overrides URL classification, 'auth_required' for non-public/gated, 'extraction_code' for Baidu Pan.",
+    "size_bytes_unit": "bytes",
+    "last_updated": "2026-05-06"
+  },
+  "_aliases": {
+    "datasets": {
+      "imagenet": "imagenet-1k",
+      "imagenet1k": "imagenet-1k",
+      "imagenet 1k": "imagenet-1k",
+      "ilsvrc2012": "imagenet-1k",
+      "ilsvrc-2012": "imagenet-1k",
+      "imagenet-21k": "imagenet-21k",
+      "imagenet21k": "imagenet-21k",
+      "imagenet-22k": "imagenet-21k",
+      "ms-coco": "coco",
+      "ms coco": "coco",
+      "coco-2017": "coco",
+      "coco 2017": "coco",
+      "coco2017": "coco",
+      "cifar10": "cifar-10",
+      "cifar 10": "cifar-10",
+      "cifar100": "cifar-100",
+      "cifar 100": "cifar-100",
+      "mnist": "mnist",
+      "fashion-mnist": "fashion-mnist",
+      "tiny-imagenet": "tiny-imagenet",
+      "places365": "places365",
+      "ade20k": "ade20k",
+      "cityscapes": "cityscapes",
+      "pascal voc": "pascal-voc",
+      "pascal voc 2012": "pascal-voc",
+      "pascal-voc-2012": "pascal-voc",
+      "voc 2012": "pascal-voc",
+      "voc2012": "pascal-voc",
+      "kitti": "kitti",
+      "kitti-360": "kitti-360",
+      "semantickitti": "semantickitti",
+      "semantic-kitti": "semantickitti",
+      "nuscenes": "nuscenes",
+      "waymo": "waymo",
+      "waymo open dataset": "waymo",
+      "argoverse": "argoverse",
+      "argoverse 2": "argoverse-2",
+      "scannet": "scannet",
+      "scannetv2": "scannet",
+      "shapenet": "shapenet",
+      "modelnet40": "modelnet40",
+      "objaverse": "objaverse",
+      "objaverse-xl": "objaverse-xl",
+      "laion-5b": "laion-5b",
+      "laion 5b": "laion-5b",
+      "laion-400m": "laion-400m",
+      "laion 400m": "laion-400m",
+      "laion-2b": "laion-2b",
+      "datacomp": "datacomp",
+      "datacomp-1b": "datacomp-1b",
+      "common crawl": "common-crawl",
+      "commoncrawl": "common-crawl",
+      "cc": "common-crawl",
+      "the pile": "the-pile",
+      "the-pile": "the-pile",
+      "pile": "the-pile",
+      "redpajama": "redpajama",
+      "redpajama-1t": "redpajama",
+      "slimpajama": "slimpajama",
+      "c4": "c4",
+      "wikitext": "wikitext-103",
+      "wikitext-103": "wikitext-103",
+      "wikitext103": "wikitext-103",
+      "openwebtext": "openwebtext",
+      "owt": "openwebtext",
+      "books3": "books3",
+      "bookcorpus": "bookcorpus",
+      "wikipedia": "wikipedia-en",
+      "english wikipedia": "wikipedia-en",
+      "glue": "glue",
+      "superglue": "superglue",
+      "squad": "squad",
+      "squad v1": "squad",
+      "squad v1.1": "squad",
+      "squad v2": "squad-v2",
+      "squad v2.0": "squad-v2",
+      "squad2": "squad-v2",
+      "race": "race",
+      "triviaqa": "triviaqa",
+      "natural questions": "natural-questions",
+      "naturalquestions": "natural-questions",
+      "nq": "natural-questions",
+      "ms marco": "ms-marco",
+      "msmarco": "ms-marco",
+      "hotpotqa": "hotpotqa",
+      "mmlu": "mmlu",
+      "bbh": "bbh",
+      "big-bench-hard": "bbh",
+      "gsm8k": "gsm8k",
+      "math": "math-dataset",
+      "humaneval": "humaneval",
+      "mbpp": "mbpp",
+      "wmt14": "wmt14",
+      "wmt14 en-de": "wmt14",
+      "wmt16": "wmt16",
+      "wmt19": "wmt19",
+      "iwslt14": "iwslt14",
+      "iwslt 14": "iwslt14",
+      "librispeech": "librispeech",
+      "voxceleb1": "voxceleb1",
+      "voxceleb": "voxceleb1",
+      "voxceleb2": "voxceleb2",
+      "audioset": "audioset",
+      "common voice": "common-voice",
+      "commonvoice": "common-voice",
+      "ljspeech": "ljspeech",
+      "vctk": "vctk",
+      "musicnet": "musicnet",
+      "kinetics": "kinetics-400",
+      "kinetics-400": "kinetics-400",
+      "kinetics400": "kinetics-400",
+      "kinetics-600": "kinetics-600",
+      "kinetics-700": "kinetics-700",
+      "ucf101": "ucf101",
+      "ucf-101": "ucf101",
+      "hmdb51": "hmdb51",
+      "something-something": "something-something-v2",
+      "ssv2": "something-something-v2",
+      "ego4d": "ego4d",
+      "youtube-8m": "youtube-8m",
+      "moments in time": "moments-in-time",
+      "celeb-a": "celeba",
+      "celeba": "celeba",
+      "celeba-hq": "celeba-hq",
+      "ffhq": "ffhq",
+      "lsun": "lsun",
+      "iam": "iam-handwriting",
+      "matterport3d": "matterport3d",
+      "habitat": "habitat-matterport",
+      "hm3d": "habitat-matterport",
+      "rico": "rico",
+      "movielens": "movielens-25m",
+      "movielens-25m": "movielens-25m",
+      "zsre": "zsre-mend",
+      "zsre-mend": "zsre-mend",
+      "zsre eval": "zsre-mend",
+      "zero-shot relation extraction": "zsre-mend",
+      "counterfact": "counterfact",
+      "counter-fact": "counterfact",
+      "rome counterfact": "counterfact",
+      "model-editing-hurt": "model-editing-hurt",
+      "model editing hurt": "model-editing-hurt",
+      "model-editing-hurt general tasks benchmark": "model-editing-hurt",
+      "model-editing-hurt general tasks": "model-editing-hurt",
+      "model-editing-hurt benchmark": "model-editing-hurt",
+      "vt-821": "vt821",
+      "vt 821": "vt821",
+      "vt-1000": "vt1000",
+      "vt 1000": "vt1000",
+      "vt-5000": "vt5000",
+      "vt 5000": "vt5000",
+      "uvt-2000": "uvt2000",
+      "uvt 2000": "uvt2000"
+    },
+    "models": {
+      "clip": "clip-vit-l-14",
+      "clip vit-l/14": "clip-vit-l-14",
+      "clip-vit-l/14": "clip-vit-l-14",
+      "clip vit-b/32": "clip-vit-b-32",
+      "clip-vit-b/32": "clip-vit-b-32",
+      "clip vit-b/16": "clip-vit-b-16",
+      "clip-vit-b/16": "clip-vit-b-16",
+      "open clip": "openclip-vit-h-14",
+      "openclip": "openclip-vit-h-14",
+      "siglip": "siglip-l-16",
+      "dinov2": "dinov2-vit-l",
+      "dino v2": "dinov2-vit-l",
+      "dino": "dino-vit-b-16",
+      "mae": "mae-vit-l",
+      "sam": "sam-vit-h",
+      "sam-vit-h": "sam-vit-h",
+      "segment anything": "sam-vit-h",
+      "sam2": "sam-2-large",
+      "sam 2": "sam-2-large",
+      "stable diffusion": "stable-diffusion-1.5",
+      "stable diffusion 1.5": "stable-diffusion-1.5",
+      "sd 1.5": "stable-diffusion-1.5",
+      "sd-1.5": "stable-diffusion-1.5",
+      "stable diffusion xl": "stable-diffusion-xl",
+      "sdxl": "stable-diffusion-xl",
+      "sd xl": "stable-diffusion-xl",
+      "stable diffusion 2": "stable-diffusion-2",
+      "sd 2.1": "stable-diffusion-2",
+      "stable video diffusion": "stable-video-diffusion",
+      "svd": "stable-video-diffusion",
+      "controlnet": "controlnet-sd1.5",
+      "dalle": "dalle",
+      "dalle-2": "dalle",
+      "imagen": "imagen",
+      "llama": "llama-2-7b",
+      "llama-2": "llama-2-7b",
+      "llama 2 7b": "llama-2-7b",
+      "llama-2-7b": "llama-2-7b",
+      "llama-2-13b": "llama-2-13b",
+      "llama-2-70b": "llama-2-70b",
+      "llama-3": "llama-3-8b",
+      "llama 3 8b": "llama-3-8b",
+      "llama-3-8b": "llama-3-8b",
+      "llama-3-70b": "llama-3-70b",
+      "llama-3.1-8b": "llama-3-8b",
+      "llama-3.1-70b": "llama-3-70b",
+      "mistral": "mistral-7b",
+      "mistral 7b": "mistral-7b",
+      "mistral-7b": "mistral-7b",
+      "mixtral": "mixtral-8x7b",
+      "mixtral 8x7b": "mixtral-8x7b",
+      "qwen": "qwen-7b",
+      "qwen 7b": "qwen-7b",
+      "qwen2": "qwen2-7b",
+      "qwen2-7b": "qwen2-7b",
+      "qwen2.5-7b": "qwen2.5-7b",
+      "gemma": "gemma-7b",
+      "gemma-7b": "gemma-7b",
+      "phi-2": "phi-2",
+      "phi-3": "phi-3-mini",
+      "vicuna": "vicuna-7b",
+      "vicuna-7b": "vicuna-7b",
+      "alpaca": "alpaca-7b",
+      "bert": "bert-base",
+      "bert-base": "bert-base",
+      "bert-base-uncased": "bert-base",
+      "bert-large": "bert-large",
+      "roberta": "roberta-base",
+      "roberta-base": "roberta-base",
+      "roberta-large": "roberta-large",
+      "deberta": "deberta-v3-base",
+      "deberta-v3": "deberta-v3-base",
+      "t5": "t5-base",
+      "t5-base": "t5-base",
+      "t5-large": "t5-large",
+      "t5-3b": "t5-3b",
+      "t5-11b": "t5-11b",
+      "flan-t5": "flan-t5-large",
+      "flan-t5-large": "flan-t5-large",
+      "gpt-2": "gpt2",
+      "gpt2": "gpt2",
+      "gpt-2-large": "gpt2-large",
+      "gpt-neo": "gpt-neo-1.3b",
+      "gpt-j": "gpt-j-6b",
+      "gpt-j-6b": "gpt-j-6b",
+      "opt-1.3b": "opt-1.3b",
+      "opt-6.7b": "opt-6.7b",
+      "opt-13b": "opt-13b",
+      "bloom-7b": "bloom-7b1",
+      "whisper": "whisper-large-v3",
+      "whisper-large": "whisper-large-v3",
+      "whisper-large-v3": "whisper-large-v3",
+      "whisper-base": "whisper-base",
+      "wav2vec": "wav2vec2-base",
+      "wav2vec2": "wav2vec2-base",
+      "wav2vec2-base": "wav2vec2-base",
+      "wav2vec2-large": "wav2vec2-large",
+      "hubert": "hubert-base",
+      "hubert-large": "hubert-large",
+      "vit": "vit-b-16",
+      "vit-b/16": "vit-b-16",
+      "vit-l/14": "vit-l-14",
+      "swin": "swin-base",
+      "swin transformer": "swin-base",
+      "swin-base": "swin-base",
+      "swin-b": "swin-base",
+      "swin-large": "swin-large",
+      "swin-l": "swin-large",
+      "convnext": "convnext-base",
+      "convnext-base": "convnext-base",
+      "convnext-b": "convnext-base",
+      "convnext-large": "convnext-large",
+      "convnext-l": "convnext-large",
+      "vit-b": "vit-b-16",
+      "vit-base": "vit-b-16",
+      "vit-l": "vit-l-14",
+      "vit-large": "vit-l-14",
+      "resnet50": "resnet-50",
+      "resnet-50": "resnet-50",
+      "r50": "resnet-50",
+      "resnet101": "resnet-101",
+      "r101": "resnet-101",
+      "yolov5": "yolov5",
+      "yolov8": "yolov8",
+      "detr": "detr-r50",
+      "mask r-cnn": "mask-rcnn-r50",
+      "midas": "midas-v3",
+      "depth anything": "depth-anything-vit-l",
+      "blip": "blip-vqa-base",
+      "blip-2": "blip2-flan-t5-xl",
+      "llava": "llava-1.5-7b",
+      "llava-1.5": "llava-1.5-7b",
+      "llava-1.5-7b": "llava-1.5-7b",
+      "llava-1.5-13b": "llava-1.5-13b",
+      "instructblip": "instructblip-vicuna-7b",
+      "minigpt-4": "minigpt4-vicuna-7b",
+      "qwen-vl": "qwen-vl-chat",
+      "kosmos": "kosmos-2",
+      "openpose": "openpose",
+      "gpt-2 xl": "gpt2-xl",
+      "gpt-2-xl": "gpt2-xl",
+      "gpt2 xl": "gpt2-xl",
+      "gpt2-xl": "gpt2-xl",
+      "gpt-2 (xl)": "gpt2-xl",
+      "deeplabv3": "deeplabv3-r101",
+      "deeplabv3-r101": "deeplabv3-r101",
+      "deeplabv3 resnet-101": "deeplabv3-r101",
+      "deeplabv3 resnet101": "deeplabv3-r101",
+      "deeplabv3 r101": "deeplabv3-r101",
+      "san": "san-segmentation",
+      "side adapter network": "san-segmentation",
+      "san-segmentation": "san-segmentation",
+      "cat-seg": "cat-seg",
+      "catseg": "cat-seg",
+      "cat seg": "cat-seg"
+    }
+  },
+  "datasets": {
+    "imagenet-1k": {
+      "canonical": "ImageNet-1K (ILSVRC2012)",
+      "size_bytes": 150000000000,
+      "url": "https://image-net.org/",
+      "license": "non-commercial research"
+    },
+    "imagenet-21k": {
+      "canonical": "ImageNet-21K",
+      "size_bytes": 1300000000000
+    },
+    "tiny-imagenet": {
+      "canonical": "Tiny ImageNet",
+      "size_bytes": 240000000
+    },
+    "coco": {
+      "canonical": "MS-COCO 2017",
+      "size_bytes": 25000000000,
+      "url": "https://cocodataset.org/"
+    },
+    "cifar-10": {
+      "canonical": "CIFAR-10",
+      "size_bytes": 170000000
+    },
+    "cifar-100": {
+      "canonical": "CIFAR-100",
+      "size_bytes": 170000000
+    },
+    "mnist": {
+      "canonical": "MNIST",
+      "size_bytes": 12000000
+    },
+    "fashion-mnist": {
+      "canonical": "Fashion-MNIST",
+      "size_bytes": 30000000
+    },
+    "places365": {
+      "canonical": "Places365",
+      "size_bytes": 100000000000
+    },
+    "ade20k": {
+      "canonical": "ADE20K",
+      "size_bytes": 4000000000
+    },
+    "cityscapes": {
+      "canonical": "Cityscapes",
+      "size_bytes": 30000000000
+    },
+    "pascal-voc": {
+      "canonical": "PASCAL VOC 2012",
+      "size_bytes": 2000000000
+    },
+    "kitti": {
+      "canonical": "KITTI",
+      "size_bytes": 180000000000
+    },
+    "kitti-360": {
+      "canonical": "KITTI-360",
+      "size_bytes": 750000000000
+    },
+    "semantickitti": {
+      "canonical": "SemanticKITTI",
+      "size_bytes": 80000000000
+    },
+    "nuscenes": {
+      "canonical": "nuScenes",
+      "size_bytes": 350000000000,
+      "url": "https://www.nuscenes.org/",
+      "license": "non-commercial"
+    },
+    "waymo": {
+      "canonical": "Waymo Open Dataset",
+      "size_bytes": 2000000000000
+    },
+    "argoverse": {
+      "canonical": "Argoverse",
+      "size_bytes": 200000000000
+    },
+    "argoverse-2": {
+      "canonical": "Argoverse 2",
+      "size_bytes": 1300000000000
+    },
+    "scannet": {
+      "canonical": "ScanNet v2",
+      "size_bytes": 1300000000000
+    },
+    "shapenet": {
+      "canonical": "ShapeNet",
+      "size_bytes": 36000000000
+    },
+    "modelnet40": {
+      "canonical": "ModelNet40",
+      "size_bytes": 460000000
+    },
+    "objaverse": {
+      "canonical": "Objaverse",
+      "size_bytes": 9000000000000
+    },
+    "objaverse-xl": {
+      "canonical": "Objaverse-XL",
+      "size_bytes": 100000000000000
+    },
+    "laion-5b": {
+      "canonical": "LAION-5B",
+      "size_bytes": 240000000000000
+    },
+    "laion-400m": {
+      "canonical": "LAION-400M",
+      "size_bytes": 10000000000000
+    },
+    "laion-2b": {
+      "canonical": "LAION-2B (en)",
+      "size_bytes": 100000000000000
+    },
+    "datacomp": {
+      "canonical": "DataComp",
+      "size_bytes": 50000000000000
+    },
+    "datacomp-1b": {
+      "canonical": "DataComp-1B",
+      "size_bytes": 80000000000000
+    },
+    "common-crawl": {
+      "canonical": "Common Crawl (snapshot)",
+      "size_bytes": 90000000000000
+    },
+    "the-pile": {
+      "canonical": "The Pile",
+      "size_bytes": 825000000000
+    },
+    "redpajama": {
+      "canonical": "RedPajama-1T",
+      "size_bytes": 5000000000000
+    },
+    "slimpajama": {
+      "canonical": "SlimPajama-627B",
+      "size_bytes": 900000000000
+    },
+    "c4": {
+      "canonical": "C4 (Colossal Clean Crawled Corpus)",
+      "size_bytes": 305000000000
+    },
+    "wikitext-103": {
+      "canonical": "WikiText-103",
+      "size_bytes": 500000000
+    },
+    "openwebtext": {
+      "canonical": "OpenWebText",
+      "size_bytes": 38000000000
+    },
+    "books3": {
+      "canonical": "Books3",
+      "size_bytes": 100000000000
+    },
+    "bookcorpus": {
+      "canonical": "BookCorpus",
+      "size_bytes": 5000000000
+    },
+    "wikipedia-en": {
+      "canonical": "English Wikipedia (dump)",
+      "size_bytes": 22000000000
+    },
+    "glue": {
+      "canonical": "GLUE",
+      "size_bytes": 200000000
+    },
+    "superglue": {
+      "canonical": "SuperGLUE",
+      "size_bytes": 250000000
+    },
+    "squad": {
+      "canonical": "SQuAD v1.1",
+      "size_bytes": 50000000
+    },
+    "squad-v2": {
+      "canonical": "SQuAD v2.0",
+      "size_bytes": 50000000
+    },
+    "race": {
+      "canonical": "RACE",
+      "size_bytes": 100000000
+    },
+    "triviaqa": {
+      "canonical": "TriviaQA",
+      "size_bytes": 3000000000
+    },
+    "natural-questions": {
+      "canonical": "Natural Questions",
+      "size_bytes": 75000000000
+    },
+    "ms-marco": {
+      "canonical": "MS MARCO",
+      "size_bytes": 50000000000
+    },
+    "hotpotqa": {
+      "canonical": "HotpotQA",
+      "size_bytes": 600000000
+    },
+    "mmlu": {
+      "canonical": "MMLU",
+      "size_bytes": 200000000
+    },
+    "bbh": {
+      "canonical": "BIG-Bench Hard",
+      "size_bytes": 50000000
+    },
+    "gsm8k": {
+      "canonical": "GSM8K",
+      "size_bytes": 5000000
+    },
+    "math-dataset": {
+      "canonical": "MATH",
+      "size_bytes": 30000000
+    },
+    "humaneval": {
+      "canonical": "HumanEval",
+      "size_bytes": 200000
+    },
+    "mbpp": {
+      "canonical": "MBPP",
+      "size_bytes": 1000000
+    },
+    "wmt14": {
+      "canonical": "WMT14 (En-De/En-Fr)",
+      "size_bytes": 4000000000
+    },
+    "wmt16": {
+      "canonical": "WMT16",
+      "size_bytes": 4000000000
+    },
+    "wmt19": {
+      "canonical": "WMT19",
+      "size_bytes": 6000000000
+    },
+    "iwslt14": {
+      "canonical": "IWSLT14",
+      "size_bytes": 200000000
+    },
+    "librispeech": {
+      "canonical": "LibriSpeech",
+      "size_bytes": 60000000000
+    },
+    "voxceleb1": {
+      "canonical": "VoxCeleb1",
+      "size_bytes": 33000000000
+    },
+    "voxceleb2": {
+      "canonical": "VoxCeleb2",
+      "size_bytes": 230000000000
+    },
+    "audioset": {
+      "canonical": "AudioSet",
+      "size_bytes": 1000000000000
+    },
+    "common-voice": {
+      "canonical": "Mozilla Common Voice",
+      "size_bytes": 80000000000
+    },
+    "ljspeech": {
+      "canonical": "LJSpeech",
+      "size_bytes": 2600000000
+    },
+    "vctk": {
+      "canonical": "VCTK",
+      "size_bytes": 11000000000
+    },
+    "musicnet": {
+      "canonical": "MusicNet",
+      "size_bytes": 33000000000
+    },
+    "kinetics-400": {
+      "canonical": "Kinetics-400",
+      "size_bytes": 450000000000
+    },
+    "kinetics-600": {
+      "canonical": "Kinetics-600",
+      "size_bytes": 700000000000
+    },
+    "kinetics-700": {
+      "canonical": "Kinetics-700",
+      "size_bytes": 900000000000
+    },
+    "ucf101": {
+      "canonical": "UCF101",
+      "size_bytes": 6900000000
+    },
+    "hmdb51": {
+      "canonical": "HMDB51",
+      "size_bytes": 2000000000
+    },
+    "something-something-v2": {
+      "canonical": "Something-Something-V2",
+      "size_bytes": 220000000000
+    },
+    "ego4d": {
+      "canonical": "Ego4D",
+      "size_bytes": 7000000000000
+    },
+    "youtube-8m": {
+      "canonical": "YouTube-8M",
+      "size_bytes": 1700000000000
+    },
+    "moments-in-time": {
+      "canonical": "Moments in Time",
+      "size_bytes": 350000000000
+    },
+    "celeba": {
+      "canonical": "CelebA",
+      "size_bytes": 1500000000
+    },
+    "celeba-hq": {
+      "canonical": "CelebA-HQ",
+      "size_bytes": 11000000000
+    },
+    "ffhq": {
+      "canonical": "FFHQ (1024×1024)",
+      "size_bytes": 90000000000
+    },
+    "lsun": {
+      "canonical": "LSUN",
+      "size_bytes": 1000000000000
+    },
+    "iam-handwriting": {
+      "canonical": "IAM Handwriting",
+      "size_bytes": 600000000
+    },
+    "matterport3d": {
+      "canonical": "Matterport3D",
+      "size_bytes": 1300000000000
+    },
+    "habitat-matterport": {
+      "canonical": "Habitat-Matterport 3D (HM3D)",
+      "size_bytes": 1100000000000
+    },
+    "rico": {
+      "canonical": "RICO",
+      "size_bytes": 6000000000
+    },
+    "movielens-25m": {
+      "canonical": "MovieLens-25M",
+      "size_bytes": 250000000
+    },
+    "zsre-mend": {
+      "canonical": "ZsRE (model-editing split)",
+      "size_bytes": 75000000,
+      "url": "https://rome.baulab.info/data/dsets/zsre_mend_eval.json",
+      "notes": "Edit-format ZsRE used by ROME/MEMIT/MEND"
+    },
+    "counterfact": {
+      "canonical": "CounterFact",
+      "size_bytes": 45000000,
+      "url": "https://rome.baulab.info/data/dsets/counterfact.json",
+      "notes": "Counterfactual editing dataset (Meng et al., ROME)"
+    },
+    "model-editing-hurt": {
+      "canonical": "Model-Editing-Hurt eval suite",
+      "size_bytes": 120000000,
+      "notes": "Eval suite from the Model-Editing-Hurt paper"
+    },
+    "vt821": {
+      "canonical": "VT821 (RGB-T SOD)",
+      "size_bytes": 200000000,
+      "url": "https://pan.baidu.com/s/1ksuUr3cr6_-fZAsSUp0n0w",
+      "notes": "Baidu Pan extraction code: 9yqv. From Wang et al. 2018."
+    },
+    "vt1000": {
+      "canonical": "VT1000 (RGB-T SOD)",
+      "size_bytes": 250000000,
+      "url": "https://pan.baidu.com/s/1i7gfrHoaaRuateMXBxvmMw",
+      "notes": "Baidu Pan extraction code: tb6l. From Tu et al. 2019."
+    },
+    "vt5000": {
+      "canonical": "VT5000 (RGB-T SOD)",
+      "size_bytes": 1200000000,
+      "url": "https://pan.baidu.com/s/196S1GcnI56Vn6fLO3oXb5Q",
+      "notes": "Baidu Pan extraction code: y9jj. From Tu et al. 2020. 2500 train + 2500 test."
+    },
+    "uvt2000": {
+      "canonical": "UVT2000 (Unaligned RGB-T SOD)",
+      "size_bytes": 500000000,
+      "url": "https://pan.baidu.com/s/1W8rZFfN5K4-0RK-bXHJRYQ",
+      "notes": "Baidu Pan extraction code: nrkq. From Wang et al. 2024a. 2000 unaligned image pairs (test only)."
+    }
+  },
+  "models": {
+    "clip-vit-l-14": {
+      "canonical": "openai/clip-vit-large-patch14",
+      "size_bytes": 1700000000,
+      "huggingface_id": "openai/clip-vit-large-patch14"
+    },
+    "clip-vit-b-32": {
+      "canonical": "openai/clip-vit-base-patch32",
+      "size_bytes": 610000000,
+      "huggingface_id": "openai/clip-vit-base-patch32"
+    },
+    "clip-vit-b-16": {
+      "canonical": "openai/clip-vit-base-patch16",
+      "size_bytes": 600000000,
+      "huggingface_id": "openai/clip-vit-base-patch16"
+    },
+    "openclip-vit-h-14": {
+      "canonical": "laion/CLIP-ViT-H-14-laion2B-s32B-b79K",
+      "size_bytes": 4000000000,
+      "huggingface_id": "laion/CLIP-ViT-H-14-laion2B-s32B-b79K"
+    },
+    "siglip-l-16": {
+      "canonical": "google/siglip-large-patch16-256",
+      "size_bytes": 1500000000,
+      "huggingface_id": "google/siglip-large-patch16-256"
+    },
+    "dinov2-vit-l": {
+      "canonical": "facebook/dinov2-large",
+      "size_bytes": 1200000000,
+      "huggingface_id": "facebook/dinov2-large"
+    },
+    "dino-vit-b-16": {
+      "canonical": "facebook/dino-vitb16",
+      "size_bytes": 340000000,
+      "huggingface_id": "facebook/dino-vitb16"
+    },
+    "mae-vit-l": {
+      "canonical": "facebook/vit-mae-large",
+      "size_bytes": 1300000000,
+      "huggingface_id": "facebook/vit-mae-large"
+    },
+    "sam-vit-h": {
+      "canonical": "facebook/sam-vit-huge",
+      "size_bytes": 2400000000,
+      "huggingface_id": "facebook/sam-vit-huge"
+    },
+    "sam-2-large": {
+      "canonical": "facebook/sam2-hiera-large",
+      "size_bytes": 860000000,
+      "huggingface_id": "facebook/sam2-hiera-large"
+    },
+    "stable-diffusion-1.5": {
+      "canonical": "runwayml/stable-diffusion-v1-5",
+      "size_bytes": 4300000000,
+      "huggingface_id": "runwayml/stable-diffusion-v1-5"
+    },
+    "stable-diffusion-xl": {
+      "canonical": "stabilityai/stable-diffusion-xl-base-1.0",
+      "size_bytes": 13900000000,
+      "huggingface_id": "stabilityai/stable-diffusion-xl-base-1.0"
+    },
+    "stable-diffusion-2": {
+      "canonical": "stabilityai/stable-diffusion-2-1",
+      "size_bytes": 5200000000,
+      "huggingface_id": "stabilityai/stable-diffusion-2-1"
+    },
+    "stable-video-diffusion": {
+      "canonical": "stabilityai/stable-video-diffusion-img2vid-xt",
+      "size_bytes": 9400000000,
+      "huggingface_id": "stabilityai/stable-video-diffusion-img2vid-xt"
+    },
+    "controlnet-sd1.5": {
+      "canonical": "lllyasviel/sd-controlnet-canny",
+      "size_bytes": 1400000000,
+      "huggingface_id": "lllyasviel/sd-controlnet-canny"
+    },
+    "dalle": {
+      "canonical": "DALL-E 2 (proprietary)",
+      "size_bytes": null
+    },
+    "imagen": {
+      "canonical": "Google Imagen (proprietary)",
+      "size_bytes": null
+    },
+    "llama-2-7b": {
+      "canonical": "meta-llama/Llama-2-7b-hf",
+      "size_bytes": 13500000000,
+      "huggingface_id": "meta-llama/Llama-2-7b-hf",
+      "license": "Llama 2 Community License"
+    },
+    "llama-2-13b": {
+      "canonical": "meta-llama/Llama-2-13b-hf",
+      "size_bytes": 26000000000,
+      "huggingface_id": "meta-llama/Llama-2-13b-hf"
+    },
+    "llama-2-70b": {
+      "canonical": "meta-llama/Llama-2-70b-hf",
+      "size_bytes": 138000000000,
+      "huggingface_id": "meta-llama/Llama-2-70b-hf"
+    },
+    "llama-3-8b": {
+      "canonical": "meta-llama/Meta-Llama-3-8B",
+      "size_bytes": 16000000000,
+      "huggingface_id": "meta-llama/Meta-Llama-3-8B"
+    },
+    "llama-3-70b": {
+      "canonical": "meta-llama/Meta-Llama-3-70B",
+      "size_bytes": 140000000000,
+      "huggingface_id": "meta-llama/Meta-Llama-3-70B"
+    },
+    "mistral-7b": {
+      "canonical": "mistralai/Mistral-7B-v0.1",
+      "size_bytes": 14000000000,
+      "huggingface_id": "mistralai/Mistral-7B-v0.1"
+    },
+    "mixtral-8x7b": {
+      "canonical": "mistralai/Mixtral-8x7B-v0.1",
+      "size_bytes": 87000000000,
+      "huggingface_id": "mistralai/Mixtral-8x7B-v0.1"
+    },
+    "qwen-7b": {
+      "canonical": "Qwen/Qwen-7B",
+      "size_bytes": 15000000000,
+      "huggingface_id": "Qwen/Qwen-7B"
+    },
+    "qwen2-7b": {
+      "canonical": "Qwen/Qwen2-7B",
+      "size_bytes": 15000000000,
+      "huggingface_id": "Qwen/Qwen2-7B"
+    },
+    "qwen2.5-7b": {
+      "canonical": "Qwen/Qwen2.5-7B",
+      "size_bytes": 15000000000,
+      "huggingface_id": "Qwen/Qwen2.5-7B"
+    },
+    "gemma-7b": {
+      "canonical": "google/gemma-7b",
+      "size_bytes": 17000000000,
+      "huggingface_id": "google/gemma-7b"
+    },
+    "phi-2": {
+      "canonical": "microsoft/phi-2",
+      "size_bytes": 5500000000,
+      "huggingface_id": "microsoft/phi-2"
+    },
+    "phi-3-mini": {
+      "canonical": "microsoft/Phi-3-mini-4k-instruct",
+      "size_bytes": 7600000000,
+      "huggingface_id": "microsoft/Phi-3-mini-4k-instruct"
+    },
+    "vicuna-7b": {
+      "canonical": "lmsys/vicuna-7b-v1.5",
+      "size_bytes": 13500000000,
+      "huggingface_id": "lmsys/vicuna-7b-v1.5"
+    },
+    "alpaca-7b": {
+      "canonical": "Stanford Alpaca (LLaMA-7B fine-tune)",
+      "size_bytes": 13500000000
+    },
+    "bert-base": {
+      "canonical": "google-bert/bert-base-uncased",
+      "size_bytes": 440000000,
+      "huggingface_id": "google-bert/bert-base-uncased"
+    },
+    "bert-large": {
+      "canonical": "google-bert/bert-large-uncased",
+      "size_bytes": 1300000000,
+      "huggingface_id": "google-bert/bert-large-uncased"
+    },
+    "roberta-base": {
+      "canonical": "FacebookAI/roberta-base",
+      "size_bytes": 500000000,
+      "huggingface_id": "FacebookAI/roberta-base"
+    },
+    "roberta-large": {
+      "canonical": "FacebookAI/roberta-large",
+      "size_bytes": 1500000000,
+      "huggingface_id": "FacebookAI/roberta-large"
+    },
+    "deberta-v3-base": {
+      "canonical": "microsoft/deberta-v3-base",
+      "size_bytes": 740000000,
+      "huggingface_id": "microsoft/deberta-v3-base"
+    },
+    "t5-base": {
+      "canonical": "google-t5/t5-base",
+      "size_bytes": 900000000,
+      "huggingface_id": "google-t5/t5-base"
+    },
+    "t5-large": {
+      "canonical": "google-t5/t5-large",
+      "size_bytes": 3000000000,
+      "huggingface_id": "google-t5/t5-large"
+    },
+    "t5-3b": {
+      "canonical": "google-t5/t5-3b",
+      "size_bytes": 11000000000,
+      "huggingface_id": "google-t5/t5-3b"
+    },
+    "t5-11b": {
+      "canonical": "google-t5/t5-11b",
+      "size_bytes": 45000000000,
+      "huggingface_id": "google-t5/t5-11b"
+    },
+    "flan-t5-large": {
+      "canonical": "google/flan-t5-large",
+      "size_bytes": 3000000000,
+      "huggingface_id": "google/flan-t5-large"
+    },
+    "gpt2": {
+      "canonical": "openai-community/gpt2",
+      "size_bytes": 500000000,
+      "huggingface_id": "openai-community/gpt2"
+    },
+    "gpt2-large": {
+      "canonical": "openai-community/gpt2-large",
+      "size_bytes": 3200000000,
+      "huggingface_id": "openai-community/gpt2-large"
+    },
+    "gpt-neo-1.3b": {
+      "canonical": "EleutherAI/gpt-neo-1.3B",
+      "size_bytes": 5300000000,
+      "huggingface_id": "EleutherAI/gpt-neo-1.3B"
+    },
+    "gpt-j-6b": {
+      "canonical": "EleutherAI/gpt-j-6b",
+      "size_bytes": 24000000000,
+      "huggingface_id": "EleutherAI/gpt-j-6b"
+    },
+    "opt-1.3b": {
+      "canonical": "facebook/opt-1.3b",
+      "size_bytes": 2700000000,
+      "huggingface_id": "facebook/opt-1.3b"
+    },
+    "opt-6.7b": {
+      "canonical": "facebook/opt-6.7b",
+      "size_bytes": 13400000000,
+      "huggingface_id": "facebook/opt-6.7b"
+    },
+    "opt-13b": {
+      "canonical": "facebook/opt-13b",
+      "size_bytes": 26000000000,
+      "huggingface_id": "facebook/opt-13b"
+    },
+    "bloom-7b1": {
+      "canonical": "bigscience/bloom-7b1",
+      "size_bytes": 15000000000,
+      "huggingface_id": "bigscience/bloom-7b1"
+    },
+    "whisper-large-v3": {
+      "canonical": "openai/whisper-large-v3",
+      "size_bytes": 3100000000,
+      "huggingface_id": "openai/whisper-large-v3"
+    },
+    "whisper-base": {
+      "canonical": "openai/whisper-base",
+      "size_bytes": 290000000,
+      "huggingface_id": "openai/whisper-base"
+    },
+    "wav2vec2-base": {
+      "canonical": "facebook/wav2vec2-base",
+      "size_bytes": 380000000,
+      "huggingface_id": "facebook/wav2vec2-base"
+    },
+    "wav2vec2-large": {
+      "canonical": "facebook/wav2vec2-large-960h",
+      "size_bytes": 1300000000,
+      "huggingface_id": "facebook/wav2vec2-large-960h"
+    },
+    "hubert-base": {
+      "canonical": "facebook/hubert-base-ls960",
+      "size_bytes": 380000000,
+      "huggingface_id": "facebook/hubert-base-ls960"
+    },
+    "hubert-large": {
+      "canonical": "facebook/hubert-large-ll60k",
+      "size_bytes": 1300000000,
+      "huggingface_id": "facebook/hubert-large-ll60k"
+    },
+    "vit-b-16": {
+      "canonical": "google/vit-base-patch16-224",
+      "size_bytes": 350000000,
+      "huggingface_id": "google/vit-base-patch16-224"
+    },
+    "vit-l-14": {
+      "canonical": "google/vit-large-patch16-224",
+      "size_bytes": 1200000000,
+      "huggingface_id": "google/vit-large-patch16-224"
+    },
+    "swin-base": {
+      "canonical": "microsoft/swin-base-patch4-window7-224",
+      "size_bytes": 350000000,
+      "huggingface_id": "microsoft/swin-base-patch4-window7-224"
+    },
+    "swin-large": {
+      "canonical": "microsoft/swin-large-patch4-window7-224",
+      "size_bytes": 780000000,
+      "huggingface_id": "microsoft/swin-large-patch4-window7-224"
+    },
+    "convnext-base": {
+      "canonical": "facebook/convnext-base-224",
+      "size_bytes": 360000000,
+      "huggingface_id": "facebook/convnext-base-224"
+    },
+    "convnext-large": {
+      "canonical": "facebook/convnext-large-224",
+      "size_bytes": 790000000,
+      "huggingface_id": "facebook/convnext-large-224"
+    },
+    "resnet-50": {
+      "canonical": "ResNet-50 (ImageNet pretrained)",
+      "size_bytes": 100000000
+    },
+    "resnet-101": {
+      "canonical": "ResNet-101 (ImageNet pretrained)",
+      "size_bytes": 170000000
+    },
+    "yolov5": {
+      "canonical": "ultralytics/yolov5",
+      "size_bytes": 180000000
+    },
+    "yolov8": {
+      "canonical": "ultralytics/yolov8",
+      "size_bytes": 130000000
+    },
+    "detr-r50": {
+      "canonical": "facebook/detr-resnet-50",
+      "size_bytes": 170000000,
+      "huggingface_id": "facebook/detr-resnet-50"
+    },
+    "mask-rcnn-r50": {
+      "canonical": "Mask R-CNN (ResNet-50 backbone)",
+      "size_bytes": 180000000
+    },
+    "midas-v3": {
+      "canonical": "Intel/dpt-large (MiDaS)",
+      "size_bytes": 1400000000,
+      "huggingface_id": "Intel/dpt-large"
+    },
+    "depth-anything-vit-l": {
+      "canonical": "LiheYoung/depth_anything_vitl14",
+      "size_bytes": 1400000000,
+      "huggingface_id": "LiheYoung/depth_anything_vitl14"
+    },
+    "blip-vqa-base": {
+      "canonical": "Salesforce/blip-vqa-base",
+      "size_bytes": 990000000,
+      "huggingface_id": "Salesforce/blip-vqa-base"
+    },
+    "blip2-flan-t5-xl": {
+      "canonical": "Salesforce/blip2-flan-t5-xl",
+      "size_bytes": 16000000000,
+      "huggingface_id": "Salesforce/blip2-flan-t5-xl"
+    },
+    "llava-1.5-7b": {
+      "canonical": "liuhaotian/llava-v1.5-7b",
+      "size_bytes": 14000000000,
+      "huggingface_id": "liuhaotian/llava-v1.5-7b"
+    },
+    "llava-1.5-13b": {
+      "canonical": "liuhaotian/llava-v1.5-13b",
+      "size_bytes": 26000000000,
+      "huggingface_id": "liuhaotian/llava-v1.5-13b"
+    },
+    "instructblip-vicuna-7b": {
+      "canonical": "Salesforce/instructblip-vicuna-7b",
+      "size_bytes": 16000000000,
+      "huggingface_id": "Salesforce/instructblip-vicuna-7b"
+    },
+    "minigpt4-vicuna-7b": {
+      "canonical": "Vision-CAIR/MiniGPT-4 (Vicuna-7B)",
+      "size_bytes": 14000000000
+    },
+    "qwen-vl-chat": {
+      "canonical": "Qwen/Qwen-VL-Chat",
+      "size_bytes": 19000000000,
+      "huggingface_id": "Qwen/Qwen-VL-Chat"
+    },
+    "kosmos-2": {
+      "canonical": "microsoft/kosmos-2-patch14-224",
+      "size_bytes": 3500000000,
+      "huggingface_id": "microsoft/kosmos-2-patch14-224"
+    },
+    "openpose": {
+      "canonical": "OpenPose (body_25 model)",
+      "size_bytes": 210000000
+    },
+    "gpt2-xl": {
+      "canonical": "openai-community/gpt2-xl",
+      "size_bytes": 25000000000,
+      "huggingface_id": "openai-community/gpt2-xl"
+    },
+    "deeplabv3-r101": {
+      "canonical": "DeepLabV3 (ResNet-101, ImageNet pretrained)",
+      "size_bytes": 250000000,
+      "notes": "torchvision deeplabv3_resnet101 / ImageNet-pretrained backbone"
+    },
+    "san-segmentation": {
+      "canonical": "Mendel192/san",
+      "size_bytes": 2520000000,
+      "huggingface_id": "Mendel192/san",
+      "notes": "Side Adapter Network for open-vocabulary segmentation"
+    },
+    "cat-seg": {
+      "canonical": "hamacojr/CAT-Seg",
+      "size_bytes": 24600000000,
+      "huggingface_id": "hamacojr/CAT-Seg",
+      "notes": "CAT-Seg open-vocabulary segmentation checkpoints"
+    }
+  }
+}

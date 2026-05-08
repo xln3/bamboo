@@ -22,5 +22,26 @@ data/paper_claims/
 data/paper_claims_v2/
 data/paper_pdfs/
 data/paper_markdowns/
+data/paper_assets/
 data/pipeline_status.txt
 data/task_remaining.json
+
+# Asset extraction caches (regenerable)
+data/.readme_cache/
+data/.url_probe_cache.json
+data/.asset_size_cache.json
+.arxiv2md_cache/
+
+# Operational state (per-server, accumulating)
+data/manual_action_queue.json
+data/download_530.json
+
+# Private/manual helper scripts at data root (not project source)
+data/_*.py
+data/.*.py
+
+# Top-level session captures
+2026-*-local-command-caveat*.txt
+
+# API keys / secrets
+keys

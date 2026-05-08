@@ -72,6 +72,10 @@
       "items": { "$ref": "#/$defs/Claim" },
       "description": "Auto-extracted claims for evaluation scoring. NOT provided to agent."
     },
+    "required_assets": {
+      "$ref": "#/$defs/RequiredAssets",
+      "description": "Datasets, model weights, and other heavy downloads required to reproduce this paper."
+    },
     "difficulty": {
       "$ref": "#/$defs/Difficulty"
     },
@@ -150,6 +154,136 @@
           "enum": ["main", "ablation", "analysis", "baseline"],
           "description": "Claim category. 'baseline' claims are excluded from primary scoring.",
           "default": "main"
+        }
+      }
+    },
+    "RequiredAssets": {
+      "type": "object",
+      "description": "Manifest of heavyweight resources the reader must download to reproduce the paper.",
+      "properties": {
+        "datasets": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Asset" },
+          "description": "Public datasets the paper trains/evaluates on."
+        },
+        "model_weights": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Asset" },
+          "description": "Pretrained checkpoints loaded by the code."
+        },
+        "other_assets": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Asset" },
+          "description": "Other large downloads (precomputed features, docker images, binary releases)."
+        },
+        "total_download_size_bytes": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Sum of resolved size_bytes across all assets (excluding nulls)."
+        },
+        "total_download_size_human": {
+          "type": "string",
+          "description": "Human-readable form of total_download_size_bytes (e.g., '~180 GB')."
+        },
+        "extraction_method": {
+          "type": "string",
+          "enum": ["llm", "kb", "manual"],
+          "description": "How this manifest was produced."
+        },
+        "extraction_model": {
+          "type": "string",
+          "description": "Model identifier used for LLM extraction (e.g., 'deep-deepseek-v4-pro')."
+        },
+        "extracted_at": {
+          "type": "string",
+          "description": "ISO 8601 UTC timestamp of extraction."
+        },
+        "fully_automatable": {
+          "type": "boolean",
+          "description": "True iff every asset's automation_status is 'automatable' or 'automatable_with_auth'. False if any asset is semi_automatable / manual_browser / manual_only / unreachable."
+        },
+        "manual_blockers": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of assets with manual_action_required=true (i.e., blocking a fully scripted reproduction)."
+        }
+      }
+    },
+    "Asset": {
+      "type": "object",
+      "required": ["name"],
+      "description": "A single downloadable artifact (dataset, model checkpoint, or other heavy asset).",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Canonical name (e.g., 'ImageNet-1K (ILSVRC2012)', 'openai/clip-vit-large-patch14')."
+        },
+        "type": {
+          "type": "string",
+          "enum": ["dataset", "model_weights", "library", "precomputed_features", "binary", "docker_image", "other"],
+          "description": "Asset category. Set on items in 'other_assets'; 'datasets' and 'model_weights' arrays default by container."
+        },
+        "purpose": {
+          "type": "string",
+          "description": "What this asset is used for in the paper (≤ 80 chars)."
+        },
+        "size_bytes": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Best-known size in bytes; null if unknown."
+        },
+        "size_human": {
+          "type": "string",
+          "description": "Human-readable size (e.g., '~150 GB', '440 MB')."
+        },
+        "size_source": {
+          "type": "string",
+          "enum": ["kb", "hf_api", "hf_search", "extracted", "estimated", "unknown"],
+          "description": "Where size_bytes came from. KB > HF API (explicit id) > HF search (guessed id) > paper text > LLM estimate > unknown."
+        },
+        "url": {
+          "type": "string",
+          "description": "Canonical download URL when known."
+        },
+        "huggingface_id": {
+          "type": "string",
+          "description": "HuggingFace repo id (e.g., 'meta-llama/Llama-2-7b-hf')."
+        },
+        "license": {
+          "type": "string",
+          "description": "License identifier or short note."
+        },
+        "required_for_claims": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^c\\d+$" },
+          "description": "Claim ids (c1, c2, ...) this asset is needed for; empty if applies to whole paper."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Free-form note (≤ 200 chars), e.g., access instructions or known caveats."
+        },
+        "availability": {
+          "type": "string",
+          "enum": ["public", "restricted", "paid", "private", "promised", "bundled", "unknown"],
+          "description": "How the asset is offered to the world. 'public': anyone can download. 'restricted': public but requires registration/license/academic affiliation. 'paid': commercial. 'private': only authors have it. 'promised': paper says it will be released but isn't yet. 'bundled': ships in the repo. 'unknown': cannot be determined."
+        },
+        "access_pattern": {
+          "type": "string",
+          "description": "How the URL is fetched. See scripts/collect/access_patterns.json _enum_access_pattern for canonical values (huggingface_api, github_releases, uci_repository, sharepoint_anonymous, baidu_pan, google_drive, etc.)."
+        },
+        "automation_status": {
+          "type": "string",
+          "enum": ["automatable", "automatable_with_auth", "semi_automatable", "manual_browser", "manual_only", "unreachable", "unknown"],
+          "description": "Whether the URL can be downloaded by a script. 'automatable': curl/HF/etc. works. 'automatable_with_auth': scriptable but needs API key (Kaggle). 'semi_automatable': scriptable but fragile (Drive, MEGA). 'manual_browser': needs a real browser session (SharePoint anonymous). 'manual_only': human action required (form, email, Baidu Pan)."
+        },
+        "auth_required": {
+          "type": "string",
+          "enum": ["none", "api_key", "login", "gated_license", "extraction_code", "browser_session", "human_request", "unknown"],
+          "description": "What authentication the user must provide before download will succeed."
+        },
+        "manual_action_required": {
+          "type": "boolean",
+          "description": "True iff a human must intervene (browser/form/email/Baidu code). Mirrored into data/manual_action_queue.json for tracking."
         }
       }
     },
