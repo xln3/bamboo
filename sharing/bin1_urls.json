@@ -1,0 +1,1627 @@
+[
+  {
+    "kind": "model",
+    "canonical_name": "metamath-7b-v1.0",
+    "display_names": [
+      "MetaMath-7B-V1.0"
+    ],
+    "urls": [],
+    "asset_size_bytes": 26953814017,
+    "asset_size_gb": 26.954,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "chinese-llama-2-7b",
+    "display_names": [
+      "Chinese-Llama-2-7b"
+    ],
+    "urls": [],
+    "asset_size_bytes": 26953788033,
+    "asset_size_gb": 26.954,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "sun397",
+    "display_names": [
+      "SUN397"
+    ],
+    "urls": [],
+    "asset_size_bytes": 14498388615,
+    "asset_size_gb": 14.498,
+    "n_papers": 2
+  },
+  {
+    "kind": "model",
+    "canonical_name": "llama-2-7b",
+    "display_names": [
+      "meta-llama/Llama-2-7b-hf"
+    ],
+    "urls": [],
+    "asset_size_bytes": 13529146982,
+    "asset_size_gb": 13.529,
+    "n_papers": 6
+  },
+  {
+    "kind": "model",
+    "canonical_name": "llama-2-7b-int4-python-code-18k",
+    "display_names": [
+      "Llama-2-7b-int4-python-code-18k"
+    ],
+    "urls": [],
+    "asset_size_bytes": 13476934941,
+    "asset_size_gb": 13.477,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "chexpert",
+    "display_names": [
+      "CheXpert"
+    ],
+    "urls": [
+      "https://stanfordmlgroup.github.io/competitions/chexpert/"
+    ],
+    "asset_size_bytes": 11466566556,
+    "asset_size_gb": 11.467,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "gpt-2-medium",
+    "display_names": [
+      "GPT-2 Medium",
+      "GPT-2 Medium (345M)"
+    ],
+    "urls": [
+      "https://huggingface.co/openai-community/gpt2-medium"
+    ],
+    "asset_size_bytes": 10762331292,
+    "asset_size_gb": 10.762,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "stanford-cars",
+    "display_names": [
+      "Stanford Cars",
+      "StanfordCars"
+    ],
+    "urls": [
+      "https://ai.stanford.edu/~jkrause/cars/car_dataset.html"
+    ],
+    "asset_size_bytes": 6012954214,
+    "asset_size_gb": 6.013,
+    "n_papers": 3
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "svhn",
+    "display_names": [
+      "SVHN",
+      "SVHN (SVHN-LT)",
+      "SVHN (Street View House Numbers)"
+    ],
+    "urls": [
+      "http://ufldl.stanford.edu/housenumbers/",
+      "http://ufldl.stanford.edu/housenumbers/train_32x32.mat"
+    ],
+    "asset_size_bytes": 3758096384,
+    "asset_size_gb": 3.758,
+    "n_papers": 15
+  },
+  {
+    "kind": "model",
+    "canonical_name": "gpt-2-medium-lora-adapter",
+    "display_names": [
+      "GPT-2 Medium LoRA adapter (DART)",
+      "GPT-2 Medium LoRA adapter (E2E)",
+      "GPT-2 Medium LoRA adapter (WebNLG)"
+    ],
+    "urls": [
+      "https://github.com/microsoft/LoRA/releases/download/GPT-2/gpt2_md_lora_dart.pt",
+      "https://github.com/microsoft/LoRA/releases/download/GPT-2/gpt2_md_lora_e2e.pt",
+      "https://github.com/microsoft/LoRA/releases/download/GPT-2/gpt2_md_lora_webnlg.pt"
+    ],
+    "asset_size_bytes": 3221225472,
+    "asset_size_gb": 3.221,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "vit-fine-tuned-checkpoints",
+    "display_names": [
+      "ViT fine-tuned checkpoints (8-task)"
+    ],
+    "urls": [
+      "https://drive.google.com/drive/folders/1u_Tva6x0p6oxu5Eo0ZZsf-520Cc_3MKw"
+    ],
+    "asset_size_bytes": 3221225472,
+    "asset_size_gb": 3.221,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "resnet50v2",
+    "display_names": [
+      "ResNet50V2 (pretrained on ImageNet)"
+    ],
+    "urls": [
+      "https://tensorflow.org/api_docs/python/tf/keras/applications/ResNet50V2"
+    ],
+    "asset_size_bytes": 3221225472,
+    "asset_size_gb": 3.221,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "resnet101v2",
+    "display_names": [
+      "ResNet101V2 (pretrained on ImageNet)"
+    ],
+    "urls": [
+      "https://tensorflow.org/api_docs/python/tf/keras/applications/ResNet101V2"
+    ],
+    "asset_size_bytes": 3221225472,
+    "asset_size_gb": 3.221,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "solar-energy",
+    "display_names": [
+      "Solar-Energy",
+      "Solar-energy"
+    ],
+    "urls": [
+      "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+      "https://github.com/laiguokun/LSTNet"
+    ],
+    "asset_size_bytes": 2262068680,
+    "asset_size_gb": 2.262,
+    "n_papers": 2
+  },
+  {
+    "kind": "model",
+    "canonical_name": "clip-vit-large-patch14",
+    "display_names": [
+      "openai/clip-vit-large-patch14"
+    ],
+    "urls": [],
+    "asset_size_bytes": 1717986918,
+    "asset_size_gb": 1.718,
+    "n_papers": 3
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "celeba",
+    "display_names": [
+      "CelebA"
+    ],
+    "urls": [
+      "http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html",
+      "https://drive.google.com/drive/folders/0B7EVK8r0v71pWkZxWGVqU1BEOU0?resourcekey=0-qMnLJm2cS-EbM9wA6pWhEw&usp=sharing",
+      "https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html"
+    ],
+    "asset_size_bytes": 1503238553,
+    "asset_size_gb": 1.503,
+    "n_papers": 10
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "gtsrb",
+    "display_names": [
+      "GTSRB"
+    ],
+    "urls": [],
+    "asset_size_bytes": 1027083757,
+    "asset_size_gb": 1.027,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "resisc45",
+    "display_names": [
+      "RESISC45"
+    ],
+    "urls": [
+      "http://www.escience.cn/people/JunweiHan/NWPU-RESISC45.html"
+    ],
+    "asset_size_bytes": 911205358,
+    "asset_size_gb": 0.911,
+    "n_papers": 3
+  },
+  {
+    "kind": "model",
+    "canonical_name": "t5-base",
+    "display_names": [
+      "google-t5/t5-base"
+    ],
+    "urls": [],
+    "asset_size_bytes": 900000000,
+    "asset_size_gb": 0.9,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "exchange",
+    "display_names": [
+      "Exchange"
+    ],
+    "urls": [
+      "https://drive.google.com/drive/folders/1ohGYWWohJlOlb-ygsTK8b7yYq3e0z-qT",
+      "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+      "https://github.com/thuml/Autoformer/tree/main/datasets/exchange_rate"
+    ],
+    "asset_size_bytes": 858993459,
+    "asset_size_gb": 0.859,
+    "n_papers": 3
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "ppi",
+    "display_names": [
+      "PPI"
+    ],
+    "urls": [
+      "https://data.dgl.ai/dataset/ppi.zip"
+    ],
+    "asset_size_bytes": 858993459,
+    "asset_size_gb": 0.859,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "nico++",
+    "display_names": [
+      "NICO++"
+    ],
+    "urls": [
+      "https://github.com/nicodataset/NICO-plus-plus"
+    ],
+    "asset_size_bytes": 858993459,
+    "asset_size_gb": 0.859,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "imagenetbg",
+    "display_names": [
+      "ImageNetBG"
+    ],
+    "urls": [
+      "https://www.image-net.org/"
+    ],
+    "asset_size_bytes": 858993459,
+    "asset_size_gb": 0.859,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "living17",
+    "display_names": [
+      "Living17"
+    ],
+    "urls": [
+      "https://www.image-net.org/"
+    ],
+    "asset_size_bytes": 858993459,
+    "asset_size_gb": 0.859,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "stanford-dogs",
+    "display_names": [
+      "Stanford Dogs"
+    ],
+    "urls": [
+      "https://tensorflow.org/datasets/catalog/stanford_dogs"
+    ],
+    "asset_size_bytes": 789788778,
+    "asset_size_gb": 0.79,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "clip-vit-base-patch32",
+    "display_names": [
+      "openai/clip-vit-base-patch32"
+    ],
+    "urls": [
+      "https://huggingface.co/openai/clip-vit-base-patch32"
+    ],
+    "asset_size_bytes": 644245094,
+    "asset_size_gb": 0.644,
+    "n_papers": 4
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "dtd",
+    "display_names": [
+      "DTD",
+      "DTD (Describable Textures Dataset)",
+      "DTD (Describable Textures)"
+    ],
+    "urls": [
+      "https://www.robots.ox.ac.uk/~vgg/data/dtd/"
+    ],
+    "asset_size_bytes": 629145600,
+    "asset_size_gb": 0.629,
+    "n_papers": 3
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "proteins",
+    "display_names": [
+      "PROTEINS"
+    ],
+    "urls": [
+      "https://www.chrsmrrs.com/graphkerneldatasets/PROTEINS.zip"
+    ],
+    "asset_size_bytes": 626654779,
+    "asset_size_gb": 0.627,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "vgg16",
+    "display_names": [
+      "VGG16 (pretrained on ImageNet)"
+    ],
+    "urls": [
+      "https://tensorflow.org/api_docs/python/tf/keras/applications/VGG16"
+    ],
+    "asset_size_bytes": 553000000,
+    "asset_size_gb": 0.553,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "waterbirds",
+    "display_names": [
+      "Waterbirds"
+    ],
+    "urls": [
+      "https://github.com/kohpangwei/group_DRO",
+      "https://github.com/yzharry/SubpopBench (preparation script)",
+      "https://nlp.stanford.edu/data/dro/waterbird_complete95_forest2water2.tar.gz"
+    ],
+    "asset_size_bytes": 491914386,
+    "asset_size_gb": 0.492,
+    "n_papers": 5
+  },
+  {
+    "kind": "model",
+    "canonical_name": "bert-base-uncased",
+    "display_names": [
+      "google-bert/bert-base-uncased"
+    ],
+    "urls": [],
+    "asset_size_bytes": 440000000,
+    "asset_size_gb": 0.44,
+    "n_papers": 5
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "civilcomments",
+    "display_names": [
+      "CivilComments",
+      "CivilComments (WILDS)"
+    ],
+    "urls": [
+      "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/data",
+      "https://www.kaggle.com/civil-comments (or via WILDS)"
+    ],
+    "asset_size_bytes": 422069979,
+    "asset_size_gb": 0.422,
+    "n_papers": 4
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "tiny-imagenet",
+    "display_names": [
+      "Tiny ImageNet",
+      "Tiny-ImageNet",
+      "TinyImageNet"
+    ],
+    "urls": [
+      "http://cs231n.stanford.edu/tiny-imagenet-200.zip",
+      "https://tensorflow.org/datasets/catalog/tiny_imagenet",
+      "https://tiny-imagenet.herokuapp.com/",
+      "https://www.kaggle.com/c/tiny-imagenet/data",
+      "https://www.kaggle.com/datasets/akash2sharma/tiny-imagenet"
+    ],
+    "asset_size_bytes": 268435456,
+    "asset_size_gb": 0.268,
+    "n_papers": 22
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "amazon-photo",
+    "display_names": [
+      "Amazon-Photo"
+    ],
+    "urls": [
+      "https://github.com/shchur/gnn-benchmark/raw/master/data/npz/amazon_electronics_photo.npz"
+    ],
+    "asset_size_bytes": 234127989,
+    "asset_size_gb": 0.234,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "stl-10",
+    "display_names": [
+      "STL-10",
+      "STL-10 (STL-10-LT)"
+    ],
+    "urls": [
+      "http://ai.stanford.edu/~acoates/stl10/",
+      "https://cs.stanford.edu/~acoates/stl10/",
+      "https://tensorflow.org/datasets/catalog/stl10"
+    ],
+    "asset_size_bytes": 230990520,
+    "asset_size_gb": 0.231,
+    "n_papers": 5
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "multinli",
+    "display_names": [
+      "MultiNLI"
+    ],
+    "urls": [
+      "https://cims.nyu.edu/~sbowman/multinli/"
+    ],
+    "asset_size_bytes": 224015292,
+    "asset_size_gb": 0.224,
+    "n_papers": 4
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "ogbn-arxiv",
+    "display_names": [
+      "OGBN-Arxiv",
+      "ogbn-arxiv"
+    ],
+    "urls": [
+      "https://snap.stanford.edu/ogb/data/nodeproppred/arxiv.zip"
+    ],
+    "asset_size_bytes": 209715200,
+    "asset_size_gb": 0.21,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "zinc",
+    "display_names": [
+      "ZINC"
+    ],
+    "urls": [
+      "https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/zinc15_250K.tar.gz"
+    ],
+    "asset_size_bytes": 199188885,
+    "asset_size_gb": 0.199,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "qm9",
+    "display_names": [
+      "QM9",
+      "QM9 (with explicit hydrogens)"
+    ],
+    "urls": [
+      "https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/qm9.csv",
+      "https://figshare.com/collections/Quantum_chemistry_structures_and_properties_of_134_kilo_molecules/978904"
+    ],
+    "asset_size_bytes": 180390866,
+    "asset_size_gb": 0.18,
+    "n_papers": 5
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "cifar-10",
+    "display_names": [
+      "CIFAR-10"
+    ],
+    "urls": [
+      "http://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz",
+      "https://tensorflow.org/datasets/catalog/cifar10",
+      "https://www.cs.toronto.edu/~kriz/cifar-10-binary.tar.gz",
+      "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz",
+      "https://www.cs.toronto.edu/~kriz/cifar.html"
+    ],
+    "asset_size_bytes": 178257920,
+    "asset_size_gb": 0.178,
+    "n_papers": 71
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "cifar-100",
+    "display_names": [
+      "CIFAR-100"
+    ],
+    "urls": [
+      "http://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz",
+      "https://tensorflow.org/datasets/catalog/cifar100",
+      "https://www.cs.toronto.edu/~kriz/cifar-100-binary.tar.gz",
+      "https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz",
+      "https://www.cs.toronto.edu/~kriz/cifar.html"
+    ],
+    "asset_size_bytes": 178257920,
+    "asset_size_gb": 0.178,
+    "n_papers": 46
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "moses",
+    "display_names": [
+      "MOSES"
+    ],
+    "urls": [
+      "https://github.com/molecularsets/moses"
+    ],
+    "asset_size_bytes": 168970119,
+    "asset_size_gb": 0.169,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "paws",
+    "display_names": [
+      "PAWS"
+    ],
+    "urls": [],
+    "asset_size_bytes": 129296401,
+    "asset_size_gb": 0.129,
+    "n_papers": 1
+  },
+  {
+    "kind": "other",
+    "canonical_name": "gurobi-optimizer",
+    "display_names": [
+      "Gurobi Optimizer"
+    ],
+    "urls": [
+      "https://portal.gurobi.com/iam/licenses/request",
+      "https://www.gurobi.com/",
+      "https://www.gurobi.com/downloads/"
+    ],
+    "asset_size_bytes": 107374182,
+    "asset_size_gb": 0.107,
+    "n_papers": 5
+  },
+  {
+    "kind": "other",
+    "canonical_name": "mosek-optimizer",
+    "display_names": [
+      "MOSEK Optimizer"
+    ],
+    "urls": [
+      "https://www.mosek.com/downloads/"
+    ],
+    "asset_size_bytes": 107374182,
+    "asset_size_gb": 0.107,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "electricity-ts",
+    "display_names": [
+      "Electricity",
+      "Electricity (ECL)"
+    ],
+    "urls": [
+      "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+      "https://drive.google.com/drive/folders/1ohGYWWohJlOlb-ygsTK8b7yYq3e0z-qT",
+      "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+      "https://github.com/thuml/Autoformer/tree/main/datasets/electricity",
+      "https://github.com/thuml/Time-Series-Library"
+    ],
+    "asset_size_bytes": 104857600,
+    "asset_size_gb": 0.105,
+    "n_papers": 7
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "eurosat",
+    "display_names": [
+      "EuroSAT"
+    ],
+    "urls": [
+      "https://github.com/phelber/EuroSAT"
+    ],
+    "asset_size_bytes": 104857600,
+    "asset_size_gb": 0.105,
+    "n_papers": 3
+  },
+  {
+    "kind": "model",
+    "canonical_name": "inceptionv3",
+    "display_names": [
+      "InceptionV3 (pretrained on ImageNet)"
+    ],
+    "urls": [
+      "https://tensorflow.org/api_docs/python/tf/keras/applications/InceptionV3"
+    ],
+    "asset_size_bytes": 104000000,
+    "asset_size_gb": 0.104,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "resnet-50",
+    "display_names": [
+      "ResNet-50 (ImageNet pretrained)"
+    ],
+    "urls": [
+      "https://download.pytorch.org/models/resnet50-0676ba61.pth"
+    ],
+    "asset_size_bytes": 100000000,
+    "asset_size_gb": 0.1,
+    "n_papers": 8
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "amazon-computers",
+    "display_names": [
+      "Amazon-Computers"
+    ],
+    "urls": [
+      "https://github.com/shchur/gnn-benchmark/raw/master/data/npz/amazon_electronics_computers.npz"
+    ],
+    "asset_size_bytes": 100000000,
+    "asset_size_gb": 0.1,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "zinc250k",
+    "display_names": [
+      "ZINC250K",
+      "ZINC250k"
+    ],
+    "urls": [
+      "https://raw.githubusercontent.com/aspuru-guzik-group/chemical_vae/master/models/zinc_properties/250k_rndm_zinc_drugs_clean_3.csv"
+    ],
+    "asset_size_bytes": 64812938,
+    "asset_size_gb": 0.065,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "hellaswag",
+    "display_names": [
+      "H-SWAG (HellaSwag)"
+    ],
+    "urls": [],
+    "asset_size_bytes": 62914560,
+    "asset_size_gb": 0.063,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "fashion-mnist",
+    "display_names": [
+      "Fashion-MNIST",
+      "FashionMNIST"
+    ],
+    "urls": [
+      "https://github.com/zalandoresearch/fashion-mnist",
+      "https://tensorflow.org/datasets/catalog/fashion_mnist"
+    ],
+    "asset_size_bytes": 52428800,
+    "asset_size_gb": 0.052,
+    "n_papers": 16
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "gsm8k",
+    "display_names": [
+      "GSM8K"
+    ],
+    "urls": [
+      "https://github.com/openai/grade-school-math"
+    ],
+    "asset_size_bytes": 52428800,
+    "asset_size_gb": 0.052,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "traffic-ts",
+    "display_names": [
+      "Traffic"
+    ],
+    "urls": [
+      "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+      "https://github.com/thuml/Autoformer/tree/main/datasets/traffic"
+    ],
+    "asset_size_bytes": 52428800,
+    "asset_size_gb": 0.052,
+    "n_papers": 4
+  },
+  {
+    "kind": "model",
+    "canonical_name": "resnet-18",
+    "display_names": [
+      "ResNet-18 (pretrained on ImageNet)",
+      "ResNet-18 (torchvision, pre-trained on ImageNet)"
+    ],
+    "urls": [
+      "https://download.pytorch.org/models/resnet18-5c106cde.pth"
+    ],
+    "asset_size_bytes": 46800000,
+    "asset_size_gb": 0.047,
+    "n_papers": 3
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "weather-ts",
+    "display_names": [
+      "Weather"
+    ],
+    "urls": [
+      "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+      "https://drive.google.com/drive/folders/1ohGYWWohJlOlb-ygsTK8b7yYq3e0z-qT",
+      "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+      "https://github.com/thuml/Autoformer/tree/main/datasets/weather",
+      "https://github.com/thuml/Time-Series-Library"
+    ],
+    "asset_size_bytes": 31457280,
+    "asset_size_gb": 0.031,
+    "n_papers": 7
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "pubmed-graph",
+    "display_names": [
+      "PubMed",
+      "Pubmed"
+    ],
+    "urls": [
+      "https://linqs-data.soe.ucsc.edu/public/Pubmed-Diabetes.tgz"
+    ],
+    "asset_size_bytes": 31457280,
+    "asset_size_gb": 0.031,
+    "n_papers": 4
+  },
+  {
+    "kind": "model",
+    "canonical_name": "densenet121",
+    "display_names": [
+      "DenseNet121 (pretrained on ImageNet)"
+    ],
+    "urls": [
+      "https://tensorflow.org/api_docs/python/tf/keras/applications/DenseNet121"
+    ],
+    "asset_size_bytes": 30800000,
+    "asset_size_gb": 0.031,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "20newsgroup",
+    "display_names": [
+      "20NewsGroup"
+    ],
+    "urls": [
+      "https://ndownloader.figshare.com/files/5975967"
+    ],
+    "asset_size_bytes": 23720287,
+    "asset_size_gb": 0.024,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "mnist",
+    "display_names": [
+      "MNIST"
+    ],
+    "urls": [
+      "http://yann.lecun.com/exdb/mnist/",
+      "https://tensorflow.org/datasets/catalog/mnist",
+      "https://yann.lecun.com/exdb/mnist"
+    ],
+    "asset_size_bytes": 20971520,
+    "asset_size_gb": 0.021,
+    "n_papers": 40
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "winogrande",
+    "display_names": [
+      "Winogrande"
+    ],
+    "urls": [],
+    "asset_size_bytes": 20971520,
+    "asset_size_gb": 0.021,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "ag-news",
+    "display_names": [
+      "AG News (AG's News)"
+    ],
+    "urls": [],
+    "asset_size_bytes": 19829511,
+    "asset_size_gb": 0.02,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "ett-h1",
+    "display_names": [
+      "ETTh1"
+    ],
+    "urls": [
+      "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+      "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+      "https://github.com/thuml/Time-Series-Library"
+    ],
+    "asset_size_bytes": 10485760,
+    "asset_size_gb": 0.01,
+    "n_papers": 5
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "ett-h2",
+    "display_names": [
+      "ETTh2",
+      "ETTh2 (subset of ETT dataset)"
+    ],
+    "urls": [
+      "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+      "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+      "https://github.com/thuml/Autoformer/tree/main/datasets/ETT-small",
+      "https://github.com/thuml/Time-Series-Library",
+      "https://github.com/zhouhaoyi/ETDataset"
+    ],
+    "asset_size_bytes": 10485760,
+    "asset_size_gb": 0.01,
+    "n_papers": 6
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "ett-m1",
+    "display_names": [
+      "ETTm1",
+      "ETTm1 (subset of ETT dataset)"
+    ],
+    "urls": [
+      "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+      "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+      "https://github.com/thuml/Autoformer/tree/main/datasets/ETT-small",
+      "https://github.com/thuml/Time-Series-Library",
+      "https://github.com/zhouhaoyi/ETDataset"
+    ],
+    "asset_size_bytes": 10485760,
+    "asset_size_gb": 0.01,
+    "n_papers": 6
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "ett-m2",
+    "display_names": [
+      "ETTm2",
+      "ETTm2 (subset of ETT dataset)"
+    ],
+    "urls": [
+      "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+      "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+      "https://github.com/thuml/Time-Series-Library",
+      "https://github.com/zhouhaoyi/ETDataset"
+    ],
+    "asset_size_bytes": 10485760,
+    "asset_size_gb": 0.01,
+    "n_papers": 5
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "default-of-credit-card-clients",
+    "display_names": [
+      "Default of Credit Card Clients",
+      "Default of Credit Card Clients (UCI)"
+    ],
+    "urls": [
+      "https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients",
+      "https://doi.org/10.24432/C55S3H"
+    ],
+    "asset_size_bytes": 5541860,
+    "asset_size_gb": 0.006,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "cora",
+    "display_names": [
+      "Cora"
+    ],
+    "urls": [
+      "https://linqs-data.soe.ucsc.edu/public/lbc/cora.tgz"
+    ],
+    "asset_size_bytes": 5242880,
+    "asset_size_gb": 0.005,
+    "n_papers": 4
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "citeseer",
+    "display_names": [
+      "CiteSeer",
+      "Citeseer"
+    ],
+    "urls": [
+      "https://linqs-data.soe.ucsc.edu/public/lbc/citeseer.tgz"
+    ],
+    "asset_size_bytes": 5242880,
+    "asset_size_gb": 0.005,
+    "n_papers": 3
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "wic",
+    "display_names": [
+      "WiC"
+    ],
+    "urls": [],
+    "asset_size_bytes": 5000000,
+    "asset_size_gb": 0.005,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "evalplus",
+    "display_names": [
+      "EvalPlus"
+    ],
+    "urls": [
+      "https://github.com/evalplus/evalplus/tree/master"
+    ],
+    "asset_size_bytes": 4046579,
+    "asset_size_gb": 0.004,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "adult",
+    "display_names": [
+      "Adult (Census Income)",
+      "Adult (UCI)"
+    ],
+    "urls": [
+      "https://archive.ics.uci.edu/ml/datasets/adult",
+      "https://doi.org/10.24432/C5XW20"
+    ],
+    "asset_size_bytes": 3481581,
+    "asset_size_gb": 0.003,
+    "n_papers": 3
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "weather-dataset",
+    "display_names": [
+      "Weather dataset"
+    ],
+    "urls": [
+      "https://drive.google.com/drive/folders/1ohGYWWohJlOlb2gsGTeEq3Wii2egnEPR?usp=sharing"
+    ],
+    "asset_size_bytes": 3446195,
+    "asset_size_gb": 0.003,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "wikiqa",
+    "display_names": [
+      "WikiQA"
+    ],
+    "urls": [],
+    "asset_size_bytes": 2876152,
+    "asset_size_gb": 0.003,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "mmrefine",
+    "display_names": [
+      "MMRefine"
+    ],
+    "urls": [
+      "https://huggingface.co/datasets/naver-ai/mmrefine"
+    ],
+    "asset_size_bytes": 2869152,
+    "asset_size_gb": 0.003,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "qasc",
+    "display_names": [
+      "QASC"
+    ],
+    "urls": [],
+    "asset_size_bytes": 2358408,
+    "asset_size_gb": 0.002,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "adult-income",
+    "display_names": [
+      "Adult Income"
+    ],
+    "urls": [
+      "https://archive.ics.uci.edu/ml/datasets/adult"
+    ],
+    "asset_size_bytes": 2313194,
+    "asset_size_gb": 0.002,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "quail",
+    "display_names": [
+      "QuAIL"
+    ],
+    "urls": [],
+    "asset_size_bytes": 2295976,
+    "asset_size_gb": 0.002,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "humaneval",
+    "display_names": [
+      "HumanEval"
+    ],
+    "urls": [],
+    "asset_size_bytes": 2097152,
+    "asset_size_gb": 0.002,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "imagewoof",
+    "display_names": [
+      "ImageWoof"
+    ],
+    "urls": [
+      "https://s3.amazonaws.com/fast-ai-imageclas/imagewoof2-160.tgz"
+    ],
+    "asset_size_bytes": 1944144,
+    "asset_size_gb": 0.002,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "magic-gamma-telescope",
+    "display_names": [
+      "MAGIC Gamma Telescope (UCI)"
+    ],
+    "urls": [
+      "https://archive.ics.uci.edu/ml/datasets/magic+gamma+telescope"
+    ],
+    "asset_size_bytes": 1496488,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "swe-bench-lite",
+    "display_names": [
+      "SWE-Bench Lite"
+    ],
+    "urls": [
+      "https://www.swebench.com/lite.html"
+    ],
+    "asset_size_bytes": 1245072,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "cmmlu",
+    "display_names": [
+      "CMMLU"
+    ],
+    "urls": [],
+    "asset_size_bytes": 1090760,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "online-shoppers-purchasing-intention",
+    "display_names": [
+      "Online Shoppers Purchasing Intention (UCI)"
+    ],
+    "urls": [
+      "https://archive.ics.uci.edu/ml/datasets/online+shoppers+purchasing+intention+dataset"
+    ],
+    "asset_size_bytes": 1072063,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "california-housing",
+    "display_names": [
+      "California Housing",
+      "California Housing (Kelley Pace & Barry 1997)"
+    ],
+    "urls": [
+      "https://lib.stat.cmu.edu/datasets/houses.zip",
+      "https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html"
+    ],
+    "asset_size_bytes": 1060708,
+    "asset_size_gb": 0.001,
+    "n_papers": 3
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "ego-facebook",
+    "display_names": [
+      "ego-Facebook"
+    ],
+    "urls": [
+      "https://snap.stanford.edu/data/ego-Facebook.html"
+    ],
+    "asset_size_bytes": 1048576,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "pokémon-red-rom",
+    "display_names": [
+      "Pokémon Red ROM"
+    ],
+    "urls": [],
+    "asset_size_bytes": 1048576,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "enzymes",
+    "display_names": [
+      "ENZYMES"
+    ],
+    "urls": [
+      "https://www.chrsmrrs.com/graphkerneldatasets/ENZYMES.zip"
+    ],
+    "asset_size_bytes": 1039073,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "compas",
+    "display_names": [
+      "COMPAS"
+    ],
+    "urls": [
+      "https://www.kaggle.com/danofer/compass"
+    ],
+    "asset_size_bytes": 837133,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "codeif",
+    "display_names": [
+      "CodeIF"
+    ],
+    "urls": [
+      "https://huggingface.co/datasets/linrany/CodeIF"
+    ],
+    "asset_size_bytes": 823404,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "u-safebench",
+    "display_names": [
+      "U-SafeBench"
+    ],
+    "urls": [
+      "https://huggingface.co/datasets/Yeonjun/U-SafeBench"
+    ],
+    "asset_size_bytes": 719495,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "uci-letter-recognition",
+    "display_names": [
+      "UCI Letter Recognition"
+    ],
+    "urls": [
+      "https://archive.ics.uci.edu/dataset/59/letter+recognition"
+    ],
+    "asset_size_bytes": 712666,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "heloc",
+    "display_names": [
+      "HELOC"
+    ],
+    "urls": [
+      "https://www.kaggle.com/datasets/averkiyoliabev/home-equity-line-of-creditheloc/data"
+    ],
+    "asset_size_bytes": 647281,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "quartz",
+    "display_names": [
+      "QuaRTz"
+    ],
+    "urls": [],
+    "asset_size_bytes": 579258,
+    "asset_size_gb": 0.001,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "mutag",
+    "display_names": [
+      "MUTAG"
+    ],
+    "urls": [
+      "https://www.chrsmrrs.com/graphkerneldatasets/MUTAG.zip"
+    ],
+    "asset_size_bytes": 359514,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "trickybugs",
+    "display_names": [
+      "TrickyBugs"
+    ],
+    "urls": [
+      "https://github.com/RinCloud/TrickyBugs/"
+    ],
+    "asset_size_bytes": 335514,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "winobias",
+    "display_names": [
+      "WinoBias"
+    ],
+    "urls": [
+      "https://github.com/uclanlp/corefBias"
+    ],
+    "asset_size_bytes": 278605,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "wsc",
+    "display_names": [
+      "WSC (SuperGLUE)"
+    ],
+    "urls": [],
+    "asset_size_bytes": 258144,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "copa",
+    "display_names": [
+      "COPA"
+    ],
+    "urls": [],
+    "asset_size_bytes": 250278,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "red-pajama",
+    "display_names": [
+      "Red Pajama"
+    ],
+    "urls": [
+      "https://github.com/togethercomputer/RedPajama-Data"
+    ],
+    "asset_size_bytes": 228411,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "kernelbench",
+    "display_names": [
+      "KernelBench"
+    ],
+    "urls": [
+      "https://huggingface.co/datasets/ScalingIntelligence/KernelBench"
+    ],
+    "asset_size_bytes": 119530,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "statlog",
+    "display_names": [
+      "Statlog (German Credit Data)"
+    ],
+    "urls": [
+      "https://doi.org/10.24432/C5NC77"
+    ],
+    "asset_size_bytes": 81031,
+    "asset_size_gb": 0.0,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "arxiv-gr-qc-collaboration-network",
+    "display_names": [
+      "Arxiv GR-QC collaboration network (ca-GrQc)"
+    ],
+    "urls": [
+      "https://snap.stanford.edu/data/ca-GrQc.html"
+    ],
+    "asset_size_bytes": 76800,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "baxbench",
+    "display_names": [
+      "BaxBench"
+    ],
+    "urls": [
+      "https://huggingface.co/datasets/LogicStar/BaxBench"
+    ],
+    "asset_size_bytes": 76106,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "dart",
+    "display_names": [
+      "DART"
+    ],
+    "urls": [],
+    "asset_size_bytes": 52401,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "webnlg",
+    "display_names": [
+      "WebNLG"
+    ],
+    "urls": [],
+    "asset_size_bytes": 34721,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "metashift",
+    "display_names": [
+      "MetaShift"
+    ],
+    "urls": [
+      "https://github.com/WeiLiangMsc/MetaShift"
+    ],
+    "asset_size_bytes": 32038,
+    "asset_size_gb": 0.0,
+    "n_papers": 2
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "multi-step-arithmetic",
+    "display_names": [
+      "Multi-step Arithmetic (BIG-Bench Hard)"
+    ],
+    "urls": [
+      "https://huggingface.co/datasets/maveriq/bigbenchhard"
+    ],
+    "asset_size_bytes": 13833,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "story-cloze",
+    "display_names": [
+      "Story Cloze"
+    ],
+    "urls": [],
+    "asset_size_bytes": 13247,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "cosmos-qa",
+    "display_names": [
+      "Cosmos QA"
+    ],
+    "urls": [],
+    "asset_size_bytes": 12999,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "social-iqa",
+    "display_names": [
+      "Social IQA"
+    ],
+    "urls": [],
+    "asset_size_bytes": 12529,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "sentiment140",
+    "display_names": [
+      "Sentiment140"
+    ],
+    "urls": [],
+    "asset_size_bytes": 12044,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "e2e-nlg",
+    "display_names": [
+      "E2E NLG"
+    ],
+    "urls": [],
+    "asset_size_bytes": 11505,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "cifar-10-c",
+    "display_names": [
+      "CIFAR-10-C"
+    ],
+    "urls": [
+      "https://zenodo.org/record/2535967/files/CIFAR-10-C.tar"
+    ],
+    "asset_size_bytes": 9877,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "emnist",
+    "display_names": [
+      "EMNIST"
+    ],
+    "urls": [
+      "https://biometrics.nist.gov/cs_links/EMNIST/gzip.zip",
+      "https://www.nist.gov/itl/products-and-services/emnist-dataset"
+    ],
+    "asset_size_bytes": 9269,
+    "asset_size_gb": 0.0,
+    "n_papers": 3
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "fastmri",
+    "display_names": [
+      "fastMRI"
+    ],
+    "urls": [
+      "https://fastmri.med.nyu.edu/"
+    ],
+    "asset_size_bytes": 2461,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "dataset",
+    "canonical_name": "movielens-1m",
+    "display_names": [
+      "MovieLens 1M",
+      "MovieLens-1M"
+    ],
+    "urls": [
+      "https://grouplens.org/datasets/movielens/1m/"
+    ],
+    "asset_size_bytes": 2265,
+    "asset_size_gb": 0.0,
+    "n_papers": 2
+  },
+  {
+    "kind": "model",
+    "canonical_name": "API:gpt-4o-mini",
+    "display_names": [
+      "GPT-4o-mini"
+    ],
+    "urls": [],
+    "asset_size_bytes": 0,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "API:gpt-4o",
+    "display_names": [
+      "GPT-4o"
+    ],
+    "urls": [],
+    "asset_size_bytes": 0,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "API:gemini-1.5-flash",
+    "display_names": [
+      "Gemini-1.5-Flash"
+    ],
+    "urls": [],
+    "asset_size_bytes": 0,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "API:gemini-1.5-pro",
+    "display_names": [
+      "Gemini-1.5-Pro"
+    ],
+    "urls": [],
+    "asset_size_bytes": 0,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "API:claude-3-haiku",
+    "display_names": [
+      "Claude-3-Haiku"
+    ],
+    "urls": [],
+    "asset_size_bytes": 0,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  },
+  {
+    "kind": "model",
+    "canonical_name": "API:claude-3-sonnet",
+    "display_names": [
+      "Claude-3-Sonnet"
+    ],
+    "urls": [],
+    "asset_size_bytes": 0,
+    "asset_size_gb": 0.0,
+    "n_papers": 1
+  }
+]

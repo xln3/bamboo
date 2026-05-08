@@ -1,0 +1,426 @@
+{
+  "gdrive": [
+    {
+      "name": "vit-fine-tuned-checkpoints",
+      "kind": "model",
+      "gb": 3.221,
+      "urls": [
+        "https://drive.google.com/drive/folders/1u_Tva6x0p6oxu5Eo0ZZsf-520Cc_3MKw"
+      ]
+    },
+    {
+      "name": "solar-energy",
+      "kind": "dataset",
+      "gb": 2.262,
+      "urls": [
+        "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+        "https://github.com/laiguokun/LSTNet"
+      ]
+    },
+    {
+      "name": "exchange",
+      "kind": "dataset",
+      "gb": 0.859,
+      "urls": [
+        "https://drive.google.com/drive/folders/1ohGYWWohJlOlb-ygsTK8b7yYq3e0z-qT",
+        "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+        "https://github.com/thuml/Autoformer/tree/main/datasets/exchange_rate"
+      ]
+    },
+    {
+      "name": "electricity-ts",
+      "kind": "dataset",
+      "gb": 0.105,
+      "urls": [
+        "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+        "https://drive.google.com/drive/folders/1ohGYWWohJlOlb-ygsTK8b7yYq3e0z-qT",
+        "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+        "https://github.com/thuml/Autoformer/tree/main/datasets/electricity",
+        "https://github.com/thuml/Time-Series-Library"
+      ]
+    },
+    {
+      "name": "traffic-ts",
+      "kind": "dataset",
+      "gb": 0.052,
+      "urls": [
+        "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+        "https://github.com/thuml/Autoformer/tree/main/datasets/traffic"
+      ]
+    },
+    {
+      "name": "weather-ts",
+      "kind": "dataset",
+      "gb": 0.031,
+      "urls": [
+        "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+        "https://drive.google.com/drive/folders/1ohGYWWohJlOlb-ygsTK8b7yYq3e0z-qT",
+        "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+        "https://github.com/thuml/Autoformer/tree/main/datasets/weather",
+        "https://github.com/thuml/Time-Series-Library"
+      ]
+    },
+    {
+      "name": "ett-h1",
+      "kind": "dataset",
+      "gb": 0.01,
+      "urls": [
+        "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+        "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+        "https://github.com/thuml/Time-Series-Library"
+      ]
+    },
+    {
+      "name": "ett-h2",
+      "kind": "dataset",
+      "gb": 0.01,
+      "urls": [
+        "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+        "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+        "https://github.com/thuml/Autoformer/tree/main/datasets/ETT-small",
+        "https://github.com/thuml/Time-Series-Library",
+        "https://github.com/zhouhaoyi/ETDataset"
+      ]
+    },
+    {
+      "name": "ett-m1",
+      "kind": "dataset",
+      "gb": 0.01,
+      "urls": [
+        "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+        "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+        "https://github.com/thuml/Autoformer/tree/main/datasets/ETT-small",
+        "https://github.com/thuml/Time-Series-Library",
+        "https://github.com/zhouhaoyi/ETDataset"
+      ]
+    },
+    {
+      "name": "ett-m2",
+      "kind": "dataset",
+      "gb": 0.01,
+      "urls": [
+        "https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy",
+        "https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link",
+        "https://github.com/thuml/Time-Series-Library",
+        "https://github.com/zhouhaoyi/ETDataset"
+      ]
+    },
+    {
+      "name": "weather-dataset",
+      "kind": "dataset",
+      "gb": 0.003,
+      "urls": [
+        "https://drive.google.com/drive/folders/1ohGYWWohJlOlb2gsGTeEq3Wii2egnEPR?usp=sharing"
+      ]
+    }
+  ],
+  "kaggle": [
+    {
+      "name": "civilcomments",
+      "kind": "dataset",
+      "gb": 0.422,
+      "urls": [
+        "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/data",
+        "https://www.kaggle.com/civil-comments (or via WILDS)"
+      ]
+    },
+    {
+      "name": "compas",
+      "kind": "dataset",
+      "gb": 0.001,
+      "urls": [
+        "https://www.kaggle.com/danofer/compass"
+      ]
+    },
+    {
+      "name": "heloc",
+      "kind": "dataset",
+      "gb": 0.001,
+      "urls": [
+        "https://www.kaggle.com/datasets/averkiyoliabev/home-equity-line-of-creditheloc/data"
+      ]
+    }
+  ],
+  "github_tree": [
+    {
+      "name": "gpt-2-medium-lora-adapter",
+      "kind": "model",
+      "gb": 3.221,
+      "urls": [
+        "https://github.com/microsoft/LoRA/releases/download/GPT-2/gpt2_md_lora_dart.pt",
+        "https://github.com/microsoft/LoRA/releases/download/GPT-2/gpt2_md_lora_e2e.pt",
+        "https://github.com/microsoft/LoRA/releases/download/GPT-2/gpt2_md_lora_webnlg.pt"
+      ]
+    },
+    {
+      "name": "nico++",
+      "kind": "dataset",
+      "gb": 0.859,
+      "urls": [
+        "https://github.com/nicodataset/NICO-plus-plus"
+      ]
+    },
+    {
+      "name": "amazon-photo",
+      "kind": "dataset",
+      "gb": 0.234,
+      "urls": [
+        "https://github.com/shchur/gnn-benchmark/raw/master/data/npz/amazon_electronics_photo.npz"
+      ]
+    },
+    {
+      "name": "moses",
+      "kind": "dataset",
+      "gb": 0.169,
+      "urls": [
+        "https://github.com/molecularsets/moses"
+      ]
+    },
+    {
+      "name": "eurosat",
+      "kind": "dataset",
+      "gb": 0.105,
+      "urls": [
+        "https://github.com/phelber/EuroSAT"
+      ]
+    },
+    {
+      "name": "amazon-computers",
+      "kind": "dataset",
+      "gb": 0.1,
+      "urls": [
+        "https://github.com/shchur/gnn-benchmark/raw/master/data/npz/amazon_electronics_computers.npz"
+      ]
+    },
+    {
+      "name": "gsm8k",
+      "kind": "dataset",
+      "gb": 0.052,
+      "urls": [
+        "https://github.com/openai/grade-school-math"
+      ]
+    },
+    {
+      "name": "evalplus",
+      "kind": "dataset",
+      "gb": 0.004,
+      "urls": [
+        "https://github.com/evalplus/evalplus/tree/master"
+      ]
+    },
+    {
+      "name": "trickybugs",
+      "kind": "dataset",
+      "gb": 0.0,
+      "urls": [
+        "https://github.com/RinCloud/TrickyBugs/"
+      ]
+    },
+    {
+      "name": "winobias",
+      "kind": "dataset",
+      "gb": 0.0,
+      "urls": [
+        "https://github.com/uclanlp/corefBias"
+      ]
+    },
+    {
+      "name": "red-pajama",
+      "kind": "dataset",
+      "gb": 0.0,
+      "urls": [
+        "https://github.com/togethercomputer/RedPajama-Data"
+      ]
+    },
+    {
+      "name": "metashift",
+      "kind": "dataset",
+      "gb": 0.0,
+      "urls": [
+        "https://github.com/WeiLiangMsc/MetaShift"
+      ]
+    }
+  ],
+  "no_url": [
+    {
+      "name": "metamath-7b-v1.0",
+      "kind": "model",
+      "gb": 26.954
+    },
+    {
+      "name": "chinese-llama-2-7b",
+      "kind": "model",
+      "gb": 26.954
+    },
+    {
+      "name": "sun397",
+      "kind": "dataset",
+      "gb": 14.498
+    },
+    {
+      "name": "llama-2-7b",
+      "kind": "model",
+      "gb": 13.529
+    },
+    {
+      "name": "llama-2-7b-int4-python-code-18k",
+      "kind": "model",
+      "gb": 13.477
+    },
+    {
+      "name": "clip-vit-large-patch14",
+      "kind": "model",
+      "gb": 1.718
+    },
+    {
+      "name": "gtsrb",
+      "kind": "dataset",
+      "gb": 1.027
+    },
+    {
+      "name": "t5-base",
+      "kind": "model",
+      "gb": 0.9
+    },
+    {
+      "name": "bert-base-uncased",
+      "kind": "model",
+      "gb": 0.44
+    },
+    {
+      "name": "paws",
+      "kind": "dataset",
+      "gb": 0.129
+    },
+    {
+      "name": "hellaswag",
+      "kind": "dataset",
+      "gb": 0.063
+    },
+    {
+      "name": "winogrande",
+      "kind": "dataset",
+      "gb": 0.021
+    },
+    {
+      "name": "ag-news",
+      "kind": "dataset",
+      "gb": 0.02
+    },
+    {
+      "name": "wic",
+      "kind": "dataset",
+      "gb": 0.005
+    },
+    {
+      "name": "wikiqa",
+      "kind": "dataset",
+      "gb": 0.003
+    },
+    {
+      "name": "qasc",
+      "kind": "dataset",
+      "gb": 0.002
+    },
+    {
+      "name": "quail",
+      "kind": "dataset",
+      "gb": 0.002
+    },
+    {
+      "name": "humaneval",
+      "kind": "dataset",
+      "gb": 0.002
+    },
+    {
+      "name": "cmmlu",
+      "kind": "dataset",
+      "gb": 0.001
+    },
+    {
+      "name": "pokémon-red-rom",
+      "kind": "dataset",
+      "gb": 0.001
+    },
+    {
+      "name": "quartz",
+      "kind": "dataset",
+      "gb": 0.001
+    },
+    {
+      "name": "wsc",
+      "kind": "dataset",
+      "gb": 0.0
+    },
+    {
+      "name": "copa",
+      "kind": "dataset",
+      "gb": 0.0
+    },
+    {
+      "name": "dart",
+      "kind": "dataset",
+      "gb": 0.0
+    },
+    {
+      "name": "webnlg",
+      "kind": "dataset",
+      "gb": 0.0
+    },
+    {
+      "name": "story-cloze",
+      "kind": "dataset",
+      "gb": 0.0
+    },
+    {
+      "name": "cosmos-qa",
+      "kind": "dataset",
+      "gb": 0.0
+    },
+    {
+      "name": "social-iqa",
+      "kind": "dataset",
+      "gb": 0.0
+    },
+    {
+      "name": "sentiment140",
+      "kind": "dataset",
+      "gb": 0.0
+    },
+    {
+      "name": "e2e-nlg",
+      "kind": "dataset",
+      "gb": 0.0
+    },
+    {
+      "name": "API:gpt-4o-mini",
+      "kind": "model",
+      "gb": 0.0
+    },
+    {
+      "name": "API:gpt-4o",
+      "kind": "model",
+      "gb": 0.0
+    },
+    {
+      "name": "API:gemini-1.5-flash",
+      "kind": "model",
+      "gb": 0.0
+    },
+    {
+      "name": "API:gemini-1.5-pro",
+      "kind": "model",
+      "gb": 0.0
+    },
+    {
+      "name": "API:claude-3-haiku",
+      "kind": "model",
+      "gb": 0.0
+    },
+    {
+      "name": "API:claude-3-sonnet",
+      "kind": "model",
+      "gb": 0.0
+    }
+  ]
+}

@@ -1,0 +1,437 @@
+{
+  "cap_gb": 150.0,
+  "papers_total": 6148,
+  "papers_no_items": 416,
+  "papers_fittable": 3929,
+  "papers_oversize_total": 424,
+  "papers_oversize_floor": 1379,
+  "papers_strict_assigned": 2337,
+  "papers_salvaged": 0,
+  "papers_leftover": 2008,
+  "papers_lenient_any_claim": 399,
+  "papers_lenient_50pct_or_more": 161,
+  "papers_lenient_full": 21,
+  "n_bins": 60,
+  "bins_summary": [
+    {
+      "bin_id": 1,
+      "n_papers": 561,
+      "size_gb": 150.0,
+      "n_assets": 124
+    },
+    {
+      "bin_id": 2,
+      "n_papers": 53,
+      "size_gb": 149.99,
+      "n_assets": 63
+    },
+    {
+      "bin_id": 3,
+      "n_papers": 45,
+      "size_gb": 149.99,
+      "n_assets": 56
+    },
+    {
+      "bin_id": 4,
+      "n_papers": 44,
+      "size_gb": 149.96,
+      "n_assets": 75
+    },
+    {
+      "bin_id": 5,
+      "n_papers": 43,
+      "size_gb": 149.97,
+      "n_assets": 63
+    },
+    {
+      "bin_id": 6,
+      "n_papers": 33,
+      "size_gb": 149.91,
+      "n_assets": 81
+    },
+    {
+      "bin_id": 7,
+      "n_papers": 44,
+      "size_gb": 149.92,
+      "n_assets": 78
+    },
+    {
+      "bin_id": 8,
+      "n_papers": 18,
+      "size_gb": 149.97,
+      "n_assets": 31
+    },
+    {
+      "bin_id": 9,
+      "n_papers": 34,
+      "size_gb": 149.95,
+      "n_assets": 53
+    },
+    {
+      "bin_id": 10,
+      "n_papers": 54,
+      "size_gb": 149.98,
+      "n_assets": 144
+    },
+    {
+      "bin_id": 11,
+      "n_papers": 20,
+      "size_gb": 149.85,
+      "n_assets": 45
+    },
+    {
+      "bin_id": 12,
+      "n_papers": 13,
+      "size_gb": 149.58,
+      "n_assets": 39
+    },
+    {
+      "bin_id": 13,
+      "n_papers": 41,
+      "size_gb": 149.27,
+      "n_assets": 125
+    },
+    {
+      "bin_id": 14,
+      "n_papers": 25,
+      "size_gb": 149.76,
+      "n_assets": 73
+    },
+    {
+      "bin_id": 15,
+      "n_papers": 25,
+      "size_gb": 149.39,
+      "n_assets": 51
+    },
+    {
+      "bin_id": 16,
+      "n_papers": 37,
+      "size_gb": 149.3,
+      "n_assets": 54
+    },
+    {
+      "bin_id": 17,
+      "n_papers": 62,
+      "size_gb": 149.83,
+      "n_assets": 63
+    },
+    {
+      "bin_id": 18,
+      "n_papers": 34,
+      "size_gb": 149.98,
+      "n_assets": 48
+    },
+    {
+      "bin_id": 19,
+      "n_papers": 22,
+      "size_gb": 149.95,
+      "n_assets": 39
+    },
+    {
+      "bin_id": 20,
+      "n_papers": 33,
+      "size_gb": 149.59,
+      "n_assets": 89
+    },
+    {
+      "bin_id": 21,
+      "n_papers": 24,
+      "size_gb": 149.35,
+      "n_assets": 57
+    },
+    {
+      "bin_id": 22,
+      "n_papers": 57,
+      "size_gb": 149.4,
+      "n_assets": 173
+    },
+    {
+      "bin_id": 23,
+      "n_papers": 15,
+      "size_gb": 149.61,
+      "n_assets": 47
+    },
+    {
+      "bin_id": 24,
+      "n_papers": 37,
+      "size_gb": 149.34,
+      "n_assets": 93
+    },
+    {
+      "bin_id": 25,
+      "n_papers": 30,
+      "size_gb": 149.3,
+      "n_assets": 65
+    },
+    {
+      "bin_id": 26,
+      "n_papers": 18,
+      "size_gb": 149.26,
+      "n_assets": 41
+    },
+    {
+      "bin_id": 27,
+      "n_papers": 18,
+      "size_gb": 149.31,
+      "n_assets": 43
+    },
+    {
+      "bin_id": 28,
+      "n_papers": 13,
+      "size_gb": 148.8,
+      "n_assets": 26
+    },
+    {
+      "bin_id": 29,
+      "n_papers": 8,
+      "size_gb": 149.0,
+      "n_assets": 18
+    },
+    {
+      "bin_id": 30,
+      "n_papers": 2,
+      "size_gb": 148.59,
+      "n_assets": 9
+    },
+    {
+      "bin_id": 31,
+      "n_papers": 59,
+      "size_gb": 149.91,
+      "n_assets": 205
+    },
+    {
+      "bin_id": 32,
+      "n_papers": 43,
+      "size_gb": 149.82,
+      "n_assets": 126
+    },
+    {
+      "bin_id": 33,
+      "n_papers": 47,
+      "size_gb": 148.56,
+      "n_assets": 190
+    },
+    {
+      "bin_id": 34,
+      "n_papers": 35,
+      "size_gb": 149.77,
+      "n_assets": 130
+    },
+    {
+      "bin_id": 35,
+      "n_papers": 15,
+      "size_gb": 149.15,
+      "n_assets": 57
+    },
+    {
+      "bin_id": 36,
+      "n_papers": 41,
+      "size_gb": 149.79,
+      "n_assets": 97
+    },
+    {
+      "bin_id": 37,
+      "n_papers": 18,
+      "size_gb": 149.31,
+      "n_assets": 83
+    },
+    {
+      "bin_id": 38,
+      "n_papers": 47,
+      "size_gb": 148.07,
+      "n_assets": 210
+    },
+    {
+      "bin_id": 39,
+      "n_papers": 41,
+      "size_gb": 147.43,
+      "n_assets": 123
+    },
+    {
+      "bin_id": 40,
+      "n_papers": 39,
+      "size_gb": 147.3,
+      "n_assets": 99
+    },
+    {
+      "bin_id": 41,
+      "n_papers": 39,
+      "size_gb": 149.87,
+      "n_assets": 188
+    },
+    {
+      "bin_id": 42,
+      "n_papers": 15,
+      "size_gb": 149.39,
+      "n_assets": 71
+    },
+    {
+      "bin_id": 43,
+      "n_papers": 34,
+      "size_gb": 149.81,
+      "n_assets": 111
+    },
+    {
+      "bin_id": 44,
+      "n_papers": 35,
+      "size_gb": 148.18,
+      "n_assets": 143
+    },
+    {
+      "bin_id": 45,
+      "n_papers": 33,
+      "size_gb": 147.93,
+      "n_assets": 135
+    },
+    {
+      "bin_id": 46,
+      "n_papers": 36,
+      "size_gb": 145.57,
+      "n_assets": 138
+    },
+    {
+      "bin_id": 47,
+      "n_papers": 31,
+      "size_gb": 147.82,
+      "n_assets": 136
+    },
+    {
+      "bin_id": 48,
+      "n_papers": 26,
+      "size_gb": 144.14,
+      "n_assets": 111
+    },
+    {
+      "bin_id": 49,
+      "n_papers": 26,
+      "size_gb": 149.43,
+      "n_assets": 105
+    },
+    {
+      "bin_id": 50,
+      "n_papers": 23,
+      "size_gb": 144.25,
+      "n_assets": 125
+    },
+    {
+      "bin_id": 51,
+      "n_papers": 22,
+      "size_gb": 143.69,
+      "n_assets": 122
+    },
+    {
+      "bin_id": 52,
+      "n_papers": 23,
+      "size_gb": 145.77,
+      "n_assets": 114
+    },
+    {
+      "bin_id": 53,
+      "n_papers": 21,
+      "size_gb": 145.06,
+      "n_assets": 126
+    },
+    {
+      "bin_id": 54,
+      "n_papers": 21,
+      "size_gb": 147.95,
+      "n_assets": 95
+    },
+    {
+      "bin_id": 55,
+      "n_papers": 15,
+      "size_gb": 146.35,
+      "n_assets": 57
+    },
+    {
+      "bin_id": 56,
+      "n_papers": 19,
+      "size_gb": 147.85,
+      "n_assets": 114
+    },
+    {
+      "bin_id": 57,
+      "n_papers": 17,
+      "size_gb": 142.42,
+      "n_assets": 97
+    },
+    {
+      "bin_id": 58,
+      "n_papers": 17,
+      "size_gb": 148.9,
+      "n_assets": 129
+    },
+    {
+      "bin_id": 59,
+      "n_papers": 18,
+      "size_gb": 146.82,
+      "n_assets": 114
+    },
+    {
+      "bin_id": 60,
+      "n_papers": 18,
+      "size_gb": 149.31,
+      "n_assets": 71
+    }
+  ],
+  "coverage_curve": [
+    {
+      "K": 5,
+      "papers_covered": 746,
+      "pct_of_all": 12.1,
+      "pct_of_fittable": 17.2,
+      "cum_size_gb": 749.9
+    },
+    {
+      "K": 10,
+      "papers_covered": 929,
+      "pct_of_all": 15.1,
+      "pct_of_fittable": 21.4,
+      "cum_size_gb": 1499.6
+    },
+    {
+      "K": 15,
+      "papers_covered": 1053,
+      "pct_of_all": 17.1,
+      "pct_of_fittable": 24.2,
+      "cum_size_gb": 2247.5
+    },
+    {
+      "K": 25,
+      "papers_covered": 1404,
+      "pct_of_all": 22.8,
+      "pct_of_fittable": 32.3,
+      "cum_size_gb": 3743.2
+    },
+    {
+      "K": 40,
+      "papers_covered": 1848,
+      "pct_of_all": 30.1,
+      "pct_of_fittable": 42.5,
+      "cum_size_gb": 5977.2
+    },
+    {
+      "K": 60,
+      "papers_covered": 2337,
+      "pct_of_all": 38.0,
+      "pct_of_fittable": 53.8,
+      "cum_size_gb": 8917.7
+    }
+  ],
+  "size_sources": {
+    "known-table": 178,
+    "llm-median": 9056,
+    "default-model": 3245,
+    "default-dataset": 5364,
+    "default-other": 685,
+    "api-zero": 25
+  },
+  "asset_stats": {
+    "papers_total": 6148,
+    "papers_no_items": 416,
+    "items_no_name": 0,
+    "items_no_size_raw": 13204,
+    "raw_unique_names": 22161,
+    "canonical_unique_keys": 18553
+  }
+}
