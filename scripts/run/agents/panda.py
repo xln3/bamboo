@@ -32,8 +32,6 @@ class PandaAdapter(AgentAdapter):
             prompt,
             "--profile",
             "reproduction",
-            "--max-tokens",
-            "32000",
             "--log-detail",
         ]
         cost_limit = mc.get("cost_limit")

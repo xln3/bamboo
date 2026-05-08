@@ -201,6 +201,18 @@ def build_prompt(
             f"- Paper URL: {paper_url}"
         )
 
+    # Pre-fetched paper markdown (skip FetchPaper if present)
+    md_root = Path(os.environ.get(
+        "BAMBOO_PAPER_MARKDOWNS",
+        Path(__file__).resolve().parents[2] / "data" / "paper_markdowns",
+    ))
+    md_path = Path(md_root) / f"{paper_id}.md"
+    paper_md_hint = (
+        f"\nPAPER MARKDOWN: pre-fetched at {md_path} — "
+        f"read it directly with the Read tool instead of calling FetchPaper or fetching the PDF."
+        if md_path.exists() else ""
+    )
+
     claims = paper.get("ground_truth_claims") or []
 
     # ── Assemble sections by tier ────────────────────────────
@@ -219,6 +231,7 @@ def build_prompt(
         f"- ArXiv: {arxiv_id}\n"
         f"{repo_info}\n"
         f"- Abstract: {abstract}"
+        f"{paper_md_hint}"
     )
 
     # — Environment facts (neutral, guided) —

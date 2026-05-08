@@ -592,6 +592,8 @@ def main():
                         help="Override model name (e.g. glm-5, glm-5.1)")
     parser.add_argument("--api-key", type=str, default=None,
                         help="Override API key")
+    parser.add_argument("--api-base", type=str, default=None,
+                        help="Override API base URL (e.g. https://aihubmix.com/v1)")
     parser.add_argument("--partition", type=str, default=None,
                         help="Worker partition 'K/N' — this worker takes every Nth paper starting at K (0-indexed)")
     parser.add_argument("--source", type=str, default="curated",
@@ -605,6 +607,9 @@ def main():
     if args.api_key:
         global API_KEY
         API_KEY = args.api_key
+    if args.api_base:
+        global API_BASE
+        API_BASE = args.api_base
 
     logging.basicConfig(
         level=logging.INFO,

@@ -47,7 +47,7 @@ RESULTS_DIR = DATA_DIR / "results"
 CONFIGS_DIR = BAMBOO_ROOT / "configs"
 DEFAULT_DATASET = DATA_DIR / "bamboo_curated"
 MODELS_CONFIG = CONFIGS_DIR / "models.json"
-WORKDIR_BASE = Path("/tmp/bamboo")
+WORKDIR_BASE = Path(os.environ.get("BAMBOO_WORKDIR_BASE", "/tmp/bamboo"))
 
 # Agents
 from .agents.panda import PandaAdapter
